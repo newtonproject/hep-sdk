@@ -1,0 +1,665 @@
+swagger: '2.0'
+info:
+  title: HEP REST API
+  description: The REST API for HEP protocol
+  termsOfService: https://www.newtonproject.org/terms-of-use/
+  contact:
+    email: xiawu@zeuux.org
+  license:
+    name: GPLv3 License
+  version: v1
+host: localhost:8000
+schemes:
+  - http
+basePath: /
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  Basic:
+    type: basic
+security:
+  - Basic: []
+paths:
+  /dapps/{dapp_id}/:
+    get:
+      operationId: dapps_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/RetrieveDApp'
+      tags:
+        - dapps
+    parameters:
+      - name: dapp_id
+        in: path
+        required: true
+        type: string
+  /newnet/caches/auth/:
+    post:
+      operationId: newnet_caches_auth_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CreateAuthCache'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/CreateAuthCache'
+      tags:
+        - newnet
+    parameters: []
+  /newnet/caches/auth/{auth_hash}/:
+    get:
+      operationId: newnet_caches_auth_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/BaseAuth'
+      tags:
+        - newnet
+    parameters:
+      - name: auth_hash
+        in: path
+        required: true
+        type: string
+  /newnet/caches/pay/:
+    post:
+      operationId: newnet_caches_pay_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CreatePayCache'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/CreatePayCache'
+      tags:
+        - newnet
+    parameters: []
+  /newnet/caches/pay/{pay_hash}/:
+    get:
+      operationId: newnet_caches_pay_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/BasePay'
+      tags:
+        - newnet
+    parameters:
+      - name: pay_hash
+        in: path
+        required: true
+        type: string
+  /proofs/:
+    post:
+      operationId: proofs_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CreateProof'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/CreateProof'
+      tags:
+        - proofs
+    parameters: []
+  /proofs/{proof_hash}/:
+    put:
+      operationId: proofs_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UpdateProof'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/UpdateProof'
+      tags:
+        - proofs
+    delete:
+      operationId: proofs_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - proofs
+    parameters:
+      - name: proof_hash
+        in: path
+        required: true
+        type: string
+definitions:
+  RetrieveDApp:
+    required:
+      - dapp_key
+      - dapp_id
+      - protocol
+      - version
+      - ts
+      - nonce
+      - os
+      - language
+      - md5
+    type: object
+    properties:
+      dapp_key:
+        title: Dapp key
+        type: string
+        maxLength: 64
+        minLength: 1
+      dapp_id:
+        title: Dapp id
+        type: string
+        maxLength: 64
+        minLength: 1
+      protocol:
+        title: Protocol
+        type: string
+        maxLength: 10
+        minLength: 1
+      version:
+        title: Version
+        type: string
+        maxLength: 10
+        minLength: 1
+      ts:
+        title: Ts
+        type: integer
+      nonce:
+        title: Nonce
+        type: string
+        maxLength: 32
+        minLength: 1
+      os:
+        title: Os
+        type: string
+        maxLength: 10
+        minLength: 1
+      language:
+        title: Language
+        type: string
+        maxLength: 10
+        minLength: 1
+      md5:
+        title: Md5
+        type: string
+        maxLength: 64
+        minLength: 1
+  CreateAuthCache:
+    required:
+      - dapp_key
+      - dapp_id
+      - protocol
+      - version
+      - ts
+      - nonce
+      - os
+      - language
+      - md5
+      - uuid
+      - action
+      - scope
+      - expired
+      - memo
+      - sign_type
+      - signature
+    type: object
+    properties:
+      dapp_key:
+        title: Dapp key
+        type: string
+        maxLength: 64
+        minLength: 1
+      dapp_id:
+        title: Dapp id
+        type: string
+        maxLength: 64
+        minLength: 1
+      protocol:
+        title: Protocol
+        type: string
+        maxLength: 10
+        minLength: 1
+      version:
+        title: Version
+        type: string
+        maxLength: 10
+        minLength: 1
+      ts:
+        title: Ts
+        type: integer
+      nonce:
+        title: Nonce
+        type: string
+        maxLength: 32
+        minLength: 1
+      os:
+        title: Os
+        type: string
+        maxLength: 10
+        minLength: 1
+      language:
+        title: Language
+        type: string
+        maxLength: 10
+        minLength: 1
+      md5:
+        title: Md5
+        type: string
+        maxLength: 64
+        minLength: 1
+      uuid:
+        title: Uuid
+        type: string
+        maxLength: 64
+        minLength: 1
+      action:
+        title: Action
+        type: string
+        maxLength: 64
+        minLength: 1
+      scope:
+        title: Scope
+        type: integer
+      expired:
+        title: Expired
+        type: integer
+      memo:
+        title: Memo
+        type: string
+        maxLength: 64
+        minLength: 1
+      sign_type:
+        title: Sign type
+        type: string
+        maxLength: 64
+        minLength: 1
+      signature:
+        title: Signature
+        type: string
+        maxLength: 64
+        minLength: 1
+  BaseAuth:
+    required:
+      - dapp_key
+      - dapp_id
+      - protocol
+      - version
+      - ts
+      - nonce
+      - os
+      - language
+      - md5
+    type: object
+    properties:
+      dapp_key:
+        title: Dapp key
+        type: string
+        maxLength: 64
+        minLength: 1
+      dapp_id:
+        title: Dapp id
+        type: string
+        maxLength: 64
+        minLength: 1
+      protocol:
+        title: Protocol
+        type: string
+        maxLength: 10
+        minLength: 1
+      version:
+        title: Version
+        type: string
+        maxLength: 10
+        minLength: 1
+      ts:
+        title: Ts
+        type: integer
+      nonce:
+        title: Nonce
+        type: string
+        maxLength: 32
+        minLength: 1
+      os:
+        title: Os
+        type: string
+        maxLength: 10
+        minLength: 1
+      language:
+        title: Language
+        type: string
+        maxLength: 10
+        minLength: 1
+      md5:
+        title: Md5
+        type: string
+        maxLength: 64
+        minLength: 1
+  CreatePayCache:
+    required:
+      - dapp_key
+      - dapp_id
+      - protocol
+      - version
+      - ts
+      - nonce
+      - os
+      - language
+      - md5
+      - uuid
+      - action
+      - scope
+      - expired
+      - description
+      - price_currency
+      - total_price
+      - order_number
+      - seller
+      - customer
+      - broker
+      - sign_type
+      - signature
+    type: object
+    properties:
+      dapp_key:
+        title: Dapp key
+        type: string
+        maxLength: 64
+        minLength: 1
+      dapp_id:
+        title: Dapp id
+        type: string
+        maxLength: 64
+        minLength: 1
+      protocol:
+        title: Protocol
+        type: string
+        maxLength: 10
+        minLength: 1
+      version:
+        title: Version
+        type: string
+        maxLength: 10
+        minLength: 1
+      ts:
+        title: Ts
+        type: integer
+      nonce:
+        title: Nonce
+        type: string
+        maxLength: 32
+        minLength: 1
+      os:
+        title: Os
+        type: string
+        maxLength: 10
+        minLength: 1
+      language:
+        title: Language
+        type: string
+        maxLength: 10
+        minLength: 1
+      md5:
+        title: Md5
+        type: string
+        maxLength: 64
+        minLength: 1
+      uuid:
+        title: Uuid
+        type: string
+        maxLength: 64
+        minLength: 1
+      action:
+        title: Action
+        type: string
+        maxLength: 64
+        minLength: 1
+      scope:
+        title: Scope
+        type: integer
+      expired:
+        title: Expired
+        type: integer
+      description:
+        title: Description
+        type: string
+        maxLength: 64
+        minLength: 1
+      price_currency:
+        title: Price currency
+        type: string
+        maxLength: 64
+        minLength: 1
+      total_price:
+        title: Total price
+        type: string
+        maxLength: 64
+        minLength: 1
+      order_number:
+        title: Order number
+        type: string
+        maxLength: 64
+        minLength: 1
+      seller:
+        title: Seller
+        type: string
+        maxLength: 64
+        minLength: 1
+      customer:
+        title: Customer
+        type: string
+        maxLength: 64
+        minLength: 1
+      broker:
+        title: Broker
+        type: string
+        maxLength: 64
+        minLength: 1
+      sign_type:
+        title: Sign type
+        type: string
+        maxLength: 64
+        minLength: 1
+      signature:
+        title: Signature
+        type: string
+        maxLength: 64
+        minLength: 1
+  BasePay:
+    required:
+      - dapp_key
+      - dapp_id
+      - protocol
+      - version
+      - ts
+      - nonce
+      - os
+      - language
+      - md5
+    type: object
+    properties:
+      dapp_key:
+        title: Dapp key
+        type: string
+        maxLength: 64
+        minLength: 1
+      dapp_id:
+        title: Dapp id
+        type: string
+        maxLength: 64
+        minLength: 1
+      protocol:
+        title: Protocol
+        type: string
+        maxLength: 10
+        minLength: 1
+      version:
+        title: Version
+        type: string
+        maxLength: 10
+        minLength: 1
+      ts:
+        title: Ts
+        type: integer
+      nonce:
+        title: Nonce
+        type: string
+        maxLength: 32
+        minLength: 1
+      os:
+        title: Os
+        type: string
+        maxLength: 10
+        minLength: 1
+      language:
+        title: Language
+        type: string
+        maxLength: 10
+        minLength: 1
+      md5:
+        title: Md5
+        type: string
+        maxLength: 64
+        minLength: 1
+  CreateProof:
+    required:
+      - dapp_key
+      - dapp_id
+      - protocol
+      - version
+      - ts
+      - nonce
+      - os
+      - language
+      - md5
+    type: object
+    properties:
+      dapp_key:
+        title: Dapp key
+        type: string
+        maxLength: 64
+        minLength: 1
+      dapp_id:
+        title: Dapp id
+        type: string
+        maxLength: 64
+        minLength: 1
+      protocol:
+        title: Protocol
+        type: string
+        maxLength: 10
+        minLength: 1
+      version:
+        title: Version
+        type: string
+        maxLength: 10
+        minLength: 1
+      ts:
+        title: Ts
+        type: integer
+      nonce:
+        title: Nonce
+        type: string
+        maxLength: 32
+        minLength: 1
+      os:
+        title: Os
+        type: string
+        maxLength: 10
+        minLength: 1
+      language:
+        title: Language
+        type: string
+        maxLength: 10
+        minLength: 1
+      md5:
+        title: Md5
+        type: string
+        maxLength: 64
+        minLength: 1
+  UpdateProof:
+    required:
+      - dapp_key
+      - dapp_id
+      - protocol
+      - version
+      - ts
+      - nonce
+      - os
+      - language
+      - md5
+    type: object
+    properties:
+      dapp_key:
+        title: Dapp key
+        type: string
+        maxLength: 64
+        minLength: 1
+      dapp_id:
+        title: Dapp id
+        type: string
+        maxLength: 64
+        minLength: 1
+      protocol:
+        title: Protocol
+        type: string
+        maxLength: 10
+        minLength: 1
+      version:
+        title: Version
+        type: string
+        maxLength: 10
+        minLength: 1
+      ts:
+        title: Ts
+        type: integer
+      nonce:
+        title: Nonce
+        type: string
+        maxLength: 32
+        minLength: 1
+      os:
+        title: Os
+        type: string
+        maxLength: 10
+        minLength: 1
+      language:
+        title: Language
+        type: string
+        maxLength: 10
+        minLength: 1
+      md5:
+        title: Md5
+        type: string
+        maxLength: 64
+        minLength: 1
