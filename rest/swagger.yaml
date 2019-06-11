@@ -22,9 +22,9 @@ securityDefinitions:
 security:
   - Basic: []
 paths:
-  /dapps/{dapp_id}/:
+  /rest/v{version}/dapps/{dapp_id}/:
     get:
-      operationId: dapps_read
+      operationId: rest_dapps_read
       description: ''
       parameters:
         - name: dapp_key
@@ -87,15 +87,19 @@ paths:
           schema:
             $ref: '#/definitions/Dapp'
       tags:
-        - dapps
+        - rest
     parameters:
       - name: dapp_id
         in: path
         required: true
         type: string
-  /newids/{newid}/:
+      - name: version
+        in: path
+        required: true
+        type: string
+  /rest/v{version}/newids/{newid}/:
     get:
-      operationId: newids_read
+      operationId: rest_newids_read
       description: Retrieve the information by given NewID
       parameters:
         - name: dapp_key
@@ -158,15 +162,19 @@ paths:
           schema:
             $ref: '#/definitions/NewidResponse'
       tags:
-        - newids
+        - rest
     parameters:
       - name: newid
         in: path
         required: true
         type: string
-  /newnet/caches/auth/:
+      - name: version
+        in: path
+        required: true
+        type: string
+  /rest/v{version}/newnet/caches/auth/:
     post:
-      operationId: newnet_caches_auth_create
+      operationId: rest_newnet_caches_auth_create
       description: Caches the authentication request
       parameters:
         - name: data
@@ -180,11 +188,15 @@ paths:
           schema:
             $ref: '#/definitions/CreateAuthCacheResponse'
       tags:
-        - newnet
-    parameters: []
-  /newnet/caches/auth/{auth_hash}/:
+        - rest
+    parameters:
+      - name: version
+        in: path
+        required: true
+        type: string
+  /rest/v{version}/newnet/caches/auth/{auth_hash}/:
     get:
-      operationId: newnet_caches_auth_read
+      operationId: rest_newnet_caches_auth_read
       description: Get the authentication information by given request hash.
       parameters:
         - name: dapp_key
@@ -247,15 +259,19 @@ paths:
           schema:
             $ref: '#/definitions/AuthCacheResponse'
       tags:
-        - newnet
+        - rest
     parameters:
       - name: auth_hash
         in: path
         required: true
         type: string
-  /newnet/caches/pay/:
+      - name: version
+        in: path
+        required: true
+        type: string
+  /rest/v{version}/newnet/caches/pay/:
     post:
-      operationId: newnet_caches_pay_create
+      operationId: rest_newnet_caches_pay_create
       description: Cache the pay request
       parameters:
         - name: data
@@ -269,11 +285,15 @@ paths:
           schema:
             $ref: '#/definitions/CreatePayCacheResponse'
       tags:
-        - newnet
-    parameters: []
-  /newnet/caches/pay/{pay_hash}/:
+        - rest
+    parameters:
+      - name: version
+        in: path
+        required: true
+        type: string
+  /rest/v{version}/newnet/caches/pay/{pay_hash}/:
     get:
-      operationId: newnet_caches_pay_read
+      operationId: rest_newnet_caches_pay_read
       description: Retrieve the pay information by given pay hash.
       parameters:
         - name: dapp_key
@@ -336,15 +356,19 @@ paths:
           schema:
             $ref: '#/definitions/PayCacheResponse'
       tags:
-        - newnet
+        - rest
     parameters:
       - name: pay_hash
         in: path
         required: true
         type: string
-  /proofs/:
+      - name: version
+        in: path
+        required: true
+        type: string
+  /rest/v{version}/proofs/:
     post:
-      operationId: proofs_create
+      operationId: rest_proofs_create
       description: ''
       parameters:
         - name: data
@@ -358,11 +382,15 @@ paths:
           schema:
             $ref: '#/definitions/CreateProofResponse'
       tags:
-        - proofs
-    parameters: []
-  /proofs/{proof_hash}/:
+        - rest
+    parameters:
+      - name: version
+        in: path
+        required: true
+        type: string
+  /rest/v{version}/proofs/{proof_hash}/:
     put:
-      operationId: proofs_update
+      operationId: rest_proofs_update
       description: ''
       parameters:
         - name: data
@@ -376,9 +404,9 @@ paths:
           schema:
             $ref: '#/definitions/UpdateProofResponse'
       tags:
-        - proofs
+        - rest
     delete:
-      operationId: proofs_delete
+      operationId: rest_proofs_delete
       description: ''
       parameters:
         - name: data
@@ -392,9 +420,13 @@ paths:
           schema:
             $ref: '#/definitions/CancelProofResponse'
       tags:
-        - proofs
+        - rest
     parameters:
       - name: proof_hash
+        in: path
+        required: true
+        type: string
+      - name: version
         in: path
         required: true
         type: string
