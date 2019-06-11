@@ -1,11 +1,13 @@
-all:hep_rest.py hep_rest.java hep_rest.php
+OPENAPI_YAML = yaml/hep-openapi-v1.yaml
+
+all:hep-rest.py hep-rest.java hep-rest.php
 	@echo "Generate success"
 
-hep_rest.py:
-	@swagger-codegen generate -i swagger.yaml -l python -o hep_rest.py -c config.json
+hep-rest.py:
+	@swagger-codegen generate -i $(OPENAPI_YAML) -l python -o hep-rest.py -c config.json
 
-hep_rest.java:
-	@swagger-codegen generate -i swagger.yaml -l java -o hep_rest.java -c config.json 
+hep-rest.java:
+	@swagger-codegen generate -i $(OPENAPI_YAML) -l java -o hep-rest.java -c config.json 
 
-hep_rest.php:
-	@swagger-codegen generate -i swagger.yaml -l php -o hep_rest.php -c config.json
+hep-rest.php:
+	@swagger-codegen generate -i $(OPENAPI_YAML) -l php -o hep-rest.php -c config.json
