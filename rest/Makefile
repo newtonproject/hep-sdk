@@ -1,11 +1,11 @@
-all:hep.py hep.java hep.swift
+all:hep-sdk.py hep-sdk.java hep-sdk.php
 	@echo "Generate success"
 
-hep.py:
-	@swagger-codegen generate -i swagger.yaml -l python -o hep.py
+hep-sdk.py:
+	@swagger-codegen generate -i swagger.yaml -l python -o hep-sdk.py
 
-hep.java:
-	@swagger-codegen generate -i swagger.yaml -l java -o hep.java
+hep-sdk.java:
+	@swagger-codegen generate -i swagger.yaml -l java -o hep-sdk.java
 
-hep.swift:
-	@swagger-codegen generate -i swagger.yaml -l swift4 -o hep.swift
+hep-sdk.php:
+	@swagger-codegen generate -i swagger.yaml -l php -o hep-sdk.php

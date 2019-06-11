@@ -8,7 +8,7 @@ info:
   license:
     name: GPLv3 License
   version: v1
-host: localhost:8000
+host: 127.0.0.1:8000
 schemes:
   - http
 basePath: /
@@ -26,12 +26,66 @@ paths:
     get:
       operationId: dapps_read
       description: ''
-      parameters: []
+      parameters:
+        - name: dapp_key
+          in: query
+          description: The decentralized application access key
+          required: true
+          type: string
+          maxLength: 64
+          minLength: 1
+        - name: protocol
+          in: query
+          description: The protocol name. default is 'HEP'.
+          required: true
+          type: string
+          maxLength: 10
+          minLength: 1
+        - name: version
+          in: query
+          description: The protocol version such as '1.0'
+          required: true
+          type: string
+          maxLength: 10
+          minLength: 1
+        - name: ts
+          in: query
+          description: The current timestamp
+          required: true
+          type: integer
+        - name: nonce
+          in: query
+          description: The random string or auto-increment sequence
+          required: true
+          type: string
+          maxLength: 64
+          minLength: 1
+        - name: os
+          in: query
+          description: The operating system of client such as ios, android, dweb,etc.
+          required: true
+          type: string
+          maxLength: 10
+          minLength: 1
+        - name: language
+          in: query
+          description: The i18n language code such as zh, en, etc.
+          required: true
+          type: string
+          maxLength: 10
+          minLength: 1
+        - name: md5
+          in: query
+          description: The HMAC authentication md5 checksum
+          required: true
+          type: string
+          maxLength: 64
+          minLength: 1
       responses:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/RetrieveDApp'
+            $ref: '#/definitions/Dapp'
       tags:
         - dapps
     parameters:
@@ -39,34 +93,159 @@ paths:
         in: path
         required: true
         type: string
+  /newids/{newid}/:
+    get:
+      operationId: newids_read
+      description: Retrieve the information by given NewID
+      parameters:
+        - name: dapp_key
+          in: query
+          description: The decentralized application access key
+          required: true
+          type: string
+          maxLength: 64
+          minLength: 1
+        - name: protocol
+          in: query
+          description: The protocol name. default is 'HEP'.
+          required: true
+          type: string
+          maxLength: 10
+          minLength: 1
+        - name: version
+          in: query
+          description: The protocol version such as '1.0'
+          required: true
+          type: string
+          maxLength: 10
+          minLength: 1
+        - name: ts
+          in: query
+          description: The current timestamp
+          required: true
+          type: integer
+        - name: nonce
+          in: query
+          description: The random string or auto-increment sequence
+          required: true
+          type: string
+          maxLength: 64
+          minLength: 1
+        - name: os
+          in: query
+          description: The operating system of client such as ios, android, dweb,etc.
+          required: true
+          type: string
+          maxLength: 10
+          minLength: 1
+        - name: language
+          in: query
+          description: The i18n language code such as zh, en, etc.
+          required: true
+          type: string
+          maxLength: 10
+          minLength: 1
+        - name: md5
+          in: query
+          description: The HMAC authentication md5 checksum
+          required: true
+          type: string
+          maxLength: 64
+          minLength: 1
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/NewidResponse'
+      tags:
+        - newids
+    parameters:
+      - name: newid
+        in: path
+        required: true
+        type: string
   /newnet/caches/auth/:
     post:
       operationId: newnet_caches_auth_create
-      description: ''
+      description: Caches the authentication request
       parameters:
         - name: data
           in: body
           required: true
           schema:
-            $ref: '#/definitions/CreateAuthCache'
+            $ref: '#/definitions/AuthCacheRequest'
       responses:
-        '201':
+        '200':
           description: ''
           schema:
-            $ref: '#/definitions/CreateAuthCache'
+            $ref: '#/definitions/CreateAuthCacheResponse'
       tags:
         - newnet
     parameters: []
   /newnet/caches/auth/{auth_hash}/:
     get:
       operationId: newnet_caches_auth_read
-      description: ''
-      parameters: []
+      description: Get the authentication information by given request hash.
+      parameters:
+        - name: dapp_key
+          in: query
+          description: The decentralized application access key
+          required: true
+          type: string
+          maxLength: 64
+          minLength: 1
+        - name: protocol
+          in: query
+          description: The protocol name. default is 'HEP'.
+          required: true
+          type: string
+          maxLength: 10
+          minLength: 1
+        - name: version
+          in: query
+          description: The protocol version such as '1.0'
+          required: true
+          type: string
+          maxLength: 10
+          minLength: 1
+        - name: ts
+          in: query
+          description: The current timestamp
+          required: true
+          type: integer
+        - name: nonce
+          in: query
+          description: The random string or auto-increment sequence
+          required: true
+          type: string
+          maxLength: 64
+          minLength: 1
+        - name: os
+          in: query
+          description: The operating system of client such as ios, android, dweb,etc.
+          required: true
+          type: string
+          maxLength: 10
+          minLength: 1
+        - name: language
+          in: query
+          description: The i18n language code such as zh, en, etc.
+          required: true
+          type: string
+          maxLength: 10
+          minLength: 1
+        - name: md5
+          in: query
+          description: The HMAC authentication md5 checksum
+          required: true
+          type: string
+          maxLength: 64
+          minLength: 1
       responses:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/BaseAuth'
+            $ref: '#/definitions/AuthCacheResponse'
       tags:
         - newnet
     parameters:
@@ -77,31 +256,85 @@ paths:
   /newnet/caches/pay/:
     post:
       operationId: newnet_caches_pay_create
-      description: ''
+      description: Cache the pay request
       parameters:
         - name: data
           in: body
           required: true
           schema:
-            $ref: '#/definitions/CreatePayCache'
+            $ref: '#/definitions/PayCacheRequest'
       responses:
-        '201':
+        '200':
           description: ''
           schema:
-            $ref: '#/definitions/CreatePayCache'
+            $ref: '#/definitions/CreatePayCacheResponse'
       tags:
         - newnet
     parameters: []
   /newnet/caches/pay/{pay_hash}/:
     get:
       operationId: newnet_caches_pay_read
-      description: ''
-      parameters: []
+      description: Retrieve the pay information by given pay hash.
+      parameters:
+        - name: dapp_key
+          in: query
+          description: The decentralized application access key
+          required: true
+          type: string
+          maxLength: 64
+          minLength: 1
+        - name: protocol
+          in: query
+          description: The protocol name. default is 'HEP'.
+          required: true
+          type: string
+          maxLength: 10
+          minLength: 1
+        - name: version
+          in: query
+          description: The protocol version such as '1.0'
+          required: true
+          type: string
+          maxLength: 10
+          minLength: 1
+        - name: ts
+          in: query
+          description: The current timestamp
+          required: true
+          type: integer
+        - name: nonce
+          in: query
+          description: The random string or auto-increment sequence
+          required: true
+          type: string
+          maxLength: 64
+          minLength: 1
+        - name: os
+          in: query
+          description: The operating system of client such as ios, android, dweb,etc.
+          required: true
+          type: string
+          maxLength: 10
+          minLength: 1
+        - name: language
+          in: query
+          description: The i18n language code such as zh, en, etc.
+          required: true
+          type: string
+          maxLength: 10
+          minLength: 1
+        - name: md5
+          in: query
+          description: The HMAC authentication md5 checksum
+          required: true
+          type: string
+          maxLength: 64
+          minLength: 1
       responses:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/BasePay'
+            $ref: '#/definitions/PayCacheResponse'
       tags:
         - newnet
     parameters:
@@ -118,12 +351,12 @@ paths:
           in: body
           required: true
           schema:
-            $ref: '#/definitions/CreateProof'
+            $ref: '#/definitions/CreateProofRequest'
       responses:
-        '201':
+        '200':
           description: ''
           schema:
-            $ref: '#/definitions/CreateProof'
+            $ref: '#/definitions/CreateProofResponse'
       tags:
         - proofs
     parameters: []
@@ -136,21 +369,28 @@ paths:
           in: body
           required: true
           schema:
-            $ref: '#/definitions/UpdateProof'
+            $ref: '#/definitions/UpdateProofRequest'
       responses:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/UpdateProof'
+            $ref: '#/definitions/UpdateProofResponse'
       tags:
         - proofs
     delete:
       operationId: proofs_delete
       description: ''
-      parameters: []
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CancelProofRequest'
       responses:
-        '204':
+        '200':
           description: ''
+          schema:
+            $ref: '#/definitions/CancelProofResponse'
       tags:
         - proofs
     parameters:
@@ -159,10 +399,9 @@ paths:
         required: true
         type: string
 definitions:
-  RetrieveDApp:
+  Dapp:
     required:
       - dapp_key
-      - dapp_id
       - protocol
       - version
       - ts
@@ -170,55 +409,190 @@ definitions:
       - os
       - language
       - md5
+      - dapp_id
+      - dapp_name
+      - icon
+      - public_key
+      - package_name
+      - bundle_id
+      - schema
+      - website
+      - download_url
+      - deposit_contract_address
+      - dapp_type
+      - dapp_category
+      - auth_login_callback
+      - pay_order_callback
+      - proof_submit_callback
     type: object
     properties:
       dapp_key:
         title: Dapp key
-        type: string
-        maxLength: 64
-        minLength: 1
-      dapp_id:
-        title: Dapp id
+        description: The decentralized application access key
         type: string
         maxLength: 64
         minLength: 1
       protocol:
         title: Protocol
+        description: The protocol name. default is 'HEP'.
         type: string
         maxLength: 10
         minLength: 1
       version:
         title: Version
+        description: The protocol version such as '1.0'
         type: string
         maxLength: 10
         minLength: 1
       ts:
         title: Ts
+        description: The current timestamp
         type: integer
       nonce:
         title: Nonce
+        description: The random string or auto-increment sequence
         type: string
-        maxLength: 32
+        maxLength: 64
         minLength: 1
       os:
         title: Os
+        description: The operating system of client such as ios, android, dweb,etc.
         type: string
         maxLength: 10
         minLength: 1
       language:
         title: Language
+        description: The i18n language code such as zh, en, etc.
         type: string
         maxLength: 10
         minLength: 1
       md5:
         title: Md5
+        description: The HMAC authentication md5 checksum
         type: string
         maxLength: 64
         minLength: 1
-  CreateAuthCache:
+      dapp_id:
+        title: Dapp id
+        description: The decentralized application ID
+        type: string
+        maxLength: 64
+        minLength: 1
+      dapp_name:
+        title: Dapp name
+        description: The decentralized application name
+        type: string
+        maxLength: 64
+        minLength: 1
+      icon:
+        title: Icon
+        description: The icon of application
+        type: string
+        maxLength: 64
+        minLength: 1
+      public_key:
+        title: Public key
+        description: The public key of DApp
+        type: string
+        maxLength: 64
+        minLength: 1
+      package_name:
+        title: Package name
+        description: The package name such as com.demo.dev.android
+        type: string
+        maxLength: 64
+        minLength: 1
+      bundle_id:
+        title: Bundle id
+        description: The bundle id such as com.demo.dev.ios for iOS platform
+        type: string
+        maxLength: 64
+        minLength: 1
+      schema:
+        title: Schema
+        description: The routing schema
+        type: string
+        maxLength: 64
+        minLength: 1
+      website:
+        title: Website
+        description: The dapp website link
+        type: string
+        maxLength: 64
+        minLength: 1
+      download_url:
+        title: Download url
+        description: The dapp download link
+        type: string
+        maxLength: 64
+        minLength: 1
+      deposit_contract_address:
+        title: Deposit contract address
+        description: The deposit contract Address, the example is NEW182....
+        type: string
+        maxLength: 64
+        minLength: 1
+      dapp_type:
+        title: Dapp type
+        description: The dapp type. choices:android, ios, dweb,newdapp.
+        type: string
+        maxLength: 64
+        minLength: 1
+      dapp_category:
+        title: Dapp category
+        description: 'The dapp category. choices: game, retail.'
+        type: string
+        maxLength: 64
+        minLength: 1
+      auth_login_callback:
+        title: Auth login callback
+        description: For Mobile Native DApp, it is redirect schema; For website DApp,
+          it is callback url; For  NewDApp, it is HEP-based url.
+        type: string
+        maxLength: 64
+        minLength: 1
+      pay_order_callback:
+        title: Pay order callback
+        description: For Mobile Native DApp, it is redirect schema; For website DApp,
+          it is callback url; For  NewDApp, it is HEP-based url.
+        type: string
+        maxLength: 64
+        minLength: 1
+      proof_submit_callback:
+        title: Proof submit callback
+        description: For Mobile Native DApp, it is redirect schema; For website DApp,
+          it is callback url; For  NewDApp, it is HEP-based url.
+        type: string
+        maxLength: 64
+        minLength: 1
+  NewidResponse:
+    required:
+      - newid
+      - public_key
+      - main_wallet_address
+    type: object
+    properties:
+      newid:
+        title: Newid
+        description: The NewID
+        type: string
+        maxLength: 64
+        minLength: 1
+      public_key:
+        title: Public key
+        description: The hex string of NewID's public key
+        type: string
+        maxLength: 64
+        minLength: 1
+      main_wallet_address:
+        title: Main wallet address
+        description: The main wallet address of NewChain
+        type: string
+        maxLength: 64
+        minLength: 1
+  AuthCacheRequest:
     required:
       - dapp_key
-      - dapp_id
       - protocol
       - version
       - ts
@@ -226,149 +600,120 @@ definitions:
       - os
       - language
       - md5
+      - sign_type
+      - signature
+      - dapp_id
       - uuid
       - action
       - scope
       - expired
-      - memo
-      - sign_type
-      - signature
     type: object
     properties:
       dapp_key:
         title: Dapp key
-        type: string
-        maxLength: 64
-        minLength: 1
-      dapp_id:
-        title: Dapp id
+        description: The decentralized application access key
         type: string
         maxLength: 64
         minLength: 1
       protocol:
         title: Protocol
+        description: The protocol name. default is 'HEP'.
         type: string
         maxLength: 10
         minLength: 1
       version:
         title: Version
+        description: The protocol version such as '1.0'
         type: string
         maxLength: 10
         minLength: 1
       ts:
         title: Ts
+        description: The current timestamp
         type: integer
       nonce:
         title: Nonce
+        description: The random string or auto-increment sequence
         type: string
-        maxLength: 32
+        maxLength: 64
         minLength: 1
       os:
         title: Os
+        description: The operating system of client such as ios, android, dweb,etc.
         type: string
         maxLength: 10
         minLength: 1
       language:
         title: Language
+        description: The i18n language code such as zh, en, etc.
         type: string
         maxLength: 10
         minLength: 1
       md5:
         title: Md5
-        type: string
-        maxLength: 64
-        minLength: 1
-      uuid:
-        title: Uuid
-        type: string
-        maxLength: 64
-        minLength: 1
-      action:
-        title: Action
-        type: string
-        maxLength: 64
-        minLength: 1
-      scope:
-        title: Scope
-        type: integer
-      expired:
-        title: Expired
-        type: integer
-      memo:
-        title: Memo
+        description: The HMAC authentication md5 checksum
         type: string
         maxLength: 64
         minLength: 1
       sign_type:
         title: Sign type
+        description: The signature Type,aka cryptographic algorithm.
         type: string
         maxLength: 64
         minLength: 1
       signature:
         title: Signature
-        type: string
-        maxLength: 64
-        minLength: 1
-  BaseAuth:
-    required:
-      - dapp_key
-      - dapp_id
-      - protocol
-      - version
-      - ts
-      - nonce
-      - os
-      - language
-      - md5
-    type: object
-    properties:
-      dapp_key:
-        title: Dapp key
+        description: The signature hex string by application owner. The exclude fields
+          is [sign_type, signature, md5].
         type: string
         maxLength: 64
         minLength: 1
       dapp_id:
         title: Dapp id
+        description: The decentralized application ID
         type: string
         maxLength: 64
         minLength: 1
-      protocol:
-        title: Protocol
+      uuid:
+        title: Uuid
+        description: The request uuid
         type: string
-        maxLength: 10
+        maxLength: 64
         minLength: 1
-      version:
-        title: Version
+      action:
+        title: Action
+        description: The action name which value is 'hep.auth.login'.
         type: string
-        maxLength: 10
+        maxLength: 64
         minLength: 1
-      ts:
-        title: Ts
+      scope:
+        title: Scope
+        description: 'The request profile type. 1: base profile including name,head,newid;
+          2: advance profile including cellphone.'
         type: integer
-      nonce:
-        title: Nonce
-        type: string
-        maxLength: 32
-        minLength: 1
-      os:
-        title: Os
-        type: string
-        maxLength: 10
-        minLength: 1
-      language:
-        title: Language
-        type: string
-        maxLength: 10
-        minLength: 1
-      md5:
-        title: Md5
+      expired:
+        title: Expired
+        description: The expired timestamp
+        type: integer
+      memo:
+        title: Memo
+        description: The login Memo,optional.
         type: string
         maxLength: 64
         minLength: 1
-  CreatePayCache:
+  CreateAuthCacheResponse:
+    required:
+      - auth_hash
+    type: object
+    properties:
+      auth_hash:
+        title: Auth hash
+        type: string
+        maxLength: 64
+        minLength: 1
+  AuthCacheResponse:
     required:
       - dapp_key
-      - dapp_id
       - protocol
       - version
       - ts
@@ -376,9 +721,122 @@ definitions:
       - os
       - language
       - md5
+      - sign_type
+      - signature
+      - dapp_id
       - uuid
       - action
       - scope
+      - expired
+    type: object
+    properties:
+      dapp_key:
+        title: Dapp key
+        description: The decentralized application access key
+        type: string
+        maxLength: 64
+        minLength: 1
+      protocol:
+        title: Protocol
+        description: The protocol name. default is 'HEP'.
+        type: string
+        maxLength: 10
+        minLength: 1
+      version:
+        title: Version
+        description: The protocol version such as '1.0'
+        type: string
+        maxLength: 10
+        minLength: 1
+      ts:
+        title: Ts
+        description: The current timestamp
+        type: integer
+      nonce:
+        title: Nonce
+        description: The random string or auto-increment sequence
+        type: string
+        maxLength: 64
+        minLength: 1
+      os:
+        title: Os
+        description: The operating system of client such as ios, android, dweb,etc.
+        type: string
+        maxLength: 10
+        minLength: 1
+      language:
+        title: Language
+        description: The i18n language code such as zh, en, etc.
+        type: string
+        maxLength: 10
+        minLength: 1
+      md5:
+        title: Md5
+        description: The HMAC authentication md5 checksum
+        type: string
+        maxLength: 64
+        minLength: 1
+      sign_type:
+        title: Sign type
+        description: The signature Type,aka cryptographic algorithm.
+        type: string
+        maxLength: 64
+        minLength: 1
+      signature:
+        title: Signature
+        description: The signature hex string by application owner. The exclude fields
+          is [sign_type, signature, md5].
+        type: string
+        maxLength: 64
+        minLength: 1
+      dapp_id:
+        title: Dapp id
+        description: The decentralized application ID
+        type: string
+        maxLength: 64
+        minLength: 1
+      uuid:
+        title: Uuid
+        description: The request uuid
+        type: string
+        maxLength: 64
+        minLength: 1
+      action:
+        title: Action
+        description: The action name which value is 'hep.auth.login'.
+        type: string
+        maxLength: 64
+        minLength: 1
+      scope:
+        title: Scope
+        description: 'The request profile type. 1: base profile including name,head,newid;
+          2: advance profile including cellphone.'
+        type: integer
+      expired:
+        title: Expired
+        description: The expired timestamp
+        type: integer
+      memo:
+        title: Memo
+        description: The login Memo,optional.
+        type: string
+        maxLength: 64
+        minLength: 1
+  PayCacheRequest:
+    required:
+      - dapp_key
+      - protocol
+      - version
+      - ts
+      - nonce
+      - os
+      - language
+      - md5
+      - sign_type
+      - signature
+      - uuid
+      - dapp_id
+      - action
       - expired
       - description
       - price_currency
@@ -386,119 +844,145 @@ definitions:
       - order_number
       - seller
       - customer
-      - broker
-      - sign_type
-      - signature
     type: object
     properties:
       dapp_key:
         title: Dapp key
-        type: string
-        maxLength: 64
-        minLength: 1
-      dapp_id:
-        title: Dapp id
+        description: The decentralized application access key
         type: string
         maxLength: 64
         minLength: 1
       protocol:
         title: Protocol
+        description: The protocol name. default is 'HEP'.
         type: string
         maxLength: 10
         minLength: 1
       version:
         title: Version
+        description: The protocol version such as '1.0'
         type: string
         maxLength: 10
         minLength: 1
       ts:
         title: Ts
+        description: The current timestamp
         type: integer
       nonce:
         title: Nonce
+        description: The random string or auto-increment sequence
         type: string
-        maxLength: 32
+        maxLength: 64
         minLength: 1
       os:
         title: Os
+        description: The operating system of client such as ios, android, dweb,etc.
         type: string
         maxLength: 10
         minLength: 1
       language:
         title: Language
+        description: The i18n language code such as zh, en, etc.
         type: string
         maxLength: 10
         minLength: 1
       md5:
         title: Md5
-        type: string
-        maxLength: 64
-        minLength: 1
-      uuid:
-        title: Uuid
-        type: string
-        maxLength: 64
-        minLength: 1
-      action:
-        title: Action
-        type: string
-        maxLength: 64
-        minLength: 1
-      scope:
-        title: Scope
-        type: integer
-      expired:
-        title: Expired
-        type: integer
-      description:
-        title: Description
-        type: string
-        maxLength: 64
-        minLength: 1
-      price_currency:
-        title: Price currency
-        type: string
-        maxLength: 64
-        minLength: 1
-      total_price:
-        title: Total price
-        type: string
-        maxLength: 64
-        minLength: 1
-      order_number:
-        title: Order number
-        type: string
-        maxLength: 64
-        minLength: 1
-      seller:
-        title: Seller
-        type: string
-        maxLength: 64
-        minLength: 1
-      customer:
-        title: Customer
-        type: string
-        maxLength: 64
-        minLength: 1
-      broker:
-        title: Broker
+        description: The HMAC authentication md5 checksum
         type: string
         maxLength: 64
         minLength: 1
       sign_type:
         title: Sign type
+        description: The signature Type,aka cryptographic algorithm.
         type: string
         maxLength: 64
         minLength: 1
       signature:
         title: Signature
+        description: The signature hex string by application owner. The exclude fields
+          is [sign_type, signature, md5].
         type: string
         maxLength: 64
         minLength: 1
-  BasePay:
+      uuid:
+        title: Uuid
+        description: The request uuid
+        type: string
+        maxLength: 64
+        minLength: 1
+      dapp_id:
+        title: Dapp id
+        description: The decentralized application ID
+        type: string
+        maxLength: 64
+        minLength: 1
+      action:
+        title: Action
+        description: The action name which value is 'hep.pay.order'
+        type: string
+        maxLength: 64
+        minLength: 1
+      expired:
+        title: Expired
+        description: The expired timestamp
+        type: integer
+      description:
+        title: Description
+        description: The order description
+        type: string
+        maxLength: 64
+        minLength: 1
+      price_currency:
+        title: Price currency
+        description: The symbol of fiat or digital token, such as USD, CNY, NEW,BTC,ETH.
+        type: string
+        maxLength: 64
+        minLength: 1
+      total_price:
+        title: Total price
+        description: The amount of fiat or digital token, unit is the minimum unit
+          of given fiat or digital token.
+        type: string
+        maxLength: 64
+        minLength: 1
+      order_number:
+        title: Order number
+        description: The order number
+        type: string
+        maxLength: 64
+        minLength: 1
+      seller:
+        title: Seller
+        description: The seller's NewID
+        type: string
+        maxLength: 64
+        minLength: 1
+      customer:
+        title: Customer
+        description: The customer's NewID
+        type: string
+        maxLength: 64
+        minLength: 1
+      broker:
+        title: Broker
+        description: The broker's NewID. optional.
+        type: string
+        maxLength: 64
+        minLength: 1
+  CreatePayCacheResponse:
+    required:
+      - pay_hash
+    type: object
+    properties:
+      pay_hash:
+        title: Pay hash
+        type: string
+        maxLength: 64
+        minLength: 1
+  PayCacheResponse:
     required:
       - dapp_key
-      - dapp_id
       - protocol
       - version
       - ts
@@ -506,55 +990,274 @@ definitions:
       - os
       - language
       - md5
+      - sign_type
+      - signature
+      - uuid
+      - dapp_id
+      - action
+      - expired
+      - description
+      - price_currency
+      - total_price
+      - order_number
+      - seller
+      - customer
     type: object
     properties:
       dapp_key:
         title: Dapp key
-        type: string
-        maxLength: 64
-        minLength: 1
-      dapp_id:
-        title: Dapp id
+        description: The decentralized application access key
         type: string
         maxLength: 64
         minLength: 1
       protocol:
         title: Protocol
+        description: The protocol name. default is 'HEP'.
         type: string
         maxLength: 10
         minLength: 1
       version:
         title: Version
+        description: The protocol version such as '1.0'
         type: string
         maxLength: 10
         minLength: 1
       ts:
         title: Ts
+        description: The current timestamp
         type: integer
       nonce:
         title: Nonce
+        description: The random string or auto-increment sequence
         type: string
-        maxLength: 32
+        maxLength: 64
         minLength: 1
       os:
         title: Os
+        description: The operating system of client such as ios, android, dweb,etc.
         type: string
         maxLength: 10
         minLength: 1
       language:
         title: Language
+        description: The i18n language code such as zh, en, etc.
         type: string
         maxLength: 10
         minLength: 1
       md5:
         title: Md5
+        description: The HMAC authentication md5 checksum
         type: string
         maxLength: 64
         minLength: 1
-  CreateProof:
+      sign_type:
+        title: Sign type
+        description: The signature Type,aka cryptographic algorithm.
+        type: string
+        maxLength: 64
+        minLength: 1
+      signature:
+        title: Signature
+        description: The signature hex string by application owner. The exclude fields
+          is [sign_type, signature, md5].
+        type: string
+        maxLength: 64
+        minLength: 1
+      uuid:
+        title: Uuid
+        description: The request uuid
+        type: string
+        maxLength: 64
+        minLength: 1
+      dapp_id:
+        title: Dapp id
+        description: The decentralized application ID
+        type: string
+        maxLength: 64
+        minLength: 1
+      action:
+        title: Action
+        description: The action name which value is 'hep.pay.order'
+        type: string
+        maxLength: 64
+        minLength: 1
+      expired:
+        title: Expired
+        description: The expired timestamp
+        type: integer
+      description:
+        title: Description
+        description: The order description
+        type: string
+        maxLength: 64
+        minLength: 1
+      price_currency:
+        title: Price currency
+        description: The symbol of fiat or digital token, such as USD, CNY, NEW,BTC,ETH.
+        type: string
+        maxLength: 64
+        minLength: 1
+      total_price:
+        title: Total price
+        description: The amount of fiat or digital token, unit is the minimum unit
+          of given fiat or digital token.
+        type: string
+        maxLength: 64
+        minLength: 1
+      order_number:
+        title: Order number
+        description: The order number
+        type: string
+        maxLength: 64
+        minLength: 1
+      seller:
+        title: Seller
+        description: The seller's NewID
+        type: string
+        maxLength: 64
+        minLength: 1
+      customer:
+        title: Customer
+        description: The customer's NewID
+        type: string
+        maxLength: 64
+        minLength: 1
+      broker:
+        title: Broker
+        description: The broker's NewID. optional.
+        type: string
+        maxLength: 64
+        minLength: 1
+  Thing:
+    title: Order item
+    required:
+      - name
+      - thing_type
+      - thing_id
+    type: object
+    properties:
+      name:
+        title: Name
+        description: The name of thing
+        type: string
+        maxLength: 64
+        minLength: 1
+      thing_type:
+        title: Thing type
+        description: The type name of thing
+        type: string
+        maxLength: 64
+        minLength: 1
+      thing_id:
+        title: Thing id
+        description: The ID of thing
+        type: string
+        maxLength: 64
+        minLength: 1
+  OrderItem:
+    required:
+      - order_item_number
+      - order_item
+      - order_item_quantity
+      - price_currency
+      - price
+    type: object
+    properties:
+      order_item_number:
+        title: Order item number
+        description: The number of order item
+        type: string
+        maxLength: 64
+        minLength: 1
+      order_item:
+        $ref: '#/definitions/Thing'
+      order_item_quantity:
+        title: Order item quantity
+        description: The quantity of order item
+        type: integer
+      price_currency:
+        title: Price currency
+        description: The symbol of fiat or digital token, such as USD, RMB, NEW,BTC,ETH.
+        type: string
+        maxLength: 64
+        minLength: 1
+      price:
+        title: Price
+        description: The amount of fiat or digital token, unit is the minimum unit
+          of given fiat or digital token.
+        type: string
+        maxLength: 64
+        minLength: 1
+  Order:
+    title: Content
+    required:
+      - proof_type
+      - description
+      - price_currency
+      - total_price
+      - order_number
+      - seller
+      - customer
+      - broker
+      - order_items
+    type: object
+    properties:
+      proof_type:
+        title: Proof type
+        description: The proof type which value is 'order'.
+        type: string
+        maxLength: 64
+        minLength: 1
+      description:
+        title: Description
+        description: The order description
+        type: string
+        maxLength: 64
+        minLength: 1
+      price_currency:
+        title: Price currency
+        description: The symbol of fiat or digital token, such as USD, RMB, NEW,BTC,ETH.
+        type: string
+        maxLength: 64
+        minLength: 1
+      total_price:
+        title: Total price
+        description: The amount of fiat or digital token, unit is the minimum unit
+          of given fiat or digital token.
+        type: string
+        maxLength: 64
+        minLength: 1
+      order_number:
+        title: Order number
+        description: The order number
+        type: string
+        maxLength: 64
+        minLength: 1
+      seller:
+        title: Seller
+        description: The seller's NewID
+        type: string
+        maxLength: 64
+        minLength: 1
+      customer:
+        title: Customer
+        description: The customer's NewID
+        type: string
+        maxLength: 64
+        minLength: 1
+      broker:
+        title: Broker
+        description: The broker's NewID. optional.
+        type: string
+        maxLength: 64
+        minLength: 1
+      order_items:
+        type: array
+        items:
+          $ref: '#/definitions/OrderItem'
+  CreateProofRequest:
     required:
       - dapp_key
-      - dapp_id
       - protocol
       - version
       - ts
@@ -562,55 +1265,100 @@ definitions:
       - os
       - language
       - md5
+      - sign_type
+      - signature
+      - uuid
+      - dapp_id
+      - content
     type: object
     properties:
       dapp_key:
         title: Dapp key
-        type: string
-        maxLength: 64
-        minLength: 1
-      dapp_id:
-        title: Dapp id
+        description: The decentralized application access key
         type: string
         maxLength: 64
         minLength: 1
       protocol:
         title: Protocol
+        description: The protocol name. default is 'HEP'.
         type: string
         maxLength: 10
         minLength: 1
       version:
         title: Version
+        description: The protocol version such as '1.0'
         type: string
         maxLength: 10
         minLength: 1
       ts:
         title: Ts
+        description: The current timestamp
         type: integer
       nonce:
         title: Nonce
+        description: The random string or auto-increment sequence
         type: string
-        maxLength: 32
+        maxLength: 64
         minLength: 1
       os:
         title: Os
+        description: The operating system of client such as ios, android, dweb,etc.
         type: string
         maxLength: 10
         minLength: 1
       language:
         title: Language
+        description: The i18n language code such as zh, en, etc.
         type: string
         maxLength: 10
         minLength: 1
       md5:
         title: Md5
+        description: The HMAC authentication md5 checksum
         type: string
         maxLength: 64
         minLength: 1
-  UpdateProof:
+      sign_type:
+        title: Sign type
+        description: The signature Type,aka cryptographic algorithm.
+        type: string
+        maxLength: 64
+        minLength: 1
+      signature:
+        title: Signature
+        description: The signature hex string by application owner. The exclude fields
+          is [sign_type, signature, md5].
+        type: string
+        maxLength: 64
+        minLength: 1
+      uuid:
+        title: Uuid
+        description: The request uuid
+        type: string
+        maxLength: 64
+        minLength: 1
+      dapp_id:
+        title: Dapp id
+        description: The decentralized application ID
+        type: string
+        maxLength: 64
+        minLength: 1
+      content:
+        $ref: '#/definitions/Order'
+  CreateProofResponse:
+    required:
+      - proof_hash
+    type: object
+    properties:
+      proof_hash:
+        title: Proof hash
+        description: The proof hash
+        type: string
+        maxLength: 64
+        minLength: 1
+  UpdateProofRequest:
     required:
       - dapp_key
-      - dapp_id
       - protocol
       - version
       - ts
@@ -618,48 +1366,159 @@ definitions:
       - os
       - language
       - md5
+      - sign_type
+      - signature
+      - confirmer
     type: object
     properties:
       dapp_key:
         title: Dapp key
-        type: string
-        maxLength: 64
-        minLength: 1
-      dapp_id:
-        title: Dapp id
+        description: The decentralized application access key
         type: string
         maxLength: 64
         minLength: 1
       protocol:
         title: Protocol
+        description: The protocol name. default is 'HEP'.
         type: string
         maxLength: 10
         minLength: 1
       version:
         title: Version
+        description: The protocol version such as '1.0'
         type: string
         maxLength: 10
         minLength: 1
       ts:
         title: Ts
+        description: The current timestamp
         type: integer
       nonce:
         title: Nonce
+        description: The random string or auto-increment sequence
         type: string
-        maxLength: 32
+        maxLength: 64
         minLength: 1
       os:
         title: Os
+        description: The operating system of client such as ios, android, dweb,etc.
         type: string
         maxLength: 10
         minLength: 1
       language:
         title: Language
+        description: The i18n language code such as zh, en, etc.
         type: string
         maxLength: 10
         minLength: 1
       md5:
         title: Md5
+        description: The HMAC authentication md5 checksum
         type: string
         maxLength: 64
         minLength: 1
+      sign_type:
+        title: Sign type
+        description: The signature Type,aka cryptographic algorithm.
+        type: string
+        maxLength: 64
+        minLength: 1
+      signature:
+        title: Signature
+        description: The signature hex string by application owner. The exclude fields
+          is [sign_type, signature, md5].
+        type: string
+        maxLength: 64
+        minLength: 1
+      confirmer:
+        title: Confirmer
+        description: The confirmer's NewID
+        type: string
+        maxLength: 64
+        minLength: 1
+  UpdateProofResponse:
+    type: object
+    properties: {}
+  CancelProofRequest:
+    required:
+      - dapp_key
+      - protocol
+      - version
+      - ts
+      - nonce
+      - os
+      - language
+      - md5
+      - sign_type
+      - signature
+      - dapp_id
+    type: object
+    properties:
+      dapp_key:
+        title: Dapp key
+        description: The decentralized application access key
+        type: string
+        maxLength: 64
+        minLength: 1
+      protocol:
+        title: Protocol
+        description: The protocol name. default is 'HEP'.
+        type: string
+        maxLength: 10
+        minLength: 1
+      version:
+        title: Version
+        description: The protocol version such as '1.0'
+        type: string
+        maxLength: 10
+        minLength: 1
+      ts:
+        title: Ts
+        description: The current timestamp
+        type: integer
+      nonce:
+        title: Nonce
+        description: The random string or auto-increment sequence
+        type: string
+        maxLength: 64
+        minLength: 1
+      os:
+        title: Os
+        description: The operating system of client such as ios, android, dweb,etc.
+        type: string
+        maxLength: 10
+        minLength: 1
+      language:
+        title: Language
+        description: The i18n language code such as zh, en, etc.
+        type: string
+        maxLength: 10
+        minLength: 1
+      md5:
+        title: Md5
+        description: The HMAC authentication md5 checksum
+        type: string
+        maxLength: 64
+        minLength: 1
+      sign_type:
+        title: Sign type
+        description: The signature Type,aka cryptographic algorithm.
+        type: string
+        maxLength: 64
+        minLength: 1
+      signature:
+        title: Signature
+        description: The signature hex string by application owner. The exclude fields
+          is [sign_type, signature, md5].
+        type: string
+        maxLength: 64
+        minLength: 1
+      dapp_id:
+        title: Dapp id
+        description: The decentralized application ID
+        type: string
+        maxLength: 64
+        minLength: 1
+  CancelProofResponse:
+    type: object
+    properties: {}
