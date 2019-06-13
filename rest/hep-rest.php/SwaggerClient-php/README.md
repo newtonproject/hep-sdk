@@ -66,11 +66,11 @@ $apiInstance = new Swagger\Client\Api\RestApi(
     new GuzzleHttp\Client(),
     $config
 );
+$api_version = "api_version_example"; // string | 
 $dapp_id = "dapp_id_example"; // string | 
-$version = "version_example"; // string | 
 $dapp_key = "dapp_key_example"; // string | The decentralized application access key
 $protocol = "protocol_example"; // string | The protocol name. default is 'HEP'.
-$version2 = "version_example"; // string | The protocol version such as '1.0'
+$version = "version_example"; // string | The protocol version such as '1.0'
 $ts = 56; // int | The current timestamp
 $nonce = "nonce_example"; // string | The random string or auto-increment sequence
 $os = "os_example"; // string | The operating system of client such as ios, android, dweb,etc.
@@ -78,7 +78,7 @@ $language = "language_example"; // string | The i18n language code such as zh, e
 $md5 = "md5_example"; // string | The HMAC authentication md5 checksum
 
 try {
-    $result = $apiInstance->restDappsRead($dapp_id, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5);
+    $result = $apiInstance->restDappsRead($api_version, $dapp_id, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RestApi->restDappsRead: ', $e->getMessage(), PHP_EOL;
@@ -94,11 +94,11 @@ $apiInstance = new Swagger\Client\Api\RestApi(
     new GuzzleHttp\Client(),
     $config
 );
+$api_version = "api_version_example"; // string | 
 $newid = "newid_example"; // string | 
-$version = "version_example"; // string | 
 $dapp_key = "dapp_key_example"; // string | The decentralized application access key
 $protocol = "protocol_example"; // string | The protocol name. default is 'HEP'.
-$version2 = "version_example"; // string | The protocol version such as '1.0'
+$version = "version_example"; // string | The protocol version such as '1.0'
 $ts = 56; // int | The current timestamp
 $nonce = "nonce_example"; // string | The random string or auto-increment sequence
 $os = "os_example"; // string | The operating system of client such as ios, android, dweb,etc.
@@ -106,7 +106,7 @@ $language = "language_example"; // string | The i18n language code such as zh, e
 $md5 = "md5_example"; // string | The HMAC authentication md5 checksum
 
 try {
-    $result = $apiInstance->restNewidsRead($newid, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5);
+    $result = $apiInstance->restNewidsRead($api_version, $newid, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RestApi->restNewidsRead: ', $e->getMessage(), PHP_EOL;
@@ -123,10 +123,10 @@ $apiInstance = new Swagger\Client\Api\RestApi(
     $config
 );
 $body = new \Swagger\Client\Model\AuthCacheRequest(); // \Swagger\Client\Model\AuthCacheRequest | 
-$version = "version_example"; // string | 
+$api_version = "api_version_example"; // string | 
 
 try {
-    $result = $apiInstance->restNewnetCachesAuthCreate($body, $version);
+    $result = $apiInstance->restNewnetCachesAuthCreate($body, $api_version);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RestApi->restNewnetCachesAuthCreate: ', $e->getMessage(), PHP_EOL;
@@ -142,11 +142,11 @@ $apiInstance = new Swagger\Client\Api\RestApi(
     new GuzzleHttp\Client(),
     $config
 );
+$api_version = "api_version_example"; // string | 
 $auth_hash = "auth_hash_example"; // string | 
-$version = "version_example"; // string | 
 $dapp_key = "dapp_key_example"; // string | The decentralized application access key
 $protocol = "protocol_example"; // string | The protocol name. default is 'HEP'.
-$version2 = "version_example"; // string | The protocol version such as '1.0'
+$version = "version_example"; // string | The protocol version such as '1.0'
 $ts = 56; // int | The current timestamp
 $nonce = "nonce_example"; // string | The random string or auto-increment sequence
 $os = "os_example"; // string | The operating system of client such as ios, android, dweb,etc.
@@ -154,7 +154,7 @@ $language = "language_example"; // string | The i18n language code such as zh, e
 $md5 = "md5_example"; // string | The HMAC authentication md5 checksum
 
 try {
-    $result = $apiInstance->restNewnetCachesAuthRead($auth_hash, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5);
+    $result = $apiInstance->restNewnetCachesAuthRead($api_version, $auth_hash, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RestApi->restNewnetCachesAuthRead: ', $e->getMessage(), PHP_EOL;
@@ -171,10 +171,10 @@ $apiInstance = new Swagger\Client\Api\RestApi(
     $config
 );
 $body = new \Swagger\Client\Model\PayCacheRequest(); // \Swagger\Client\Model\PayCacheRequest | 
-$version = "version_example"; // string | 
+$api_version = "api_version_example"; // string | 
 
 try {
-    $result = $apiInstance->restNewnetCachesPayCreate($body, $version);
+    $result = $apiInstance->restNewnetCachesPayCreate($body, $api_version);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RestApi->restNewnetCachesPayCreate: ', $e->getMessage(), PHP_EOL;
@@ -190,11 +190,11 @@ $apiInstance = new Swagger\Client\Api\RestApi(
     new GuzzleHttp\Client(),
     $config
 );
+$api_version = "api_version_example"; // string | 
 $pay_hash = "pay_hash_example"; // string | 
-$version = "version_example"; // string | 
 $dapp_key = "dapp_key_example"; // string | The decentralized application access key
 $protocol = "protocol_example"; // string | The protocol name. default is 'HEP'.
-$version2 = "version_example"; // string | The protocol version such as '1.0'
+$version = "version_example"; // string | The protocol version such as '1.0'
 $ts = 56; // int | The current timestamp
 $nonce = "nonce_example"; // string | The random string or auto-increment sequence
 $os = "os_example"; // string | The operating system of client such as ios, android, dweb,etc.
@@ -202,7 +202,7 @@ $language = "language_example"; // string | The i18n language code such as zh, e
 $md5 = "md5_example"; // string | The HMAC authentication md5 checksum
 
 try {
-    $result = $apiInstance->restNewnetCachesPayRead($pay_hash, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5);
+    $result = $apiInstance->restNewnetCachesPayRead($api_version, $pay_hash, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RestApi->restNewnetCachesPayRead: ', $e->getMessage(), PHP_EOL;
@@ -219,10 +219,10 @@ $apiInstance = new Swagger\Client\Api\RestApi(
     $config
 );
 $body = new \Swagger\Client\Model\CreateProofRequest(); // \Swagger\Client\Model\CreateProofRequest | 
-$version = "version_example"; // string | 
+$api_version = "api_version_example"; // string | 
 
 try {
-    $result = $apiInstance->restProofsCreate($body, $version);
+    $result = $apiInstance->restProofsCreate($body, $api_version);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RestApi->restProofsCreate: ', $e->getMessage(), PHP_EOL;
@@ -239,35 +239,14 @@ $apiInstance = new Swagger\Client\Api\RestApi(
     $config
 );
 $body = new \Swagger\Client\Model\CancelProofRequest(); // \Swagger\Client\Model\CancelProofRequest | 
+$api_version = "api_version_example"; // string | 
 $proof_hash = "proof_hash_example"; // string | 
-$version = "version_example"; // string | 
 
 try {
-    $result = $apiInstance->restProofsDelete($body, $proof_hash, $version);
+    $result = $apiInstance->restProofsDelete($body, $api_version, $proof_hash);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RestApi->restProofsDelete: ', $e->getMessage(), PHP_EOL;
-}
-// Configure HTTP basic authorization: Basic
-$config = Swagger\Client\Configuration::getDefaultConfiguration()
-    ->setUsername('YOUR_USERNAME')
-    ->setPassword('YOUR_PASSWORD');
-
-$apiInstance = new Swagger\Client\Api\RestApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$body = new \Swagger\Client\Model\UpdateProofRequest(); // \Swagger\Client\Model\UpdateProofRequest | 
-$proof_hash = "proof_hash_example"; // string | 
-$version = "version_example"; // string | 
-
-try {
-    $result = $apiInstance->restProofsUpdate($body, $proof_hash, $version);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling RestApi->restProofsUpdate: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -278,15 +257,14 @@ All URIs are relative to *http://127.0.0.1:8000/*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*RestApi* | [**restDappsRead**](docs/Api/RestApi.md#restdappsread) | **GET** /rest/v{version}/dapps/{dapp_id}/ | 
-*RestApi* | [**restNewidsRead**](docs/Api/RestApi.md#restnewidsread) | **GET** /rest/v{version}/newids/{newid}/ | 
-*RestApi* | [**restNewnetCachesAuthCreate**](docs/Api/RestApi.md#restnewnetcachesauthcreate) | **POST** /rest/v{version}/newnet/caches/auth/ | 
-*RestApi* | [**restNewnetCachesAuthRead**](docs/Api/RestApi.md#restnewnetcachesauthread) | **GET** /rest/v{version}/newnet/caches/auth/{auth_hash}/ | 
-*RestApi* | [**restNewnetCachesPayCreate**](docs/Api/RestApi.md#restnewnetcachespaycreate) | **POST** /rest/v{version}/newnet/caches/pay/ | 
-*RestApi* | [**restNewnetCachesPayRead**](docs/Api/RestApi.md#restnewnetcachespayread) | **GET** /rest/v{version}/newnet/caches/pay/{pay_hash}/ | 
-*RestApi* | [**restProofsCreate**](docs/Api/RestApi.md#restproofscreate) | **POST** /rest/v{version}/proofs/ | 
-*RestApi* | [**restProofsDelete**](docs/Api/RestApi.md#restproofsdelete) | **DELETE** /rest/v{version}/proofs/{proof_hash}/ | 
-*RestApi* | [**restProofsUpdate**](docs/Api/RestApi.md#restproofsupdate) | **PUT** /rest/v{version}/proofs/{proof_hash}/ | 
+*RestApi* | [**restDappsRead**](docs/Api/RestApi.md#restdappsread) | **GET** /rest/v{api_version}/dapps/{dapp_id}/ | 
+*RestApi* | [**restNewidsRead**](docs/Api/RestApi.md#restnewidsread) | **GET** /rest/v{api_version}/newids/{newid}/ | 
+*RestApi* | [**restNewnetCachesAuthCreate**](docs/Api/RestApi.md#restnewnetcachesauthcreate) | **POST** /rest/v{api_version}/newnet/caches/auth/ | 
+*RestApi* | [**restNewnetCachesAuthRead**](docs/Api/RestApi.md#restnewnetcachesauthread) | **GET** /rest/v{api_version}/newnet/caches/auth/{auth_hash}/ | 
+*RestApi* | [**restNewnetCachesPayCreate**](docs/Api/RestApi.md#restnewnetcachespaycreate) | **POST** /rest/v{api_version}/newnet/caches/pay/ | 
+*RestApi* | [**restNewnetCachesPayRead**](docs/Api/RestApi.md#restnewnetcachespayread) | **GET** /rest/v{api_version}/newnet/caches/pay/{pay_hash}/ | 
+*RestApi* | [**restProofsCreate**](docs/Api/RestApi.md#restproofscreate) | **POST** /rest/v{api_version}/proofs/ | 
+*RestApi* | [**restProofsDelete**](docs/Api/RestApi.md#restproofsdelete) | **DELETE** /rest/v{api_version}/proofs/{proof_hash}/ | 
 
 ## Documentation For Models
 
@@ -305,8 +283,6 @@ Class | Method | HTTP request | Description
  - [PayCacheRequest](docs/Model/PayCacheRequest.md)
  - [PayCacheResponse](docs/Model/PayCacheResponse.md)
  - [Thing](docs/Model/Thing.md)
- - [UpdateProofRequest](docs/Model/UpdateProofRequest.md)
- - [UpdateProofResponse](docs/Model/UpdateProofResponse.md)
 
 ## Documentation For Authorization
 

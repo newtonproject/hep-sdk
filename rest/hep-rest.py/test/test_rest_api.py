@@ -76,12 +76,6 @@ class TestRestApi(unittest.TestCase):
         """
         pass
 
-    def test_rest_proofs_update(self):
-        """Test case for rest_proofs_update
-
-        """
-        pass
-
 
 if __name__ == '__main__':
     unittest.main()

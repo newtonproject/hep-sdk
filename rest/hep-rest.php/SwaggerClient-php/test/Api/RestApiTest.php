@@ -149,14 +149,4 @@ class RestApiTest extends \PHPUnit_Framework_TestCase
     public function testRestProofsDelete()
     {
     }
-
-    /**
-     * Test case for restProofsUpdate
-     *
-     * .
-     *
-     */
-    public function testRestProofsUpdate()
-    {
-    }
 }

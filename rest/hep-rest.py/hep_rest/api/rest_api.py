@@ -32,20 +32,20 @@ class RestApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def rest_dapps_read(self, dapp_id, version, dapp_key, protocol, version2, ts, nonce, os, language, md5, **kwargs):  # noqa: E501
+    def rest_dapps_read(self, api_version, dapp_id, dapp_key, protocol, version, ts, nonce, os, language, md5, **kwargs):  # noqa: E501
         """rest_dapps_read  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.rest_dapps_read(dapp_id, version, dapp_key, protocol, version2, ts, nonce, os, language, md5, async_req=True)
+        >>> thread = api.rest_dapps_read(api_version, dapp_id, dapp_key, protocol, version, ts, nonce, os, language, md5, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str api_version: (required)
         :param str dapp_id: (required)
-        :param str version: (required)
         :param str dapp_key: The decentralized application access key (required)
         :param str protocol: The protocol name. default is 'HEP'. (required)
-        :param str version2: The protocol version such as '1.0' (required)
+        :param str version: The protocol version such as '1.0' (required)
         :param int ts: The current timestamp (required)
         :param str nonce: The random string or auto-increment sequence (required)
         :param str os: The operating system of client such as ios, android, dweb,etc. (required)
@@ -57,25 +57,25 @@ class RestApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.rest_dapps_read_with_http_info(dapp_id, version, dapp_key, protocol, version2, ts, nonce, os, language, md5, **kwargs)  # noqa: E501
+            return self.rest_dapps_read_with_http_info(api_version, dapp_id, dapp_key, protocol, version, ts, nonce, os, language, md5, **kwargs)  # noqa: E501
         else:
-            (data) = self.rest_dapps_read_with_http_info(dapp_id, version, dapp_key, protocol, version2, ts, nonce, os, language, md5, **kwargs)  # noqa: E501
+            (data) = self.rest_dapps_read_with_http_info(api_version, dapp_id, dapp_key, protocol, version, ts, nonce, os, language, md5, **kwargs)  # noqa: E501
             return data
 
-    def rest_dapps_read_with_http_info(self, dapp_id, version, dapp_key, protocol, version2, ts, nonce, os, language, md5, **kwargs):  # noqa: E501
+    def rest_dapps_read_with_http_info(self, api_version, dapp_id, dapp_key, protocol, version, ts, nonce, os, language, md5, **kwargs):  # noqa: E501
         """rest_dapps_read  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.rest_dapps_read_with_http_info(dapp_id, version, dapp_key, protocol, version2, ts, nonce, os, language, md5, async_req=True)
+        >>> thread = api.rest_dapps_read_with_http_info(api_version, dapp_id, dapp_key, protocol, version, ts, nonce, os, language, md5, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str api_version: (required)
         :param str dapp_id: (required)
-        :param str version: (required)
         :param str dapp_key: The decentralized application access key (required)
         :param str protocol: The protocol name. default is 'HEP'. (required)
-        :param str version2: The protocol version such as '1.0' (required)
+        :param str version: The protocol version such as '1.0' (required)
         :param int ts: The current timestamp (required)
         :param str nonce: The random string or auto-increment sequence (required)
         :param str os: The operating system of client such as ios, android, dweb,etc. (required)
@@ -86,7 +86,7 @@ class RestApi(object):
                  returns the request thread.
         """
 
-        all_params = ['dapp_id', 'version', 'dapp_key', 'protocol', 'version2', 'ts', 'nonce', 'os', 'language', 'md5']  # noqa: E501
+        all_params = ['api_version', 'dapp_id', 'dapp_key', 'protocol', 'version', 'ts', 'nonce', 'os', 'language', 'md5']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -101,14 +101,14 @@ class RestApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'api_version' is set
+        if ('api_version' not in params or
+                params['api_version'] is None):
+            raise ValueError("Missing the required parameter `api_version` when calling `rest_dapps_read`")  # noqa: E501
         # verify the required parameter 'dapp_id' is set
         if ('dapp_id' not in params or
                 params['dapp_id'] is None):
             raise ValueError("Missing the required parameter `dapp_id` when calling `rest_dapps_read`")  # noqa: E501
-        # verify the required parameter 'version' is set
-        if ('version' not in params or
-                params['version'] is None):
-            raise ValueError("Missing the required parameter `version` when calling `rest_dapps_read`")  # noqa: E501
         # verify the required parameter 'dapp_key' is set
         if ('dapp_key' not in params or
                 params['dapp_key'] is None):
@@ -117,10 +117,10 @@ class RestApi(object):
         if ('protocol' not in params or
                 params['protocol'] is None):
             raise ValueError("Missing the required parameter `protocol` when calling `rest_dapps_read`")  # noqa: E501
-        # verify the required parameter 'version2' is set
-        if ('version2' not in params or
-                params['version2'] is None):
-            raise ValueError("Missing the required parameter `version2` when calling `rest_dapps_read`")  # noqa: E501
+        # verify the required parameter 'version' is set
+        if ('version' not in params or
+                params['version'] is None):
+            raise ValueError("Missing the required parameter `version` when calling `rest_dapps_read`")  # noqa: E501
         # verify the required parameter 'ts' is set
         if ('ts' not in params or
                 params['ts'] is None):
@@ -145,18 +145,18 @@ class RestApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'api_version' in params:
+            path_params['api_version'] = params['api_version']  # noqa: E501
         if 'dapp_id' in params:
             path_params['dapp_id'] = params['dapp_id']  # noqa: E501
-        if 'version' in params:
-            path_params['version'] = params['version']  # noqa: E501
 
         query_params = []
         if 'dapp_key' in params:
             query_params.append(('dapp_key', params['dapp_key']))  # noqa: E501
         if 'protocol' in params:
             query_params.append(('protocol', params['protocol']))  # noqa: E501
-        if 'version2' in params:
-            query_params.append(('version', params['version2']))  # noqa: E501
+        if 'version' in params:
+            query_params.append(('version', params['version']))  # noqa: E501
         if 'ts' in params:
             query_params.append(('ts', params['ts']))  # noqa: E501
         if 'nonce' in params:
@@ -182,7 +182,7 @@ class RestApi(object):
         auth_settings = ['Basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/rest/v{version}/dapps/{dapp_id}/', 'GET',
+            '/rest/v{api_version}/dapps/{dapp_id}/', 'GET',
             path_params,
             query_params,
             header_params,
@@ -197,21 +197,21 @@ class RestApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def rest_newids_read(self, newid, version, dapp_key, protocol, version2, ts, nonce, os, language, md5, **kwargs):  # noqa: E501
+    def rest_newids_read(self, api_version, newid, dapp_key, protocol, version, ts, nonce, os, language, md5, **kwargs):  # noqa: E501
         """rest_newids_read  # noqa: E501
 
         Retrieve the information by given NewID  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.rest_newids_read(newid, version, dapp_key, protocol, version2, ts, nonce, os, language, md5, async_req=True)
+        >>> thread = api.rest_newids_read(api_version, newid, dapp_key, protocol, version, ts, nonce, os, language, md5, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str api_version: (required)
         :param str newid: (required)
-        :param str version: (required)
         :param str dapp_key: The decentralized application access key (required)
         :param str protocol: The protocol name. default is 'HEP'. (required)
-        :param str version2: The protocol version such as '1.0' (required)
+        :param str version: The protocol version such as '1.0' (required)
         :param int ts: The current timestamp (required)
         :param str nonce: The random string or auto-increment sequence (required)
         :param str os: The operating system of client such as ios, android, dweb,etc. (required)
@@ -223,26 +223,26 @@ class RestApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.rest_newids_read_with_http_info(newid, version, dapp_key, protocol, version2, ts, nonce, os, language, md5, **kwargs)  # noqa: E501
+            return self.rest_newids_read_with_http_info(api_version, newid, dapp_key, protocol, version, ts, nonce, os, language, md5, **kwargs)  # noqa: E501
         else:
-            (data) = self.rest_newids_read_with_http_info(newid, version, dapp_key, protocol, version2, ts, nonce, os, language, md5, **kwargs)  # noqa: E501
+            (data) = self.rest_newids_read_with_http_info(api_version, newid, dapp_key, protocol, version, ts, nonce, os, language, md5, **kwargs)  # noqa: E501
             return data
 
-    def rest_newids_read_with_http_info(self, newid, version, dapp_key, protocol, version2, ts, nonce, os, language, md5, **kwargs):  # noqa: E501
+    def rest_newids_read_with_http_info(self, api_version, newid, dapp_key, protocol, version, ts, nonce, os, language, md5, **kwargs):  # noqa: E501
         """rest_newids_read  # noqa: E501
 
         Retrieve the information by given NewID  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.rest_newids_read_with_http_info(newid, version, dapp_key, protocol, version2, ts, nonce, os, language, md5, async_req=True)
+        >>> thread = api.rest_newids_read_with_http_info(api_version, newid, dapp_key, protocol, version, ts, nonce, os, language, md5, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str api_version: (required)
         :param str newid: (required)
-        :param str version: (required)
         :param str dapp_key: The decentralized application access key (required)
         :param str protocol: The protocol name. default is 'HEP'. (required)
-        :param str version2: The protocol version such as '1.0' (required)
+        :param str version: The protocol version such as '1.0' (required)
         :param int ts: The current timestamp (required)
         :param str nonce: The random string or auto-increment sequence (required)
         :param str os: The operating system of client such as ios, android, dweb,etc. (required)
@@ -253,7 +253,7 @@ class RestApi(object):
                  returns the request thread.
         """
 
-        all_params = ['newid', 'version', 'dapp_key', 'protocol', 'version2', 'ts', 'nonce', 'os', 'language', 'md5']  # noqa: E501
+        all_params = ['api_version', 'newid', 'dapp_key', 'protocol', 'version', 'ts', 'nonce', 'os', 'language', 'md5']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -268,14 +268,14 @@ class RestApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'api_version' is set
+        if ('api_version' not in params or
+                params['api_version'] is None):
+            raise ValueError("Missing the required parameter `api_version` when calling `rest_newids_read`")  # noqa: E501
         # verify the required parameter 'newid' is set
         if ('newid' not in params or
                 params['newid'] is None):
             raise ValueError("Missing the required parameter `newid` when calling `rest_newids_read`")  # noqa: E501
-        # verify the required parameter 'version' is set
-        if ('version' not in params or
-                params['version'] is None):
-            raise ValueError("Missing the required parameter `version` when calling `rest_newids_read`")  # noqa: E501
         # verify the required parameter 'dapp_key' is set
         if ('dapp_key' not in params or
                 params['dapp_key'] is None):
@@ -284,10 +284,10 @@ class RestApi(object):
         if ('protocol' not in params or
                 params['protocol'] is None):
             raise ValueError("Missing the required parameter `protocol` when calling `rest_newids_read`")  # noqa: E501
-        # verify the required parameter 'version2' is set
-        if ('version2' not in params or
-                params['version2'] is None):
-            raise ValueError("Missing the required parameter `version2` when calling `rest_newids_read`")  # noqa: E501
+        # verify the required parameter 'version' is set
+        if ('version' not in params or
+                params['version'] is None):
+            raise ValueError("Missing the required parameter `version` when calling `rest_newids_read`")  # noqa: E501
         # verify the required parameter 'ts' is set
         if ('ts' not in params or
                 params['ts'] is None):
@@ -312,18 +312,18 @@ class RestApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'api_version' in params:
+            path_params['api_version'] = params['api_version']  # noqa: E501
         if 'newid' in params:
             path_params['newid'] = params['newid']  # noqa: E501
-        if 'version' in params:
-            path_params['version'] = params['version']  # noqa: E501
 
         query_params = []
         if 'dapp_key' in params:
             query_params.append(('dapp_key', params['dapp_key']))  # noqa: E501
         if 'protocol' in params:
             query_params.append(('protocol', params['protocol']))  # noqa: E501
-        if 'version2' in params:
-            query_params.append(('version', params['version2']))  # noqa: E501
+        if 'version' in params:
+            query_params.append(('version', params['version']))  # noqa: E501
         if 'ts' in params:
             query_params.append(('ts', params['ts']))  # noqa: E501
         if 'nonce' in params:
@@ -349,7 +349,7 @@ class RestApi(object):
         auth_settings = ['Basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/rest/v{version}/newids/{newid}/', 'GET',
+            '/rest/v{api_version}/newids/{newid}/', 'GET',
             path_params,
             query_params,
             header_params,
@@ -364,47 +364,47 @@ class RestApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def rest_newnet_caches_auth_create(self, body, version, **kwargs):  # noqa: E501
+    def rest_newnet_caches_auth_create(self, body, api_version, **kwargs):  # noqa: E501
         """rest_newnet_caches_auth_create  # noqa: E501
 
         Caches the authentication request  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.rest_newnet_caches_auth_create(body, version, async_req=True)
+        >>> thread = api.rest_newnet_caches_auth_create(body, api_version, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param AuthCacheRequest body: (required)
-        :param str version: (required)
+        :param str api_version: (required)
         :return: CreateAuthCacheResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.rest_newnet_caches_auth_create_with_http_info(body, version, **kwargs)  # noqa: E501
+            return self.rest_newnet_caches_auth_create_with_http_info(body, api_version, **kwargs)  # noqa: E501
         else:
-            (data) = self.rest_newnet_caches_auth_create_with_http_info(body, version, **kwargs)  # noqa: E501
+            (data) = self.rest_newnet_caches_auth_create_with_http_info(body, api_version, **kwargs)  # noqa: E501
             return data
 
-    def rest_newnet_caches_auth_create_with_http_info(self, body, version, **kwargs):  # noqa: E501
+    def rest_newnet_caches_auth_create_with_http_info(self, body, api_version, **kwargs):  # noqa: E501
         """rest_newnet_caches_auth_create  # noqa: E501
 
         Caches the authentication request  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.rest_newnet_caches_auth_create_with_http_info(body, version, async_req=True)
+        >>> thread = api.rest_newnet_caches_auth_create_with_http_info(body, api_version, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param AuthCacheRequest body: (required)
-        :param str version: (required)
+        :param str api_version: (required)
         :return: CreateAuthCacheResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'version']  # noqa: E501
+        all_params = ['body', 'api_version']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -423,16 +423,16 @@ class RestApi(object):
         if ('body' not in params or
                 params['body'] is None):
             raise ValueError("Missing the required parameter `body` when calling `rest_newnet_caches_auth_create`")  # noqa: E501
-        # verify the required parameter 'version' is set
-        if ('version' not in params or
-                params['version'] is None):
-            raise ValueError("Missing the required parameter `version` when calling `rest_newnet_caches_auth_create`")  # noqa: E501
+        # verify the required parameter 'api_version' is set
+        if ('api_version' not in params or
+                params['api_version'] is None):
+            raise ValueError("Missing the required parameter `api_version` when calling `rest_newnet_caches_auth_create`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'version' in params:
-            path_params['version'] = params['version']  # noqa: E501
+        if 'api_version' in params:
+            path_params['api_version'] = params['api_version']  # noqa: E501
 
         query_params = []
 
@@ -456,7 +456,7 @@ class RestApi(object):
         auth_settings = ['Basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/rest/v{version}/newnet/caches/auth/', 'POST',
+            '/rest/v{api_version}/newnet/caches/auth/', 'POST',
             path_params,
             query_params,
             header_params,
@@ -471,21 +471,21 @@ class RestApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def rest_newnet_caches_auth_read(self, auth_hash, version, dapp_key, protocol, version2, ts, nonce, os, language, md5, **kwargs):  # noqa: E501
+    def rest_newnet_caches_auth_read(self, api_version, auth_hash, dapp_key, protocol, version, ts, nonce, os, language, md5, **kwargs):  # noqa: E501
         """rest_newnet_caches_auth_read  # noqa: E501
 
         Get the authentication information by given request hash.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.rest_newnet_caches_auth_read(auth_hash, version, dapp_key, protocol, version2, ts, nonce, os, language, md5, async_req=True)
+        >>> thread = api.rest_newnet_caches_auth_read(api_version, auth_hash, dapp_key, protocol, version, ts, nonce, os, language, md5, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str api_version: (required)
         :param str auth_hash: (required)
-        :param str version: (required)
         :param str dapp_key: The decentralized application access key (required)
         :param str protocol: The protocol name. default is 'HEP'. (required)
-        :param str version2: The protocol version such as '1.0' (required)
+        :param str version: The protocol version such as '1.0' (required)
         :param int ts: The current timestamp (required)
         :param str nonce: The random string or auto-increment sequence (required)
         :param str os: The operating system of client such as ios, android, dweb,etc. (required)
@@ -497,26 +497,26 @@ class RestApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.rest_newnet_caches_auth_read_with_http_info(auth_hash, version, dapp_key, protocol, version2, ts, nonce, os, language, md5, **kwargs)  # noqa: E501
+            return self.rest_newnet_caches_auth_read_with_http_info(api_version, auth_hash, dapp_key, protocol, version, ts, nonce, os, language, md5, **kwargs)  # noqa: E501
         else:
-            (data) = self.rest_newnet_caches_auth_read_with_http_info(auth_hash, version, dapp_key, protocol, version2, ts, nonce, os, language, md5, **kwargs)  # noqa: E501
+            (data) = self.rest_newnet_caches_auth_read_with_http_info(api_version, auth_hash, dapp_key, protocol, version, ts, nonce, os, language, md5, **kwargs)  # noqa: E501
             return data
 
-    def rest_newnet_caches_auth_read_with_http_info(self, auth_hash, version, dapp_key, protocol, version2, ts, nonce, os, language, md5, **kwargs):  # noqa: E501
+    def rest_newnet_caches_auth_read_with_http_info(self, api_version, auth_hash, dapp_key, protocol, version, ts, nonce, os, language, md5, **kwargs):  # noqa: E501
         """rest_newnet_caches_auth_read  # noqa: E501
 
         Get the authentication information by given request hash.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.rest_newnet_caches_auth_read_with_http_info(auth_hash, version, dapp_key, protocol, version2, ts, nonce, os, language, md5, async_req=True)
+        >>> thread = api.rest_newnet_caches_auth_read_with_http_info(api_version, auth_hash, dapp_key, protocol, version, ts, nonce, os, language, md5, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str api_version: (required)
         :param str auth_hash: (required)
-        :param str version: (required)
         :param str dapp_key: The decentralized application access key (required)
         :param str protocol: The protocol name. default is 'HEP'. (required)
-        :param str version2: The protocol version such as '1.0' (required)
+        :param str version: The protocol version such as '1.0' (required)
         :param int ts: The current timestamp (required)
         :param str nonce: The random string or auto-increment sequence (required)
         :param str os: The operating system of client such as ios, android, dweb,etc. (required)
@@ -527,7 +527,7 @@ class RestApi(object):
                  returns the request thread.
         """
 
-        all_params = ['auth_hash', 'version', 'dapp_key', 'protocol', 'version2', 'ts', 'nonce', 'os', 'language', 'md5']  # noqa: E501
+        all_params = ['api_version', 'auth_hash', 'dapp_key', 'protocol', 'version', 'ts', 'nonce', 'os', 'language', 'md5']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -542,14 +542,14 @@ class RestApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'api_version' is set
+        if ('api_version' not in params or
+                params['api_version'] is None):
+            raise ValueError("Missing the required parameter `api_version` when calling `rest_newnet_caches_auth_read`")  # noqa: E501
         # verify the required parameter 'auth_hash' is set
         if ('auth_hash' not in params or
                 params['auth_hash'] is None):
             raise ValueError("Missing the required parameter `auth_hash` when calling `rest_newnet_caches_auth_read`")  # noqa: E501
-        # verify the required parameter 'version' is set
-        if ('version' not in params or
-                params['version'] is None):
-            raise ValueError("Missing the required parameter `version` when calling `rest_newnet_caches_auth_read`")  # noqa: E501
         # verify the required parameter 'dapp_key' is set
         if ('dapp_key' not in params or
                 params['dapp_key'] is None):
@@ -558,10 +558,10 @@ class RestApi(object):
         if ('protocol' not in params or
                 params['protocol'] is None):
             raise ValueError("Missing the required parameter `protocol` when calling `rest_newnet_caches_auth_read`")  # noqa: E501
-        # verify the required parameter 'version2' is set
-        if ('version2' not in params or
-                params['version2'] is None):
-            raise ValueError("Missing the required parameter `version2` when calling `rest_newnet_caches_auth_read`")  # noqa: E501
+        # verify the required parameter 'version' is set
+        if ('version' not in params or
+                params['version'] is None):
+            raise ValueError("Missing the required parameter `version` when calling `rest_newnet_caches_auth_read`")  # noqa: E501
         # verify the required parameter 'ts' is set
         if ('ts' not in params or
                 params['ts'] is None):
@@ -586,18 +586,18 @@ class RestApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'api_version' in params:
+            path_params['api_version'] = params['api_version']  # noqa: E501
         if 'auth_hash' in params:
             path_params['auth_hash'] = params['auth_hash']  # noqa: E501
-        if 'version' in params:
-            path_params['version'] = params['version']  # noqa: E501
 
         query_params = []
         if 'dapp_key' in params:
             query_params.append(('dapp_key', params['dapp_key']))  # noqa: E501
         if 'protocol' in params:
             query_params.append(('protocol', params['protocol']))  # noqa: E501
-        if 'version2' in params:
-            query_params.append(('version', params['version2']))  # noqa: E501
+        if 'version' in params:
+            query_params.append(('version', params['version']))  # noqa: E501
         if 'ts' in params:
             query_params.append(('ts', params['ts']))  # noqa: E501
         if 'nonce' in params:
@@ -623,7 +623,7 @@ class RestApi(object):
         auth_settings = ['Basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/rest/v{version}/newnet/caches/auth/{auth_hash}/', 'GET',
+            '/rest/v{api_version}/newnet/caches/auth/{auth_hash}/', 'GET',
             path_params,
             query_params,
             header_params,
@@ -638,47 +638,47 @@ class RestApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def rest_newnet_caches_pay_create(self, body, version, **kwargs):  # noqa: E501
+    def rest_newnet_caches_pay_create(self, body, api_version, **kwargs):  # noqa: E501
         """rest_newnet_caches_pay_create  # noqa: E501
 
         Cache the pay request  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.rest_newnet_caches_pay_create(body, version, async_req=True)
+        >>> thread = api.rest_newnet_caches_pay_create(body, api_version, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param PayCacheRequest body: (required)
-        :param str version: (required)
+        :param str api_version: (required)
         :return: CreatePayCacheResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.rest_newnet_caches_pay_create_with_http_info(body, version, **kwargs)  # noqa: E501
+            return self.rest_newnet_caches_pay_create_with_http_info(body, api_version, **kwargs)  # noqa: E501
         else:
-            (data) = self.rest_newnet_caches_pay_create_with_http_info(body, version, **kwargs)  # noqa: E501
+            (data) = self.rest_newnet_caches_pay_create_with_http_info(body, api_version, **kwargs)  # noqa: E501
             return data
 
-    def rest_newnet_caches_pay_create_with_http_info(self, body, version, **kwargs):  # noqa: E501
+    def rest_newnet_caches_pay_create_with_http_info(self, body, api_version, **kwargs):  # noqa: E501
         """rest_newnet_caches_pay_create  # noqa: E501
 
         Cache the pay request  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.rest_newnet_caches_pay_create_with_http_info(body, version, async_req=True)
+        >>> thread = api.rest_newnet_caches_pay_create_with_http_info(body, api_version, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param PayCacheRequest body: (required)
-        :param str version: (required)
+        :param str api_version: (required)
         :return: CreatePayCacheResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'version']  # noqa: E501
+        all_params = ['body', 'api_version']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -697,16 +697,16 @@ class RestApi(object):
         if ('body' not in params or
                 params['body'] is None):
             raise ValueError("Missing the required parameter `body` when calling `rest_newnet_caches_pay_create`")  # noqa: E501
-        # verify the required parameter 'version' is set
-        if ('version' not in params or
-                params['version'] is None):
-            raise ValueError("Missing the required parameter `version` when calling `rest_newnet_caches_pay_create`")  # noqa: E501
+        # verify the required parameter 'api_version' is set
+        if ('api_version' not in params or
+                params['api_version'] is None):
+            raise ValueError("Missing the required parameter `api_version` when calling `rest_newnet_caches_pay_create`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'version' in params:
-            path_params['version'] = params['version']  # noqa: E501
+        if 'api_version' in params:
+            path_params['api_version'] = params['api_version']  # noqa: E501
 
         query_params = []
 
@@ -730,7 +730,7 @@ class RestApi(object):
         auth_settings = ['Basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/rest/v{version}/newnet/caches/pay/', 'POST',
+            '/rest/v{api_version}/newnet/caches/pay/', 'POST',
             path_params,
             query_params,
             header_params,
@@ -745,21 +745,21 @@ class RestApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def rest_newnet_caches_pay_read(self, pay_hash, version, dapp_key, protocol, version2, ts, nonce, os, language, md5, **kwargs):  # noqa: E501
+    def rest_newnet_caches_pay_read(self, api_version, pay_hash, dapp_key, protocol, version, ts, nonce, os, language, md5, **kwargs):  # noqa: E501
         """rest_newnet_caches_pay_read  # noqa: E501
 
         Retrieve the pay information by given pay hash.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.rest_newnet_caches_pay_read(pay_hash, version, dapp_key, protocol, version2, ts, nonce, os, language, md5, async_req=True)
+        >>> thread = api.rest_newnet_caches_pay_read(api_version, pay_hash, dapp_key, protocol, version, ts, nonce, os, language, md5, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str api_version: (required)
         :param str pay_hash: (required)
-        :param str version: (required)
         :param str dapp_key: The decentralized application access key (required)
         :param str protocol: The protocol name. default is 'HEP'. (required)
-        :param str version2: The protocol version such as '1.0' (required)
+        :param str version: The protocol version such as '1.0' (required)
         :param int ts: The current timestamp (required)
         :param str nonce: The random string or auto-increment sequence (required)
         :param str os: The operating system of client such as ios, android, dweb,etc. (required)
@@ -771,26 +771,26 @@ class RestApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.rest_newnet_caches_pay_read_with_http_info(pay_hash, version, dapp_key, protocol, version2, ts, nonce, os, language, md5, **kwargs)  # noqa: E501
+            return self.rest_newnet_caches_pay_read_with_http_info(api_version, pay_hash, dapp_key, protocol, version, ts, nonce, os, language, md5, **kwargs)  # noqa: E501
         else:
-            (data) = self.rest_newnet_caches_pay_read_with_http_info(pay_hash, version, dapp_key, protocol, version2, ts, nonce, os, language, md5, **kwargs)  # noqa: E501
+            (data) = self.rest_newnet_caches_pay_read_with_http_info(api_version, pay_hash, dapp_key, protocol, version, ts, nonce, os, language, md5, **kwargs)  # noqa: E501
             return data
 
-    def rest_newnet_caches_pay_read_with_http_info(self, pay_hash, version, dapp_key, protocol, version2, ts, nonce, os, language, md5, **kwargs):  # noqa: E501
+    def rest_newnet_caches_pay_read_with_http_info(self, api_version, pay_hash, dapp_key, protocol, version, ts, nonce, os, language, md5, **kwargs):  # noqa: E501
         """rest_newnet_caches_pay_read  # noqa: E501
 
         Retrieve the pay information by given pay hash.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.rest_newnet_caches_pay_read_with_http_info(pay_hash, version, dapp_key, protocol, version2, ts, nonce, os, language, md5, async_req=True)
+        >>> thread = api.rest_newnet_caches_pay_read_with_http_info(api_version, pay_hash, dapp_key, protocol, version, ts, nonce, os, language, md5, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str api_version: (required)
         :param str pay_hash: (required)
-        :param str version: (required)
         :param str dapp_key: The decentralized application access key (required)
         :param str protocol: The protocol name. default is 'HEP'. (required)
-        :param str version2: The protocol version such as '1.0' (required)
+        :param str version: The protocol version such as '1.0' (required)
         :param int ts: The current timestamp (required)
         :param str nonce: The random string or auto-increment sequence (required)
         :param str os: The operating system of client such as ios, android, dweb,etc. (required)
@@ -801,7 +801,7 @@ class RestApi(object):
                  returns the request thread.
         """
 
-        all_params = ['pay_hash', 'version', 'dapp_key', 'protocol', 'version2', 'ts', 'nonce', 'os', 'language', 'md5']  # noqa: E501
+        all_params = ['api_version', 'pay_hash', 'dapp_key', 'protocol', 'version', 'ts', 'nonce', 'os', 'language', 'md5']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -816,14 +816,14 @@ class RestApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'api_version' is set
+        if ('api_version' not in params or
+                params['api_version'] is None):
+            raise ValueError("Missing the required parameter `api_version` when calling `rest_newnet_caches_pay_read`")  # noqa: E501
         # verify the required parameter 'pay_hash' is set
         if ('pay_hash' not in params or
                 params['pay_hash'] is None):
             raise ValueError("Missing the required parameter `pay_hash` when calling `rest_newnet_caches_pay_read`")  # noqa: E501
-        # verify the required parameter 'version' is set
-        if ('version' not in params or
-                params['version'] is None):
-            raise ValueError("Missing the required parameter `version` when calling `rest_newnet_caches_pay_read`")  # noqa: E501
         # verify the required parameter 'dapp_key' is set
         if ('dapp_key' not in params or
                 params['dapp_key'] is None):
@@ -832,10 +832,10 @@ class RestApi(object):
         if ('protocol' not in params or
                 params['protocol'] is None):
             raise ValueError("Missing the required parameter `protocol` when calling `rest_newnet_caches_pay_read`")  # noqa: E501
-        # verify the required parameter 'version2' is set
-        if ('version2' not in params or
-                params['version2'] is None):
-            raise ValueError("Missing the required parameter `version2` when calling `rest_newnet_caches_pay_read`")  # noqa: E501
+        # verify the required parameter 'version' is set
+        if ('version' not in params or
+                params['version'] is None):
+            raise ValueError("Missing the required parameter `version` when calling `rest_newnet_caches_pay_read`")  # noqa: E501
         # verify the required parameter 'ts' is set
         if ('ts' not in params or
                 params['ts'] is None):
@@ -860,18 +860,18 @@ class RestApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'api_version' in params:
+            path_params['api_version'] = params['api_version']  # noqa: E501
         if 'pay_hash' in params:
             path_params['pay_hash'] = params['pay_hash']  # noqa: E501
-        if 'version' in params:
-            path_params['version'] = params['version']  # noqa: E501
 
         query_params = []
         if 'dapp_key' in params:
             query_params.append(('dapp_key', params['dapp_key']))  # noqa: E501
         if 'protocol' in params:
             query_params.append(('protocol', params['protocol']))  # noqa: E501
-        if 'version2' in params:
-            query_params.append(('version', params['version2']))  # noqa: E501
+        if 'version' in params:
+            query_params.append(('version', params['version']))  # noqa: E501
         if 'ts' in params:
             query_params.append(('ts', params['ts']))  # noqa: E501
         if 'nonce' in params:
@@ -897,7 +897,7 @@ class RestApi(object):
         auth_settings = ['Basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/rest/v{version}/newnet/caches/pay/{pay_hash}/', 'GET',
+            '/rest/v{api_version}/newnet/caches/pay/{pay_hash}/', 'GET',
             path_params,
             query_params,
             header_params,
@@ -912,45 +912,45 @@ class RestApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def rest_proofs_create(self, body, version, **kwargs):  # noqa: E501
+    def rest_proofs_create(self, body, api_version, **kwargs):  # noqa: E501
         """rest_proofs_create  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.rest_proofs_create(body, version, async_req=True)
+        >>> thread = api.rest_proofs_create(body, api_version, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param CreateProofRequest body: (required)
-        :param str version: (required)
+        :param str api_version: (required)
         :return: CreateProofResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.rest_proofs_create_with_http_info(body, version, **kwargs)  # noqa: E501
+            return self.rest_proofs_create_with_http_info(body, api_version, **kwargs)  # noqa: E501
         else:
-            (data) = self.rest_proofs_create_with_http_info(body, version, **kwargs)  # noqa: E501
+            (data) = self.rest_proofs_create_with_http_info(body, api_version, **kwargs)  # noqa: E501
             return data
 
-    def rest_proofs_create_with_http_info(self, body, version, **kwargs):  # noqa: E501
+    def rest_proofs_create_with_http_info(self, body, api_version, **kwargs):  # noqa: E501
         """rest_proofs_create  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.rest_proofs_create_with_http_info(body, version, async_req=True)
+        >>> thread = api.rest_proofs_create_with_http_info(body, api_version, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param CreateProofRequest body: (required)
-        :param str version: (required)
+        :param str api_version: (required)
         :return: CreateProofResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'version']  # noqa: E501
+        all_params = ['body', 'api_version']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -969,16 +969,16 @@ class RestApi(object):
         if ('body' not in params or
                 params['body'] is None):
             raise ValueError("Missing the required parameter `body` when calling `rest_proofs_create`")  # noqa: E501
-        # verify the required parameter 'version' is set
-        if ('version' not in params or
-                params['version'] is None):
-            raise ValueError("Missing the required parameter `version` when calling `rest_proofs_create`")  # noqa: E501
+        # verify the required parameter 'api_version' is set
+        if ('api_version' not in params or
+                params['api_version'] is None):
+            raise ValueError("Missing the required parameter `api_version` when calling `rest_proofs_create`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'version' in params:
-            path_params['version'] = params['version']  # noqa: E501
+        if 'api_version' in params:
+            path_params['api_version'] = params['api_version']  # noqa: E501
 
         query_params = []
 
@@ -1002,7 +1002,7 @@ class RestApi(object):
         auth_settings = ['Basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/rest/v{version}/proofs/', 'POST',
+            '/rest/v{api_version}/proofs/', 'POST',
             path_params,
             query_params,
             header_params,
@@ -1017,47 +1017,47 @@ class RestApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def rest_proofs_delete(self, body, proof_hash, version, **kwargs):  # noqa: E501
+    def rest_proofs_delete(self, body, api_version, proof_hash, **kwargs):  # noqa: E501
         """rest_proofs_delete  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.rest_proofs_delete(body, proof_hash, version, async_req=True)
+        >>> thread = api.rest_proofs_delete(body, api_version, proof_hash, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param CancelProofRequest body: (required)
+        :param str api_version: (required)
         :param str proof_hash: (required)
-        :param str version: (required)
         :return: CancelProofResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.rest_proofs_delete_with_http_info(body, proof_hash, version, **kwargs)  # noqa: E501
+            return self.rest_proofs_delete_with_http_info(body, api_version, proof_hash, **kwargs)  # noqa: E501
         else:
-            (data) = self.rest_proofs_delete_with_http_info(body, proof_hash, version, **kwargs)  # noqa: E501
+            (data) = self.rest_proofs_delete_with_http_info(body, api_version, proof_hash, **kwargs)  # noqa: E501
             return data
 
-    def rest_proofs_delete_with_http_info(self, body, proof_hash, version, **kwargs):  # noqa: E501
+    def rest_proofs_delete_with_http_info(self, body, api_version, proof_hash, **kwargs):  # noqa: E501
         """rest_proofs_delete  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.rest_proofs_delete_with_http_info(body, proof_hash, version, async_req=True)
+        >>> thread = api.rest_proofs_delete_with_http_info(body, api_version, proof_hash, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param CancelProofRequest body: (required)
+        :param str api_version: (required)
         :param str proof_hash: (required)
-        :param str version: (required)
         :return: CancelProofResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'proof_hash', 'version']  # noqa: E501
+        all_params = ['body', 'api_version', 'proof_hash']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1076,22 +1076,22 @@ class RestApi(object):
         if ('body' not in params or
                 params['body'] is None):
             raise ValueError("Missing the required parameter `body` when calling `rest_proofs_delete`")  # noqa: E501
+        # verify the required parameter 'api_version' is set
+        if ('api_version' not in params or
+                params['api_version'] is None):
+            raise ValueError("Missing the required parameter `api_version` when calling `rest_proofs_delete`")  # noqa: E501
         # verify the required parameter 'proof_hash' is set
         if ('proof_hash' not in params or
                 params['proof_hash'] is None):
             raise ValueError("Missing the required parameter `proof_hash` when calling `rest_proofs_delete`")  # noqa: E501
-        # verify the required parameter 'version' is set
-        if ('version' not in params or
-                params['version'] is None):
-            raise ValueError("Missing the required parameter `version` when calling `rest_proofs_delete`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
+        if 'api_version' in params:
+            path_params['api_version'] = params['api_version']  # noqa: E501
         if 'proof_hash' in params:
             path_params['proof_hash'] = params['proof_hash']  # noqa: E501
-        if 'version' in params:
-            path_params['version'] = params['version']  # noqa: E501
 
         query_params = []
 
@@ -1115,7 +1115,7 @@ class RestApi(object):
         auth_settings = ['Basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/rest/v{version}/proofs/{proof_hash}/', 'DELETE',
+            '/rest/v{api_version}/proofs/{proof_hash}/', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -1123,119 +1123,6 @@ class RestApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='CancelProofResponse',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def rest_proofs_update(self, body, proof_hash, version, **kwargs):  # noqa: E501
-        """rest_proofs_update  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.rest_proofs_update(body, proof_hash, version, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param UpdateProofRequest body: (required)
-        :param str proof_hash: (required)
-        :param str version: (required)
-        :return: UpdateProofResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.rest_proofs_update_with_http_info(body, proof_hash, version, **kwargs)  # noqa: E501
-        else:
-            (data) = self.rest_proofs_update_with_http_info(body, proof_hash, version, **kwargs)  # noqa: E501
-            return data
-
-    def rest_proofs_update_with_http_info(self, body, proof_hash, version, **kwargs):  # noqa: E501
-        """rest_proofs_update  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.rest_proofs_update_with_http_info(body, proof_hash, version, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param UpdateProofRequest body: (required)
-        :param str proof_hash: (required)
-        :param str version: (required)
-        :return: UpdateProofResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['body', 'proof_hash', 'version']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method rest_proofs_update" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'body' is set
-        if ('body' not in params or
-                params['body'] is None):
-            raise ValueError("Missing the required parameter `body` when calling `rest_proofs_update`")  # noqa: E501
-        # verify the required parameter 'proof_hash' is set
-        if ('proof_hash' not in params or
-                params['proof_hash'] is None):
-            raise ValueError("Missing the required parameter `proof_hash` when calling `rest_proofs_update`")  # noqa: E501
-        # verify the required parameter 'version' is set
-        if ('version' not in params or
-                params['version'] is None):
-            raise ValueError("Missing the required parameter `version` when calling `rest_proofs_update`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'proof_hash' in params:
-            path_params['proof_hash'] = params['proof_hash']  # noqa: E501
-        if 'version' in params:
-            path_params['version'] = params['version']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['Basic']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/rest/v{version}/proofs/{proof_hash}/', 'PUT',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='UpdateProofResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

@@ -25,8 +25,6 @@ import io.swagger.client.model.Dapp;
 import io.swagger.client.model.NewidResponse;
 import io.swagger.client.model.PayCacheRequest;
 import io.swagger.client.model.PayCacheResponse;
-import io.swagger.client.model.UpdateProofRequest;
-import io.swagger.client.model.UpdateProofResponse;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -53,17 +51,17 @@ public class RestApiTest {
      */
     @Test
     public void restDappsReadTest() throws ApiException {
+        String apiVersion = null;
         String dappId = null;
-        String version = null;
         String dappKey = null;
         String protocol = null;
-        String version2 = null;
+        String version = null;
         Integer ts = null;
         String nonce = null;
         String os = null;
         String language = null;
         String md5 = null;
-        Dapp response = api.restDappsRead(dappId, version, dappKey, protocol, version2, ts, nonce, os, language, md5);
+        Dapp response = api.restDappsRead(apiVersion, dappId, dappKey, protocol, version, ts, nonce, os, language, md5);
 
         // TODO: test validations
     }
@@ -77,17 +75,17 @@ public class RestApiTest {
      */
     @Test
     public void restNewidsReadTest() throws ApiException {
+        String apiVersion = null;
         String newid = null;
-        String version = null;
         String dappKey = null;
         String protocol = null;
-        String version2 = null;
+        String version = null;
         Integer ts = null;
         String nonce = null;
         String os = null;
         String language = null;
         String md5 = null;
-        NewidResponse response = api.restNewidsRead(newid, version, dappKey, protocol, version2, ts, nonce, os, language, md5);
+        NewidResponse response = api.restNewidsRead(apiVersion, newid, dappKey, protocol, version, ts, nonce, os, language, md5);
 
         // TODO: test validations
     }
@@ -102,8 +100,8 @@ public class RestApiTest {
     @Test
     public void restNewnetCachesAuthCreateTest() throws ApiException {
         AuthCacheRequest body = null;
-        String version = null;
-        CreateAuthCacheResponse response = api.restNewnetCachesAuthCreate(body, version);
+        String apiVersion = null;
+        CreateAuthCacheResponse response = api.restNewnetCachesAuthCreate(body, apiVersion);
 
         // TODO: test validations
     }
@@ -117,17 +115,17 @@ public class RestApiTest {
      */
     @Test
     public void restNewnetCachesAuthReadTest() throws ApiException {
+        String apiVersion = null;
         String authHash = null;
-        String version = null;
         String dappKey = null;
         String protocol = null;
-        String version2 = null;
+        String version = null;
         Integer ts = null;
         String nonce = null;
         String os = null;
         String language = null;
         String md5 = null;
-        AuthCacheResponse response = api.restNewnetCachesAuthRead(authHash, version, dappKey, protocol, version2, ts, nonce, os, language, md5);
+        AuthCacheResponse response = api.restNewnetCachesAuthRead(apiVersion, authHash, dappKey, protocol, version, ts, nonce, os, language, md5);
 
         // TODO: test validations
     }
@@ -142,8 +140,8 @@ public class RestApiTest {
     @Test
     public void restNewnetCachesPayCreateTest() throws ApiException {
         PayCacheRequest body = null;
-        String version = null;
-        CreatePayCacheResponse response = api.restNewnetCachesPayCreate(body, version);
+        String apiVersion = null;
+        CreatePayCacheResponse response = api.restNewnetCachesPayCreate(body, apiVersion);
 
         // TODO: test validations
     }
@@ -157,17 +155,17 @@ public class RestApiTest {
      */
     @Test
     public void restNewnetCachesPayReadTest() throws ApiException {
+        String apiVersion = null;
         String payHash = null;
-        String version = null;
         String dappKey = null;
         String protocol = null;
-        String version2 = null;
+        String version = null;
         Integer ts = null;
         String nonce = null;
         String os = null;
         String language = null;
         String md5 = null;
-        PayCacheResponse response = api.restNewnetCachesPayRead(payHash, version, dappKey, protocol, version2, ts, nonce, os, language, md5);
+        PayCacheResponse response = api.restNewnetCachesPayRead(apiVersion, payHash, dappKey, protocol, version, ts, nonce, os, language, md5);
 
         // TODO: test validations
     }
@@ -182,8 +180,8 @@ public class RestApiTest {
     @Test
     public void restProofsCreateTest() throws ApiException {
         CreateProofRequest body = null;
-        String version = null;
-        CreateProofResponse response = api.restProofsCreate(body, version);
+        String apiVersion = null;
+        CreateProofResponse response = api.restProofsCreate(body, apiVersion);
 
         // TODO: test validations
     }
@@ -198,26 +196,9 @@ public class RestApiTest {
     @Test
     public void restProofsDeleteTest() throws ApiException {
         CancelProofRequest body = null;
+        String apiVersion = null;
         String proofHash = null;
-        String version = null;
-        CancelProofResponse response = api.restProofsDelete(body, proofHash, version);
-
-        // TODO: test validations
-    }
-    /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void restProofsUpdateTest() throws ApiException {
-        UpdateProofRequest body = null;
-        String proofHash = null;
-        String version = null;
-        UpdateProofResponse response = api.restProofsUpdate(body, proofHash, version);
+        CancelProofResponse response = api.restProofsDelete(body, apiVersion, proofHash);
 
         // TODO: test validations
     }

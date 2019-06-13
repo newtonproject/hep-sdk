@@ -40,15 +40,15 @@ class Dapp(object):
         'dapp_id': 'str',
         'dapp_name': 'str',
         'icon': 'str',
-        'public_key': 'str',
+        'dapp_public_key': 'str',
         'package_name': 'str',
         'bundle_id': 'str',
         'schema': 'str',
         'website': 'str',
         'download_url': 'str',
         'deposit_contract_address': 'str',
-        'dapp_type': 'str',
-        'dapp_category': 'str',
+        'dapp_type_id': 'int',
+        'dapp_category_id': 'int',
         'auth_login_callback': 'str',
         'pay_order_callback': 'str',
         'proof_submit_callback': 'str'
@@ -66,21 +66,21 @@ class Dapp(object):
         'dapp_id': 'dapp_id',
         'dapp_name': 'dapp_name',
         'icon': 'icon',
-        'public_key': 'public_key',
+        'dapp_public_key': 'dapp_public_key',
         'package_name': 'package_name',
         'bundle_id': 'bundle_id',
         'schema': 'schema',
         'website': 'website',
         'download_url': 'download_url',
         'deposit_contract_address': 'deposit_contract_address',
-        'dapp_type': 'dapp_type',
-        'dapp_category': 'dapp_category',
+        'dapp_type_id': 'dapp_type_id',
+        'dapp_category_id': 'dapp_category_id',
         'auth_login_callback': 'auth_login_callback',
         'pay_order_callback': 'pay_order_callback',
         'proof_submit_callback': 'proof_submit_callback'
     }
 
-    def __init__(self, dapp_key=None, protocol=None, version=None, ts=None, nonce=None, os=None, language=None, md5=None, dapp_id=None, dapp_name=None, icon=None, public_key=None, package_name=None, bundle_id=None, schema=None, website=None, download_url=None, deposit_contract_address=None, dapp_type=None, dapp_category=None, auth_login_callback=None, pay_order_callback=None, proof_submit_callback=None):  # noqa: E501
+    def __init__(self, dapp_key=None, protocol=None, version=None, ts=None, nonce=None, os=None, language=None, md5=None, dapp_id=None, dapp_name=None, icon=None, dapp_public_key=None, package_name=None, bundle_id=None, schema=None, website=None, download_url=None, deposit_contract_address=None, dapp_type_id=None, dapp_category_id=None, auth_login_callback=None, pay_order_callback=None, proof_submit_callback=None):  # noqa: E501
         """Dapp - a model defined in Swagger"""  # noqa: E501
         self._dapp_key = None
         self._protocol = None
@@ -93,15 +93,15 @@ class Dapp(object):
         self._dapp_id = None
         self._dapp_name = None
         self._icon = None
-        self._public_key = None
+        self._dapp_public_key = None
         self._package_name = None
         self._bundle_id = None
         self._schema = None
         self._website = None
         self._download_url = None
         self._deposit_contract_address = None
-        self._dapp_type = None
-        self._dapp_category = None
+        self._dapp_type_id = None
+        self._dapp_category_id = None
         self._auth_login_callback = None
         self._pay_order_callback = None
         self._proof_submit_callback = None
@@ -117,15 +117,15 @@ class Dapp(object):
         self.dapp_id = dapp_id
         self.dapp_name = dapp_name
         self.icon = icon
-        self.public_key = public_key
+        self.dapp_public_key = dapp_public_key
         self.package_name = package_name
         self.bundle_id = bundle_id
         self.schema = schema
         self.website = website
         self.download_url = download_url
         self.deposit_contract_address = deposit_contract_address
-        self.dapp_type = dapp_type
-        self.dapp_category = dapp_category
+        self.dapp_type_id = dapp_type_id
+        self.dapp_category_id = dapp_category_id
         self.auth_login_callback = auth_login_callback
         self.pay_order_callback = pay_order_callback
         self.proof_submit_callback = proof_submit_callback
@@ -406,29 +406,29 @@ class Dapp(object):
         self._icon = icon
 
     @property
-    def public_key(self):
-        """Gets the public_key of this Dapp.  # noqa: E501
+    def dapp_public_key(self):
+        """Gets the dapp_public_key of this Dapp.  # noqa: E501
 
         The public key of DApp  # noqa: E501
 
-        :return: The public_key of this Dapp.  # noqa: E501
+        :return: The dapp_public_key of this Dapp.  # noqa: E501
         :rtype: str
         """
-        return self._public_key
+        return self._dapp_public_key
 
-    @public_key.setter
-    def public_key(self, public_key):
-        """Sets the public_key of this Dapp.
+    @dapp_public_key.setter
+    def dapp_public_key(self, dapp_public_key):
+        """Sets the dapp_public_key of this Dapp.
 
         The public key of DApp  # noqa: E501
 
-        :param public_key: The public_key of this Dapp.  # noqa: E501
+        :param dapp_public_key: The dapp_public_key of this Dapp.  # noqa: E501
         :type: str
         """
-        if public_key is None:
-            raise ValueError("Invalid value for `public_key`, must not be `None`")  # noqa: E501
+        if dapp_public_key is None:
+            raise ValueError("Invalid value for `dapp_public_key`, must not be `None`")  # noqa: E501
 
-        self._public_key = public_key
+        self._dapp_public_key = dapp_public_key
 
     @property
     def package_name(self):
@@ -581,54 +581,54 @@ class Dapp(object):
         self._deposit_contract_address = deposit_contract_address
 
     @property
-    def dapp_type(self):
-        """Gets the dapp_type of this Dapp.  # noqa: E501
+    def dapp_type_id(self):
+        """Gets the dapp_type_id of this Dapp.  # noqa: E501
 
-        The dapp type. choices:android, ios, dweb,newdapp.  # noqa: E501
+        The dapp type ID.  # noqa: E501
 
-        :return: The dapp_type of this Dapp.  # noqa: E501
-        :rtype: str
+        :return: The dapp_type_id of this Dapp.  # noqa: E501
+        :rtype: int
         """
-        return self._dapp_type
+        return self._dapp_type_id
 
-    @dapp_type.setter
-    def dapp_type(self, dapp_type):
-        """Sets the dapp_type of this Dapp.
+    @dapp_type_id.setter
+    def dapp_type_id(self, dapp_type_id):
+        """Sets the dapp_type_id of this Dapp.
 
-        The dapp type. choices:android, ios, dweb,newdapp.  # noqa: E501
+        The dapp type ID.  # noqa: E501
 
-        :param dapp_type: The dapp_type of this Dapp.  # noqa: E501
-        :type: str
+        :param dapp_type_id: The dapp_type_id of this Dapp.  # noqa: E501
+        :type: int
         """
-        if dapp_type is None:
-            raise ValueError("Invalid value for `dapp_type`, must not be `None`")  # noqa: E501
+        if dapp_type_id is None:
+            raise ValueError("Invalid value for `dapp_type_id`, must not be `None`")  # noqa: E501
 
-        self._dapp_type = dapp_type
+        self._dapp_type_id = dapp_type_id
 
     @property
-    def dapp_category(self):
-        """Gets the dapp_category of this Dapp.  # noqa: E501
+    def dapp_category_id(self):
+        """Gets the dapp_category_id of this Dapp.  # noqa: E501
 
-        The dapp category. choices: game, retail.  # noqa: E501
+        The dapp category ID.  # noqa: E501
 
-        :return: The dapp_category of this Dapp.  # noqa: E501
-        :rtype: str
+        :return: The dapp_category_id of this Dapp.  # noqa: E501
+        :rtype: int
         """
-        return self._dapp_category
+        return self._dapp_category_id
 
-    @dapp_category.setter
-    def dapp_category(self, dapp_category):
-        """Sets the dapp_category of this Dapp.
+    @dapp_category_id.setter
+    def dapp_category_id(self, dapp_category_id):
+        """Sets the dapp_category_id of this Dapp.
 
-        The dapp category. choices: game, retail.  # noqa: E501
+        The dapp category ID.  # noqa: E501
 
-        :param dapp_category: The dapp_category of this Dapp.  # noqa: E501
-        :type: str
+        :param dapp_category_id: The dapp_category_id of this Dapp.  # noqa: E501
+        :type: int
         """
-        if dapp_category is None:
-            raise ValueError("Invalid value for `dapp_category`, must not be `None`")  # noqa: E501
+        if dapp_category_id is None:
+            raise ValueError("Invalid value for `dapp_category_id`, must not be `None`")  # noqa: E501
 
-        self._dapp_category = dapp_category
+        self._dapp_category_id = dapp_category_id
 
     @property
     def auth_login_callback(self):

@@ -153,9 +153,9 @@ class DappTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "public_key"
+     * Test attribute "dapp_public_key"
      */
-    public function testPropertyPublicKey()
+    public function testPropertyDappPublicKey()
     {
     }
 
@@ -202,16 +202,16 @@ class DappTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "dapp_type"
+     * Test attribute "dapp_type_id"
      */
-    public function testPropertyDappType()
+    public function testPropertyDappTypeId()
     {
     }
 
     /**
-     * Test attribute "dapp_category"
+     * Test attribute "dapp_category_id"
      */
-    public function testPropertyDappCategory()
+    public function testPropertyDappCategoryId()
     {
     }
 

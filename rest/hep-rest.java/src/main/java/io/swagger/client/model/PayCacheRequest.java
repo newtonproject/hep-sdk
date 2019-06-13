@@ -25,7 +25,7 @@ import java.io.IOException;
  * PayCacheRequest
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-06-12T11:49:49.487+08:00[Asia/Shanghai]")public class PayCacheRequest {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-06-13T17:16:26.272+08:00[Asia/Shanghai]")public class PayCacheRequest {
 
   @SerializedName("dapp_key")
   private String dappKey = null;

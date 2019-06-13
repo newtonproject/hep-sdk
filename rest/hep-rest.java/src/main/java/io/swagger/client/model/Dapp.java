@@ -25,7 +25,7 @@ import java.io.IOException;
  * Dapp
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-06-12T11:49:49.487+08:00[Asia/Shanghai]")public class Dapp {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-06-13T17:16:26.272+08:00[Asia/Shanghai]")public class Dapp {
 
   @SerializedName("dapp_key")
   private String dappKey = null;
@@ -60,8 +60,8 @@ import java.io.IOException;
   @SerializedName("icon")
   private String icon = null;
 
-  @SerializedName("public_key")
-  private String publicKey = null;
+  @SerializedName("dapp_public_key")
+  private String dappPublicKey = null;
 
   @SerializedName("package_name")
   private String packageName = null;
@@ -81,11 +81,11 @@ import java.io.IOException;
   @SerializedName("deposit_contract_address")
   private String depositContractAddress = null;
 
-  @SerializedName("dapp_type")
-  private String dappType = null;
+  @SerializedName("dapp_type_id")
+  private Integer dappTypeId = null;
 
-  @SerializedName("dapp_category")
-  private String dappCategory = null;
+  @SerializedName("dapp_category_id")
+  private Integer dappCategoryId = null;
 
   @SerializedName("auth_login_callback")
   private String authLoginCallback = null;
@@ -293,8 +293,8 @@ import java.io.IOException;
   public void setIcon(String icon) {
     this.icon = icon;
   }
-  public Dapp publicKey(String publicKey) {
-    this.publicKey = publicKey;
+  public Dapp dappPublicKey(String dappPublicKey) {
+    this.dappPublicKey = dappPublicKey;
     return this;
   }
 
@@ -302,14 +302,14 @@ import java.io.IOException;
 
   /**
   * The public key of DApp
-  * @return publicKey
+  * @return dappPublicKey
   **/
   @Schema(required = true, description = "The public key of DApp")
-  public String getPublicKey() {
-    return publicKey;
+  public String getDappPublicKey() {
+    return dappPublicKey;
   }
-  public void setPublicKey(String publicKey) {
-    this.publicKey = publicKey;
+  public void setDappPublicKey(String dappPublicKey) {
+    this.dappPublicKey = dappPublicKey;
   }
   public Dapp packageName(String packageName) {
     this.packageName = packageName;
@@ -419,41 +419,41 @@ import java.io.IOException;
   public void setDepositContractAddress(String depositContractAddress) {
     this.depositContractAddress = depositContractAddress;
   }
-  public Dapp dappType(String dappType) {
-    this.dappType = dappType;
+  public Dapp dappTypeId(Integer dappTypeId) {
+    this.dappTypeId = dappTypeId;
     return this;
   }
 
   
 
   /**
-  * The dapp type. choices:android, ios, dweb,newdapp.
-  * @return dappType
+  * The dapp type ID.
+  * @return dappTypeId
   **/
-  @Schema(required = true, description = "The dapp type. choices:android, ios, dweb,newdapp.")
-  public String getDappType() {
-    return dappType;
+  @Schema(required = true, description = "The dapp type ID.")
+  public Integer getDappTypeId() {
+    return dappTypeId;
   }
-  public void setDappType(String dappType) {
-    this.dappType = dappType;
+  public void setDappTypeId(Integer dappTypeId) {
+    this.dappTypeId = dappTypeId;
   }
-  public Dapp dappCategory(String dappCategory) {
-    this.dappCategory = dappCategory;
+  public Dapp dappCategoryId(Integer dappCategoryId) {
+    this.dappCategoryId = dappCategoryId;
     return this;
   }
 
   
 
   /**
-  * The dapp category. choices: game, retail.
-  * @return dappCategory
+  * The dapp category ID.
+  * @return dappCategoryId
   **/
-  @Schema(required = true, description = "The dapp category. choices: game, retail.")
-  public String getDappCategory() {
-    return dappCategory;
+  @Schema(required = true, description = "The dapp category ID.")
+  public Integer getDappCategoryId() {
+    return dappCategoryId;
   }
-  public void setDappCategory(String dappCategory) {
-    this.dappCategory = dappCategory;
+  public void setDappCategoryId(Integer dappCategoryId) {
+    this.dappCategoryId = dappCategoryId;
   }
   public Dapp authLoginCallback(String authLoginCallback) {
     this.authLoginCallback = authLoginCallback;
@@ -529,15 +529,15 @@ import java.io.IOException;
         Objects.equals(this.dappId, dapp.dappId) &&
         Objects.equals(this.dappName, dapp.dappName) &&
         Objects.equals(this.icon, dapp.icon) &&
-        Objects.equals(this.publicKey, dapp.publicKey) &&
+        Objects.equals(this.dappPublicKey, dapp.dappPublicKey) &&
         Objects.equals(this.packageName, dapp.packageName) &&
         Objects.equals(this.bundleId, dapp.bundleId) &&
         Objects.equals(this.schema, dapp.schema) &&
         Objects.equals(this.website, dapp.website) &&
         Objects.equals(this.downloadUrl, dapp.downloadUrl) &&
         Objects.equals(this.depositContractAddress, dapp.depositContractAddress) &&
-        Objects.equals(this.dappType, dapp.dappType) &&
-        Objects.equals(this.dappCategory, dapp.dappCategory) &&
+        Objects.equals(this.dappTypeId, dapp.dappTypeId) &&
+        Objects.equals(this.dappCategoryId, dapp.dappCategoryId) &&
         Objects.equals(this.authLoginCallback, dapp.authLoginCallback) &&
         Objects.equals(this.payOrderCallback, dapp.payOrderCallback) &&
         Objects.equals(this.proofSubmitCallback, dapp.proofSubmitCallback);
@@ -545,7 +545,7 @@ import java.io.IOException;
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(dappKey, protocol, version, ts, nonce, os, language, md5, dappId, dappName, icon, publicKey, packageName, bundleId, schema, website, downloadUrl, depositContractAddress, dappType, dappCategory, authLoginCallback, payOrderCallback, proofSubmitCallback);
+    return java.util.Objects.hash(dappKey, protocol, version, ts, nonce, os, language, md5, dappId, dappName, icon, dappPublicKey, packageName, bundleId, schema, website, downloadUrl, depositContractAddress, dappTypeId, dappCategoryId, authLoginCallback, payOrderCallback, proofSubmitCallback);
   }
 
   @Override
@@ -564,15 +564,15 @@ import java.io.IOException;
     sb.append("    dappId: ").append(toIndentedString(dappId)).append("\n");
     sb.append("    dappName: ").append(toIndentedString(dappName)).append("\n");
     sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
-    sb.append("    publicKey: ").append(toIndentedString(publicKey)).append("\n");
+    sb.append("    dappPublicKey: ").append(toIndentedString(dappPublicKey)).append("\n");
     sb.append("    packageName: ").append(toIndentedString(packageName)).append("\n");
     sb.append("    bundleId: ").append(toIndentedString(bundleId)).append("\n");
     sb.append("    schema: ").append(toIndentedString(schema)).append("\n");
     sb.append("    website: ").append(toIndentedString(website)).append("\n");
     sb.append("    downloadUrl: ").append(toIndentedString(downloadUrl)).append("\n");
     sb.append("    depositContractAddress: ").append(toIndentedString(depositContractAddress)).append("\n");
-    sb.append("    dappType: ").append(toIndentedString(dappType)).append("\n");
-    sb.append("    dappCategory: ").append(toIndentedString(dappCategory)).append("\n");
+    sb.append("    dappTypeId: ").append(toIndentedString(dappTypeId)).append("\n");
+    sb.append("    dappCategoryId: ").append(toIndentedString(dappCategoryId)).append("\n");
     sb.append("    authLoginCallback: ").append(toIndentedString(authLoginCallback)).append("\n");
     sb.append("    payOrderCallback: ").append(toIndentedString(payOrderCallback)).append("\n");
     sb.append("    proofSubmitCallback: ").append(toIndentedString(proofSubmitCallback)).append("\n");

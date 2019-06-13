@@ -4,19 +4,18 @@ All URIs are relative to *http://127.0.0.1:8000/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**restDappsRead**](RestApi.md#restDappsRead) | **GET** /rest/v{version}/dapps/{dapp_id}/ | 
-[**restNewidsRead**](RestApi.md#restNewidsRead) | **GET** /rest/v{version}/newids/{newid}/ | 
-[**restNewnetCachesAuthCreate**](RestApi.md#restNewnetCachesAuthCreate) | **POST** /rest/v{version}/newnet/caches/auth/ | 
-[**restNewnetCachesAuthRead**](RestApi.md#restNewnetCachesAuthRead) | **GET** /rest/v{version}/newnet/caches/auth/{auth_hash}/ | 
-[**restNewnetCachesPayCreate**](RestApi.md#restNewnetCachesPayCreate) | **POST** /rest/v{version}/newnet/caches/pay/ | 
-[**restNewnetCachesPayRead**](RestApi.md#restNewnetCachesPayRead) | **GET** /rest/v{version}/newnet/caches/pay/{pay_hash}/ | 
-[**restProofsCreate**](RestApi.md#restProofsCreate) | **POST** /rest/v{version}/proofs/ | 
-[**restProofsDelete**](RestApi.md#restProofsDelete) | **DELETE** /rest/v{version}/proofs/{proof_hash}/ | 
-[**restProofsUpdate**](RestApi.md#restProofsUpdate) | **PUT** /rest/v{version}/proofs/{proof_hash}/ | 
+[**restDappsRead**](RestApi.md#restDappsRead) | **GET** /rest/v{api_version}/dapps/{dapp_id}/ | 
+[**restNewidsRead**](RestApi.md#restNewidsRead) | **GET** /rest/v{api_version}/newids/{newid}/ | 
+[**restNewnetCachesAuthCreate**](RestApi.md#restNewnetCachesAuthCreate) | **POST** /rest/v{api_version}/newnet/caches/auth/ | 
+[**restNewnetCachesAuthRead**](RestApi.md#restNewnetCachesAuthRead) | **GET** /rest/v{api_version}/newnet/caches/auth/{auth_hash}/ | 
+[**restNewnetCachesPayCreate**](RestApi.md#restNewnetCachesPayCreate) | **POST** /rest/v{api_version}/newnet/caches/pay/ | 
+[**restNewnetCachesPayRead**](RestApi.md#restNewnetCachesPayRead) | **GET** /rest/v{api_version}/newnet/caches/pay/{pay_hash}/ | 
+[**restProofsCreate**](RestApi.md#restProofsCreate) | **POST** /rest/v{api_version}/proofs/ | 
+[**restProofsDelete**](RestApi.md#restProofsDelete) | **DELETE** /rest/v{api_version}/proofs/{proof_hash}/ | 
 
 <a name="restDappsRead"></a>
 # **restDappsRead**
-> Dapp restDappsRead(dappId, version, dappKey, protocol, version2, ts, nonce, os, language, md5)
+> Dapp restDappsRead(apiVersion, dappId, dappKey, protocol, version, ts, nonce, os, language, md5)
 
 
 
@@ -36,18 +35,18 @@ Basic.setUsername("YOUR USERNAME");
 Basic.setPassword("YOUR PASSWORD");
 
 RestApi apiInstance = new RestApi();
+String apiVersion = "apiVersion_example"; // String | 
 String dappId = "dappId_example"; // String | 
-String version = "version_example"; // String | 
 String dappKey = "dappKey_example"; // String | The decentralized application access key
 String protocol = "protocol_example"; // String | The protocol name. default is 'HEP'.
-String version2 = "version_example"; // String | The protocol version such as '1.0'
+String version = "version_example"; // String | The protocol version such as '1.0'
 Integer ts = 56; // Integer | The current timestamp
 String nonce = "nonce_example"; // String | The random string or auto-increment sequence
 String os = "os_example"; // String | The operating system of client such as ios, android, dweb,etc.
 String language = "language_example"; // String | The i18n language code such as zh, en, etc.
 String md5 = "md5_example"; // String | The HMAC authentication md5 checksum
 try {
-    Dapp result = apiInstance.restDappsRead(dappId, version, dappKey, protocol, version2, ts, nonce, os, language, md5);
+    Dapp result = apiInstance.restDappsRead(apiVersion, dappId, dappKey, protocol, version, ts, nonce, os, language, md5);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RestApi#restDappsRead");
@@ -59,11 +58,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **apiVersion** | **String**|  |
  **dappId** | **String**|  |
- **version** | **String**|  |
  **dappKey** | **String**| The decentralized application access key |
  **protocol** | **String**| The protocol name. default is &#x27;HEP&#x27;. |
- **version2** | **String**| The protocol version such as &#x27;1.0&#x27; |
+ **version** | **String**| The protocol version such as &#x27;1.0&#x27; |
  **ts** | **Integer**| The current timestamp |
  **nonce** | **String**| The random string or auto-increment sequence |
  **os** | **String**| The operating system of client such as ios, android, dweb,etc. |
@@ -85,7 +84,7 @@ Name | Type | Description  | Notes
 
 <a name="restNewidsRead"></a>
 # **restNewidsRead**
-> NewidResponse restNewidsRead(newid, version, dappKey, protocol, version2, ts, nonce, os, language, md5)
+> NewidResponse restNewidsRead(apiVersion, newid, dappKey, protocol, version, ts, nonce, os, language, md5)
 
 
 
@@ -107,18 +106,18 @@ Basic.setUsername("YOUR USERNAME");
 Basic.setPassword("YOUR PASSWORD");
 
 RestApi apiInstance = new RestApi();
+String apiVersion = "apiVersion_example"; // String | 
 String newid = "newid_example"; // String | 
-String version = "version_example"; // String | 
 String dappKey = "dappKey_example"; // String | The decentralized application access key
 String protocol = "protocol_example"; // String | The protocol name. default is 'HEP'.
-String version2 = "version_example"; // String | The protocol version such as '1.0'
+String version = "version_example"; // String | The protocol version such as '1.0'
 Integer ts = 56; // Integer | The current timestamp
 String nonce = "nonce_example"; // String | The random string or auto-increment sequence
 String os = "os_example"; // String | The operating system of client such as ios, android, dweb,etc.
 String language = "language_example"; // String | The i18n language code such as zh, en, etc.
 String md5 = "md5_example"; // String | The HMAC authentication md5 checksum
 try {
-    NewidResponse result = apiInstance.restNewidsRead(newid, version, dappKey, protocol, version2, ts, nonce, os, language, md5);
+    NewidResponse result = apiInstance.restNewidsRead(apiVersion, newid, dappKey, protocol, version, ts, nonce, os, language, md5);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RestApi#restNewidsRead");
@@ -130,11 +129,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **apiVersion** | **String**|  |
  **newid** | **String**|  |
- **version** | **String**|  |
  **dappKey** | **String**| The decentralized application access key |
  **protocol** | **String**| The protocol name. default is &#x27;HEP&#x27;. |
- **version2** | **String**| The protocol version such as &#x27;1.0&#x27; |
+ **version** | **String**| The protocol version such as &#x27;1.0&#x27; |
  **ts** | **Integer**| The current timestamp |
  **nonce** | **String**| The random string or auto-increment sequence |
  **os** | **String**| The operating system of client such as ios, android, dweb,etc. |
@@ -156,7 +155,7 @@ Name | Type | Description  | Notes
 
 <a name="restNewnetCachesAuthCreate"></a>
 # **restNewnetCachesAuthCreate**
-> CreateAuthCacheResponse restNewnetCachesAuthCreate(body, version)
+> CreateAuthCacheResponse restNewnetCachesAuthCreate(body, apiVersion)
 
 
 
@@ -179,9 +178,9 @@ Basic.setPassword("YOUR PASSWORD");
 
 RestApi apiInstance = new RestApi();
 AuthCacheRequest body = new AuthCacheRequest(); // AuthCacheRequest | 
-String version = "version_example"; // String | 
+String apiVersion = "apiVersion_example"; // String | 
 try {
-    CreateAuthCacheResponse result = apiInstance.restNewnetCachesAuthCreate(body, version);
+    CreateAuthCacheResponse result = apiInstance.restNewnetCachesAuthCreate(body, apiVersion);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RestApi#restNewnetCachesAuthCreate");
@@ -194,7 +193,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**AuthCacheRequest**](AuthCacheRequest.md)|  |
- **version** | **String**|  |
+ **apiVersion** | **String**|  |
 
 ### Return type
 
@@ -211,7 +210,7 @@ Name | Type | Description  | Notes
 
 <a name="restNewnetCachesAuthRead"></a>
 # **restNewnetCachesAuthRead**
-> AuthCacheResponse restNewnetCachesAuthRead(authHash, version, dappKey, protocol, version2, ts, nonce, os, language, md5)
+> AuthCacheResponse restNewnetCachesAuthRead(apiVersion, authHash, dappKey, protocol, version, ts, nonce, os, language, md5)
 
 
 
@@ -233,18 +232,18 @@ Basic.setUsername("YOUR USERNAME");
 Basic.setPassword("YOUR PASSWORD");
 
 RestApi apiInstance = new RestApi();
+String apiVersion = "apiVersion_example"; // String | 
 String authHash = "authHash_example"; // String | 
-String version = "version_example"; // String | 
 String dappKey = "dappKey_example"; // String | The decentralized application access key
 String protocol = "protocol_example"; // String | The protocol name. default is 'HEP'.
-String version2 = "version_example"; // String | The protocol version such as '1.0'
+String version = "version_example"; // String | The protocol version such as '1.0'
 Integer ts = 56; // Integer | The current timestamp
 String nonce = "nonce_example"; // String | The random string or auto-increment sequence
 String os = "os_example"; // String | The operating system of client such as ios, android, dweb,etc.
 String language = "language_example"; // String | The i18n language code such as zh, en, etc.
 String md5 = "md5_example"; // String | The HMAC authentication md5 checksum
 try {
-    AuthCacheResponse result = apiInstance.restNewnetCachesAuthRead(authHash, version, dappKey, protocol, version2, ts, nonce, os, language, md5);
+    AuthCacheResponse result = apiInstance.restNewnetCachesAuthRead(apiVersion, authHash, dappKey, protocol, version, ts, nonce, os, language, md5);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RestApi#restNewnetCachesAuthRead");
@@ -256,11 +255,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **apiVersion** | **String**|  |
  **authHash** | **String**|  |
- **version** | **String**|  |
  **dappKey** | **String**| The decentralized application access key |
  **protocol** | **String**| The protocol name. default is &#x27;HEP&#x27;. |
- **version2** | **String**| The protocol version such as &#x27;1.0&#x27; |
+ **version** | **String**| The protocol version such as &#x27;1.0&#x27; |
  **ts** | **Integer**| The current timestamp |
  **nonce** | **String**| The random string or auto-increment sequence |
  **os** | **String**| The operating system of client such as ios, android, dweb,etc. |
@@ -282,7 +281,7 @@ Name | Type | Description  | Notes
 
 <a name="restNewnetCachesPayCreate"></a>
 # **restNewnetCachesPayCreate**
-> CreatePayCacheResponse restNewnetCachesPayCreate(body, version)
+> CreatePayCacheResponse restNewnetCachesPayCreate(body, apiVersion)
 
 
 
@@ -305,9 +304,9 @@ Basic.setPassword("YOUR PASSWORD");
 
 RestApi apiInstance = new RestApi();
 PayCacheRequest body = new PayCacheRequest(); // PayCacheRequest | 
-String version = "version_example"; // String | 
+String apiVersion = "apiVersion_example"; // String | 
 try {
-    CreatePayCacheResponse result = apiInstance.restNewnetCachesPayCreate(body, version);
+    CreatePayCacheResponse result = apiInstance.restNewnetCachesPayCreate(body, apiVersion);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RestApi#restNewnetCachesPayCreate");
@@ -320,7 +319,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**PayCacheRequest**](PayCacheRequest.md)|  |
- **version** | **String**|  |
+ **apiVersion** | **String**|  |
 
 ### Return type
 
@@ -337,7 +336,7 @@ Name | Type | Description  | Notes
 
 <a name="restNewnetCachesPayRead"></a>
 # **restNewnetCachesPayRead**
-> PayCacheResponse restNewnetCachesPayRead(payHash, version, dappKey, protocol, version2, ts, nonce, os, language, md5)
+> PayCacheResponse restNewnetCachesPayRead(apiVersion, payHash, dappKey, protocol, version, ts, nonce, os, language, md5)
 
 
 
@@ -359,18 +358,18 @@ Basic.setUsername("YOUR USERNAME");
 Basic.setPassword("YOUR PASSWORD");
 
 RestApi apiInstance = new RestApi();
+String apiVersion = "apiVersion_example"; // String | 
 String payHash = "payHash_example"; // String | 
-String version = "version_example"; // String | 
 String dappKey = "dappKey_example"; // String | The decentralized application access key
 String protocol = "protocol_example"; // String | The protocol name. default is 'HEP'.
-String version2 = "version_example"; // String | The protocol version such as '1.0'
+String version = "version_example"; // String | The protocol version such as '1.0'
 Integer ts = 56; // Integer | The current timestamp
 String nonce = "nonce_example"; // String | The random string or auto-increment sequence
 String os = "os_example"; // String | The operating system of client such as ios, android, dweb,etc.
 String language = "language_example"; // String | The i18n language code such as zh, en, etc.
 String md5 = "md5_example"; // String | The HMAC authentication md5 checksum
 try {
-    PayCacheResponse result = apiInstance.restNewnetCachesPayRead(payHash, version, dappKey, protocol, version2, ts, nonce, os, language, md5);
+    PayCacheResponse result = apiInstance.restNewnetCachesPayRead(apiVersion, payHash, dappKey, protocol, version, ts, nonce, os, language, md5);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RestApi#restNewnetCachesPayRead");
@@ -382,11 +381,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **apiVersion** | **String**|  |
  **payHash** | **String**|  |
- **version** | **String**|  |
  **dappKey** | **String**| The decentralized application access key |
  **protocol** | **String**| The protocol name. default is &#x27;HEP&#x27;. |
- **version2** | **String**| The protocol version such as &#x27;1.0&#x27; |
+ **version** | **String**| The protocol version such as &#x27;1.0&#x27; |
  **ts** | **Integer**| The current timestamp |
  **nonce** | **String**| The random string or auto-increment sequence |
  **os** | **String**| The operating system of client such as ios, android, dweb,etc. |
@@ -408,7 +407,7 @@ Name | Type | Description  | Notes
 
 <a name="restProofsCreate"></a>
 # **restProofsCreate**
-> CreateProofResponse restProofsCreate(body, version)
+> CreateProofResponse restProofsCreate(body, apiVersion)
 
 
 
@@ -429,9 +428,9 @@ Basic.setPassword("YOUR PASSWORD");
 
 RestApi apiInstance = new RestApi();
 CreateProofRequest body = new CreateProofRequest(); // CreateProofRequest | 
-String version = "version_example"; // String | 
+String apiVersion = "apiVersion_example"; // String | 
 try {
-    CreateProofResponse result = apiInstance.restProofsCreate(body, version);
+    CreateProofResponse result = apiInstance.restProofsCreate(body, apiVersion);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RestApi#restProofsCreate");
@@ -444,7 +443,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**CreateProofRequest**](CreateProofRequest.md)|  |
- **version** | **String**|  |
+ **apiVersion** | **String**|  |
 
 ### Return type
 
@@ -461,7 +460,7 @@ Name | Type | Description  | Notes
 
 <a name="restProofsDelete"></a>
 # **restProofsDelete**
-> CancelProofResponse restProofsDelete(body, proofHash, version)
+> CancelProofResponse restProofsDelete(body, apiVersion, proofHash)
 
 
 
@@ -482,10 +481,10 @@ Basic.setPassword("YOUR PASSWORD");
 
 RestApi apiInstance = new RestApi();
 CancelProofRequest body = new CancelProofRequest(); // CancelProofRequest | 
+String apiVersion = "apiVersion_example"; // String | 
 String proofHash = "proofHash_example"; // String | 
-String version = "version_example"; // String | 
 try {
-    CancelProofResponse result = apiInstance.restProofsDelete(body, proofHash, version);
+    CancelProofResponse result = apiInstance.restProofsDelete(body, apiVersion, proofHash);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RestApi#restProofsDelete");
@@ -498,67 +497,12 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**CancelProofRequest**](CancelProofRequest.md)|  |
+ **apiVersion** | **String**|  |
  **proofHash** | **String**|  |
- **version** | **String**|  |
 
 ### Return type
 
 [**CancelProofResponse**](CancelProofResponse.md)
-
-### Authorization
-
-[Basic](../README.md#Basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="restProofsUpdate"></a>
-# **restProofsUpdate**
-> UpdateProofResponse restProofsUpdate(body, proofHash, version)
-
-
-
-### Example
-```java
-// Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.RestApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-// Configure HTTP basic authorization: Basic
-HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-Basic.setUsername("YOUR USERNAME");
-Basic.setPassword("YOUR PASSWORD");
-
-RestApi apiInstance = new RestApi();
-UpdateProofRequest body = new UpdateProofRequest(); // UpdateProofRequest | 
-String proofHash = "proofHash_example"; // String | 
-String version = "version_example"; // String | 
-try {
-    UpdateProofResponse result = apiInstance.restProofsUpdate(body, proofHash, version);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling RestApi#restProofsUpdate");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateProofRequest**](UpdateProofRequest.md)|  |
- **proofHash** | **String**|  |
- **version** | **String**|  |
-
-### Return type
-
-[**UpdateProofResponse**](UpdateProofResponse.md)
 
 ### Authorization
 

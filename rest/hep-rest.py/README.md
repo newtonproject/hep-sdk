@@ -57,11 +57,11 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = hep_rest.RestApi(hep_rest.ApiClient(configuration))
+api_version = 'api_version_example' # str | 
 dapp_id = 'dapp_id_example' # str | 
-version = 'version_example' # str | 
 dapp_key = 'dapp_key_example' # str | The decentralized application access key
 protocol = 'protocol_example' # str | The protocol name. default is 'HEP'.
-version2 = 'version_example' # str | The protocol version such as '1.0'
+version = 'version_example' # str | The protocol version such as '1.0'
 ts = 56 # int | The current timestamp
 nonce = 'nonce_example' # str | The random string or auto-increment sequence
 os = 'os_example' # str | The operating system of client such as ios, android, dweb,etc.
@@ -69,7 +69,7 @@ language = 'language_example' # str | The i18n language code such as zh, en, etc
 md5 = 'md5_example' # str | The HMAC authentication md5 checksum
 
 try:
-    api_response = api_instance.rest_dapps_read(dapp_id, version, dapp_key, protocol, version2, ts, nonce, os, language, md5)
+    api_response = api_instance.rest_dapps_read(api_version, dapp_id, dapp_key, protocol, version, ts, nonce, os, language, md5)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RestApi->rest_dapps_read: %s\n" % e)
@@ -80,11 +80,11 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = hep_rest.RestApi(hep_rest.ApiClient(configuration))
+api_version = 'api_version_example' # str | 
 newid = 'newid_example' # str | 
-version = 'version_example' # str | 
 dapp_key = 'dapp_key_example' # str | The decentralized application access key
 protocol = 'protocol_example' # str | The protocol name. default is 'HEP'.
-version2 = 'version_example' # str | The protocol version such as '1.0'
+version = 'version_example' # str | The protocol version such as '1.0'
 ts = 56 # int | The current timestamp
 nonce = 'nonce_example' # str | The random string or auto-increment sequence
 os = 'os_example' # str | The operating system of client such as ios, android, dweb,etc.
@@ -92,7 +92,7 @@ language = 'language_example' # str | The i18n language code such as zh, en, etc
 md5 = 'md5_example' # str | The HMAC authentication md5 checksum
 
 try:
-    api_response = api_instance.rest_newids_read(newid, version, dapp_key, protocol, version2, ts, nonce, os, language, md5)
+    api_response = api_instance.rest_newids_read(api_version, newid, dapp_key, protocol, version, ts, nonce, os, language, md5)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RestApi->rest_newids_read: %s\n" % e)
@@ -104,10 +104,10 @@ configuration.password = 'YOUR_PASSWORD'
 # create an instance of the API class
 api_instance = hep_rest.RestApi(hep_rest.ApiClient(configuration))
 body = hep_rest.AuthCacheRequest() # AuthCacheRequest | 
-version = 'version_example' # str | 
+api_version = 'api_version_example' # str | 
 
 try:
-    api_response = api_instance.rest_newnet_caches_auth_create(body, version)
+    api_response = api_instance.rest_newnet_caches_auth_create(body, api_version)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RestApi->rest_newnet_caches_auth_create: %s\n" % e)
@@ -118,11 +118,11 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = hep_rest.RestApi(hep_rest.ApiClient(configuration))
+api_version = 'api_version_example' # str | 
 auth_hash = 'auth_hash_example' # str | 
-version = 'version_example' # str | 
 dapp_key = 'dapp_key_example' # str | The decentralized application access key
 protocol = 'protocol_example' # str | The protocol name. default is 'HEP'.
-version2 = 'version_example' # str | The protocol version such as '1.0'
+version = 'version_example' # str | The protocol version such as '1.0'
 ts = 56 # int | The current timestamp
 nonce = 'nonce_example' # str | The random string or auto-increment sequence
 os = 'os_example' # str | The operating system of client such as ios, android, dweb,etc.
@@ -130,7 +130,7 @@ language = 'language_example' # str | The i18n language code such as zh, en, etc
 md5 = 'md5_example' # str | The HMAC authentication md5 checksum
 
 try:
-    api_response = api_instance.rest_newnet_caches_auth_read(auth_hash, version, dapp_key, protocol, version2, ts, nonce, os, language, md5)
+    api_response = api_instance.rest_newnet_caches_auth_read(api_version, auth_hash, dapp_key, protocol, version, ts, nonce, os, language, md5)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RestApi->rest_newnet_caches_auth_read: %s\n" % e)
@@ -142,10 +142,10 @@ configuration.password = 'YOUR_PASSWORD'
 # create an instance of the API class
 api_instance = hep_rest.RestApi(hep_rest.ApiClient(configuration))
 body = hep_rest.PayCacheRequest() # PayCacheRequest | 
-version = 'version_example' # str | 
+api_version = 'api_version_example' # str | 
 
 try:
-    api_response = api_instance.rest_newnet_caches_pay_create(body, version)
+    api_response = api_instance.rest_newnet_caches_pay_create(body, api_version)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RestApi->rest_newnet_caches_pay_create: %s\n" % e)
@@ -156,11 +156,11 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = hep_rest.RestApi(hep_rest.ApiClient(configuration))
+api_version = 'api_version_example' # str | 
 pay_hash = 'pay_hash_example' # str | 
-version = 'version_example' # str | 
 dapp_key = 'dapp_key_example' # str | The decentralized application access key
 protocol = 'protocol_example' # str | The protocol name. default is 'HEP'.
-version2 = 'version_example' # str | The protocol version such as '1.0'
+version = 'version_example' # str | The protocol version such as '1.0'
 ts = 56 # int | The current timestamp
 nonce = 'nonce_example' # str | The random string or auto-increment sequence
 os = 'os_example' # str | The operating system of client such as ios, android, dweb,etc.
@@ -168,7 +168,7 @@ language = 'language_example' # str | The i18n language code such as zh, en, etc
 md5 = 'md5_example' # str | The HMAC authentication md5 checksum
 
 try:
-    api_response = api_instance.rest_newnet_caches_pay_read(pay_hash, version, dapp_key, protocol, version2, ts, nonce, os, language, md5)
+    api_response = api_instance.rest_newnet_caches_pay_read(api_version, pay_hash, dapp_key, protocol, version, ts, nonce, os, language, md5)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RestApi->rest_newnet_caches_pay_read: %s\n" % e)
@@ -180,10 +180,10 @@ configuration.password = 'YOUR_PASSWORD'
 # create an instance of the API class
 api_instance = hep_rest.RestApi(hep_rest.ApiClient(configuration))
 body = hep_rest.CreateProofRequest() # CreateProofRequest | 
-version = 'version_example' # str | 
+api_version = 'api_version_example' # str | 
 
 try:
-    api_response = api_instance.rest_proofs_create(body, version)
+    api_response = api_instance.rest_proofs_create(body, api_version)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RestApi->rest_proofs_create: %s\n" % e)
@@ -195,30 +195,14 @@ configuration.password = 'YOUR_PASSWORD'
 # create an instance of the API class
 api_instance = hep_rest.RestApi(hep_rest.ApiClient(configuration))
 body = hep_rest.CancelProofRequest() # CancelProofRequest | 
+api_version = 'api_version_example' # str | 
 proof_hash = 'proof_hash_example' # str | 
-version = 'version_example' # str | 
 
 try:
-    api_response = api_instance.rest_proofs_delete(body, proof_hash, version)
+    api_response = api_instance.rest_proofs_delete(body, api_version, proof_hash)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RestApi->rest_proofs_delete: %s\n" % e)
-# Configure HTTP basic authorization: Basic
-configuration = hep_rest.Configuration()
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
-
-# create an instance of the API class
-api_instance = hep_rest.RestApi(hep_rest.ApiClient(configuration))
-body = hep_rest.UpdateProofRequest() # UpdateProofRequest | 
-proof_hash = 'proof_hash_example' # str | 
-version = 'version_example' # str | 
-
-try:
-    api_response = api_instance.rest_proofs_update(body, proof_hash, version)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling RestApi->rest_proofs_update: %s\n" % e)
 ```
 
 ## Documentation for API Endpoints
@@ -227,15 +211,14 @@ All URIs are relative to *http://127.0.0.1:8000/*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*RestApi* | [**rest_dapps_read**](docs/RestApi.md#rest_dapps_read) | **GET** /rest/v{version}/dapps/{dapp_id}/ | 
-*RestApi* | [**rest_newids_read**](docs/RestApi.md#rest_newids_read) | **GET** /rest/v{version}/newids/{newid}/ | 
-*RestApi* | [**rest_newnet_caches_auth_create**](docs/RestApi.md#rest_newnet_caches_auth_create) | **POST** /rest/v{version}/newnet/caches/auth/ | 
-*RestApi* | [**rest_newnet_caches_auth_read**](docs/RestApi.md#rest_newnet_caches_auth_read) | **GET** /rest/v{version}/newnet/caches/auth/{auth_hash}/ | 
-*RestApi* | [**rest_newnet_caches_pay_create**](docs/RestApi.md#rest_newnet_caches_pay_create) | **POST** /rest/v{version}/newnet/caches/pay/ | 
-*RestApi* | [**rest_newnet_caches_pay_read**](docs/RestApi.md#rest_newnet_caches_pay_read) | **GET** /rest/v{version}/newnet/caches/pay/{pay_hash}/ | 
-*RestApi* | [**rest_proofs_create**](docs/RestApi.md#rest_proofs_create) | **POST** /rest/v{version}/proofs/ | 
-*RestApi* | [**rest_proofs_delete**](docs/RestApi.md#rest_proofs_delete) | **DELETE** /rest/v{version}/proofs/{proof_hash}/ | 
-*RestApi* | [**rest_proofs_update**](docs/RestApi.md#rest_proofs_update) | **PUT** /rest/v{version}/proofs/{proof_hash}/ | 
+*RestApi* | [**rest_dapps_read**](docs/RestApi.md#rest_dapps_read) | **GET** /rest/v{api_version}/dapps/{dapp_id}/ | 
+*RestApi* | [**rest_newids_read**](docs/RestApi.md#rest_newids_read) | **GET** /rest/v{api_version}/newids/{newid}/ | 
+*RestApi* | [**rest_newnet_caches_auth_create**](docs/RestApi.md#rest_newnet_caches_auth_create) | **POST** /rest/v{api_version}/newnet/caches/auth/ | 
+*RestApi* | [**rest_newnet_caches_auth_read**](docs/RestApi.md#rest_newnet_caches_auth_read) | **GET** /rest/v{api_version}/newnet/caches/auth/{auth_hash}/ | 
+*RestApi* | [**rest_newnet_caches_pay_create**](docs/RestApi.md#rest_newnet_caches_pay_create) | **POST** /rest/v{api_version}/newnet/caches/pay/ | 
+*RestApi* | [**rest_newnet_caches_pay_read**](docs/RestApi.md#rest_newnet_caches_pay_read) | **GET** /rest/v{api_version}/newnet/caches/pay/{pay_hash}/ | 
+*RestApi* | [**rest_proofs_create**](docs/RestApi.md#rest_proofs_create) | **POST** /rest/v{api_version}/proofs/ | 
+*RestApi* | [**rest_proofs_delete**](docs/RestApi.md#rest_proofs_delete) | **DELETE** /rest/v{api_version}/proofs/{proof_hash}/ | 
 
 ## Documentation For Models
 
@@ -254,8 +237,6 @@ Class | Method | HTTP request | Description
  - [PayCacheRequest](docs/PayCacheRequest.md)
  - [PayCacheResponse](docs/PayCacheResponse.md)
  - [Thing](docs/Thing.md)
- - [UpdateProofRequest](docs/UpdateProofRequest.md)
- - [UpdateProofResponse](docs/UpdateProofResponse.md)
 
 ## Documentation For Authorization
 

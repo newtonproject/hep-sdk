@@ -89,11 +89,11 @@ class RestApi
     /**
      * Operation restDappsRead
      *
+     * @param  string $api_version api_version (required)
      * @param  string $dapp_id dapp_id (required)
-     * @param  string $version version (required)
      * @param  string $dapp_key The decentralized application access key (required)
      * @param  string $protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param  string $version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param  string $version The protocol version such as &#x27;1.0&#x27; (required)
      * @param  int $ts The current timestamp (required)
      * @param  string $nonce The random string or auto-increment sequence (required)
      * @param  string $os The operating system of client such as ios, android, dweb,etc. (required)
@@ -104,20 +104,20 @@ class RestApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\Dapp
      */
-    public function restDappsRead($dapp_id, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5)
+    public function restDappsRead($api_version, $dapp_id, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5)
     {
-        list($response) = $this->restDappsReadWithHttpInfo($dapp_id, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5);
+        list($response) = $this->restDappsReadWithHttpInfo($api_version, $dapp_id, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5);
         return $response;
     }
 
     /**
      * Operation restDappsReadWithHttpInfo
      *
+     * @param  string $api_version (required)
      * @param  string $dapp_id (required)
-     * @param  string $version (required)
      * @param  string $dapp_key The decentralized application access key (required)
      * @param  string $protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param  string $version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param  string $version The protocol version such as &#x27;1.0&#x27; (required)
      * @param  int $ts The current timestamp (required)
      * @param  string $nonce The random string or auto-increment sequence (required)
      * @param  string $os The operating system of client such as ios, android, dweb,etc. (required)
@@ -128,10 +128,10 @@ class RestApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\Dapp, HTTP status code, HTTP response headers (array of strings)
      */
-    public function restDappsReadWithHttpInfo($dapp_id, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5)
+    public function restDappsReadWithHttpInfo($api_version, $dapp_id, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5)
     {
         $returnType = '\Swagger\Client\Model\Dapp';
-        $request = $this->restDappsReadRequest($dapp_id, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5);
+        $request = $this->restDappsReadRequest($api_version, $dapp_id, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5);
 
         try {
             $options = $this->createHttpClientOption();
@@ -197,11 +197,11 @@ class RestApi
      *
      * 
      *
+     * @param  string $api_version (required)
      * @param  string $dapp_id (required)
-     * @param  string $version (required)
      * @param  string $dapp_key The decentralized application access key (required)
      * @param  string $protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param  string $version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param  string $version The protocol version such as &#x27;1.0&#x27; (required)
      * @param  int $ts The current timestamp (required)
      * @param  string $nonce The random string or auto-increment sequence (required)
      * @param  string $os The operating system of client such as ios, android, dweb,etc. (required)
@@ -211,9 +211,9 @@ class RestApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function restDappsReadAsync($dapp_id, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5)
+    public function restDappsReadAsync($api_version, $dapp_id, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5)
     {
-        return $this->restDappsReadAsyncWithHttpInfo($dapp_id, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5)
+        return $this->restDappsReadAsyncWithHttpInfo($api_version, $dapp_id, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -226,11 +226,11 @@ class RestApi
      *
      * 
      *
+     * @param  string $api_version (required)
      * @param  string $dapp_id (required)
-     * @param  string $version (required)
      * @param  string $dapp_key The decentralized application access key (required)
      * @param  string $protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param  string $version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param  string $version The protocol version such as &#x27;1.0&#x27; (required)
      * @param  int $ts The current timestamp (required)
      * @param  string $nonce The random string or auto-increment sequence (required)
      * @param  string $os The operating system of client such as ios, android, dweb,etc. (required)
@@ -240,10 +240,10 @@ class RestApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function restDappsReadAsyncWithHttpInfo($dapp_id, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5)
+    public function restDappsReadAsyncWithHttpInfo($api_version, $dapp_id, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5)
     {
         $returnType = '\Swagger\Client\Model\Dapp';
-        $request = $this->restDappsReadRequest($dapp_id, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5);
+        $request = $this->restDappsReadRequest($api_version, $dapp_id, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -285,11 +285,11 @@ class RestApi
     /**
      * Create request for operation 'restDappsRead'
      *
+     * @param  string $api_version (required)
      * @param  string $dapp_id (required)
-     * @param  string $version (required)
      * @param  string $dapp_key The decentralized application access key (required)
      * @param  string $protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param  string $version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param  string $version The protocol version such as &#x27;1.0&#x27; (required)
      * @param  int $ts The current timestamp (required)
      * @param  string $nonce The random string or auto-increment sequence (required)
      * @param  string $os The operating system of client such as ios, android, dweb,etc. (required)
@@ -299,18 +299,18 @@ class RestApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function restDappsReadRequest($dapp_id, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5)
+    protected function restDappsReadRequest($api_version, $dapp_id, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5)
     {
+        // verify the required parameter 'api_version' is set
+        if ($api_version === null || (is_array($api_version) && count($api_version) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $api_version when calling restDappsRead'
+            );
+        }
         // verify the required parameter 'dapp_id' is set
         if ($dapp_id === null || (is_array($dapp_id) && count($dapp_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $dapp_id when calling restDappsRead'
-            );
-        }
-        // verify the required parameter 'version' is set
-        if ($version === null || (is_array($version) && count($version) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $version when calling restDappsRead'
             );
         }
         // verify the required parameter 'dapp_key' is set
@@ -325,10 +325,10 @@ class RestApi
                 'Missing the required parameter $protocol when calling restDappsRead'
             );
         }
-        // verify the required parameter 'version2' is set
-        if ($version2 === null || (is_array($version2) && count($version2) === 0)) {
+        // verify the required parameter 'version' is set
+        if ($version === null || (is_array($version) && count($version) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $version2 when calling restDappsRead'
+                'Missing the required parameter $version when calling restDappsRead'
             );
         }
         // verify the required parameter 'ts' is set
@@ -362,7 +362,7 @@ class RestApi
             );
         }
 
-        $resourcePath = '/rest/v{version}/dapps/{dapp_id}/';
+        $resourcePath = '/rest/v{api_version}/dapps/{dapp_id}/';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -378,8 +378,8 @@ class RestApi
             $queryParams['protocol'] = ObjectSerializer::toQueryValue($protocol);
         }
         // query params
-        if ($version2 !== null) {
-            $queryParams['version'] = ObjectSerializer::toQueryValue($version2);
+        if ($version !== null) {
+            $queryParams['version'] = ObjectSerializer::toQueryValue($version);
         }
         // query params
         if ($ts !== null) {
@@ -403,18 +403,18 @@ class RestApi
         }
 
         // path params
-        if ($dapp_id !== null) {
+        if ($api_version !== null) {
             $resourcePath = str_replace(
-                '{' . 'dapp_id' . '}',
-                ObjectSerializer::toPathValue($dapp_id),
+                '{' . 'api_version' . '}',
+                ObjectSerializer::toPathValue($api_version),
                 $resourcePath
             );
         }
         // path params
-        if ($version !== null) {
+        if ($dapp_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'version' . '}',
-                ObjectSerializer::toPathValue($version),
+                '{' . 'dapp_id' . '}',
+                ObjectSerializer::toPathValue($dapp_id),
                 $resourcePath
             );
         }
@@ -490,11 +490,11 @@ class RestApi
     /**
      * Operation restNewidsRead
      *
+     * @param  string $api_version api_version (required)
      * @param  string $newid newid (required)
-     * @param  string $version version (required)
      * @param  string $dapp_key The decentralized application access key (required)
      * @param  string $protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param  string $version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param  string $version The protocol version such as &#x27;1.0&#x27; (required)
      * @param  int $ts The current timestamp (required)
      * @param  string $nonce The random string or auto-increment sequence (required)
      * @param  string $os The operating system of client such as ios, android, dweb,etc. (required)
@@ -505,20 +505,20 @@ class RestApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\NewidResponse
      */
-    public function restNewidsRead($newid, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5)
+    public function restNewidsRead($api_version, $newid, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5)
     {
-        list($response) = $this->restNewidsReadWithHttpInfo($newid, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5);
+        list($response) = $this->restNewidsReadWithHttpInfo($api_version, $newid, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5);
         return $response;
     }
 
     /**
      * Operation restNewidsReadWithHttpInfo
      *
+     * @param  string $api_version (required)
      * @param  string $newid (required)
-     * @param  string $version (required)
      * @param  string $dapp_key The decentralized application access key (required)
      * @param  string $protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param  string $version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param  string $version The protocol version such as &#x27;1.0&#x27; (required)
      * @param  int $ts The current timestamp (required)
      * @param  string $nonce The random string or auto-increment sequence (required)
      * @param  string $os The operating system of client such as ios, android, dweb,etc. (required)
@@ -529,10 +529,10 @@ class RestApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\NewidResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function restNewidsReadWithHttpInfo($newid, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5)
+    public function restNewidsReadWithHttpInfo($api_version, $newid, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5)
     {
         $returnType = '\Swagger\Client\Model\NewidResponse';
-        $request = $this->restNewidsReadRequest($newid, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5);
+        $request = $this->restNewidsReadRequest($api_version, $newid, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5);
 
         try {
             $options = $this->createHttpClientOption();
@@ -598,11 +598,11 @@ class RestApi
      *
      * 
      *
+     * @param  string $api_version (required)
      * @param  string $newid (required)
-     * @param  string $version (required)
      * @param  string $dapp_key The decentralized application access key (required)
      * @param  string $protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param  string $version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param  string $version The protocol version such as &#x27;1.0&#x27; (required)
      * @param  int $ts The current timestamp (required)
      * @param  string $nonce The random string or auto-increment sequence (required)
      * @param  string $os The operating system of client such as ios, android, dweb,etc. (required)
@@ -612,9 +612,9 @@ class RestApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function restNewidsReadAsync($newid, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5)
+    public function restNewidsReadAsync($api_version, $newid, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5)
     {
-        return $this->restNewidsReadAsyncWithHttpInfo($newid, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5)
+        return $this->restNewidsReadAsyncWithHttpInfo($api_version, $newid, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -627,11 +627,11 @@ class RestApi
      *
      * 
      *
+     * @param  string $api_version (required)
      * @param  string $newid (required)
-     * @param  string $version (required)
      * @param  string $dapp_key The decentralized application access key (required)
      * @param  string $protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param  string $version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param  string $version The protocol version such as &#x27;1.0&#x27; (required)
      * @param  int $ts The current timestamp (required)
      * @param  string $nonce The random string or auto-increment sequence (required)
      * @param  string $os The operating system of client such as ios, android, dweb,etc. (required)
@@ -641,10 +641,10 @@ class RestApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function restNewidsReadAsyncWithHttpInfo($newid, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5)
+    public function restNewidsReadAsyncWithHttpInfo($api_version, $newid, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5)
     {
         $returnType = '\Swagger\Client\Model\NewidResponse';
-        $request = $this->restNewidsReadRequest($newid, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5);
+        $request = $this->restNewidsReadRequest($api_version, $newid, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -686,11 +686,11 @@ class RestApi
     /**
      * Create request for operation 'restNewidsRead'
      *
+     * @param  string $api_version (required)
      * @param  string $newid (required)
-     * @param  string $version (required)
      * @param  string $dapp_key The decentralized application access key (required)
      * @param  string $protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param  string $version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param  string $version The protocol version such as &#x27;1.0&#x27; (required)
      * @param  int $ts The current timestamp (required)
      * @param  string $nonce The random string or auto-increment sequence (required)
      * @param  string $os The operating system of client such as ios, android, dweb,etc. (required)
@@ -700,18 +700,18 @@ class RestApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function restNewidsReadRequest($newid, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5)
+    protected function restNewidsReadRequest($api_version, $newid, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5)
     {
+        // verify the required parameter 'api_version' is set
+        if ($api_version === null || (is_array($api_version) && count($api_version) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $api_version when calling restNewidsRead'
+            );
+        }
         // verify the required parameter 'newid' is set
         if ($newid === null || (is_array($newid) && count($newid) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $newid when calling restNewidsRead'
-            );
-        }
-        // verify the required parameter 'version' is set
-        if ($version === null || (is_array($version) && count($version) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $version when calling restNewidsRead'
             );
         }
         // verify the required parameter 'dapp_key' is set
@@ -726,10 +726,10 @@ class RestApi
                 'Missing the required parameter $protocol when calling restNewidsRead'
             );
         }
-        // verify the required parameter 'version2' is set
-        if ($version2 === null || (is_array($version2) && count($version2) === 0)) {
+        // verify the required parameter 'version' is set
+        if ($version === null || (is_array($version) && count($version) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $version2 when calling restNewidsRead'
+                'Missing the required parameter $version when calling restNewidsRead'
             );
         }
         // verify the required parameter 'ts' is set
@@ -763,7 +763,7 @@ class RestApi
             );
         }
 
-        $resourcePath = '/rest/v{version}/newids/{newid}/';
+        $resourcePath = '/rest/v{api_version}/newids/{newid}/';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -779,8 +779,8 @@ class RestApi
             $queryParams['protocol'] = ObjectSerializer::toQueryValue($protocol);
         }
         // query params
-        if ($version2 !== null) {
-            $queryParams['version'] = ObjectSerializer::toQueryValue($version2);
+        if ($version !== null) {
+            $queryParams['version'] = ObjectSerializer::toQueryValue($version);
         }
         // query params
         if ($ts !== null) {
@@ -804,18 +804,18 @@ class RestApi
         }
 
         // path params
-        if ($newid !== null) {
+        if ($api_version !== null) {
             $resourcePath = str_replace(
-                '{' . 'newid' . '}',
-                ObjectSerializer::toPathValue($newid),
+                '{' . 'api_version' . '}',
+                ObjectSerializer::toPathValue($api_version),
                 $resourcePath
             );
         }
         // path params
-        if ($version !== null) {
+        if ($newid !== null) {
             $resourcePath = str_replace(
-                '{' . 'version' . '}',
-                ObjectSerializer::toPathValue($version),
+                '{' . 'newid' . '}',
+                ObjectSerializer::toPathValue($newid),
                 $resourcePath
             );
         }
@@ -892,15 +892,15 @@ class RestApi
      * Operation restNewnetCachesAuthCreate
      *
      * @param  \Swagger\Client\Model\AuthCacheRequest $body body (required)
-     * @param  string $version version (required)
+     * @param  string $api_version api_version (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\CreateAuthCacheResponse
      */
-    public function restNewnetCachesAuthCreate($body, $version)
+    public function restNewnetCachesAuthCreate($body, $api_version)
     {
-        list($response) = $this->restNewnetCachesAuthCreateWithHttpInfo($body, $version);
+        list($response) = $this->restNewnetCachesAuthCreateWithHttpInfo($body, $api_version);
         return $response;
     }
 
@@ -908,16 +908,16 @@ class RestApi
      * Operation restNewnetCachesAuthCreateWithHttpInfo
      *
      * @param  \Swagger\Client\Model\AuthCacheRequest $body (required)
-     * @param  string $version (required)
+     * @param  string $api_version (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\CreateAuthCacheResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function restNewnetCachesAuthCreateWithHttpInfo($body, $version)
+    public function restNewnetCachesAuthCreateWithHttpInfo($body, $api_version)
     {
         $returnType = '\Swagger\Client\Model\CreateAuthCacheResponse';
-        $request = $this->restNewnetCachesAuthCreateRequest($body, $version);
+        $request = $this->restNewnetCachesAuthCreateRequest($body, $api_version);
 
         try {
             $options = $this->createHttpClientOption();
@@ -984,14 +984,14 @@ class RestApi
      * 
      *
      * @param  \Swagger\Client\Model\AuthCacheRequest $body (required)
-     * @param  string $version (required)
+     * @param  string $api_version (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function restNewnetCachesAuthCreateAsync($body, $version)
+    public function restNewnetCachesAuthCreateAsync($body, $api_version)
     {
-        return $this->restNewnetCachesAuthCreateAsyncWithHttpInfo($body, $version)
+        return $this->restNewnetCachesAuthCreateAsyncWithHttpInfo($body, $api_version)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1005,15 +1005,15 @@ class RestApi
      * 
      *
      * @param  \Swagger\Client\Model\AuthCacheRequest $body (required)
-     * @param  string $version (required)
+     * @param  string $api_version (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function restNewnetCachesAuthCreateAsyncWithHttpInfo($body, $version)
+    public function restNewnetCachesAuthCreateAsyncWithHttpInfo($body, $api_version)
     {
         $returnType = '\Swagger\Client\Model\CreateAuthCacheResponse';
-        $request = $this->restNewnetCachesAuthCreateRequest($body, $version);
+        $request = $this->restNewnetCachesAuthCreateRequest($body, $api_version);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1056,12 +1056,12 @@ class RestApi
      * Create request for operation 'restNewnetCachesAuthCreate'
      *
      * @param  \Swagger\Client\Model\AuthCacheRequest $body (required)
-     * @param  string $version (required)
+     * @param  string $api_version (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function restNewnetCachesAuthCreateRequest($body, $version)
+    protected function restNewnetCachesAuthCreateRequest($body, $api_version)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -1069,14 +1069,14 @@ class RestApi
                 'Missing the required parameter $body when calling restNewnetCachesAuthCreate'
             );
         }
-        // verify the required parameter 'version' is set
-        if ($version === null || (is_array($version) && count($version) === 0)) {
+        // verify the required parameter 'api_version' is set
+        if ($api_version === null || (is_array($api_version) && count($api_version) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $version when calling restNewnetCachesAuthCreate'
+                'Missing the required parameter $api_version when calling restNewnetCachesAuthCreate'
             );
         }
 
-        $resourcePath = '/rest/v{version}/newnet/caches/auth/';
+        $resourcePath = '/rest/v{api_version}/newnet/caches/auth/';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1085,10 +1085,10 @@ class RestApi
 
 
         // path params
-        if ($version !== null) {
+        if ($api_version !== null) {
             $resourcePath = str_replace(
-                '{' . 'version' . '}',
-                ObjectSerializer::toPathValue($version),
+                '{' . 'api_version' . '}',
+                ObjectSerializer::toPathValue($api_version),
                 $resourcePath
             );
         }
@@ -1167,11 +1167,11 @@ class RestApi
     /**
      * Operation restNewnetCachesAuthRead
      *
+     * @param  string $api_version api_version (required)
      * @param  string $auth_hash auth_hash (required)
-     * @param  string $version version (required)
      * @param  string $dapp_key The decentralized application access key (required)
      * @param  string $protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param  string $version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param  string $version The protocol version such as &#x27;1.0&#x27; (required)
      * @param  int $ts The current timestamp (required)
      * @param  string $nonce The random string or auto-increment sequence (required)
      * @param  string $os The operating system of client such as ios, android, dweb,etc. (required)
@@ -1182,20 +1182,20 @@ class RestApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\AuthCacheResponse
      */
-    public function restNewnetCachesAuthRead($auth_hash, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5)
+    public function restNewnetCachesAuthRead($api_version, $auth_hash, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5)
     {
-        list($response) = $this->restNewnetCachesAuthReadWithHttpInfo($auth_hash, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5);
+        list($response) = $this->restNewnetCachesAuthReadWithHttpInfo($api_version, $auth_hash, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5);
         return $response;
     }
 
     /**
      * Operation restNewnetCachesAuthReadWithHttpInfo
      *
+     * @param  string $api_version (required)
      * @param  string $auth_hash (required)
-     * @param  string $version (required)
      * @param  string $dapp_key The decentralized application access key (required)
      * @param  string $protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param  string $version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param  string $version The protocol version such as &#x27;1.0&#x27; (required)
      * @param  int $ts The current timestamp (required)
      * @param  string $nonce The random string or auto-increment sequence (required)
      * @param  string $os The operating system of client such as ios, android, dweb,etc. (required)
@@ -1206,10 +1206,10 @@ class RestApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\AuthCacheResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function restNewnetCachesAuthReadWithHttpInfo($auth_hash, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5)
+    public function restNewnetCachesAuthReadWithHttpInfo($api_version, $auth_hash, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5)
     {
         $returnType = '\Swagger\Client\Model\AuthCacheResponse';
-        $request = $this->restNewnetCachesAuthReadRequest($auth_hash, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5);
+        $request = $this->restNewnetCachesAuthReadRequest($api_version, $auth_hash, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1275,11 +1275,11 @@ class RestApi
      *
      * 
      *
+     * @param  string $api_version (required)
      * @param  string $auth_hash (required)
-     * @param  string $version (required)
      * @param  string $dapp_key The decentralized application access key (required)
      * @param  string $protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param  string $version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param  string $version The protocol version such as &#x27;1.0&#x27; (required)
      * @param  int $ts The current timestamp (required)
      * @param  string $nonce The random string or auto-increment sequence (required)
      * @param  string $os The operating system of client such as ios, android, dweb,etc. (required)
@@ -1289,9 +1289,9 @@ class RestApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function restNewnetCachesAuthReadAsync($auth_hash, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5)
+    public function restNewnetCachesAuthReadAsync($api_version, $auth_hash, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5)
     {
-        return $this->restNewnetCachesAuthReadAsyncWithHttpInfo($auth_hash, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5)
+        return $this->restNewnetCachesAuthReadAsyncWithHttpInfo($api_version, $auth_hash, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1304,11 +1304,11 @@ class RestApi
      *
      * 
      *
+     * @param  string $api_version (required)
      * @param  string $auth_hash (required)
-     * @param  string $version (required)
      * @param  string $dapp_key The decentralized application access key (required)
      * @param  string $protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param  string $version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param  string $version The protocol version such as &#x27;1.0&#x27; (required)
      * @param  int $ts The current timestamp (required)
      * @param  string $nonce The random string or auto-increment sequence (required)
      * @param  string $os The operating system of client such as ios, android, dweb,etc. (required)
@@ -1318,10 +1318,10 @@ class RestApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function restNewnetCachesAuthReadAsyncWithHttpInfo($auth_hash, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5)
+    public function restNewnetCachesAuthReadAsyncWithHttpInfo($api_version, $auth_hash, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5)
     {
         $returnType = '\Swagger\Client\Model\AuthCacheResponse';
-        $request = $this->restNewnetCachesAuthReadRequest($auth_hash, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5);
+        $request = $this->restNewnetCachesAuthReadRequest($api_version, $auth_hash, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1363,11 +1363,11 @@ class RestApi
     /**
      * Create request for operation 'restNewnetCachesAuthRead'
      *
+     * @param  string $api_version (required)
      * @param  string $auth_hash (required)
-     * @param  string $version (required)
      * @param  string $dapp_key The decentralized application access key (required)
      * @param  string $protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param  string $version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param  string $version The protocol version such as &#x27;1.0&#x27; (required)
      * @param  int $ts The current timestamp (required)
      * @param  string $nonce The random string or auto-increment sequence (required)
      * @param  string $os The operating system of client such as ios, android, dweb,etc. (required)
@@ -1377,18 +1377,18 @@ class RestApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function restNewnetCachesAuthReadRequest($auth_hash, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5)
+    protected function restNewnetCachesAuthReadRequest($api_version, $auth_hash, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5)
     {
+        // verify the required parameter 'api_version' is set
+        if ($api_version === null || (is_array($api_version) && count($api_version) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $api_version when calling restNewnetCachesAuthRead'
+            );
+        }
         // verify the required parameter 'auth_hash' is set
         if ($auth_hash === null || (is_array($auth_hash) && count($auth_hash) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $auth_hash when calling restNewnetCachesAuthRead'
-            );
-        }
-        // verify the required parameter 'version' is set
-        if ($version === null || (is_array($version) && count($version) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $version when calling restNewnetCachesAuthRead'
             );
         }
         // verify the required parameter 'dapp_key' is set
@@ -1403,10 +1403,10 @@ class RestApi
                 'Missing the required parameter $protocol when calling restNewnetCachesAuthRead'
             );
         }
-        // verify the required parameter 'version2' is set
-        if ($version2 === null || (is_array($version2) && count($version2) === 0)) {
+        // verify the required parameter 'version' is set
+        if ($version === null || (is_array($version) && count($version) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $version2 when calling restNewnetCachesAuthRead'
+                'Missing the required parameter $version when calling restNewnetCachesAuthRead'
             );
         }
         // verify the required parameter 'ts' is set
@@ -1440,7 +1440,7 @@ class RestApi
             );
         }
 
-        $resourcePath = '/rest/v{version}/newnet/caches/auth/{auth_hash}/';
+        $resourcePath = '/rest/v{api_version}/newnet/caches/auth/{auth_hash}/';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1456,8 +1456,8 @@ class RestApi
             $queryParams['protocol'] = ObjectSerializer::toQueryValue($protocol);
         }
         // query params
-        if ($version2 !== null) {
-            $queryParams['version'] = ObjectSerializer::toQueryValue($version2);
+        if ($version !== null) {
+            $queryParams['version'] = ObjectSerializer::toQueryValue($version);
         }
         // query params
         if ($ts !== null) {
@@ -1481,18 +1481,18 @@ class RestApi
         }
 
         // path params
-        if ($auth_hash !== null) {
+        if ($api_version !== null) {
             $resourcePath = str_replace(
-                '{' . 'auth_hash' . '}',
-                ObjectSerializer::toPathValue($auth_hash),
+                '{' . 'api_version' . '}',
+                ObjectSerializer::toPathValue($api_version),
                 $resourcePath
             );
         }
         // path params
-        if ($version !== null) {
+        if ($auth_hash !== null) {
             $resourcePath = str_replace(
-                '{' . 'version' . '}',
-                ObjectSerializer::toPathValue($version),
+                '{' . 'auth_hash' . '}',
+                ObjectSerializer::toPathValue($auth_hash),
                 $resourcePath
             );
         }
@@ -1569,15 +1569,15 @@ class RestApi
      * Operation restNewnetCachesPayCreate
      *
      * @param  \Swagger\Client\Model\PayCacheRequest $body body (required)
-     * @param  string $version version (required)
+     * @param  string $api_version api_version (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\CreatePayCacheResponse
      */
-    public function restNewnetCachesPayCreate($body, $version)
+    public function restNewnetCachesPayCreate($body, $api_version)
     {
-        list($response) = $this->restNewnetCachesPayCreateWithHttpInfo($body, $version);
+        list($response) = $this->restNewnetCachesPayCreateWithHttpInfo($body, $api_version);
         return $response;
     }
 
@@ -1585,16 +1585,16 @@ class RestApi
      * Operation restNewnetCachesPayCreateWithHttpInfo
      *
      * @param  \Swagger\Client\Model\PayCacheRequest $body (required)
-     * @param  string $version (required)
+     * @param  string $api_version (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\CreatePayCacheResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function restNewnetCachesPayCreateWithHttpInfo($body, $version)
+    public function restNewnetCachesPayCreateWithHttpInfo($body, $api_version)
     {
         $returnType = '\Swagger\Client\Model\CreatePayCacheResponse';
-        $request = $this->restNewnetCachesPayCreateRequest($body, $version);
+        $request = $this->restNewnetCachesPayCreateRequest($body, $api_version);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1661,14 +1661,14 @@ class RestApi
      * 
      *
      * @param  \Swagger\Client\Model\PayCacheRequest $body (required)
-     * @param  string $version (required)
+     * @param  string $api_version (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function restNewnetCachesPayCreateAsync($body, $version)
+    public function restNewnetCachesPayCreateAsync($body, $api_version)
     {
-        return $this->restNewnetCachesPayCreateAsyncWithHttpInfo($body, $version)
+        return $this->restNewnetCachesPayCreateAsyncWithHttpInfo($body, $api_version)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1682,15 +1682,15 @@ class RestApi
      * 
      *
      * @param  \Swagger\Client\Model\PayCacheRequest $body (required)
-     * @param  string $version (required)
+     * @param  string $api_version (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function restNewnetCachesPayCreateAsyncWithHttpInfo($body, $version)
+    public function restNewnetCachesPayCreateAsyncWithHttpInfo($body, $api_version)
     {
         $returnType = '\Swagger\Client\Model\CreatePayCacheResponse';
-        $request = $this->restNewnetCachesPayCreateRequest($body, $version);
+        $request = $this->restNewnetCachesPayCreateRequest($body, $api_version);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1733,12 +1733,12 @@ class RestApi
      * Create request for operation 'restNewnetCachesPayCreate'
      *
      * @param  \Swagger\Client\Model\PayCacheRequest $body (required)
-     * @param  string $version (required)
+     * @param  string $api_version (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function restNewnetCachesPayCreateRequest($body, $version)
+    protected function restNewnetCachesPayCreateRequest($body, $api_version)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -1746,14 +1746,14 @@ class RestApi
                 'Missing the required parameter $body when calling restNewnetCachesPayCreate'
             );
         }
-        // verify the required parameter 'version' is set
-        if ($version === null || (is_array($version) && count($version) === 0)) {
+        // verify the required parameter 'api_version' is set
+        if ($api_version === null || (is_array($api_version) && count($api_version) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $version when calling restNewnetCachesPayCreate'
+                'Missing the required parameter $api_version when calling restNewnetCachesPayCreate'
             );
         }
 
-        $resourcePath = '/rest/v{version}/newnet/caches/pay/';
+        $resourcePath = '/rest/v{api_version}/newnet/caches/pay/';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1762,10 +1762,10 @@ class RestApi
 
 
         // path params
-        if ($version !== null) {
+        if ($api_version !== null) {
             $resourcePath = str_replace(
-                '{' . 'version' . '}',
-                ObjectSerializer::toPathValue($version),
+                '{' . 'api_version' . '}',
+                ObjectSerializer::toPathValue($api_version),
                 $resourcePath
             );
         }
@@ -1844,11 +1844,11 @@ class RestApi
     /**
      * Operation restNewnetCachesPayRead
      *
+     * @param  string $api_version api_version (required)
      * @param  string $pay_hash pay_hash (required)
-     * @param  string $version version (required)
      * @param  string $dapp_key The decentralized application access key (required)
      * @param  string $protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param  string $version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param  string $version The protocol version such as &#x27;1.0&#x27; (required)
      * @param  int $ts The current timestamp (required)
      * @param  string $nonce The random string or auto-increment sequence (required)
      * @param  string $os The operating system of client such as ios, android, dweb,etc. (required)
@@ -1859,20 +1859,20 @@ class RestApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\PayCacheResponse
      */
-    public function restNewnetCachesPayRead($pay_hash, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5)
+    public function restNewnetCachesPayRead($api_version, $pay_hash, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5)
     {
-        list($response) = $this->restNewnetCachesPayReadWithHttpInfo($pay_hash, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5);
+        list($response) = $this->restNewnetCachesPayReadWithHttpInfo($api_version, $pay_hash, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5);
         return $response;
     }
 
     /**
      * Operation restNewnetCachesPayReadWithHttpInfo
      *
+     * @param  string $api_version (required)
      * @param  string $pay_hash (required)
-     * @param  string $version (required)
      * @param  string $dapp_key The decentralized application access key (required)
      * @param  string $protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param  string $version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param  string $version The protocol version such as &#x27;1.0&#x27; (required)
      * @param  int $ts The current timestamp (required)
      * @param  string $nonce The random string or auto-increment sequence (required)
      * @param  string $os The operating system of client such as ios, android, dweb,etc. (required)
@@ -1883,10 +1883,10 @@ class RestApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\PayCacheResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function restNewnetCachesPayReadWithHttpInfo($pay_hash, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5)
+    public function restNewnetCachesPayReadWithHttpInfo($api_version, $pay_hash, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5)
     {
         $returnType = '\Swagger\Client\Model\PayCacheResponse';
-        $request = $this->restNewnetCachesPayReadRequest($pay_hash, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5);
+        $request = $this->restNewnetCachesPayReadRequest($api_version, $pay_hash, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1952,11 +1952,11 @@ class RestApi
      *
      * 
      *
+     * @param  string $api_version (required)
      * @param  string $pay_hash (required)
-     * @param  string $version (required)
      * @param  string $dapp_key The decentralized application access key (required)
      * @param  string $protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param  string $version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param  string $version The protocol version such as &#x27;1.0&#x27; (required)
      * @param  int $ts The current timestamp (required)
      * @param  string $nonce The random string or auto-increment sequence (required)
      * @param  string $os The operating system of client such as ios, android, dweb,etc. (required)
@@ -1966,9 +1966,9 @@ class RestApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function restNewnetCachesPayReadAsync($pay_hash, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5)
+    public function restNewnetCachesPayReadAsync($api_version, $pay_hash, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5)
     {
-        return $this->restNewnetCachesPayReadAsyncWithHttpInfo($pay_hash, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5)
+        return $this->restNewnetCachesPayReadAsyncWithHttpInfo($api_version, $pay_hash, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1981,11 +1981,11 @@ class RestApi
      *
      * 
      *
+     * @param  string $api_version (required)
      * @param  string $pay_hash (required)
-     * @param  string $version (required)
      * @param  string $dapp_key The decentralized application access key (required)
      * @param  string $protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param  string $version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param  string $version The protocol version such as &#x27;1.0&#x27; (required)
      * @param  int $ts The current timestamp (required)
      * @param  string $nonce The random string or auto-increment sequence (required)
      * @param  string $os The operating system of client such as ios, android, dweb,etc. (required)
@@ -1995,10 +1995,10 @@ class RestApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function restNewnetCachesPayReadAsyncWithHttpInfo($pay_hash, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5)
+    public function restNewnetCachesPayReadAsyncWithHttpInfo($api_version, $pay_hash, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5)
     {
         $returnType = '\Swagger\Client\Model\PayCacheResponse';
-        $request = $this->restNewnetCachesPayReadRequest($pay_hash, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5);
+        $request = $this->restNewnetCachesPayReadRequest($api_version, $pay_hash, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2040,11 +2040,11 @@ class RestApi
     /**
      * Create request for operation 'restNewnetCachesPayRead'
      *
+     * @param  string $api_version (required)
      * @param  string $pay_hash (required)
-     * @param  string $version (required)
      * @param  string $dapp_key The decentralized application access key (required)
      * @param  string $protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param  string $version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param  string $version The protocol version such as &#x27;1.0&#x27; (required)
      * @param  int $ts The current timestamp (required)
      * @param  string $nonce The random string or auto-increment sequence (required)
      * @param  string $os The operating system of client such as ios, android, dweb,etc. (required)
@@ -2054,18 +2054,18 @@ class RestApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function restNewnetCachesPayReadRequest($pay_hash, $version, $dapp_key, $protocol, $version2, $ts, $nonce, $os, $language, $md5)
+    protected function restNewnetCachesPayReadRequest($api_version, $pay_hash, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $md5)
     {
+        // verify the required parameter 'api_version' is set
+        if ($api_version === null || (is_array($api_version) && count($api_version) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $api_version when calling restNewnetCachesPayRead'
+            );
+        }
         // verify the required parameter 'pay_hash' is set
         if ($pay_hash === null || (is_array($pay_hash) && count($pay_hash) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $pay_hash when calling restNewnetCachesPayRead'
-            );
-        }
-        // verify the required parameter 'version' is set
-        if ($version === null || (is_array($version) && count($version) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $version when calling restNewnetCachesPayRead'
             );
         }
         // verify the required parameter 'dapp_key' is set
@@ -2080,10 +2080,10 @@ class RestApi
                 'Missing the required parameter $protocol when calling restNewnetCachesPayRead'
             );
         }
-        // verify the required parameter 'version2' is set
-        if ($version2 === null || (is_array($version2) && count($version2) === 0)) {
+        // verify the required parameter 'version' is set
+        if ($version === null || (is_array($version) && count($version) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $version2 when calling restNewnetCachesPayRead'
+                'Missing the required parameter $version when calling restNewnetCachesPayRead'
             );
         }
         // verify the required parameter 'ts' is set
@@ -2117,7 +2117,7 @@ class RestApi
             );
         }
 
-        $resourcePath = '/rest/v{version}/newnet/caches/pay/{pay_hash}/';
+        $resourcePath = '/rest/v{api_version}/newnet/caches/pay/{pay_hash}/';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2133,8 +2133,8 @@ class RestApi
             $queryParams['protocol'] = ObjectSerializer::toQueryValue($protocol);
         }
         // query params
-        if ($version2 !== null) {
-            $queryParams['version'] = ObjectSerializer::toQueryValue($version2);
+        if ($version !== null) {
+            $queryParams['version'] = ObjectSerializer::toQueryValue($version);
         }
         // query params
         if ($ts !== null) {
@@ -2158,18 +2158,18 @@ class RestApi
         }
 
         // path params
-        if ($pay_hash !== null) {
+        if ($api_version !== null) {
             $resourcePath = str_replace(
-                '{' . 'pay_hash' . '}',
-                ObjectSerializer::toPathValue($pay_hash),
+                '{' . 'api_version' . '}',
+                ObjectSerializer::toPathValue($api_version),
                 $resourcePath
             );
         }
         // path params
-        if ($version !== null) {
+        if ($pay_hash !== null) {
             $resourcePath = str_replace(
-                '{' . 'version' . '}',
-                ObjectSerializer::toPathValue($version),
+                '{' . 'pay_hash' . '}',
+                ObjectSerializer::toPathValue($pay_hash),
                 $resourcePath
             );
         }
@@ -2246,15 +2246,15 @@ class RestApi
      * Operation restProofsCreate
      *
      * @param  \Swagger\Client\Model\CreateProofRequest $body body (required)
-     * @param  string $version version (required)
+     * @param  string $api_version api_version (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\CreateProofResponse
      */
-    public function restProofsCreate($body, $version)
+    public function restProofsCreate($body, $api_version)
     {
-        list($response) = $this->restProofsCreateWithHttpInfo($body, $version);
+        list($response) = $this->restProofsCreateWithHttpInfo($body, $api_version);
         return $response;
     }
 
@@ -2262,16 +2262,16 @@ class RestApi
      * Operation restProofsCreateWithHttpInfo
      *
      * @param  \Swagger\Client\Model\CreateProofRequest $body (required)
-     * @param  string $version (required)
+     * @param  string $api_version (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\CreateProofResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function restProofsCreateWithHttpInfo($body, $version)
+    public function restProofsCreateWithHttpInfo($body, $api_version)
     {
         $returnType = '\Swagger\Client\Model\CreateProofResponse';
-        $request = $this->restProofsCreateRequest($body, $version);
+        $request = $this->restProofsCreateRequest($body, $api_version);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2338,14 +2338,14 @@ class RestApi
      * 
      *
      * @param  \Swagger\Client\Model\CreateProofRequest $body (required)
-     * @param  string $version (required)
+     * @param  string $api_version (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function restProofsCreateAsync($body, $version)
+    public function restProofsCreateAsync($body, $api_version)
     {
-        return $this->restProofsCreateAsyncWithHttpInfo($body, $version)
+        return $this->restProofsCreateAsyncWithHttpInfo($body, $api_version)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2359,15 +2359,15 @@ class RestApi
      * 
      *
      * @param  \Swagger\Client\Model\CreateProofRequest $body (required)
-     * @param  string $version (required)
+     * @param  string $api_version (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function restProofsCreateAsyncWithHttpInfo($body, $version)
+    public function restProofsCreateAsyncWithHttpInfo($body, $api_version)
     {
         $returnType = '\Swagger\Client\Model\CreateProofResponse';
-        $request = $this->restProofsCreateRequest($body, $version);
+        $request = $this->restProofsCreateRequest($body, $api_version);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2410,12 +2410,12 @@ class RestApi
      * Create request for operation 'restProofsCreate'
      *
      * @param  \Swagger\Client\Model\CreateProofRequest $body (required)
-     * @param  string $version (required)
+     * @param  string $api_version (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function restProofsCreateRequest($body, $version)
+    protected function restProofsCreateRequest($body, $api_version)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -2423,14 +2423,14 @@ class RestApi
                 'Missing the required parameter $body when calling restProofsCreate'
             );
         }
-        // verify the required parameter 'version' is set
-        if ($version === null || (is_array($version) && count($version) === 0)) {
+        // verify the required parameter 'api_version' is set
+        if ($api_version === null || (is_array($api_version) && count($api_version) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $version when calling restProofsCreate'
+                'Missing the required parameter $api_version when calling restProofsCreate'
             );
         }
 
-        $resourcePath = '/rest/v{version}/proofs/';
+        $resourcePath = '/rest/v{api_version}/proofs/';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2439,10 +2439,10 @@ class RestApi
 
 
         // path params
-        if ($version !== null) {
+        if ($api_version !== null) {
             $resourcePath = str_replace(
-                '{' . 'version' . '}',
-                ObjectSerializer::toPathValue($version),
+                '{' . 'api_version' . '}',
+                ObjectSerializer::toPathValue($api_version),
                 $resourcePath
             );
         }
@@ -2522,16 +2522,16 @@ class RestApi
      * Operation restProofsDelete
      *
      * @param  \Swagger\Client\Model\CancelProofRequest $body body (required)
+     * @param  string $api_version api_version (required)
      * @param  string $proof_hash proof_hash (required)
-     * @param  string $version version (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\CancelProofResponse
      */
-    public function restProofsDelete($body, $proof_hash, $version)
+    public function restProofsDelete($body, $api_version, $proof_hash)
     {
-        list($response) = $this->restProofsDeleteWithHttpInfo($body, $proof_hash, $version);
+        list($response) = $this->restProofsDeleteWithHttpInfo($body, $api_version, $proof_hash);
         return $response;
     }
 
@@ -2539,17 +2539,17 @@ class RestApi
      * Operation restProofsDeleteWithHttpInfo
      *
      * @param  \Swagger\Client\Model\CancelProofRequest $body (required)
+     * @param  string $api_version (required)
      * @param  string $proof_hash (required)
-     * @param  string $version (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\CancelProofResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function restProofsDeleteWithHttpInfo($body, $proof_hash, $version)
+    public function restProofsDeleteWithHttpInfo($body, $api_version, $proof_hash)
     {
         $returnType = '\Swagger\Client\Model\CancelProofResponse';
-        $request = $this->restProofsDeleteRequest($body, $proof_hash, $version);
+        $request = $this->restProofsDeleteRequest($body, $api_version, $proof_hash);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2616,15 +2616,15 @@ class RestApi
      * 
      *
      * @param  \Swagger\Client\Model\CancelProofRequest $body (required)
+     * @param  string $api_version (required)
      * @param  string $proof_hash (required)
-     * @param  string $version (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function restProofsDeleteAsync($body, $proof_hash, $version)
+    public function restProofsDeleteAsync($body, $api_version, $proof_hash)
     {
-        return $this->restProofsDeleteAsyncWithHttpInfo($body, $proof_hash, $version)
+        return $this->restProofsDeleteAsyncWithHttpInfo($body, $api_version, $proof_hash)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2638,16 +2638,16 @@ class RestApi
      * 
      *
      * @param  \Swagger\Client\Model\CancelProofRequest $body (required)
+     * @param  string $api_version (required)
      * @param  string $proof_hash (required)
-     * @param  string $version (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function restProofsDeleteAsyncWithHttpInfo($body, $proof_hash, $version)
+    public function restProofsDeleteAsyncWithHttpInfo($body, $api_version, $proof_hash)
     {
         $returnType = '\Swagger\Client\Model\CancelProofResponse';
-        $request = $this->restProofsDeleteRequest($body, $proof_hash, $version);
+        $request = $this->restProofsDeleteRequest($body, $api_version, $proof_hash);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2690,18 +2690,24 @@ class RestApi
      * Create request for operation 'restProofsDelete'
      *
      * @param  \Swagger\Client\Model\CancelProofRequest $body (required)
+     * @param  string $api_version (required)
      * @param  string $proof_hash (required)
-     * @param  string $version (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function restProofsDeleteRequest($body, $proof_hash, $version)
+    protected function restProofsDeleteRequest($body, $api_version, $proof_hash)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling restProofsDelete'
+            );
+        }
+        // verify the required parameter 'api_version' is set
+        if ($api_version === null || (is_array($api_version) && count($api_version) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $api_version when calling restProofsDelete'
             );
         }
         // verify the required parameter 'proof_hash' is set
@@ -2710,14 +2716,8 @@ class RestApi
                 'Missing the required parameter $proof_hash when calling restProofsDelete'
             );
         }
-        // verify the required parameter 'version' is set
-        if ($version === null || (is_array($version) && count($version) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $version when calling restProofsDelete'
-            );
-        }
 
-        $resourcePath = '/rest/v{version}/proofs/{proof_hash}/';
+        $resourcePath = '/rest/v{api_version}/proofs/{proof_hash}/';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2726,18 +2726,18 @@ class RestApi
 
 
         // path params
-        if ($proof_hash !== null) {
+        if ($api_version !== null) {
             $resourcePath = str_replace(
-                '{' . 'proof_hash' . '}',
-                ObjectSerializer::toPathValue($proof_hash),
+                '{' . 'api_version' . '}',
+                ObjectSerializer::toPathValue($api_version),
                 $resourcePath
             );
         }
         // path params
-        if ($version !== null) {
+        if ($proof_hash !== null) {
             $resourcePath = str_replace(
-                '{' . 'version' . '}',
-                ObjectSerializer::toPathValue($version),
+                '{' . 'proof_hash' . '}',
+                ObjectSerializer::toPathValue($proof_hash),
                 $resourcePath
             );
         }
@@ -2807,301 +2807,6 @@ class RestApi
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
             'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation restProofsUpdate
-     *
-     * @param  \Swagger\Client\Model\UpdateProofRequest $body body (required)
-     * @param  string $proof_hash proof_hash (required)
-     * @param  string $version version (required)
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\UpdateProofResponse
-     */
-    public function restProofsUpdate($body, $proof_hash, $version)
-    {
-        list($response) = $this->restProofsUpdateWithHttpInfo($body, $proof_hash, $version);
-        return $response;
-    }
-
-    /**
-     * Operation restProofsUpdateWithHttpInfo
-     *
-     * @param  \Swagger\Client\Model\UpdateProofRequest $body (required)
-     * @param  string $proof_hash (required)
-     * @param  string $version (required)
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\UpdateProofResponse, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function restProofsUpdateWithHttpInfo($body, $proof_hash, $version)
-    {
-        $returnType = '\Swagger\Client\Model\UpdateProofResponse';
-        $request = $this->restProofsUpdateRequest($body, $proof_hash, $version);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Swagger\Client\Model\UpdateProofResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation restProofsUpdateAsync
-     *
-     * 
-     *
-     * @param  \Swagger\Client\Model\UpdateProofRequest $body (required)
-     * @param  string $proof_hash (required)
-     * @param  string $version (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function restProofsUpdateAsync($body, $proof_hash, $version)
-    {
-        return $this->restProofsUpdateAsyncWithHttpInfo($body, $proof_hash, $version)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation restProofsUpdateAsyncWithHttpInfo
-     *
-     * 
-     *
-     * @param  \Swagger\Client\Model\UpdateProofRequest $body (required)
-     * @param  string $proof_hash (required)
-     * @param  string $version (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function restProofsUpdateAsyncWithHttpInfo($body, $proof_hash, $version)
-    {
-        $returnType = '\Swagger\Client\Model\UpdateProofResponse';
-        $request = $this->restProofsUpdateRequest($body, $proof_hash, $version);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'restProofsUpdate'
-     *
-     * @param  \Swagger\Client\Model\UpdateProofRequest $body (required)
-     * @param  string $proof_hash (required)
-     * @param  string $version (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function restProofsUpdateRequest($body, $proof_hash, $version)
-    {
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling restProofsUpdate'
-            );
-        }
-        // verify the required parameter 'proof_hash' is set
-        if ($proof_hash === null || (is_array($proof_hash) && count($proof_hash) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $proof_hash when calling restProofsUpdate'
-            );
-        }
-        // verify the required parameter 'version' is set
-        if ($version === null || (is_array($version) && count($version) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $version when calling restProofsUpdate'
-            );
-        }
-
-        $resourcePath = '/rest/v{version}/proofs/{proof_hash}/';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-        // path params
-        if ($proof_hash !== null) {
-            $resourcePath = str_replace(
-                '{' . 'proof_hash' . '}',
-                ObjectSerializer::toPathValue($proof_hash),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($version !== null) {
-            $resourcePath = str_replace(
-                '{' . 'version' . '}',
-                ObjectSerializer::toPathValue($version),
-                $resourcePath
-            );
-        }
-
-        // body params
-        $_tempBody = null;
-        if (isset($body)) {
-            $_tempBody = $body;
-        }
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-            // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
-            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

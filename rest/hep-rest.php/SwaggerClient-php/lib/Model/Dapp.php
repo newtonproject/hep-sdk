@@ -67,15 +67,15 @@ class Dapp implements ModelInterface, ArrayAccess
 'dapp_id' => 'string',
 'dapp_name' => 'string',
 'icon' => 'string',
-'public_key' => 'string',
+'dapp_public_key' => 'string',
 'package_name' => 'string',
 'bundle_id' => 'string',
 'schema' => 'string',
 'website' => 'string',
 'download_url' => 'string',
 'deposit_contract_address' => 'string',
-'dapp_type' => 'string',
-'dapp_category' => 'string',
+'dapp_type_id' => 'int',
+'dapp_category_id' => 'int',
 'auth_login_callback' => 'string',
 'pay_order_callback' => 'string',
 'proof_submit_callback' => 'string'    ];
@@ -97,15 +97,15 @@ class Dapp implements ModelInterface, ArrayAccess
 'dapp_id' => null,
 'dapp_name' => null,
 'icon' => null,
-'public_key' => null,
+'dapp_public_key' => null,
 'package_name' => null,
 'bundle_id' => null,
 'schema' => null,
 'website' => null,
 'download_url' => null,
 'deposit_contract_address' => null,
-'dapp_type' => null,
-'dapp_category' => null,
+'dapp_type_id' => null,
+'dapp_category_id' => null,
 'auth_login_callback' => null,
 'pay_order_callback' => null,
 'proof_submit_callback' => null    ];
@@ -148,15 +148,15 @@ class Dapp implements ModelInterface, ArrayAccess
 'dapp_id' => 'dapp_id',
 'dapp_name' => 'dapp_name',
 'icon' => 'icon',
-'public_key' => 'public_key',
+'dapp_public_key' => 'dapp_public_key',
 'package_name' => 'package_name',
 'bundle_id' => 'bundle_id',
 'schema' => 'schema',
 'website' => 'website',
 'download_url' => 'download_url',
 'deposit_contract_address' => 'deposit_contract_address',
-'dapp_type' => 'dapp_type',
-'dapp_category' => 'dapp_category',
+'dapp_type_id' => 'dapp_type_id',
+'dapp_category_id' => 'dapp_category_id',
 'auth_login_callback' => 'auth_login_callback',
 'pay_order_callback' => 'pay_order_callback',
 'proof_submit_callback' => 'proof_submit_callback'    ];
@@ -178,15 +178,15 @@ class Dapp implements ModelInterface, ArrayAccess
 'dapp_id' => 'setDappId',
 'dapp_name' => 'setDappName',
 'icon' => 'setIcon',
-'public_key' => 'setPublicKey',
+'dapp_public_key' => 'setDappPublicKey',
 'package_name' => 'setPackageName',
 'bundle_id' => 'setBundleId',
 'schema' => 'setSchema',
 'website' => 'setWebsite',
 'download_url' => 'setDownloadUrl',
 'deposit_contract_address' => 'setDepositContractAddress',
-'dapp_type' => 'setDappType',
-'dapp_category' => 'setDappCategory',
+'dapp_type_id' => 'setDappTypeId',
+'dapp_category_id' => 'setDappCategoryId',
 'auth_login_callback' => 'setAuthLoginCallback',
 'pay_order_callback' => 'setPayOrderCallback',
 'proof_submit_callback' => 'setProofSubmitCallback'    ];
@@ -208,15 +208,15 @@ class Dapp implements ModelInterface, ArrayAccess
 'dapp_id' => 'getDappId',
 'dapp_name' => 'getDappName',
 'icon' => 'getIcon',
-'public_key' => 'getPublicKey',
+'dapp_public_key' => 'getDappPublicKey',
 'package_name' => 'getPackageName',
 'bundle_id' => 'getBundleId',
 'schema' => 'getSchema',
 'website' => 'getWebsite',
 'download_url' => 'getDownloadUrl',
 'deposit_contract_address' => 'getDepositContractAddress',
-'dapp_type' => 'getDappType',
-'dapp_category' => 'getDappCategory',
+'dapp_type_id' => 'getDappTypeId',
+'dapp_category_id' => 'getDappCategoryId',
 'auth_login_callback' => 'getAuthLoginCallback',
 'pay_order_callback' => 'getPayOrderCallback',
 'proof_submit_callback' => 'getProofSubmitCallback'    ];
@@ -290,15 +290,15 @@ class Dapp implements ModelInterface, ArrayAccess
         $this->container['dapp_id'] = isset($data['dapp_id']) ? $data['dapp_id'] : null;
         $this->container['dapp_name'] = isset($data['dapp_name']) ? $data['dapp_name'] : null;
         $this->container['icon'] = isset($data['icon']) ? $data['icon'] : null;
-        $this->container['public_key'] = isset($data['public_key']) ? $data['public_key'] : null;
+        $this->container['dapp_public_key'] = isset($data['dapp_public_key']) ? $data['dapp_public_key'] : null;
         $this->container['package_name'] = isset($data['package_name']) ? $data['package_name'] : null;
         $this->container['bundle_id'] = isset($data['bundle_id']) ? $data['bundle_id'] : null;
         $this->container['schema'] = isset($data['schema']) ? $data['schema'] : null;
         $this->container['website'] = isset($data['website']) ? $data['website'] : null;
         $this->container['download_url'] = isset($data['download_url']) ? $data['download_url'] : null;
         $this->container['deposit_contract_address'] = isset($data['deposit_contract_address']) ? $data['deposit_contract_address'] : null;
-        $this->container['dapp_type'] = isset($data['dapp_type']) ? $data['dapp_type'] : null;
-        $this->container['dapp_category'] = isset($data['dapp_category']) ? $data['dapp_category'] : null;
+        $this->container['dapp_type_id'] = isset($data['dapp_type_id']) ? $data['dapp_type_id'] : null;
+        $this->container['dapp_category_id'] = isset($data['dapp_category_id']) ? $data['dapp_category_id'] : null;
         $this->container['auth_login_callback'] = isset($data['auth_login_callback']) ? $data['auth_login_callback'] : null;
         $this->container['pay_order_callback'] = isset($data['pay_order_callback']) ? $data['pay_order_callback'] : null;
         $this->container['proof_submit_callback'] = isset($data['proof_submit_callback']) ? $data['proof_submit_callback'] : null;
@@ -346,8 +346,8 @@ class Dapp implements ModelInterface, ArrayAccess
         if ($this->container['icon'] === null) {
             $invalidProperties[] = "'icon' can't be null";
         }
-        if ($this->container['public_key'] === null) {
-            $invalidProperties[] = "'public_key' can't be null";
+        if ($this->container['dapp_public_key'] === null) {
+            $invalidProperties[] = "'dapp_public_key' can't be null";
         }
         if ($this->container['package_name'] === null) {
             $invalidProperties[] = "'package_name' can't be null";
@@ -367,11 +367,11 @@ class Dapp implements ModelInterface, ArrayAccess
         if ($this->container['deposit_contract_address'] === null) {
             $invalidProperties[] = "'deposit_contract_address' can't be null";
         }
-        if ($this->container['dapp_type'] === null) {
-            $invalidProperties[] = "'dapp_type' can't be null";
+        if ($this->container['dapp_type_id'] === null) {
+            $invalidProperties[] = "'dapp_type_id' can't be null";
         }
-        if ($this->container['dapp_category'] === null) {
-            $invalidProperties[] = "'dapp_category' can't be null";
+        if ($this->container['dapp_category_id'] === null) {
+            $invalidProperties[] = "'dapp_category_id' can't be null";
         }
         if ($this->container['auth_login_callback'] === null) {
             $invalidProperties[] = "'auth_login_callback' can't be null";
@@ -662,25 +662,25 @@ class Dapp implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets public_key
+     * Gets dapp_public_key
      *
      * @return string
      */
-    public function getPublicKey()
+    public function getDappPublicKey()
     {
-        return $this->container['public_key'];
+        return $this->container['dapp_public_key'];
     }
 
     /**
-     * Sets public_key
+     * Sets dapp_public_key
      *
-     * @param string $public_key The public key of DApp
+     * @param string $dapp_public_key The public key of DApp
      *
      * @return $this
      */
-    public function setPublicKey($public_key)
+    public function setDappPublicKey($dapp_public_key)
     {
-        $this->container['public_key'] = $public_key;
+        $this->container['dapp_public_key'] = $dapp_public_key;
 
         return $this;
     }
@@ -830,49 +830,49 @@ class Dapp implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets dapp_type
+     * Gets dapp_type_id
      *
-     * @return string
+     * @return int
      */
-    public function getDappType()
+    public function getDappTypeId()
     {
-        return $this->container['dapp_type'];
+        return $this->container['dapp_type_id'];
     }
 
     /**
-     * Sets dapp_type
+     * Sets dapp_type_id
      *
-     * @param string $dapp_type The dapp type. choices:android, ios, dweb,newdapp.
+     * @param int $dapp_type_id The dapp type ID.
      *
      * @return $this
      */
-    public function setDappType($dapp_type)
+    public function setDappTypeId($dapp_type_id)
     {
-        $this->container['dapp_type'] = $dapp_type;
+        $this->container['dapp_type_id'] = $dapp_type_id;
 
         return $this;
     }
 
     /**
-     * Gets dapp_category
+     * Gets dapp_category_id
      *
-     * @return string
+     * @return int
      */
-    public function getDappCategory()
+    public function getDappCategoryId()
     {
-        return $this->container['dapp_category'];
+        return $this->container['dapp_category_id'];
     }
 
     /**
-     * Sets dapp_category
+     * Sets dapp_category_id
      *
-     * @param string $dapp_category The dapp category. choices: game, retail.
+     * @param int $dapp_category_id The dapp category ID.
      *
      * @return $this
      */
-    public function setDappCategory($dapp_category)
+    public function setDappCategoryId($dapp_category_id)
     {
-        $this->container['dapp_category'] = $dapp_category;
+        $this->container['dapp_category_id'] = $dapp_category_id;
 
         return $this;
     }

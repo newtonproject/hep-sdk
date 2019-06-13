@@ -38,8 +38,6 @@ import io.swagger.client.model.Dapp;
 import io.swagger.client.model.NewidResponse;
 import io.swagger.client.model.PayCacheRequest;
 import io.swagger.client.model.PayCacheResponse;
-import io.swagger.client.model.UpdateProofRequest;
-import io.swagger.client.model.UpdateProofResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -68,11 +66,11 @@ public class RestApi {
 
     /**
      * Build call for restDappsRead
+     * @param apiVersion  (required)
      * @param dappId  (required)
-     * @param version  (required)
      * @param dappKey The decentralized application access key (required)
      * @param protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param version The protocol version such as &#x27;1.0&#x27; (required)
      * @param ts The current timestamp (required)
      * @param nonce The random string or auto-increment sequence (required)
      * @param os The operating system of client such as ios, android, dweb,etc. (required)
@@ -83,13 +81,13 @@ public class RestApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call restDappsReadCall(String dappId, String version, String dappKey, String protocol, String version2, Integer ts, String nonce, String os, String language, String md5, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call restDappsReadCall(String apiVersion, String dappId, String dappKey, String protocol, String version, Integer ts, String nonce, String os, String language, String md5, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/rest/v{version}/dapps/{dapp_id}/"
-            .replaceAll("\\{" + "dapp_id" + "\\}", apiClient.escapeString(dappId.toString()))
-            .replaceAll("\\{" + "version" + "\\}", apiClient.escapeString(version.toString()));
+        String localVarPath = "/rest/v{api_version}/dapps/{dapp_id}/"
+            .replaceAll("\\{" + "api_version" + "\\}", apiClient.escapeString(apiVersion.toString()))
+            .replaceAll("\\{" + "dapp_id" + "\\}", apiClient.escapeString(dappId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -97,8 +95,8 @@ public class RestApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("dapp_key", dappKey));
         if (protocol != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("protocol", protocol));
-        if (version2 != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("version", version2));
+        if (version != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("version", version));
         if (ts != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("ts", ts));
         if (nonce != null)
@@ -143,14 +141,14 @@ public class RestApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call restDappsReadValidateBeforeCall(String dappId, String version, String dappKey, String protocol, String version2, Integer ts, String nonce, String os, String language, String md5, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call restDappsReadValidateBeforeCall(String apiVersion, String dappId, String dappKey, String protocol, String version, Integer ts, String nonce, String os, String language, String md5, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'apiVersion' is set
+        if (apiVersion == null) {
+            throw new ApiException("Missing the required parameter 'apiVersion' when calling restDappsRead(Async)");
+        }
         // verify the required parameter 'dappId' is set
         if (dappId == null) {
             throw new ApiException("Missing the required parameter 'dappId' when calling restDappsRead(Async)");
-        }
-        // verify the required parameter 'version' is set
-        if (version == null) {
-            throw new ApiException("Missing the required parameter 'version' when calling restDappsRead(Async)");
         }
         // verify the required parameter 'dappKey' is set
         if (dappKey == null) {
@@ -160,9 +158,9 @@ public class RestApi {
         if (protocol == null) {
             throw new ApiException("Missing the required parameter 'protocol' when calling restDappsRead(Async)");
         }
-        // verify the required parameter 'version2' is set
-        if (version2 == null) {
-            throw new ApiException("Missing the required parameter 'version2' when calling restDappsRead(Async)");
+        // verify the required parameter 'version' is set
+        if (version == null) {
+            throw new ApiException("Missing the required parameter 'version' when calling restDappsRead(Async)");
         }
         // verify the required parameter 'ts' is set
         if (ts == null) {
@@ -185,7 +183,7 @@ public class RestApi {
             throw new ApiException("Missing the required parameter 'md5' when calling restDappsRead(Async)");
         }
         
-        com.squareup.okhttp.Call call = restDappsReadCall(dappId, version, dappKey, protocol, version2, ts, nonce, os, language, md5, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = restDappsReadCall(apiVersion, dappId, dappKey, protocol, version, ts, nonce, os, language, md5, progressListener, progressRequestListener);
         return call;
 
         
@@ -197,11 +195,11 @@ public class RestApi {
     /**
      * 
      * 
+     * @param apiVersion  (required)
      * @param dappId  (required)
-     * @param version  (required)
      * @param dappKey The decentralized application access key (required)
      * @param protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param version The protocol version such as &#x27;1.0&#x27; (required)
      * @param ts The current timestamp (required)
      * @param nonce The random string or auto-increment sequence (required)
      * @param os The operating system of client such as ios, android, dweb,etc. (required)
@@ -210,19 +208,19 @@ public class RestApi {
      * @return Dapp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Dapp restDappsRead(String dappId, String version, String dappKey, String protocol, String version2, Integer ts, String nonce, String os, String language, String md5) throws ApiException {
-        ApiResponse<Dapp> resp = restDappsReadWithHttpInfo(dappId, version, dappKey, protocol, version2, ts, nonce, os, language, md5);
+    public Dapp restDappsRead(String apiVersion, String dappId, String dappKey, String protocol, String version, Integer ts, String nonce, String os, String language, String md5) throws ApiException {
+        ApiResponse<Dapp> resp = restDappsReadWithHttpInfo(apiVersion, dappId, dappKey, protocol, version, ts, nonce, os, language, md5);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param apiVersion  (required)
      * @param dappId  (required)
-     * @param version  (required)
      * @param dappKey The decentralized application access key (required)
      * @param protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param version The protocol version such as &#x27;1.0&#x27; (required)
      * @param ts The current timestamp (required)
      * @param nonce The random string or auto-increment sequence (required)
      * @param os The operating system of client such as ios, android, dweb,etc. (required)
@@ -231,8 +229,8 @@ public class RestApi {
      * @return ApiResponse&lt;Dapp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Dapp> restDappsReadWithHttpInfo(String dappId, String version, String dappKey, String protocol, String version2, Integer ts, String nonce, String os, String language, String md5) throws ApiException {
-        com.squareup.okhttp.Call call = restDappsReadValidateBeforeCall(dappId, version, dappKey, protocol, version2, ts, nonce, os, language, md5, null, null);
+    public ApiResponse<Dapp> restDappsReadWithHttpInfo(String apiVersion, String dappId, String dappKey, String protocol, String version, Integer ts, String nonce, String os, String language, String md5) throws ApiException {
+        com.squareup.okhttp.Call call = restDappsReadValidateBeforeCall(apiVersion, dappId, dappKey, protocol, version, ts, nonce, os, language, md5, null, null);
         Type localVarReturnType = new TypeToken<Dapp>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -240,11 +238,11 @@ public class RestApi {
     /**
      *  (asynchronously)
      * 
+     * @param apiVersion  (required)
      * @param dappId  (required)
-     * @param version  (required)
      * @param dappKey The decentralized application access key (required)
      * @param protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param version The protocol version such as &#x27;1.0&#x27; (required)
      * @param ts The current timestamp (required)
      * @param nonce The random string or auto-increment sequence (required)
      * @param os The operating system of client such as ios, android, dweb,etc. (required)
@@ -254,7 +252,7 @@ public class RestApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call restDappsReadAsync(String dappId, String version, String dappKey, String protocol, String version2, Integer ts, String nonce, String os, String language, String md5, final ApiCallback<Dapp> callback) throws ApiException {
+    public com.squareup.okhttp.Call restDappsReadAsync(String apiVersion, String dappId, String dappKey, String protocol, String version, Integer ts, String nonce, String os, String language, String md5, final ApiCallback<Dapp> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -275,18 +273,18 @@ public class RestApi {
             };
         }
 
-        com.squareup.okhttp.Call call = restDappsReadValidateBeforeCall(dappId, version, dappKey, protocol, version2, ts, nonce, os, language, md5, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = restDappsReadValidateBeforeCall(apiVersion, dappId, dappKey, protocol, version, ts, nonce, os, language, md5, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<Dapp>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for restNewidsRead
+     * @param apiVersion  (required)
      * @param newid  (required)
-     * @param version  (required)
      * @param dappKey The decentralized application access key (required)
      * @param protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param version The protocol version such as &#x27;1.0&#x27; (required)
      * @param ts The current timestamp (required)
      * @param nonce The random string or auto-increment sequence (required)
      * @param os The operating system of client such as ios, android, dweb,etc. (required)
@@ -297,13 +295,13 @@ public class RestApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call restNewidsReadCall(String newid, String version, String dappKey, String protocol, String version2, Integer ts, String nonce, String os, String language, String md5, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call restNewidsReadCall(String apiVersion, String newid, String dappKey, String protocol, String version, Integer ts, String nonce, String os, String language, String md5, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/rest/v{version}/newids/{newid}/"
-            .replaceAll("\\{" + "newid" + "\\}", apiClient.escapeString(newid.toString()))
-            .replaceAll("\\{" + "version" + "\\}", apiClient.escapeString(version.toString()));
+        String localVarPath = "/rest/v{api_version}/newids/{newid}/"
+            .replaceAll("\\{" + "api_version" + "\\}", apiClient.escapeString(apiVersion.toString()))
+            .replaceAll("\\{" + "newid" + "\\}", apiClient.escapeString(newid.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -311,8 +309,8 @@ public class RestApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("dapp_key", dappKey));
         if (protocol != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("protocol", protocol));
-        if (version2 != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("version", version2));
+        if (version != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("version", version));
         if (ts != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("ts", ts));
         if (nonce != null)
@@ -357,14 +355,14 @@ public class RestApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call restNewidsReadValidateBeforeCall(String newid, String version, String dappKey, String protocol, String version2, Integer ts, String nonce, String os, String language, String md5, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call restNewidsReadValidateBeforeCall(String apiVersion, String newid, String dappKey, String protocol, String version, Integer ts, String nonce, String os, String language, String md5, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'apiVersion' is set
+        if (apiVersion == null) {
+            throw new ApiException("Missing the required parameter 'apiVersion' when calling restNewidsRead(Async)");
+        }
         // verify the required parameter 'newid' is set
         if (newid == null) {
             throw new ApiException("Missing the required parameter 'newid' when calling restNewidsRead(Async)");
-        }
-        // verify the required parameter 'version' is set
-        if (version == null) {
-            throw new ApiException("Missing the required parameter 'version' when calling restNewidsRead(Async)");
         }
         // verify the required parameter 'dappKey' is set
         if (dappKey == null) {
@@ -374,9 +372,9 @@ public class RestApi {
         if (protocol == null) {
             throw new ApiException("Missing the required parameter 'protocol' when calling restNewidsRead(Async)");
         }
-        // verify the required parameter 'version2' is set
-        if (version2 == null) {
-            throw new ApiException("Missing the required parameter 'version2' when calling restNewidsRead(Async)");
+        // verify the required parameter 'version' is set
+        if (version == null) {
+            throw new ApiException("Missing the required parameter 'version' when calling restNewidsRead(Async)");
         }
         // verify the required parameter 'ts' is set
         if (ts == null) {
@@ -399,7 +397,7 @@ public class RestApi {
             throw new ApiException("Missing the required parameter 'md5' when calling restNewidsRead(Async)");
         }
         
-        com.squareup.okhttp.Call call = restNewidsReadCall(newid, version, dappKey, protocol, version2, ts, nonce, os, language, md5, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = restNewidsReadCall(apiVersion, newid, dappKey, protocol, version, ts, nonce, os, language, md5, progressListener, progressRequestListener);
         return call;
 
         
@@ -411,11 +409,11 @@ public class RestApi {
     /**
      * 
      * Retrieve the information by given NewID
+     * @param apiVersion  (required)
      * @param newid  (required)
-     * @param version  (required)
      * @param dappKey The decentralized application access key (required)
      * @param protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param version The protocol version such as &#x27;1.0&#x27; (required)
      * @param ts The current timestamp (required)
      * @param nonce The random string or auto-increment sequence (required)
      * @param os The operating system of client such as ios, android, dweb,etc. (required)
@@ -424,19 +422,19 @@ public class RestApi {
      * @return NewidResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public NewidResponse restNewidsRead(String newid, String version, String dappKey, String protocol, String version2, Integer ts, String nonce, String os, String language, String md5) throws ApiException {
-        ApiResponse<NewidResponse> resp = restNewidsReadWithHttpInfo(newid, version, dappKey, protocol, version2, ts, nonce, os, language, md5);
+    public NewidResponse restNewidsRead(String apiVersion, String newid, String dappKey, String protocol, String version, Integer ts, String nonce, String os, String language, String md5) throws ApiException {
+        ApiResponse<NewidResponse> resp = restNewidsReadWithHttpInfo(apiVersion, newid, dappKey, protocol, version, ts, nonce, os, language, md5);
         return resp.getData();
     }
 
     /**
      * 
      * Retrieve the information by given NewID
+     * @param apiVersion  (required)
      * @param newid  (required)
-     * @param version  (required)
      * @param dappKey The decentralized application access key (required)
      * @param protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param version The protocol version such as &#x27;1.0&#x27; (required)
      * @param ts The current timestamp (required)
      * @param nonce The random string or auto-increment sequence (required)
      * @param os The operating system of client such as ios, android, dweb,etc. (required)
@@ -445,8 +443,8 @@ public class RestApi {
      * @return ApiResponse&lt;NewidResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<NewidResponse> restNewidsReadWithHttpInfo(String newid, String version, String dappKey, String protocol, String version2, Integer ts, String nonce, String os, String language, String md5) throws ApiException {
-        com.squareup.okhttp.Call call = restNewidsReadValidateBeforeCall(newid, version, dappKey, protocol, version2, ts, nonce, os, language, md5, null, null);
+    public ApiResponse<NewidResponse> restNewidsReadWithHttpInfo(String apiVersion, String newid, String dappKey, String protocol, String version, Integer ts, String nonce, String os, String language, String md5) throws ApiException {
+        com.squareup.okhttp.Call call = restNewidsReadValidateBeforeCall(apiVersion, newid, dappKey, protocol, version, ts, nonce, os, language, md5, null, null);
         Type localVarReturnType = new TypeToken<NewidResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -454,11 +452,11 @@ public class RestApi {
     /**
      *  (asynchronously)
      * Retrieve the information by given NewID
+     * @param apiVersion  (required)
      * @param newid  (required)
-     * @param version  (required)
      * @param dappKey The decentralized application access key (required)
      * @param protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param version The protocol version such as &#x27;1.0&#x27; (required)
      * @param ts The current timestamp (required)
      * @param nonce The random string or auto-increment sequence (required)
      * @param os The operating system of client such as ios, android, dweb,etc. (required)
@@ -468,7 +466,7 @@ public class RestApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call restNewidsReadAsync(String newid, String version, String dappKey, String protocol, String version2, Integer ts, String nonce, String os, String language, String md5, final ApiCallback<NewidResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call restNewidsReadAsync(String apiVersion, String newid, String dappKey, String protocol, String version, Integer ts, String nonce, String os, String language, String md5, final ApiCallback<NewidResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -489,7 +487,7 @@ public class RestApi {
             };
         }
 
-        com.squareup.okhttp.Call call = restNewidsReadValidateBeforeCall(newid, version, dappKey, protocol, version2, ts, nonce, os, language, md5, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = restNewidsReadValidateBeforeCall(apiVersion, newid, dappKey, protocol, version, ts, nonce, os, language, md5, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<NewidResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -497,18 +495,18 @@ public class RestApi {
     /**
      * Build call for restNewnetCachesAuthCreate
      * @param body  (required)
-     * @param version  (required)
+     * @param apiVersion  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call restNewnetCachesAuthCreateCall(AuthCacheRequest body, String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call restNewnetCachesAuthCreateCall(AuthCacheRequest body, String apiVersion, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
         
         // create path and map variables
-        String localVarPath = "/rest/v{version}/newnet/caches/auth/"
-            .replaceAll("\\{" + "version" + "\\}", apiClient.escapeString(version.toString()));
+        String localVarPath = "/rest/v{api_version}/newnet/caches/auth/"
+            .replaceAll("\\{" + "api_version" + "\\}", apiClient.escapeString(apiVersion.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -546,17 +544,17 @@ public class RestApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call restNewnetCachesAuthCreateValidateBeforeCall(AuthCacheRequest body, String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call restNewnetCachesAuthCreateValidateBeforeCall(AuthCacheRequest body, String apiVersion, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling restNewnetCachesAuthCreate(Async)");
         }
-        // verify the required parameter 'version' is set
-        if (version == null) {
-            throw new ApiException("Missing the required parameter 'version' when calling restNewnetCachesAuthCreate(Async)");
+        // verify the required parameter 'apiVersion' is set
+        if (apiVersion == null) {
+            throw new ApiException("Missing the required parameter 'apiVersion' when calling restNewnetCachesAuthCreate(Async)");
         }
         
-        com.squareup.okhttp.Call call = restNewnetCachesAuthCreateCall(body, version, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = restNewnetCachesAuthCreateCall(body, apiVersion, progressListener, progressRequestListener);
         return call;
 
         
@@ -569,12 +567,12 @@ public class RestApi {
      * 
      * Caches the authentication request
      * @param body  (required)
-     * @param version  (required)
+     * @param apiVersion  (required)
      * @return CreateAuthCacheResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public CreateAuthCacheResponse restNewnetCachesAuthCreate(AuthCacheRequest body, String version) throws ApiException {
-        ApiResponse<CreateAuthCacheResponse> resp = restNewnetCachesAuthCreateWithHttpInfo(body, version);
+    public CreateAuthCacheResponse restNewnetCachesAuthCreate(AuthCacheRequest body, String apiVersion) throws ApiException {
+        ApiResponse<CreateAuthCacheResponse> resp = restNewnetCachesAuthCreateWithHttpInfo(body, apiVersion);
         return resp.getData();
     }
 
@@ -582,12 +580,12 @@ public class RestApi {
      * 
      * Caches the authentication request
      * @param body  (required)
-     * @param version  (required)
+     * @param apiVersion  (required)
      * @return ApiResponse&lt;CreateAuthCacheResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<CreateAuthCacheResponse> restNewnetCachesAuthCreateWithHttpInfo(AuthCacheRequest body, String version) throws ApiException {
-        com.squareup.okhttp.Call call = restNewnetCachesAuthCreateValidateBeforeCall(body, version, null, null);
+    public ApiResponse<CreateAuthCacheResponse> restNewnetCachesAuthCreateWithHttpInfo(AuthCacheRequest body, String apiVersion) throws ApiException {
+        com.squareup.okhttp.Call call = restNewnetCachesAuthCreateValidateBeforeCall(body, apiVersion, null, null);
         Type localVarReturnType = new TypeToken<CreateAuthCacheResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -596,12 +594,12 @@ public class RestApi {
      *  (asynchronously)
      * Caches the authentication request
      * @param body  (required)
-     * @param version  (required)
+     * @param apiVersion  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call restNewnetCachesAuthCreateAsync(AuthCacheRequest body, String version, final ApiCallback<CreateAuthCacheResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call restNewnetCachesAuthCreateAsync(AuthCacheRequest body, String apiVersion, final ApiCallback<CreateAuthCacheResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -622,18 +620,18 @@ public class RestApi {
             };
         }
 
-        com.squareup.okhttp.Call call = restNewnetCachesAuthCreateValidateBeforeCall(body, version, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = restNewnetCachesAuthCreateValidateBeforeCall(body, apiVersion, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<CreateAuthCacheResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for restNewnetCachesAuthRead
+     * @param apiVersion  (required)
      * @param authHash  (required)
-     * @param version  (required)
      * @param dappKey The decentralized application access key (required)
      * @param protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param version The protocol version such as &#x27;1.0&#x27; (required)
      * @param ts The current timestamp (required)
      * @param nonce The random string or auto-increment sequence (required)
      * @param os The operating system of client such as ios, android, dweb,etc. (required)
@@ -644,13 +642,13 @@ public class RestApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call restNewnetCachesAuthReadCall(String authHash, String version, String dappKey, String protocol, String version2, Integer ts, String nonce, String os, String language, String md5, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call restNewnetCachesAuthReadCall(String apiVersion, String authHash, String dappKey, String protocol, String version, Integer ts, String nonce, String os, String language, String md5, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/rest/v{version}/newnet/caches/auth/{auth_hash}/"
-            .replaceAll("\\{" + "auth_hash" + "\\}", apiClient.escapeString(authHash.toString()))
-            .replaceAll("\\{" + "version" + "\\}", apiClient.escapeString(version.toString()));
+        String localVarPath = "/rest/v{api_version}/newnet/caches/auth/{auth_hash}/"
+            .replaceAll("\\{" + "api_version" + "\\}", apiClient.escapeString(apiVersion.toString()))
+            .replaceAll("\\{" + "auth_hash" + "\\}", apiClient.escapeString(authHash.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -658,8 +656,8 @@ public class RestApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("dapp_key", dappKey));
         if (protocol != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("protocol", protocol));
-        if (version2 != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("version", version2));
+        if (version != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("version", version));
         if (ts != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("ts", ts));
         if (nonce != null)
@@ -704,14 +702,14 @@ public class RestApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call restNewnetCachesAuthReadValidateBeforeCall(String authHash, String version, String dappKey, String protocol, String version2, Integer ts, String nonce, String os, String language, String md5, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call restNewnetCachesAuthReadValidateBeforeCall(String apiVersion, String authHash, String dappKey, String protocol, String version, Integer ts, String nonce, String os, String language, String md5, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'apiVersion' is set
+        if (apiVersion == null) {
+            throw new ApiException("Missing the required parameter 'apiVersion' when calling restNewnetCachesAuthRead(Async)");
+        }
         // verify the required parameter 'authHash' is set
         if (authHash == null) {
             throw new ApiException("Missing the required parameter 'authHash' when calling restNewnetCachesAuthRead(Async)");
-        }
-        // verify the required parameter 'version' is set
-        if (version == null) {
-            throw new ApiException("Missing the required parameter 'version' when calling restNewnetCachesAuthRead(Async)");
         }
         // verify the required parameter 'dappKey' is set
         if (dappKey == null) {
@@ -721,9 +719,9 @@ public class RestApi {
         if (protocol == null) {
             throw new ApiException("Missing the required parameter 'protocol' when calling restNewnetCachesAuthRead(Async)");
         }
-        // verify the required parameter 'version2' is set
-        if (version2 == null) {
-            throw new ApiException("Missing the required parameter 'version2' when calling restNewnetCachesAuthRead(Async)");
+        // verify the required parameter 'version' is set
+        if (version == null) {
+            throw new ApiException("Missing the required parameter 'version' when calling restNewnetCachesAuthRead(Async)");
         }
         // verify the required parameter 'ts' is set
         if (ts == null) {
@@ -746,7 +744,7 @@ public class RestApi {
             throw new ApiException("Missing the required parameter 'md5' when calling restNewnetCachesAuthRead(Async)");
         }
         
-        com.squareup.okhttp.Call call = restNewnetCachesAuthReadCall(authHash, version, dappKey, protocol, version2, ts, nonce, os, language, md5, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = restNewnetCachesAuthReadCall(apiVersion, authHash, dappKey, protocol, version, ts, nonce, os, language, md5, progressListener, progressRequestListener);
         return call;
 
         
@@ -758,11 +756,11 @@ public class RestApi {
     /**
      * 
      * Get the authentication information by given request hash.
+     * @param apiVersion  (required)
      * @param authHash  (required)
-     * @param version  (required)
      * @param dappKey The decentralized application access key (required)
      * @param protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param version The protocol version such as &#x27;1.0&#x27; (required)
      * @param ts The current timestamp (required)
      * @param nonce The random string or auto-increment sequence (required)
      * @param os The operating system of client such as ios, android, dweb,etc. (required)
@@ -771,19 +769,19 @@ public class RestApi {
      * @return AuthCacheResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AuthCacheResponse restNewnetCachesAuthRead(String authHash, String version, String dappKey, String protocol, String version2, Integer ts, String nonce, String os, String language, String md5) throws ApiException {
-        ApiResponse<AuthCacheResponse> resp = restNewnetCachesAuthReadWithHttpInfo(authHash, version, dappKey, protocol, version2, ts, nonce, os, language, md5);
+    public AuthCacheResponse restNewnetCachesAuthRead(String apiVersion, String authHash, String dappKey, String protocol, String version, Integer ts, String nonce, String os, String language, String md5) throws ApiException {
+        ApiResponse<AuthCacheResponse> resp = restNewnetCachesAuthReadWithHttpInfo(apiVersion, authHash, dappKey, protocol, version, ts, nonce, os, language, md5);
         return resp.getData();
     }
 
     /**
      * 
      * Get the authentication information by given request hash.
+     * @param apiVersion  (required)
      * @param authHash  (required)
-     * @param version  (required)
      * @param dappKey The decentralized application access key (required)
      * @param protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param version The protocol version such as &#x27;1.0&#x27; (required)
      * @param ts The current timestamp (required)
      * @param nonce The random string or auto-increment sequence (required)
      * @param os The operating system of client such as ios, android, dweb,etc. (required)
@@ -792,8 +790,8 @@ public class RestApi {
      * @return ApiResponse&lt;AuthCacheResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AuthCacheResponse> restNewnetCachesAuthReadWithHttpInfo(String authHash, String version, String dappKey, String protocol, String version2, Integer ts, String nonce, String os, String language, String md5) throws ApiException {
-        com.squareup.okhttp.Call call = restNewnetCachesAuthReadValidateBeforeCall(authHash, version, dappKey, protocol, version2, ts, nonce, os, language, md5, null, null);
+    public ApiResponse<AuthCacheResponse> restNewnetCachesAuthReadWithHttpInfo(String apiVersion, String authHash, String dappKey, String protocol, String version, Integer ts, String nonce, String os, String language, String md5) throws ApiException {
+        com.squareup.okhttp.Call call = restNewnetCachesAuthReadValidateBeforeCall(apiVersion, authHash, dappKey, protocol, version, ts, nonce, os, language, md5, null, null);
         Type localVarReturnType = new TypeToken<AuthCacheResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -801,11 +799,11 @@ public class RestApi {
     /**
      *  (asynchronously)
      * Get the authentication information by given request hash.
+     * @param apiVersion  (required)
      * @param authHash  (required)
-     * @param version  (required)
      * @param dappKey The decentralized application access key (required)
      * @param protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param version The protocol version such as &#x27;1.0&#x27; (required)
      * @param ts The current timestamp (required)
      * @param nonce The random string or auto-increment sequence (required)
      * @param os The operating system of client such as ios, android, dweb,etc. (required)
@@ -815,7 +813,7 @@ public class RestApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call restNewnetCachesAuthReadAsync(String authHash, String version, String dappKey, String protocol, String version2, Integer ts, String nonce, String os, String language, String md5, final ApiCallback<AuthCacheResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call restNewnetCachesAuthReadAsync(String apiVersion, String authHash, String dappKey, String protocol, String version, Integer ts, String nonce, String os, String language, String md5, final ApiCallback<AuthCacheResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -836,7 +834,7 @@ public class RestApi {
             };
         }
 
-        com.squareup.okhttp.Call call = restNewnetCachesAuthReadValidateBeforeCall(authHash, version, dappKey, protocol, version2, ts, nonce, os, language, md5, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = restNewnetCachesAuthReadValidateBeforeCall(apiVersion, authHash, dappKey, protocol, version, ts, nonce, os, language, md5, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AuthCacheResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -844,18 +842,18 @@ public class RestApi {
     /**
      * Build call for restNewnetCachesPayCreate
      * @param body  (required)
-     * @param version  (required)
+     * @param apiVersion  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call restNewnetCachesPayCreateCall(PayCacheRequest body, String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call restNewnetCachesPayCreateCall(PayCacheRequest body, String apiVersion, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
         
         // create path and map variables
-        String localVarPath = "/rest/v{version}/newnet/caches/pay/"
-            .replaceAll("\\{" + "version" + "\\}", apiClient.escapeString(version.toString()));
+        String localVarPath = "/rest/v{api_version}/newnet/caches/pay/"
+            .replaceAll("\\{" + "api_version" + "\\}", apiClient.escapeString(apiVersion.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -893,17 +891,17 @@ public class RestApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call restNewnetCachesPayCreateValidateBeforeCall(PayCacheRequest body, String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call restNewnetCachesPayCreateValidateBeforeCall(PayCacheRequest body, String apiVersion, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling restNewnetCachesPayCreate(Async)");
         }
-        // verify the required parameter 'version' is set
-        if (version == null) {
-            throw new ApiException("Missing the required parameter 'version' when calling restNewnetCachesPayCreate(Async)");
+        // verify the required parameter 'apiVersion' is set
+        if (apiVersion == null) {
+            throw new ApiException("Missing the required parameter 'apiVersion' when calling restNewnetCachesPayCreate(Async)");
         }
         
-        com.squareup.okhttp.Call call = restNewnetCachesPayCreateCall(body, version, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = restNewnetCachesPayCreateCall(body, apiVersion, progressListener, progressRequestListener);
         return call;
 
         
@@ -916,12 +914,12 @@ public class RestApi {
      * 
      * Cache the pay request
      * @param body  (required)
-     * @param version  (required)
+     * @param apiVersion  (required)
      * @return CreatePayCacheResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public CreatePayCacheResponse restNewnetCachesPayCreate(PayCacheRequest body, String version) throws ApiException {
-        ApiResponse<CreatePayCacheResponse> resp = restNewnetCachesPayCreateWithHttpInfo(body, version);
+    public CreatePayCacheResponse restNewnetCachesPayCreate(PayCacheRequest body, String apiVersion) throws ApiException {
+        ApiResponse<CreatePayCacheResponse> resp = restNewnetCachesPayCreateWithHttpInfo(body, apiVersion);
         return resp.getData();
     }
 
@@ -929,12 +927,12 @@ public class RestApi {
      * 
      * Cache the pay request
      * @param body  (required)
-     * @param version  (required)
+     * @param apiVersion  (required)
      * @return ApiResponse&lt;CreatePayCacheResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<CreatePayCacheResponse> restNewnetCachesPayCreateWithHttpInfo(PayCacheRequest body, String version) throws ApiException {
-        com.squareup.okhttp.Call call = restNewnetCachesPayCreateValidateBeforeCall(body, version, null, null);
+    public ApiResponse<CreatePayCacheResponse> restNewnetCachesPayCreateWithHttpInfo(PayCacheRequest body, String apiVersion) throws ApiException {
+        com.squareup.okhttp.Call call = restNewnetCachesPayCreateValidateBeforeCall(body, apiVersion, null, null);
         Type localVarReturnType = new TypeToken<CreatePayCacheResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -943,12 +941,12 @@ public class RestApi {
      *  (asynchronously)
      * Cache the pay request
      * @param body  (required)
-     * @param version  (required)
+     * @param apiVersion  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call restNewnetCachesPayCreateAsync(PayCacheRequest body, String version, final ApiCallback<CreatePayCacheResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call restNewnetCachesPayCreateAsync(PayCacheRequest body, String apiVersion, final ApiCallback<CreatePayCacheResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -969,18 +967,18 @@ public class RestApi {
             };
         }
 
-        com.squareup.okhttp.Call call = restNewnetCachesPayCreateValidateBeforeCall(body, version, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = restNewnetCachesPayCreateValidateBeforeCall(body, apiVersion, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<CreatePayCacheResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for restNewnetCachesPayRead
+     * @param apiVersion  (required)
      * @param payHash  (required)
-     * @param version  (required)
      * @param dappKey The decentralized application access key (required)
      * @param protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param version The protocol version such as &#x27;1.0&#x27; (required)
      * @param ts The current timestamp (required)
      * @param nonce The random string or auto-increment sequence (required)
      * @param os The operating system of client such as ios, android, dweb,etc. (required)
@@ -991,13 +989,13 @@ public class RestApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call restNewnetCachesPayReadCall(String payHash, String version, String dappKey, String protocol, String version2, Integer ts, String nonce, String os, String language, String md5, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call restNewnetCachesPayReadCall(String apiVersion, String payHash, String dappKey, String protocol, String version, Integer ts, String nonce, String os, String language, String md5, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/rest/v{version}/newnet/caches/pay/{pay_hash}/"
-            .replaceAll("\\{" + "pay_hash" + "\\}", apiClient.escapeString(payHash.toString()))
-            .replaceAll("\\{" + "version" + "\\}", apiClient.escapeString(version.toString()));
+        String localVarPath = "/rest/v{api_version}/newnet/caches/pay/{pay_hash}/"
+            .replaceAll("\\{" + "api_version" + "\\}", apiClient.escapeString(apiVersion.toString()))
+            .replaceAll("\\{" + "pay_hash" + "\\}", apiClient.escapeString(payHash.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1005,8 +1003,8 @@ public class RestApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("dapp_key", dappKey));
         if (protocol != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("protocol", protocol));
-        if (version2 != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("version", version2));
+        if (version != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("version", version));
         if (ts != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("ts", ts));
         if (nonce != null)
@@ -1051,14 +1049,14 @@ public class RestApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call restNewnetCachesPayReadValidateBeforeCall(String payHash, String version, String dappKey, String protocol, String version2, Integer ts, String nonce, String os, String language, String md5, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call restNewnetCachesPayReadValidateBeforeCall(String apiVersion, String payHash, String dappKey, String protocol, String version, Integer ts, String nonce, String os, String language, String md5, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'apiVersion' is set
+        if (apiVersion == null) {
+            throw new ApiException("Missing the required parameter 'apiVersion' when calling restNewnetCachesPayRead(Async)");
+        }
         // verify the required parameter 'payHash' is set
         if (payHash == null) {
             throw new ApiException("Missing the required parameter 'payHash' when calling restNewnetCachesPayRead(Async)");
-        }
-        // verify the required parameter 'version' is set
-        if (version == null) {
-            throw new ApiException("Missing the required parameter 'version' when calling restNewnetCachesPayRead(Async)");
         }
         // verify the required parameter 'dappKey' is set
         if (dappKey == null) {
@@ -1068,9 +1066,9 @@ public class RestApi {
         if (protocol == null) {
             throw new ApiException("Missing the required parameter 'protocol' when calling restNewnetCachesPayRead(Async)");
         }
-        // verify the required parameter 'version2' is set
-        if (version2 == null) {
-            throw new ApiException("Missing the required parameter 'version2' when calling restNewnetCachesPayRead(Async)");
+        // verify the required parameter 'version' is set
+        if (version == null) {
+            throw new ApiException("Missing the required parameter 'version' when calling restNewnetCachesPayRead(Async)");
         }
         // verify the required parameter 'ts' is set
         if (ts == null) {
@@ -1093,7 +1091,7 @@ public class RestApi {
             throw new ApiException("Missing the required parameter 'md5' when calling restNewnetCachesPayRead(Async)");
         }
         
-        com.squareup.okhttp.Call call = restNewnetCachesPayReadCall(payHash, version, dappKey, protocol, version2, ts, nonce, os, language, md5, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = restNewnetCachesPayReadCall(apiVersion, payHash, dappKey, protocol, version, ts, nonce, os, language, md5, progressListener, progressRequestListener);
         return call;
 
         
@@ -1105,11 +1103,11 @@ public class RestApi {
     /**
      * 
      * Retrieve the pay information by given pay hash.
+     * @param apiVersion  (required)
      * @param payHash  (required)
-     * @param version  (required)
      * @param dappKey The decentralized application access key (required)
      * @param protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param version The protocol version such as &#x27;1.0&#x27; (required)
      * @param ts The current timestamp (required)
      * @param nonce The random string or auto-increment sequence (required)
      * @param os The operating system of client such as ios, android, dweb,etc. (required)
@@ -1118,19 +1116,19 @@ public class RestApi {
      * @return PayCacheResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public PayCacheResponse restNewnetCachesPayRead(String payHash, String version, String dappKey, String protocol, String version2, Integer ts, String nonce, String os, String language, String md5) throws ApiException {
-        ApiResponse<PayCacheResponse> resp = restNewnetCachesPayReadWithHttpInfo(payHash, version, dappKey, protocol, version2, ts, nonce, os, language, md5);
+    public PayCacheResponse restNewnetCachesPayRead(String apiVersion, String payHash, String dappKey, String protocol, String version, Integer ts, String nonce, String os, String language, String md5) throws ApiException {
+        ApiResponse<PayCacheResponse> resp = restNewnetCachesPayReadWithHttpInfo(apiVersion, payHash, dappKey, protocol, version, ts, nonce, os, language, md5);
         return resp.getData();
     }
 
     /**
      * 
      * Retrieve the pay information by given pay hash.
+     * @param apiVersion  (required)
      * @param payHash  (required)
-     * @param version  (required)
      * @param dappKey The decentralized application access key (required)
      * @param protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param version The protocol version such as &#x27;1.0&#x27; (required)
      * @param ts The current timestamp (required)
      * @param nonce The random string or auto-increment sequence (required)
      * @param os The operating system of client such as ios, android, dweb,etc. (required)
@@ -1139,8 +1137,8 @@ public class RestApi {
      * @return ApiResponse&lt;PayCacheResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<PayCacheResponse> restNewnetCachesPayReadWithHttpInfo(String payHash, String version, String dappKey, String protocol, String version2, Integer ts, String nonce, String os, String language, String md5) throws ApiException {
-        com.squareup.okhttp.Call call = restNewnetCachesPayReadValidateBeforeCall(payHash, version, dappKey, protocol, version2, ts, nonce, os, language, md5, null, null);
+    public ApiResponse<PayCacheResponse> restNewnetCachesPayReadWithHttpInfo(String apiVersion, String payHash, String dappKey, String protocol, String version, Integer ts, String nonce, String os, String language, String md5) throws ApiException {
+        com.squareup.okhttp.Call call = restNewnetCachesPayReadValidateBeforeCall(apiVersion, payHash, dappKey, protocol, version, ts, nonce, os, language, md5, null, null);
         Type localVarReturnType = new TypeToken<PayCacheResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1148,11 +1146,11 @@ public class RestApi {
     /**
      *  (asynchronously)
      * Retrieve the pay information by given pay hash.
+     * @param apiVersion  (required)
      * @param payHash  (required)
-     * @param version  (required)
      * @param dappKey The decentralized application access key (required)
      * @param protocol The protocol name. default is &#x27;HEP&#x27;. (required)
-     * @param version2 The protocol version such as &#x27;1.0&#x27; (required)
+     * @param version The protocol version such as &#x27;1.0&#x27; (required)
      * @param ts The current timestamp (required)
      * @param nonce The random string or auto-increment sequence (required)
      * @param os The operating system of client such as ios, android, dweb,etc. (required)
@@ -1162,7 +1160,7 @@ public class RestApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call restNewnetCachesPayReadAsync(String payHash, String version, String dappKey, String protocol, String version2, Integer ts, String nonce, String os, String language, String md5, final ApiCallback<PayCacheResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call restNewnetCachesPayReadAsync(String apiVersion, String payHash, String dappKey, String protocol, String version, Integer ts, String nonce, String os, String language, String md5, final ApiCallback<PayCacheResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1183,7 +1181,7 @@ public class RestApi {
             };
         }
 
-        com.squareup.okhttp.Call call = restNewnetCachesPayReadValidateBeforeCall(payHash, version, dappKey, protocol, version2, ts, nonce, os, language, md5, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = restNewnetCachesPayReadValidateBeforeCall(apiVersion, payHash, dappKey, protocol, version, ts, nonce, os, language, md5, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<PayCacheResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1191,18 +1189,18 @@ public class RestApi {
     /**
      * Build call for restProofsCreate
      * @param body  (required)
-     * @param version  (required)
+     * @param apiVersion  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call restProofsCreateCall(CreateProofRequest body, String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call restProofsCreateCall(CreateProofRequest body, String apiVersion, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
         
         // create path and map variables
-        String localVarPath = "/rest/v{version}/proofs/"
-            .replaceAll("\\{" + "version" + "\\}", apiClient.escapeString(version.toString()));
+        String localVarPath = "/rest/v{api_version}/proofs/"
+            .replaceAll("\\{" + "api_version" + "\\}", apiClient.escapeString(apiVersion.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1240,17 +1238,17 @@ public class RestApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call restProofsCreateValidateBeforeCall(CreateProofRequest body, String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call restProofsCreateValidateBeforeCall(CreateProofRequest body, String apiVersion, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling restProofsCreate(Async)");
         }
-        // verify the required parameter 'version' is set
-        if (version == null) {
-            throw new ApiException("Missing the required parameter 'version' when calling restProofsCreate(Async)");
+        // verify the required parameter 'apiVersion' is set
+        if (apiVersion == null) {
+            throw new ApiException("Missing the required parameter 'apiVersion' when calling restProofsCreate(Async)");
         }
         
-        com.squareup.okhttp.Call call = restProofsCreateCall(body, version, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = restProofsCreateCall(body, apiVersion, progressListener, progressRequestListener);
         return call;
 
         
@@ -1263,12 +1261,12 @@ public class RestApi {
      * 
      * 
      * @param body  (required)
-     * @param version  (required)
+     * @param apiVersion  (required)
      * @return CreateProofResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public CreateProofResponse restProofsCreate(CreateProofRequest body, String version) throws ApiException {
-        ApiResponse<CreateProofResponse> resp = restProofsCreateWithHttpInfo(body, version);
+    public CreateProofResponse restProofsCreate(CreateProofRequest body, String apiVersion) throws ApiException {
+        ApiResponse<CreateProofResponse> resp = restProofsCreateWithHttpInfo(body, apiVersion);
         return resp.getData();
     }
 
@@ -1276,12 +1274,12 @@ public class RestApi {
      * 
      * 
      * @param body  (required)
-     * @param version  (required)
+     * @param apiVersion  (required)
      * @return ApiResponse&lt;CreateProofResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<CreateProofResponse> restProofsCreateWithHttpInfo(CreateProofRequest body, String version) throws ApiException {
-        com.squareup.okhttp.Call call = restProofsCreateValidateBeforeCall(body, version, null, null);
+    public ApiResponse<CreateProofResponse> restProofsCreateWithHttpInfo(CreateProofRequest body, String apiVersion) throws ApiException {
+        com.squareup.okhttp.Call call = restProofsCreateValidateBeforeCall(body, apiVersion, null, null);
         Type localVarReturnType = new TypeToken<CreateProofResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1290,12 +1288,12 @@ public class RestApi {
      *  (asynchronously)
      * 
      * @param body  (required)
-     * @param version  (required)
+     * @param apiVersion  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call restProofsCreateAsync(CreateProofRequest body, String version, final ApiCallback<CreateProofResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call restProofsCreateAsync(CreateProofRequest body, String apiVersion, final ApiCallback<CreateProofResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1316,7 +1314,7 @@ public class RestApi {
             };
         }
 
-        com.squareup.okhttp.Call call = restProofsCreateValidateBeforeCall(body, version, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = restProofsCreateValidateBeforeCall(body, apiVersion, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<CreateProofResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1324,20 +1322,20 @@ public class RestApi {
     /**
      * Build call for restProofsDelete
      * @param body  (required)
+     * @param apiVersion  (required)
      * @param proofHash  (required)
-     * @param version  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call restProofsDeleteCall(CancelProofRequest body, String proofHash, String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call restProofsDeleteCall(CancelProofRequest body, String apiVersion, String proofHash, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
         
         // create path and map variables
-        String localVarPath = "/rest/v{version}/proofs/{proof_hash}/"
-            .replaceAll("\\{" + "proof_hash" + "\\}", apiClient.escapeString(proofHash.toString()))
-            .replaceAll("\\{" + "version" + "\\}", apiClient.escapeString(version.toString()));
+        String localVarPath = "/rest/v{api_version}/proofs/{proof_hash}/"
+            .replaceAll("\\{" + "api_version" + "\\}", apiClient.escapeString(apiVersion.toString()))
+            .replaceAll("\\{" + "proof_hash" + "\\}", apiClient.escapeString(proofHash.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1375,21 +1373,21 @@ public class RestApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call restProofsDeleteValidateBeforeCall(CancelProofRequest body, String proofHash, String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call restProofsDeleteValidateBeforeCall(CancelProofRequest body, String apiVersion, String proofHash, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling restProofsDelete(Async)");
+        }
+        // verify the required parameter 'apiVersion' is set
+        if (apiVersion == null) {
+            throw new ApiException("Missing the required parameter 'apiVersion' when calling restProofsDelete(Async)");
         }
         // verify the required parameter 'proofHash' is set
         if (proofHash == null) {
             throw new ApiException("Missing the required parameter 'proofHash' when calling restProofsDelete(Async)");
         }
-        // verify the required parameter 'version' is set
-        if (version == null) {
-            throw new ApiException("Missing the required parameter 'version' when calling restProofsDelete(Async)");
-        }
         
-        com.squareup.okhttp.Call call = restProofsDeleteCall(body, proofHash, version, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = restProofsDeleteCall(body, apiVersion, proofHash, progressListener, progressRequestListener);
         return call;
 
         
@@ -1402,13 +1400,13 @@ public class RestApi {
      * 
      * 
      * @param body  (required)
+     * @param apiVersion  (required)
      * @param proofHash  (required)
-     * @param version  (required)
      * @return CancelProofResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public CancelProofResponse restProofsDelete(CancelProofRequest body, String proofHash, String version) throws ApiException {
-        ApiResponse<CancelProofResponse> resp = restProofsDeleteWithHttpInfo(body, proofHash, version);
+    public CancelProofResponse restProofsDelete(CancelProofRequest body, String apiVersion, String proofHash) throws ApiException {
+        ApiResponse<CancelProofResponse> resp = restProofsDeleteWithHttpInfo(body, apiVersion, proofHash);
         return resp.getData();
     }
 
@@ -1416,13 +1414,13 @@ public class RestApi {
      * 
      * 
      * @param body  (required)
+     * @param apiVersion  (required)
      * @param proofHash  (required)
-     * @param version  (required)
      * @return ApiResponse&lt;CancelProofResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<CancelProofResponse> restProofsDeleteWithHttpInfo(CancelProofRequest body, String proofHash, String version) throws ApiException {
-        com.squareup.okhttp.Call call = restProofsDeleteValidateBeforeCall(body, proofHash, version, null, null);
+    public ApiResponse<CancelProofResponse> restProofsDeleteWithHttpInfo(CancelProofRequest body, String apiVersion, String proofHash) throws ApiException {
+        com.squareup.okhttp.Call call = restProofsDeleteValidateBeforeCall(body, apiVersion, proofHash, null, null);
         Type localVarReturnType = new TypeToken<CancelProofResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1431,13 +1429,13 @@ public class RestApi {
      *  (asynchronously)
      * 
      * @param body  (required)
+     * @param apiVersion  (required)
      * @param proofHash  (required)
-     * @param version  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call restProofsDeleteAsync(CancelProofRequest body, String proofHash, String version, final ApiCallback<CancelProofResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call restProofsDeleteAsync(CancelProofRequest body, String apiVersion, String proofHash, final ApiCallback<CancelProofResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1458,150 +1456,8 @@ public class RestApi {
             };
         }
 
-        com.squareup.okhttp.Call call = restProofsDeleteValidateBeforeCall(body, proofHash, version, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = restProofsDeleteValidateBeforeCall(body, apiVersion, proofHash, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<CancelProofResponse>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
-     * Build call for restProofsUpdate
-     * @param body  (required)
-     * @param proofHash  (required)
-     * @param version  (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call restProofsUpdateCall(UpdateProofRequest body, String proofHash, String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = body;
-        
-        // create path and map variables
-        String localVarPath = "/rest/v{version}/proofs/{proof_hash}/"
-            .replaceAll("\\{" + "proof_hash" + "\\}", apiClient.escapeString(proofHash.toString()))
-            .replaceAll("\\{" + "version" + "\\}", apiClient.escapeString(version.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "Basic" };
-        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-    
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call restProofsUpdateValidateBeforeCall(UpdateProofRequest body, String proofHash, String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling restProofsUpdate(Async)");
-        }
-        // verify the required parameter 'proofHash' is set
-        if (proofHash == null) {
-            throw new ApiException("Missing the required parameter 'proofHash' when calling restProofsUpdate(Async)");
-        }
-        // verify the required parameter 'version' is set
-        if (version == null) {
-            throw new ApiException("Missing the required parameter 'version' when calling restProofsUpdate(Async)");
-        }
-        
-        com.squareup.okhttp.Call call = restProofsUpdateCall(body, proofHash, version, progressListener, progressRequestListener);
-        return call;
-
-        
-        
-        
-        
-    }
-
-    /**
-     * 
-     * 
-     * @param body  (required)
-     * @param proofHash  (required)
-     * @param version  (required)
-     * @return UpdateProofResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public UpdateProofResponse restProofsUpdate(UpdateProofRequest body, String proofHash, String version) throws ApiException {
-        ApiResponse<UpdateProofResponse> resp = restProofsUpdateWithHttpInfo(body, proofHash, version);
-        return resp.getData();
-    }
-
-    /**
-     * 
-     * 
-     * @param body  (required)
-     * @param proofHash  (required)
-     * @param version  (required)
-     * @return ApiResponse&lt;UpdateProofResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<UpdateProofResponse> restProofsUpdateWithHttpInfo(UpdateProofRequest body, String proofHash, String version) throws ApiException {
-        com.squareup.okhttp.Call call = restProofsUpdateValidateBeforeCall(body, proofHash, version, null, null);
-        Type localVarReturnType = new TypeToken<UpdateProofResponse>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * 
-     * @param body  (required)
-     * @param proofHash  (required)
-     * @param version  (required)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call restProofsUpdateAsync(UpdateProofRequest body, String proofHash, String version, final ApiCallback<UpdateProofResponse> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = restProofsUpdateValidateBeforeCall(body, proofHash, version, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<UpdateProofResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

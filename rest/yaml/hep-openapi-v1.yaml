@@ -22,7 +22,7 @@ securityDefinitions:
 security:
   - Basic: []
 paths:
-  /rest/v{version}/dapps/{dapp_id}/:
+  /rest/v{api_version}/dapps/{dapp_id}/:
     get:
       operationId: rest_dapps_read
       description: ''
@@ -89,15 +89,15 @@ paths:
       tags:
         - rest
     parameters:
+      - name: api_version
+        in: path
+        required: true
+        type: string
       - name: dapp_id
         in: path
         required: true
         type: string
-      - name: version
-        in: path
-        required: true
-        type: string
-  /rest/v{version}/newids/{newid}/:
+  /rest/v{api_version}/newids/{newid}/:
     get:
       operationId: rest_newids_read
       description: Retrieve the information by given NewID
@@ -164,15 +164,15 @@ paths:
       tags:
         - rest
     parameters:
+      - name: api_version
+        in: path
+        required: true
+        type: string
       - name: newid
         in: path
         required: true
         type: string
-      - name: version
-        in: path
-        required: true
-        type: string
-  /rest/v{version}/newnet/caches/auth/:
+  /rest/v{api_version}/newnet/caches/auth/:
     post:
       operationId: rest_newnet_caches_auth_create
       description: Caches the authentication request
@@ -190,11 +190,11 @@ paths:
       tags:
         - rest
     parameters:
-      - name: version
+      - name: api_version
         in: path
         required: true
         type: string
-  /rest/v{version}/newnet/caches/auth/{auth_hash}/:
+  /rest/v{api_version}/newnet/caches/auth/{auth_hash}/:
     get:
       operationId: rest_newnet_caches_auth_read
       description: Get the authentication information by given request hash.
@@ -261,15 +261,15 @@ paths:
       tags:
         - rest
     parameters:
+      - name: api_version
+        in: path
+        required: true
+        type: string
       - name: auth_hash
         in: path
         required: true
         type: string
-      - name: version
-        in: path
-        required: true
-        type: string
-  /rest/v{version}/newnet/caches/pay/:
+  /rest/v{api_version}/newnet/caches/pay/:
     post:
       operationId: rest_newnet_caches_pay_create
       description: Cache the pay request
@@ -287,11 +287,11 @@ paths:
       tags:
         - rest
     parameters:
-      - name: version
+      - name: api_version
         in: path
         required: true
         type: string
-  /rest/v{version}/newnet/caches/pay/{pay_hash}/:
+  /rest/v{api_version}/newnet/caches/pay/{pay_hash}/:
     get:
       operationId: rest_newnet_caches_pay_read
       description: Retrieve the pay information by given pay hash.
@@ -358,15 +358,15 @@ paths:
       tags:
         - rest
     parameters:
+      - name: api_version
+        in: path
+        required: true
+        type: string
       - name: pay_hash
         in: path
         required: true
         type: string
-      - name: version
-        in: path
-        required: true
-        type: string
-  /rest/v{version}/proofs/:
+  /rest/v{api_version}/proofs/:
     post:
       operationId: rest_proofs_create
       description: ''
@@ -384,27 +384,11 @@ paths:
       tags:
         - rest
     parameters:
-      - name: version
+      - name: api_version
         in: path
         required: true
         type: string
-  /rest/v{version}/proofs/{proof_hash}/:
-    put:
-      operationId: rest_proofs_update
-      description: ''
-      parameters:
-        - name: data
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/UpdateProofRequest'
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/UpdateProofResponse'
-      tags:
-        - rest
+  /rest/v{api_version}/proofs/{proof_hash}/:
     delete:
       operationId: rest_proofs_delete
       description: ''
@@ -422,11 +406,11 @@ paths:
       tags:
         - rest
     parameters:
-      - name: proof_hash
+      - name: api_version
         in: path
         required: true
         type: string
-      - name: version
+      - name: proof_hash
         in: path
         required: true
         type: string
@@ -444,15 +428,15 @@ definitions:
       - dapp_id
       - dapp_name
       - icon
-      - public_key
+      - dapp_public_key
       - package_name
       - bundle_id
       - schema
       - website
       - download_url
       - deposit_contract_address
-      - dapp_type
-      - dapp_category
+      - dapp_type_id
+      - dapp_category_id
       - auth_login_callback
       - pay_order_callback
       - proof_submit_callback
@@ -522,8 +506,8 @@ definitions:
         type: string
         maxLength: 64
         minLength: 1
-      public_key:
-        title: Public key
+      dapp_public_key:
+        title: Dapp public key
         description: The public key of DApp
         type: string
         maxLength: 64
@@ -564,18 +548,14 @@ definitions:
         type: string
         maxLength: 64
         minLength: 1
-      dapp_type:
-        title: Dapp type
-        description: The dapp type. choices:android, ios, dweb,newdapp.
-        type: string
-        maxLength: 64
-        minLength: 1
-      dapp_category:
-        title: Dapp category
-        description: 'The dapp category. choices: game, retail.'
-        type: string
-        maxLength: 64
-        minLength: 1
+      dapp_type_id:
+        title: Dapp type id
+        description: The dapp type ID.
+        type: integer
+      dapp_category_id:
+        title: Dapp category id
+        description: The dapp category ID.
+        type: integer
       auth_login_callback:
         title: Auth login callback
         description: For Mobile Native DApp, it is redirect schema; For website DApp,
@@ -1388,89 +1368,6 @@ definitions:
         type: string
         maxLength: 64
         minLength: 1
-  UpdateProofRequest:
-    required:
-      - dapp_key
-      - protocol
-      - version
-      - ts
-      - nonce
-      - os
-      - language
-      - md5
-      - sign_type
-      - signature
-      - confirmer
-    type: object
-    properties:
-      dapp_key:
-        title: Dapp key
-        description: The decentralized application access key
-        type: string
-        maxLength: 64
-        minLength: 1
-      protocol:
-        title: Protocol
-        description: The protocol name. default is 'HEP'.
-        type: string
-        maxLength: 10
-        minLength: 1
-      version:
-        title: Version
-        description: The protocol version such as '1.0'
-        type: string
-        maxLength: 10
-        minLength: 1
-      ts:
-        title: Ts
-        description: The current timestamp
-        type: integer
-      nonce:
-        title: Nonce
-        description: The random string or auto-increment sequence
-        type: string
-        maxLength: 64
-        minLength: 1
-      os:
-        title: Os
-        description: The operating system of client such as ios, android, dweb,etc.
-        type: string
-        maxLength: 10
-        minLength: 1
-      language:
-        title: Language
-        description: The i18n language code such as zh, en, etc.
-        type: string
-        maxLength: 10
-        minLength: 1
-      md5:
-        title: Md5
-        description: The HMAC authentication md5 checksum
-        type: string
-        maxLength: 64
-        minLength: 1
-      sign_type:
-        title: Sign type
-        description: The signature Type,aka cryptographic algorithm.
-        type: string
-        maxLength: 64
-        minLength: 1
-      signature:
-        title: Signature
-        description: The signature hex string by application owner. The exclude fields
-          is [sign_type, signature, md5].
-        type: string
-        maxLength: 64
-        minLength: 1
-      confirmer:
-        title: Confirmer
-        description: The confirmer's NewID
-        type: string
-        maxLength: 64
-        minLength: 1
-  UpdateProofResponse:
-    type: object
-    properties: {}
   CancelProofRequest:
     required:
       - dapp_key

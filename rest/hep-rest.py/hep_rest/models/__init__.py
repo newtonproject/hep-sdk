@@ -29,5 +29,3 @@ from hep_rest.models.order_item import OrderItem
 from hep_rest.models.pay_cache_request import PayCacheRequest
 from hep_rest.models.pay_cache_response import PayCacheResponse
 from hep_rest.models.thing import Thing
-from hep_rest.models.update_proof_request import UpdateProofRequest
-from hep_rest.models.update_proof_response import UpdateProofResponse
