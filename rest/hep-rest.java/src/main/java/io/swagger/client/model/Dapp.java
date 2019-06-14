@@ -25,31 +25,7 @@ import java.io.IOException;
  * Dapp
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-06-13T17:16:26.272+08:00[Asia/Shanghai]")public class Dapp {
-
-  @SerializedName("dapp_key")
-  private String dappKey = null;
-
-  @SerializedName("protocol")
-  private String protocol = null;
-
-  @SerializedName("version")
-  private String version = null;
-
-  @SerializedName("ts")
-  private Integer ts = null;
-
-  @SerializedName("nonce")
-  private String nonce = null;
-
-  @SerializedName("os")
-  private String os = null;
-
-  @SerializedName("language")
-  private String language = null;
-
-  @SerializedName("md5")
-  private String md5 = null;
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-06-14T20:03:01.379+08:00[Asia/Shanghai]")public class Dapp {
 
   @SerializedName("dapp_id")
   private String dappId = null;
@@ -95,150 +71,6 @@ import java.io.IOException;
 
   @SerializedName("proof_submit_callback")
   private String proofSubmitCallback = null;
-  public Dapp dappKey(String dappKey) {
-    this.dappKey = dappKey;
-    return this;
-  }
-
-  
-
-  /**
-  * The decentralized application access key
-  * @return dappKey
-  **/
-  @Schema(required = true, description = "The decentralized application access key")
-  public String getDappKey() {
-    return dappKey;
-  }
-  public void setDappKey(String dappKey) {
-    this.dappKey = dappKey;
-  }
-  public Dapp protocol(String protocol) {
-    this.protocol = protocol;
-    return this;
-  }
-
-  
-
-  /**
-  * The protocol name. default is &#x27;HEP&#x27;.
-  * @return protocol
-  **/
-  @Schema(required = true, description = "The protocol name. default is 'HEP'.")
-  public String getProtocol() {
-    return protocol;
-  }
-  public void setProtocol(String protocol) {
-    this.protocol = protocol;
-  }
-  public Dapp version(String version) {
-    this.version = version;
-    return this;
-  }
-
-  
-
-  /**
-  * The protocol version such as &#x27;1.0&#x27;
-  * @return version
-  **/
-  @Schema(required = true, description = "The protocol version such as '1.0'")
-  public String getVersion() {
-    return version;
-  }
-  public void setVersion(String version) {
-    this.version = version;
-  }
-  public Dapp ts(Integer ts) {
-    this.ts = ts;
-    return this;
-  }
-
-  
-
-  /**
-  * The current timestamp
-  * @return ts
-  **/
-  @Schema(required = true, description = "The current timestamp")
-  public Integer getTs() {
-    return ts;
-  }
-  public void setTs(Integer ts) {
-    this.ts = ts;
-  }
-  public Dapp nonce(String nonce) {
-    this.nonce = nonce;
-    return this;
-  }
-
-  
-
-  /**
-  * The random string or auto-increment sequence
-  * @return nonce
-  **/
-  @Schema(required = true, description = "The random string or auto-increment sequence")
-  public String getNonce() {
-    return nonce;
-  }
-  public void setNonce(String nonce) {
-    this.nonce = nonce;
-  }
-  public Dapp os(String os) {
-    this.os = os;
-    return this;
-  }
-
-  
-
-  /**
-  * The operating system of client such as ios, android, dweb,etc.
-  * @return os
-  **/
-  @Schema(required = true, description = "The operating system of client such as ios, android, dweb,etc.")
-  public String getOs() {
-    return os;
-  }
-  public void setOs(String os) {
-    this.os = os;
-  }
-  public Dapp language(String language) {
-    this.language = language;
-    return this;
-  }
-
-  
-
-  /**
-  * The i18n language code such as zh, en, etc.
-  * @return language
-  **/
-  @Schema(required = true, description = "The i18n language code such as zh, en, etc.")
-  public String getLanguage() {
-    return language;
-  }
-  public void setLanguage(String language) {
-    this.language = language;
-  }
-  public Dapp md5(String md5) {
-    this.md5 = md5;
-    return this;
-  }
-
-  
-
-  /**
-  * The HMAC authentication md5 checksum
-  * @return md5
-  **/
-  @Schema(required = true, description = "The HMAC authentication md5 checksum")
-  public String getMd5() {
-    return md5;
-  }
-  public void setMd5(String md5) {
-    this.md5 = md5;
-  }
   public Dapp dappId(String dappId) {
     this.dappId = dappId;
     return this;
@@ -518,15 +350,7 @@ import java.io.IOException;
       return false;
     }
     Dapp dapp = (Dapp) o;
-    return Objects.equals(this.dappKey, dapp.dappKey) &&
-        Objects.equals(this.protocol, dapp.protocol) &&
-        Objects.equals(this.version, dapp.version) &&
-        Objects.equals(this.ts, dapp.ts) &&
-        Objects.equals(this.nonce, dapp.nonce) &&
-        Objects.equals(this.os, dapp.os) &&
-        Objects.equals(this.language, dapp.language) &&
-        Objects.equals(this.md5, dapp.md5) &&
-        Objects.equals(this.dappId, dapp.dappId) &&
+    return Objects.equals(this.dappId, dapp.dappId) &&
         Objects.equals(this.dappName, dapp.dappName) &&
         Objects.equals(this.icon, dapp.icon) &&
         Objects.equals(this.dappPublicKey, dapp.dappPublicKey) &&
@@ -545,7 +369,7 @@ import java.io.IOException;
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(dappKey, protocol, version, ts, nonce, os, language, md5, dappId, dappName, icon, dappPublicKey, packageName, bundleId, schema, website, downloadUrl, depositContractAddress, dappTypeId, dappCategoryId, authLoginCallback, payOrderCallback, proofSubmitCallback);
+    return java.util.Objects.hash(dappId, dappName, icon, dappPublicKey, packageName, bundleId, schema, website, downloadUrl, depositContractAddress, dappTypeId, dappCategoryId, authLoginCallback, payOrderCallback, proofSubmitCallback);
   }
 
   @Override
@@ -553,14 +377,6 @@ import java.io.IOException;
     StringBuilder sb = new StringBuilder();
     sb.append("class Dapp {\n");
     
-    sb.append("    dappKey: ").append(toIndentedString(dappKey)).append("\n");
-    sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
-    sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    ts: ").append(toIndentedString(ts)).append("\n");
-    sb.append("    nonce: ").append(toIndentedString(nonce)).append("\n");
-    sb.append("    os: ").append(toIndentedString(os)).append("\n");
-    sb.append("    language: ").append(toIndentedString(language)).append("\n");
-    sb.append("    md5: ").append(toIndentedString(md5)).append("\n");
     sb.append("    dappId: ").append(toIndentedString(dappId)).append("\n");
     sb.append("    dappName: ").append(toIndentedString(dappName)).append("\n");
     sb.append("    icon: ").append(toIndentedString(icon)).append("\n");

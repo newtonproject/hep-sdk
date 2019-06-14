@@ -31,7 +31,7 @@ class OrderItem(object):
     """
     swagger_types = {
         'order_item_number': 'str',
-        'order_item': 'Thing',
+        'ordered_item': 'Thing',
         'order_item_quantity': 'int',
         'price_currency': 'str',
         'price': 'str'
@@ -39,22 +39,22 @@ class OrderItem(object):
 
     attribute_map = {
         'order_item_number': 'order_item_number',
-        'order_item': 'order_item',
+        'ordered_item': 'ordered_item',
         'order_item_quantity': 'order_item_quantity',
         'price_currency': 'price_currency',
         'price': 'price'
     }
 
-    def __init__(self, order_item_number=None, order_item=None, order_item_quantity=None, price_currency=None, price=None):  # noqa: E501
+    def __init__(self, order_item_number=None, ordered_item=None, order_item_quantity=None, price_currency=None, price=None):  # noqa: E501
         """OrderItem - a model defined in Swagger"""  # noqa: E501
         self._order_item_number = None
-        self._order_item = None
+        self._ordered_item = None
         self._order_item_quantity = None
         self._price_currency = None
         self._price = None
         self.discriminator = None
         self.order_item_number = order_item_number
-        self.order_item = order_item
+        self.ordered_item = ordered_item
         self.order_item_quantity = order_item_quantity
         self.price_currency = price_currency
         self.price = price
@@ -85,27 +85,27 @@ class OrderItem(object):
         self._order_item_number = order_item_number
 
     @property
-    def order_item(self):
-        """Gets the order_item of this OrderItem.  # noqa: E501
+    def ordered_item(self):
+        """Gets the ordered_item of this OrderItem.  # noqa: E501
 
 
-        :return: The order_item of this OrderItem.  # noqa: E501
+        :return: The ordered_item of this OrderItem.  # noqa: E501
         :rtype: Thing
         """
-        return self._order_item
+        return self._ordered_item
 
-    @order_item.setter
-    def order_item(self, order_item):
-        """Sets the order_item of this OrderItem.
+    @ordered_item.setter
+    def ordered_item(self, ordered_item):
+        """Sets the ordered_item of this OrderItem.
 
 
-        :param order_item: The order_item of this OrderItem.  # noqa: E501
+        :param ordered_item: The ordered_item of this OrderItem.  # noqa: E501
         :type: Thing
         """
-        if order_item is None:
-            raise ValueError("Invalid value for `order_item`, must not be `None`")  # noqa: E501
+        if ordered_item is None:
+            raise ValueError("Invalid value for `ordered_item`, must not be `None`")  # noqa: E501
 
-        self._order_item = order_item
+        self._ordered_item = ordered_item
 
     @property
     def order_item_quantity(self):

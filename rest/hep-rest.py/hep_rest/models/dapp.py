@@ -29,14 +29,6 @@ class Dapp(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'dapp_key': 'str',
-        'protocol': 'str',
-        'version': 'str',
-        'ts': 'int',
-        'nonce': 'str',
-        'os': 'str',
-        'language': 'str',
-        'md5': 'str',
         'dapp_id': 'str',
         'dapp_name': 'str',
         'icon': 'str',
@@ -55,14 +47,6 @@ class Dapp(object):
     }
 
     attribute_map = {
-        'dapp_key': 'dapp_key',
-        'protocol': 'protocol',
-        'version': 'version',
-        'ts': 'ts',
-        'nonce': 'nonce',
-        'os': 'os',
-        'language': 'language',
-        'md5': 'md5',
         'dapp_id': 'dapp_id',
         'dapp_name': 'dapp_name',
         'icon': 'icon',
@@ -80,16 +64,8 @@ class Dapp(object):
         'proof_submit_callback': 'proof_submit_callback'
     }
 
-    def __init__(self, dapp_key=None, protocol=None, version=None, ts=None, nonce=None, os=None, language=None, md5=None, dapp_id=None, dapp_name=None, icon=None, dapp_public_key=None, package_name=None, bundle_id=None, schema=None, website=None, download_url=None, deposit_contract_address=None, dapp_type_id=None, dapp_category_id=None, auth_login_callback=None, pay_order_callback=None, proof_submit_callback=None):  # noqa: E501
+    def __init__(self, dapp_id=None, dapp_name=None, icon=None, dapp_public_key=None, package_name=None, bundle_id=None, schema=None, website=None, download_url=None, deposit_contract_address=None, dapp_type_id=None, dapp_category_id=None, auth_login_callback=None, pay_order_callback=None, proof_submit_callback=None):  # noqa: E501
         """Dapp - a model defined in Swagger"""  # noqa: E501
-        self._dapp_key = None
-        self._protocol = None
-        self._version = None
-        self._ts = None
-        self._nonce = None
-        self._os = None
-        self._language = None
-        self._md5 = None
         self._dapp_id = None
         self._dapp_name = None
         self._icon = None
@@ -106,14 +82,6 @@ class Dapp(object):
         self._pay_order_callback = None
         self._proof_submit_callback = None
         self.discriminator = None
-        self.dapp_key = dapp_key
-        self.protocol = protocol
-        self.version = version
-        self.ts = ts
-        self.nonce = nonce
-        self.os = os
-        self.language = language
-        self.md5 = md5
         self.dapp_id = dapp_id
         self.dapp_name = dapp_name
         self.icon = icon
@@ -129,206 +97,6 @@ class Dapp(object):
         self.auth_login_callback = auth_login_callback
         self.pay_order_callback = pay_order_callback
         self.proof_submit_callback = proof_submit_callback
-
-    @property
-    def dapp_key(self):
-        """Gets the dapp_key of this Dapp.  # noqa: E501
-
-        The decentralized application access key  # noqa: E501
-
-        :return: The dapp_key of this Dapp.  # noqa: E501
-        :rtype: str
-        """
-        return self._dapp_key
-
-    @dapp_key.setter
-    def dapp_key(self, dapp_key):
-        """Sets the dapp_key of this Dapp.
-
-        The decentralized application access key  # noqa: E501
-
-        :param dapp_key: The dapp_key of this Dapp.  # noqa: E501
-        :type: str
-        """
-        if dapp_key is None:
-            raise ValueError("Invalid value for `dapp_key`, must not be `None`")  # noqa: E501
-
-        self._dapp_key = dapp_key
-
-    @property
-    def protocol(self):
-        """Gets the protocol of this Dapp.  # noqa: E501
-
-        The protocol name. default is 'HEP'.  # noqa: E501
-
-        :return: The protocol of this Dapp.  # noqa: E501
-        :rtype: str
-        """
-        return self._protocol
-
-    @protocol.setter
-    def protocol(self, protocol):
-        """Sets the protocol of this Dapp.
-
-        The protocol name. default is 'HEP'.  # noqa: E501
-
-        :param protocol: The protocol of this Dapp.  # noqa: E501
-        :type: str
-        """
-        if protocol is None:
-            raise ValueError("Invalid value for `protocol`, must not be `None`")  # noqa: E501
-
-        self._protocol = protocol
-
-    @property
-    def version(self):
-        """Gets the version of this Dapp.  # noqa: E501
-
-        The protocol version such as '1.0'  # noqa: E501
-
-        :return: The version of this Dapp.  # noqa: E501
-        :rtype: str
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this Dapp.
-
-        The protocol version such as '1.0'  # noqa: E501
-
-        :param version: The version of this Dapp.  # noqa: E501
-        :type: str
-        """
-        if version is None:
-            raise ValueError("Invalid value for `version`, must not be `None`")  # noqa: E501
-
-        self._version = version
-
-    @property
-    def ts(self):
-        """Gets the ts of this Dapp.  # noqa: E501
-
-        The current timestamp  # noqa: E501
-
-        :return: The ts of this Dapp.  # noqa: E501
-        :rtype: int
-        """
-        return self._ts
-
-    @ts.setter
-    def ts(self, ts):
-        """Sets the ts of this Dapp.
-
-        The current timestamp  # noqa: E501
-
-        :param ts: The ts of this Dapp.  # noqa: E501
-        :type: int
-        """
-        if ts is None:
-            raise ValueError("Invalid value for `ts`, must not be `None`")  # noqa: E501
-
-        self._ts = ts
-
-    @property
-    def nonce(self):
-        """Gets the nonce of this Dapp.  # noqa: E501
-
-        The random string or auto-increment sequence  # noqa: E501
-
-        :return: The nonce of this Dapp.  # noqa: E501
-        :rtype: str
-        """
-        return self._nonce
-
-    @nonce.setter
-    def nonce(self, nonce):
-        """Sets the nonce of this Dapp.
-
-        The random string or auto-increment sequence  # noqa: E501
-
-        :param nonce: The nonce of this Dapp.  # noqa: E501
-        :type: str
-        """
-        if nonce is None:
-            raise ValueError("Invalid value for `nonce`, must not be `None`")  # noqa: E501
-
-        self._nonce = nonce
-
-    @property
-    def os(self):
-        """Gets the os of this Dapp.  # noqa: E501
-
-        The operating system of client such as ios, android, dweb,etc.  # noqa: E501
-
-        :return: The os of this Dapp.  # noqa: E501
-        :rtype: str
-        """
-        return self._os
-
-    @os.setter
-    def os(self, os):
-        """Sets the os of this Dapp.
-
-        The operating system of client such as ios, android, dweb,etc.  # noqa: E501
-
-        :param os: The os of this Dapp.  # noqa: E501
-        :type: str
-        """
-        if os is None:
-            raise ValueError("Invalid value for `os`, must not be `None`")  # noqa: E501
-
-        self._os = os
-
-    @property
-    def language(self):
-        """Gets the language of this Dapp.  # noqa: E501
-
-        The i18n language code such as zh, en, etc.  # noqa: E501
-
-        :return: The language of this Dapp.  # noqa: E501
-        :rtype: str
-        """
-        return self._language
-
-    @language.setter
-    def language(self, language):
-        """Sets the language of this Dapp.
-
-        The i18n language code such as zh, en, etc.  # noqa: E501
-
-        :param language: The language of this Dapp.  # noqa: E501
-        :type: str
-        """
-        if language is None:
-            raise ValueError("Invalid value for `language`, must not be `None`")  # noqa: E501
-
-        self._language = language
-
-    @property
-    def md5(self):
-        """Gets the md5 of this Dapp.  # noqa: E501
-
-        The HMAC authentication md5 checksum  # noqa: E501
-
-        :return: The md5 of this Dapp.  # noqa: E501
-        :rtype: str
-        """
-        return self._md5
-
-    @md5.setter
-    def md5(self, md5):
-        """Sets the md5 of this Dapp.
-
-        The HMAC authentication md5 checksum  # noqa: E501
-
-        :param md5: The md5 of this Dapp.  # noqa: E501
-        :type: str
-        """
-        if md5 is None:
-            raise ValueError("Invalid value for `md5`, must not be `None`")  # noqa: E501
-
-        self._md5 = md5
 
     @property
     def dapp_id(self):

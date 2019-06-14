@@ -23,10 +23,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 
 /**
- * CreateProofRequest
+ * ProofResponse
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-06-14T20:03:01.379+08:00[Asia/Shanghai]")public class CreateProofRequest {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-06-14T20:03:01.379+08:00[Asia/Shanghai]")public class ProofResponse {
 
   @SerializedName("dapp_key")
   private String dappKey = null;
@@ -72,7 +72,7 @@ import java.io.IOException;
 
   @SerializedName("content")
   private Order content = null;
-  public CreateProofRequest dappKey(String dappKey) {
+  public ProofResponse dappKey(String dappKey) {
     this.dappKey = dappKey;
     return this;
   }
@@ -90,7 +90,7 @@ import java.io.IOException;
   public void setDappKey(String dappKey) {
     this.dappKey = dappKey;
   }
-  public CreateProofRequest protocol(String protocol) {
+  public ProofResponse protocol(String protocol) {
     this.protocol = protocol;
     return this;
   }
@@ -108,7 +108,7 @@ import java.io.IOException;
   public void setProtocol(String protocol) {
     this.protocol = protocol;
   }
-  public CreateProofRequest version(String version) {
+  public ProofResponse version(String version) {
     this.version = version;
     return this;
   }
@@ -126,7 +126,7 @@ import java.io.IOException;
   public void setVersion(String version) {
     this.version = version;
   }
-  public CreateProofRequest ts(Integer ts) {
+  public ProofResponse ts(Integer ts) {
     this.ts = ts;
     return this;
   }
@@ -144,7 +144,7 @@ import java.io.IOException;
   public void setTs(Integer ts) {
     this.ts = ts;
   }
-  public CreateProofRequest nonce(String nonce) {
+  public ProofResponse nonce(String nonce) {
     this.nonce = nonce;
     return this;
   }
@@ -162,7 +162,7 @@ import java.io.IOException;
   public void setNonce(String nonce) {
     this.nonce = nonce;
   }
-  public CreateProofRequest os(String os) {
+  public ProofResponse os(String os) {
     this.os = os;
     return this;
   }
@@ -180,7 +180,7 @@ import java.io.IOException;
   public void setOs(String os) {
     this.os = os;
   }
-  public CreateProofRequest language(String language) {
+  public ProofResponse language(String language) {
     this.language = language;
     return this;
   }
@@ -198,7 +198,7 @@ import java.io.IOException;
   public void setLanguage(String language) {
     this.language = language;
   }
-  public CreateProofRequest dappSignatureMethod(String dappSignatureMethod) {
+  public ProofResponse dappSignatureMethod(String dappSignatureMethod) {
     this.dappSignatureMethod = dappSignatureMethod;
     return this;
   }
@@ -216,7 +216,7 @@ import java.io.IOException;
   public void setDappSignatureMethod(String dappSignatureMethod) {
     this.dappSignatureMethod = dappSignatureMethod;
   }
-  public CreateProofRequest dappSignature(String dappSignature) {
+  public ProofResponse dappSignature(String dappSignature) {
     this.dappSignature = dappSignature;
     return this;
   }
@@ -234,7 +234,7 @@ import java.io.IOException;
   public void setDappSignature(String dappSignature) {
     this.dappSignature = dappSignature;
   }
-  public CreateProofRequest signType(String signType) {
+  public ProofResponse signType(String signType) {
     this.signType = signType;
     return this;
   }
@@ -252,7 +252,7 @@ import java.io.IOException;
   public void setSignType(String signType) {
     this.signType = signType;
   }
-  public CreateProofRequest signature(String signature) {
+  public ProofResponse signature(String signature) {
     this.signature = signature;
     return this;
   }
@@ -270,7 +270,7 @@ import java.io.IOException;
   public void setSignature(String signature) {
     this.signature = signature;
   }
-  public CreateProofRequest action(String action) {
+  public ProofResponse action(String action) {
     this.action = action;
     return this;
   }
@@ -288,7 +288,7 @@ import java.io.IOException;
   public void setAction(String action) {
     this.action = action;
   }
-  public CreateProofRequest uuid(String uuid) {
+  public ProofResponse uuid(String uuid) {
     this.uuid = uuid;
     return this;
   }
@@ -306,7 +306,7 @@ import java.io.IOException;
   public void setUuid(String uuid) {
     this.uuid = uuid;
   }
-  public CreateProofRequest dappId(String dappId) {
+  public ProofResponse dappId(String dappId) {
     this.dappId = dappId;
     return this;
   }
@@ -324,7 +324,7 @@ import java.io.IOException;
   public void setDappId(String dappId) {
     this.dappId = dappId;
   }
-  public CreateProofRequest content(Order content) {
+  public ProofResponse content(Order content) {
     this.content = content;
     return this;
   }
@@ -350,22 +350,22 @@ import java.io.IOException;
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CreateProofRequest createProofRequest = (CreateProofRequest) o;
-    return Objects.equals(this.dappKey, createProofRequest.dappKey) &&
-        Objects.equals(this.protocol, createProofRequest.protocol) &&
-        Objects.equals(this.version, createProofRequest.version) &&
-        Objects.equals(this.ts, createProofRequest.ts) &&
-        Objects.equals(this.nonce, createProofRequest.nonce) &&
-        Objects.equals(this.os, createProofRequest.os) &&
-        Objects.equals(this.language, createProofRequest.language) &&
-        Objects.equals(this.dappSignatureMethod, createProofRequest.dappSignatureMethod) &&
-        Objects.equals(this.dappSignature, createProofRequest.dappSignature) &&
-        Objects.equals(this.signType, createProofRequest.signType) &&
-        Objects.equals(this.signature, createProofRequest.signature) &&
-        Objects.equals(this.action, createProofRequest.action) &&
-        Objects.equals(this.uuid, createProofRequest.uuid) &&
-        Objects.equals(this.dappId, createProofRequest.dappId) &&
-        Objects.equals(this.content, createProofRequest.content);
+    ProofResponse proofResponse = (ProofResponse) o;
+    return Objects.equals(this.dappKey, proofResponse.dappKey) &&
+        Objects.equals(this.protocol, proofResponse.protocol) &&
+        Objects.equals(this.version, proofResponse.version) &&
+        Objects.equals(this.ts, proofResponse.ts) &&
+        Objects.equals(this.nonce, proofResponse.nonce) &&
+        Objects.equals(this.os, proofResponse.os) &&
+        Objects.equals(this.language, proofResponse.language) &&
+        Objects.equals(this.dappSignatureMethod, proofResponse.dappSignatureMethod) &&
+        Objects.equals(this.dappSignature, proofResponse.dappSignature) &&
+        Objects.equals(this.signType, proofResponse.signType) &&
+        Objects.equals(this.signature, proofResponse.signature) &&
+        Objects.equals(this.action, proofResponse.action) &&
+        Objects.equals(this.uuid, proofResponse.uuid) &&
+        Objects.equals(this.dappId, proofResponse.dappId) &&
+        Objects.equals(this.content, proofResponse.content);
   }
 
   @Override
@@ -376,7 +376,7 @@ import java.io.IOException;
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CreateProofRequest {\n");
+    sb.append("class ProofResponse {\n");
     
     sb.append("    dappKey: ").append(toIndentedString(dappKey)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");

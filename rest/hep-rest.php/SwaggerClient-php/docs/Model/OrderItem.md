@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **order_item_number** | **string** | The number of order item | 
-**order_item** | [**\Swagger\Client\Model\Thing**](Thing.md) |  | 
+**ordered_item** | [**\Swagger\Client\Model\Thing**](Thing.md) |  | 
 **order_item_quantity** | **int** | The quantity of order item | 
 **price_currency** | **string** | The symbol of fiat or digital token, such as USD, RMB, NEW,BTC,ETH. | 
 **price** | **string** | The amount of fiat or digital token, unit is the minimum unit of given fiat or digital token. | 

@@ -3,14 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dapp_key** | **str** | The decentralized application access key | 
-**protocol** | **str** | The protocol name. default is &#x27;HEP&#x27;. | 
-**version** | **str** | The protocol version such as &#x27;1.0&#x27; | 
-**ts** | **int** | The current timestamp | 
-**nonce** | **str** | The random string or auto-increment sequence | 
-**os** | **str** | The operating system of client such as ios, android, dweb,etc. | 
-**language** | **str** | The i18n language code such as zh, en, etc. | 
-**md5** | **str** | The HMAC authentication md5 checksum | 
 **dapp_id** | **str** | The decentralized application ID | 
 **dapp_name** | **str** | The decentralized application name | 
 **icon** | **str** | The icon of application | 

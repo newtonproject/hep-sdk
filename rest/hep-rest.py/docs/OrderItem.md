@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **order_item_number** | **str** | The number of order item | 
-**order_item** | [**Thing**](Thing.md) |  | 
+**ordered_item** | [**Thing**](Thing.md) |  | 
 **order_item_quantity** | **int** | The quantity of order item | 
 **price_currency** | **str** | The symbol of fiat or digital token, such as USD, RMB, NEW,BTC,ETH. | 
 **price** | **str** | The amount of fiat or digital token, unit is the minimum unit of given fiat or digital token. | 

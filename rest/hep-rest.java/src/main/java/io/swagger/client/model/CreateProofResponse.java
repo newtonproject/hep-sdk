@@ -25,7 +25,7 @@ import java.io.IOException;
  * CreateProofResponse
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-06-13T17:16:26.272+08:00[Asia/Shanghai]")public class CreateProofResponse {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-06-14T20:03:01.379+08:00[Asia/Shanghai]")public class CreateProofResponse {
 
   @SerializedName("proof_hash")
   private String proofHash = null;

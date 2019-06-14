@@ -57,7 +57,7 @@ class OrderItem implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'order_item_number' => 'string',
-'order_item' => '\Swagger\Client\Model\Thing',
+'ordered_item' => '\Swagger\Client\Model\Thing',
 'order_item_quantity' => 'int',
 'price_currency' => 'string',
 'price' => 'string'    ];
@@ -69,7 +69,7 @@ class OrderItem implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'order_item_number' => null,
-'order_item' => null,
+'ordered_item' => null,
 'order_item_quantity' => null,
 'price_currency' => null,
 'price' => null    ];
@@ -102,7 +102,7 @@ class OrderItem implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'order_item_number' => 'order_item_number',
-'order_item' => 'order_item',
+'ordered_item' => 'ordered_item',
 'order_item_quantity' => 'order_item_quantity',
 'price_currency' => 'price_currency',
 'price' => 'price'    ];
@@ -114,7 +114,7 @@ class OrderItem implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'order_item_number' => 'setOrderItemNumber',
-'order_item' => 'setOrderItem',
+'ordered_item' => 'setOrderedItem',
 'order_item_quantity' => 'setOrderItemQuantity',
 'price_currency' => 'setPriceCurrency',
 'price' => 'setPrice'    ];
@@ -126,7 +126,7 @@ class OrderItem implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'order_item_number' => 'getOrderItemNumber',
-'order_item' => 'getOrderItem',
+'ordered_item' => 'getOrderedItem',
 'order_item_quantity' => 'getOrderItemQuantity',
 'price_currency' => 'getPriceCurrency',
 'price' => 'getPrice'    ];
@@ -190,7 +190,7 @@ class OrderItem implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['order_item_number'] = isset($data['order_item_number']) ? $data['order_item_number'] : null;
-        $this->container['order_item'] = isset($data['order_item']) ? $data['order_item'] : null;
+        $this->container['ordered_item'] = isset($data['ordered_item']) ? $data['ordered_item'] : null;
         $this->container['order_item_quantity'] = isset($data['order_item_quantity']) ? $data['order_item_quantity'] : null;
         $this->container['price_currency'] = isset($data['price_currency']) ? $data['price_currency'] : null;
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
@@ -208,8 +208,8 @@ class OrderItem implements ModelInterface, ArrayAccess
         if ($this->container['order_item_number'] === null) {
             $invalidProperties[] = "'order_item_number' can't be null";
         }
-        if ($this->container['order_item'] === null) {
-            $invalidProperties[] = "'order_item' can't be null";
+        if ($this->container['ordered_item'] === null) {
+            $invalidProperties[] = "'ordered_item' can't be null";
         }
         if ($this->container['order_item_quantity'] === null) {
             $invalidProperties[] = "'order_item_quantity' can't be null";
@@ -260,25 +260,25 @@ class OrderItem implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets order_item
+     * Gets ordered_item
      *
      * @return \Swagger\Client\Model\Thing
      */
-    public function getOrderItem()
+    public function getOrderedItem()
     {
-        return $this->container['order_item'];
+        return $this->container['ordered_item'];
     }
 
     /**
-     * Sets order_item
+     * Sets ordered_item
      *
-     * @param \Swagger\Client\Model\Thing $order_item order_item
+     * @param \Swagger\Client\Model\Thing $ordered_item ordered_item
      *
      * @return $this
      */
-    public function setOrderItem($order_item)
+    public function setOrderedItem($ordered_item)
     {
-        $this->container['order_item'] = $order_item;
+        $this->container['ordered_item'] = $ordered_item;
 
         return $this;
     }

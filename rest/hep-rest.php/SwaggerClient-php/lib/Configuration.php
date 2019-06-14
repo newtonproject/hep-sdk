@@ -80,7 +80,7 @@ class Configuration
      *
      * @var string
      */
-    protected $host = 'http://127.0.0.1:8000/';
+    protected $host = '/';
 
     /**
      * User agent of the HTTP request, set to "PHP-Swagger" by default

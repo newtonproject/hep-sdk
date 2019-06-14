@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateProofRequest
+ * ProofResponse
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * CreateProofRequest Class Doc Comment
+ * ProofResponse Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class CreateProofRequest implements ModelInterface, ArrayAccess
+class ProofResponse implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class CreateProofRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'CreateProofRequest';
+    protected static $swaggerModelName = 'ProofResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

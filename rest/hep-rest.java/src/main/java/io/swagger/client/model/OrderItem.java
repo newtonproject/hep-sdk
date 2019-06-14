@@ -26,13 +26,13 @@ import java.io.IOException;
  * OrderItem
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-06-13T17:16:26.272+08:00[Asia/Shanghai]")public class OrderItem {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-06-14T20:03:01.379+08:00[Asia/Shanghai]")public class OrderItem {
 
   @SerializedName("order_item_number")
   private String orderItemNumber = null;
 
-  @SerializedName("order_item")
-  private Thing orderItem = null;
+  @SerializedName("ordered_item")
+  private Thing orderedItem = null;
 
   @SerializedName("order_item_quantity")
   private Integer orderItemQuantity = null;
@@ -60,23 +60,23 @@ import java.io.IOException;
   public void setOrderItemNumber(String orderItemNumber) {
     this.orderItemNumber = orderItemNumber;
   }
-  public OrderItem orderItem(Thing orderItem) {
-    this.orderItem = orderItem;
+  public OrderItem orderedItem(Thing orderedItem) {
+    this.orderedItem = orderedItem;
     return this;
   }
 
   
 
   /**
-  * Get orderItem
-  * @return orderItem
+  * Get orderedItem
+  * @return orderedItem
   **/
   @Schema(required = true, description = "")
-  public Thing getOrderItem() {
-    return orderItem;
+  public Thing getOrderedItem() {
+    return orderedItem;
   }
-  public void setOrderItem(Thing orderItem) {
-    this.orderItem = orderItem;
+  public void setOrderedItem(Thing orderedItem) {
+    this.orderedItem = orderedItem;
   }
   public OrderItem orderItemQuantity(Integer orderItemQuantity) {
     this.orderItemQuantity = orderItemQuantity;
@@ -142,7 +142,7 @@ import java.io.IOException;
     }
     OrderItem orderItem = (OrderItem) o;
     return Objects.equals(this.orderItemNumber, orderItem.orderItemNumber) &&
-        Objects.equals(this.orderItem, orderItem.orderItem) &&
+        Objects.equals(this.orderedItem, orderItem.orderedItem) &&
         Objects.equals(this.orderItemQuantity, orderItem.orderItemQuantity) &&
         Objects.equals(this.priceCurrency, orderItem.priceCurrency) &&
         Objects.equals(this.price, orderItem.price);
@@ -150,7 +150,7 @@ import java.io.IOException;
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(orderItemNumber, orderItem, orderItemQuantity, priceCurrency, price);
+    return java.util.Objects.hash(orderItemNumber, orderedItem, orderItemQuantity, priceCurrency, price);
   }
 
   @Override
@@ -159,7 +159,7 @@ import java.io.IOException;
     sb.append("class OrderItem {\n");
     
     sb.append("    orderItemNumber: ").append(toIndentedString(orderItemNumber)).append("\n");
-    sb.append("    orderItem: ").append(toIndentedString(orderItem)).append("\n");
+    sb.append("    orderedItem: ").append(toIndentedString(orderedItem)).append("\n");
     sb.append("    orderItemQuantity: ").append(toIndentedString(orderItemQuantity)).append("\n");
     sb.append("    priceCurrency: ").append(toIndentedString(priceCurrency)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
