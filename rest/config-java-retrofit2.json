@@ -1,0 +1,8 @@
+{
+    "apiPackage" : "org.newtonproject.hep.rest.api",
+    "library" : "retrofit2",
+    "useRxJava2" : true,
+    "groupId":"org.newtonproject.hep",
+    "artifactId":"hep",
+    "artifactVersion":"1.0.0"
+}

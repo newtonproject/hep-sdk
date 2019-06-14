@@ -1,0 +1,14 @@
+{
+    "projectName" : "hep_rest",
+    "podSource" : "hep_rest",
+    "podVersion" : "1.0.0",
+    "podAuthors" : "xiawu<xiawu@zeuux.org>",
+    "podSocialMediaURL" : "https://www.newtonproject.org",
+    "podDocsetURL" : "https://docs.newtonproject.org",
+    "podLicense" : "GPLv3",
+    "podHomepage" : "",
+    "podSummary" : "Swift SDK for HEP REST API",
+    "podDescription" : "Swift SDK for HEP REST API",
+    "podDocumentationURL" : "",
+    "swiftUseApiNamespace" : "HEP"
+}
