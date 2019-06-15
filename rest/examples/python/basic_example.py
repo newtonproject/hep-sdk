@@ -1,20 +1,22 @@
 import datetime
-import hep_rest
-from hep_rest import utils
+import uuid
+import sys
+import hep_rest_api
+from hep_rest_api import utils
 
-config = hep_rest.Configuration()
-config.host = 'http://hep.newtonproject.dev.diynova.com/'
+config = hep_rest_api.Configuration()
+config.host = 'xx'
 
-api_instance = hep_rest.RestApi(hep_rest.ApiClient(config))
+api_instance = hep_rest_api.RestApi(hep_rest.ApiClient(config))
 api_version = '1'
-dapp_id = '05e6e4bbd71f4ab8ac382f8c0ccb8d0b'
-dapp_key = '0a3b1bb80adc4b0595ebc8aa8ff2fa5d'
-dapp_secret = 'a5ef1dce6c644c83adf04b215e98d820'
+dapp_id = 'xxx'
+dapp_key = 'xxx'
+dapp_secret = 'xx'
 protocol = 'HEP'
 version = '1.0'
 ts = datetime.datetime.now().timestamp()
-nonce = 'nonce_example'
-os = 'linux'
+nonce = uuid.uuid4().hex
+os = sys.platform
 language = 'en'
 dapp_signature_method = 'HMAC-MD5'
 dapp_signature = ''
