@@ -29,7 +29,7 @@ setup(
     description="HEP REST API",
     author_email="xiawu@zeuux.org",
     url="http://github.com/newtonproject/hep-sdk",
-    keywords=["Swagger", "HEP REST API"],
+    keywords=["newtonproject.org", "Hyper Exchange Protocol", "HEP REST API"],
     install_requires=REQUIRES,
     packages=find_packages(),
     include_package_data=True,
