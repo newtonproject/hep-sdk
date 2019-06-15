@@ -12,7 +12,7 @@
 
 from setuptools import setup, find_packages  # noqa: H301
 
-NAME = "hep-rest"
+NAME = "hep-rest-api"
 VERSION = "1.0.0"
 # To install the library, run the following
 #
@@ -28,7 +28,7 @@ setup(
     version=VERSION,
     description="HEP REST API",
     author_email="xiawu@zeuux.org",
-    url="",
+    url="http://github.com/newtonproject/hep-sdk",
     keywords=["Swagger", "HEP REST API"],
     install_requires=REQUIRES,
     packages=find_packages(),
