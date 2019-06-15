@@ -1,6 +1,6 @@
 {
-    "projectName" : "hep_rest",
-    "podSource" : "hep_rest",
+    "projectName" : "hep_rest_api",
+    "podSource" : "hep_rest_api",
     "podVersion" : "1.0.0",
     "podAuthors" : "xiawu<xiawu@zeuux.org>",
     "podSocialMediaURL" : "https://www.newtonproject.org",

@@ -16,11 +16,6 @@ consumes:
   - application/json
 produces:
   - application/json
-securityDefinitions:
-  Basic:
-    type: basic
-security:
-  - Basic: []
 paths:
   /rest/v{api_version}/dapps/{dapp_id}/:
     get:
