@@ -1,4 +1,5 @@
 {
-    "packagePath": "hep_rest_api"
+    "packagePath": "HepRestApi",
+    "invokerPackage": "HepRestApi"
 }
 
