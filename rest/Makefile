@@ -5,6 +5,7 @@ all:py java-retrofit2 rest.php rest.swift
 
 py:
 	@swagger-codegen generate -i $(OPENAPI_YAML) -l python -o python -c config-python.json
+	@make -C python/post_codegen
 
 java-retrofit2:
 	@swagger-codegen generate -i $(OPENAPI_YAML) -l java -o java-retrofit2 -c config-java-retrofit2.json --model-package org.newtonproject.hep.rest.models 
