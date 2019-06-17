@@ -1,15 +1,20 @@
 {
-    "name": "newtonproject/HepRestApi",
+    "name": "GIT_USER_ID/GIT_REPO_ID",
     "description": "",
     "keywords": [
-        "newtonproject",
-        "HEP",
+        "swagger",
         "php",
         "sdk",
         "api"
     ],
-    "homepage": "https://github.com/newtonproject/hep-sdk",
-    "license": "GPLv3",
+    "homepage": "http://swagger.io",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Swagger and contributors",
+            "homepage": "https://github.com/swagger-api/swagger-codegen"
+        }
+    ],
     "require": {
         "php": ">=5.5",
         "ext-curl": "*",
