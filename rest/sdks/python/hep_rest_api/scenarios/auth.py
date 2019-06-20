@@ -7,6 +7,7 @@ __version__ = '1.0'
 __author__ = 'xiawu@zeuux.org'
 
 import logging
+import datetime
 from hep_rest_api.scenarios import BaseHelper
 
 logger = logging.getLogger(__name__)
@@ -24,7 +25,20 @@ class AuthHelper(BaseHelper):
         :rtype: dict
         :return: The request information including signature
         """
-        pass
+        data = {
+            'dapp_id': dapp_id,
+            'action': action,
+            'scope': scope,
+            'expired': int(datetime.datetime.now().timestamp()) + expired,
+            'memo': memo
+        }
+        if uuid:
+            data['uuid'] = uuid
+        sign_data = self.generate_sign_data(data)
+        dapp_signature = self.sign_hmac(sign_data)
+        signature = self.sign_secp256r1(sign_data)
+        sign_data['dapp_signature'] = dapp_signature
+        sign_data['signature'] = signature
 
     def generate_qrcode_string(self, auth_request):
         """Generate the hep-based scheme string string for QRCode 
