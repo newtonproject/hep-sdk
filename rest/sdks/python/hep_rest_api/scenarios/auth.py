@@ -35,10 +35,10 @@ class AuthHelper(BaseHelper):
         if uuid:
             data['uuid'] = uuid
         sign_data = self.generate_sign_data(data)
-        dapp_signature = self.sign_hmac(sign_data)
-        signature = self.sign_secp256r1(sign_data)
-        sign_data['dapp_signature'] = dapp_signature
-        sign_data['signature'] = signature
+        final_data = self.sign_hmac(sign_data)
+        r1_data = self.sign_secp256r1(sign_data)
+        final_data.update(r1_data) # merge two data set
+        # start request
 
     def generate_qrcode_string(self, auth_request):
         """Generate the hep-based scheme string string for QRCode 

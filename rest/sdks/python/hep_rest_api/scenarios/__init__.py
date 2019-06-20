@@ -24,7 +24,7 @@ class BaseHelper(object):
         """
         self.api_client = api_client
         self.base_parameters = base_parameters
-        self.key_path
+        self.key_path = key_path
         self.api_version = api_version
 
     def get_default_trust_oracle(self):
@@ -65,4 +65,7 @@ class BaseHelper(object):
     def sign_secp256r1(data):
         sign_string = util.generate_signature_base_string(data, '&')
         r, s = utils.sign_secp256r1(sign_string, self.key_path)
-        return concat_signature(r, s)
+        signature = self.concat_signature(r, s)
+        data['signature'] = signature
+        data['sign_type'] = 'secp256r1'
+        return data
