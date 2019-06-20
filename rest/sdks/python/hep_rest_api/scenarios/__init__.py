@@ -22,3 +22,11 @@ class BaseHelper(object):
         self.base_parameters = base_parameters
         self.key_path
 
+    def get_default_trust_oracle(self):
+        """Retrieve the public key of default trust oracle from hep node
+        
+        :rtype: str
+        :return: The public key of default trust oracle
+        """
+        pass
+

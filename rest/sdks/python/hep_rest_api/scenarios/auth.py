@@ -12,7 +12,7 @@ from hep_rest_api.scenarios import BaseHelper
 logger = logging.getLogger(__name__)
 
 class AuthHelper(BaseHelper):
-    def generateAuthRequest(self, dapp_id, action='hep.auth.login', scope=1, expired=300, memo=''):
+    def generate_auth_request(self, dapp_id, action='hep.auth.login', scope=1, expired=300, memo='', uuid=None):
         """Generate the authentication request
         
         :param str dapp_id: The DApp ID
@@ -20,8 +20,26 @@ class AuthHelper(BaseHelper):
         :param int scope: The request scope. 1: base profile including name,head,newid; 2: advance profile including cellphone.
         :param int expired: The expired time of request
         :param str memo: The memo of request to end user
+        :param str uuid: The request uuid for desktop-browser. optional.
         :rtype: dict
         :return: The request information including signature
         """
         pass
 
+    def generate_qrcode_string(self, auth_request):
+        """Generate the hep-based scheme string string for QRCode 
+        
+        :param dict auth_request: The auth request
+        :rtype: str
+        :return: The QRcode string
+        """
+        pass
+
+    def validate_auth_callback(self, data):
+        """Validate the response of auth callback sent by end users such as NewPay users 
+        
+        :param dict data: The callback data
+        :rtype: bool
+        :return: True if valid data, otherwise False
+        """
+        pass
