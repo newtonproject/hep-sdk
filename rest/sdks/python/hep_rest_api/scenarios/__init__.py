@@ -37,7 +37,7 @@ class BaseHelper(object):
 
     def generate_sign_data(self, data):
         sign_data = copy.deepcopy(data)
-        sign_data.extends(self.base_parameters)
+        sign_data.update(self.base_parameters)
         # dynamic fields
         sign_data['ts'] = int(datetime.datetime.now().timestamp())
         sign_data['nonce'] = uuid.uuid4().hex
