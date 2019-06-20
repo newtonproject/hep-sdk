@@ -15,7 +15,7 @@ from hep_rest_api import utils
 logger = logging.getLogger(__name__)
 
 class BaseHelper(object):
-    def __init__(self, api_client, base_parameters, key_path, api_version='1'):
+    def __init__(self, api_client, base_parameters, dapp_secret, key_path, api_version='1'):
         """Initialize the basic parameters
 
         :param hep_rest_api.RestApi api_client: The api client instance
@@ -26,6 +26,7 @@ class BaseHelper(object):
         self.base_parameters = base_parameters
         self.key_path = key_path
         self.api_version = api_version
+        self.dapp_secret = dapp_secret
 
     def get_default_trust_oracle(self):
         """Retrieve the public key of default trust oracle from hep node
@@ -45,7 +46,7 @@ class BaseHelper(object):
 
     def sign_hmac(data, dapp_signature_method='HMAC-MD5'):
         sign_data = self.generate_sign_data(data)
-        dapp_signature = utils.sign_hmac(sign_data, self.base_parameters.get('dapp_secret'), signature_method=dapp_signature_method)
+        dapp_signature = utils.sign_hmac(sign_data, self.dapp_secret, signature_method=dapp_signature_method)
         sign_data['dapp_signature'] = dapp_signature
         sign_data['api_version'] = self.api_version
         sign_data['dapp_signature_method'] = dapp_signature_method
