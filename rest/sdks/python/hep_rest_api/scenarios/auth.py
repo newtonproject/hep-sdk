@@ -59,7 +59,7 @@ class AuthHelper(BaseHelper):
         protocol = self.base_parameters.get('protocol')
         dapp_id = self.base_parameters.get('dapp_id')
         action = self.action_auth_login
-        qrcode_str = "%s://%s/?action=%s&auth_hash=%s" % (protocol, dapp_id, action, auth_hash)
+        qrcode_str = "%s://%s/?action=%s&auth_hash=%s" % (protocol.lower(), dapp_id, action, auth_hash)
         return qrcode_str
 
     def validate_auth_callback(self, data):
