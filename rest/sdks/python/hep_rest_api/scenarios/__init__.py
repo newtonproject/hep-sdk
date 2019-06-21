@@ -27,6 +27,9 @@ class BaseHelper(object):
         self.key_path = key_path
         self.api_version = api_version
         self.dapp_secret = dapp_secret
+        self.action_auth_login = 'hep.auth.login'
+        self.action_auth_pay = "hep.pay.order"
+        self.action_auth_proof = "hep.proof.submit"
 
     def get_default_trust_oracle(self):
         """Retrieve the public key of default trust oracle from hep node
@@ -44,15 +47,13 @@ class BaseHelper(object):
         sign_data['nonce'] = uuid.uuid4().hex
         return sign_data
 
-    def sign_hmac(data, dapp_signature_method='HMAC-MD5'):
-        sign_data = self.generate_sign_data(data)
-        dapp_signature = utils.sign_hmac(sign_data, self.dapp_secret, signature_method=dapp_signature_method)
-        sign_data['dapp_signature'] = dapp_signature
-        sign_data['api_version'] = self.api_version
-        sign_data['dapp_signature_method'] = dapp_signature_method
-        return sign_data
+    def sign_hmac(self, data, dapp_signature_method='HMAC-MD5'):
+        dapp_signature = utils.sign_hmac(data, self.dapp_secret, signature_method=dapp_signature_method)
+        data['dapp_signature'] = dapp_signature
+        data['dapp_signature_method'] = dapp_signature_method
+        return data
 
-    def concat_signature(r, s):
+    def concat_signature(self, r, s):
         if r.startswith('0x'):
             r = r[2:]
         if len(r) < 64:
@@ -60,11 +61,11 @@ class BaseHelper(object):
         if s.startswith('0x'):
             s = s[2:]
         if len(s) < 64:
-            s = '0' * (64 - len(s)) + s    
+            s = '0' * (64 - len(s)) + s
         return '0x' + r + s
 
-    def sign_secp256r1(data):
-        sign_string = util.generate_signature_base_string(data, '&')
+    def sign_secp256r1(self, data):
+        sign_string = utils.generate_signature_base_string(data, '&')
         r, s = utils.sign_secp256r1(sign_string, self.key_path)
         signature = self.concat_signature(r, s)
         data['signature'] = signature
