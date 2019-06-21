@@ -47,15 +47,13 @@ class AuthHelper(BaseHelper):
         auth_response = self.api_client.rest_newnet_caches_auth_create(auth_cache, self.api_version)
         return auth_response
 
-
-    def generate_qrcode_string(self, auth_request):
+    def generate_qrcode_string(self, auth_hash):
         """Generate the hep-based scheme string string for QRCode 
         
-        :param dict auth_request: The auth request
+        :param str auth_hash: The auth request hash
         :rtype: str
         :return: The QRcode string
         """
-        auth_hash = auth_request.auth_hash
         protocol = self.base_parameters.get('protocol')
         dapp_id = self.base_parameters.get('dapp_id')
         action = self.action_auth_login
