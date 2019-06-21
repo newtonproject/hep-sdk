@@ -135,3 +135,12 @@ def validate_secp256r1_signature(r, s, message, valid_public_keys):
         if public_key in valid_public_keys:
             return True
     return False
+
+
+def split_signature_for_r_s(signature):
+    if signature.startswith("0x"):
+        signature = signature[2:]
+    sig_half_len = int(len(signature) / 2)
+    r = '0x' + signature[: sig_half_len]
+    s = '0x' + signature[sig_half_len:]
+    return r, s

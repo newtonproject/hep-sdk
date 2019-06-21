@@ -37,7 +37,9 @@ class BaseHelper(object):
         :rtype: str
         :return: The public key of default trust oracle
         """
-        pass
+        valid_public_keys = [
+        ]
+        return valid_public_keys
 
     def generate_sign_data(self, data):
         sign_data = copy.deepcopy(data)
@@ -71,3 +73,9 @@ class BaseHelper(object):
         data['signature'] = signature
         data['sign_type'] = 'secp256r1'
         return data
+
+    def validate_r1_data(self, data):
+        signed_message = utils.generate_signature_base_string(data, "&")
+        r, s = utils.split_signature_for_r_s(data.get('signature'))
+        valid_public_keys = self.get_default_trust_oracle()
+        return utils.validate_secp256r1_signature(r, s, signed_message, valid_public_keys)

@@ -27,7 +27,8 @@ key_path = PRIVATE_KEY_PATH
 configuration = hep_rest_api.api_client.Configuration()
 configuration.host = HEP_HOST
 api_client = hep_rest_api.RestApi(hep_rest_api.ApiClient(configuration))
-
+pay_data = {"dapp_id": "75098291f88343b9836118546f375a9f", "nonce": "92ac0a98ba1742c48eb8e91100077817", "sign_type": "secp256r1", "signature": "0xee47bd99d1807b7a14bb36c9e9fe641753f13e3c5d77610121edd3e125ddf78d22a56c98de8012d185b6de0da27aaef4101d3fe4beb5cf3038bc134d73012f48", "ts": "1561121020", "txid": "0xd7ab1ddcad52efd96298610030c985083cb6639b3f0f07c86f51ea7845a61237", "uuid": "b8e89a114b104a8d83e0266bbc5a55a1"}
+login_data = {"action": "hep.auth.login", "scope": 1, "expired": 1561129670, "memo": "default", "uuid": "682749f075b74702b8c41c9a75862b0a", "dapp_id": "75098291f88343b9836118546f375a9f", "dapp_key": "71ffeae1a9a2402c944d84c54f8ffddc", "protocol":"HEP", "version": "1.0", "os": "darwin", "language": "en", "ts": 1561129370, "nonce": "ae892ffdf7ee430a992f29b5760d4e69", "dapp_signature": "046fbe22f261c5e5b62b37679b8f5a99", "dapp_signature_method": "HMAC-MD5", "signature": "0xf33c0e088f1cb64a8d0845a62333500d73b227c242e36dcf902da4243e515472dd2de175443b2918c52fbd6abbcbbace98a8e75540a93e3d29628096437f09e7", "sign_type": "secp256r1"}
 
 def _get_api_client():
     configuration = hep_rest_api.api_client.Configuration()
@@ -42,6 +43,8 @@ def test_auth_login():
     auth_resposne = auth_helper.generate_auth_request(uuid=uuid.uuid4().hex)
     qr_str = auth_helper.generate_qrcode_string(auth_resposne.auth_hash)
     print(qr_str)
+    is_valid = auth_helper.validate_auth_callback(login_data)
+    print(is_valid)
 
 
 def test_auth_pay():
@@ -51,6 +54,8 @@ def test_auth_pay():
     print(pay_response.pay_hash)
     pay_qr_str = pay_helper.generate_qrcode_string(pay_response.pay_hash)
     print(pay_qr_str)
+    is_valid = pay_helper.validate_pay_callback(pay_data)
+    print(is_valid)
 
 
 def test_auth_proof():
@@ -64,4 +69,4 @@ def test_auth_proof():
 
 
 if __name__ == '__main__':
-    test_auth_proof()
+    test_auth_pay()

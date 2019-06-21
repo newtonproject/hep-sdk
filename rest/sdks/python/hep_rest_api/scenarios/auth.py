@@ -67,4 +67,5 @@ class AuthHelper(BaseHelper):
         :rtype: bool
         :return: True if valid data, otherwise False
         """
-        pass
+        return self.validate_r1_data(data)
+
