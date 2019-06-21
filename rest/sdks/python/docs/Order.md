@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **customer** | **str** | The customer&#x27;s NewID | 
 **broker** | **str** | The broker&#x27;s NewID. optional. | 
 **order_items** | [**list[OrderItem]**](OrderItem.md) |  | 
+**chain_txid** | **str** | The seller&#x27;s NewID | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Order
+ * NewchainTransactionResponse
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \HepRestApi\ObjectSerializer;
 
 /**
- * Order Class Doc Comment
+ * NewchainTransactionResponse Class Doc Comment
  *
  * @category Class
  * @package  HepRestApi
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Order implements ModelInterface, ArrayAccess
+class NewchainTransactionResponse implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class Order implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Order';
+    protected static $swaggerModelName = 'NewchainTransactionResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,16 +56,13 @@ class Order implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'proof_type' => 'string',
-'description' => 'string',
-'price_currency' => 'string',
-'total_price' => 'string',
+        'txid' => 'string',
 'order_number' => 'string',
-'seller' => 'string',
-'customer' => 'string',
-'broker' => 'string',
-'order_items' => '\HepRestApi\Model\OrderItem[]',
-'chain_txid' => 'string'    ];
+'from_address' => 'string',
+'to_address' => 'string',
+'value' => 'string',
+'block_height' => 'int',
+'status' => 'int'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -73,16 +70,13 @@ class Order implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'proof_type' => null,
-'description' => null,
-'price_currency' => null,
-'total_price' => null,
+        'txid' => null,
 'order_number' => null,
-'seller' => null,
-'customer' => null,
-'broker' => null,
-'order_items' => null,
-'chain_txid' => null    ];
+'from_address' => null,
+'to_address' => null,
+'value' => null,
+'block_height' => null,
+'status' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -111,16 +105,13 @@ class Order implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'proof_type' => 'proof_type',
-'description' => 'description',
-'price_currency' => 'price_currency',
-'total_price' => 'total_price',
+        'txid' => 'txid',
 'order_number' => 'order_number',
-'seller' => 'seller',
-'customer' => 'customer',
-'broker' => 'broker',
-'order_items' => 'order_items',
-'chain_txid' => 'chain_txid'    ];
+'from_address' => 'from_address',
+'to_address' => 'to_address',
+'value' => 'value',
+'block_height' => 'block_height',
+'status' => 'status'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -128,16 +119,13 @@ class Order implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'proof_type' => 'setProofType',
-'description' => 'setDescription',
-'price_currency' => 'setPriceCurrency',
-'total_price' => 'setTotalPrice',
+        'txid' => 'setTxid',
 'order_number' => 'setOrderNumber',
-'seller' => 'setSeller',
-'customer' => 'setCustomer',
-'broker' => 'setBroker',
-'order_items' => 'setOrderItems',
-'chain_txid' => 'setChainTxid'    ];
+'from_address' => 'setFromAddress',
+'to_address' => 'setToAddress',
+'value' => 'setValue',
+'block_height' => 'setBlockHeight',
+'status' => 'setStatus'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -145,16 +133,13 @@ class Order implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'proof_type' => 'getProofType',
-'description' => 'getDescription',
-'price_currency' => 'getPriceCurrency',
-'total_price' => 'getTotalPrice',
+        'txid' => 'getTxid',
 'order_number' => 'getOrderNumber',
-'seller' => 'getSeller',
-'customer' => 'getCustomer',
-'broker' => 'getBroker',
-'order_items' => 'getOrderItems',
-'chain_txid' => 'getChainTxid'    ];
+'from_address' => 'getFromAddress',
+'to_address' => 'getToAddress',
+'value' => 'getValue',
+'block_height' => 'getBlockHeight',
+'status' => 'getStatus'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -214,16 +199,13 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['proof_type'] = isset($data['proof_type']) ? $data['proof_type'] : null;
-        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
-        $this->container['price_currency'] = isset($data['price_currency']) ? $data['price_currency'] : null;
-        $this->container['total_price'] = isset($data['total_price']) ? $data['total_price'] : null;
+        $this->container['txid'] = isset($data['txid']) ? $data['txid'] : null;
         $this->container['order_number'] = isset($data['order_number']) ? $data['order_number'] : null;
-        $this->container['seller'] = isset($data['seller']) ? $data['seller'] : null;
-        $this->container['customer'] = isset($data['customer']) ? $data['customer'] : null;
-        $this->container['broker'] = isset($data['broker']) ? $data['broker'] : null;
-        $this->container['order_items'] = isset($data['order_items']) ? $data['order_items'] : null;
-        $this->container['chain_txid'] = isset($data['chain_txid']) ? $data['chain_txid'] : null;
+        $this->container['from_address'] = isset($data['from_address']) ? $data['from_address'] : null;
+        $this->container['to_address'] = isset($data['to_address']) ? $data['to_address'] : null;
+        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['block_height'] = isset($data['block_height']) ? $data['block_height'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
     }
 
     /**
@@ -235,32 +217,26 @@ class Order implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['proof_type'] === null) {
-            $invalidProperties[] = "'proof_type' can't be null";
-        }
-        if ($this->container['description'] === null) {
-            $invalidProperties[] = "'description' can't be null";
-        }
-        if ($this->container['price_currency'] === null) {
-            $invalidProperties[] = "'price_currency' can't be null";
-        }
-        if ($this->container['total_price'] === null) {
-            $invalidProperties[] = "'total_price' can't be null";
+        if ($this->container['txid'] === null) {
+            $invalidProperties[] = "'txid' can't be null";
         }
         if ($this->container['order_number'] === null) {
             $invalidProperties[] = "'order_number' can't be null";
         }
-        if ($this->container['seller'] === null) {
-            $invalidProperties[] = "'seller' can't be null";
+        if ($this->container['from_address'] === null) {
+            $invalidProperties[] = "'from_address' can't be null";
         }
-        if ($this->container['customer'] === null) {
-            $invalidProperties[] = "'customer' can't be null";
+        if ($this->container['to_address'] === null) {
+            $invalidProperties[] = "'to_address' can't be null";
         }
-        if ($this->container['broker'] === null) {
-            $invalidProperties[] = "'broker' can't be null";
+        if ($this->container['value'] === null) {
+            $invalidProperties[] = "'value' can't be null";
         }
-        if ($this->container['order_items'] === null) {
-            $invalidProperties[] = "'order_items' can't be null";
+        if ($this->container['block_height'] === null) {
+            $invalidProperties[] = "'block_height' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
         }
         return $invalidProperties;
     }
@@ -278,97 +254,25 @@ class Order implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets proof_type
+     * Gets txid
      *
      * @return string
      */
-    public function getProofType()
+    public function getTxid()
     {
-        return $this->container['proof_type'];
+        return $this->container['txid'];
     }
 
     /**
-     * Sets proof_type
+     * Sets txid
      *
-     * @param string $proof_type The proof type which value is 'order'.
+     * @param string $txid The transaction ID
      *
      * @return $this
      */
-    public function setProofType($proof_type)
+    public function setTxid($txid)
     {
-        $this->container['proof_type'] = $proof_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string $description The order description
-     *
-     * @return $this
-     */
-    public function setDescription($description)
-    {
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets price_currency
-     *
-     * @return string
-     */
-    public function getPriceCurrency()
-    {
-        return $this->container['price_currency'];
-    }
-
-    /**
-     * Sets price_currency
-     *
-     * @param string $price_currency The symbol of fiat or digital token, such as USD, RMB, NEW,BTC,ETH.
-     *
-     * @return $this
-     */
-    public function setPriceCurrency($price_currency)
-    {
-        $this->container['price_currency'] = $price_currency;
-
-        return $this;
-    }
-
-    /**
-     * Gets total_price
-     *
-     * @return string
-     */
-    public function getTotalPrice()
-    {
-        return $this->container['total_price'];
-    }
-
-    /**
-     * Sets total_price
-     *
-     * @param string $total_price The amount of fiat or digital token, unit is the minimum unit of given fiat or digital token.
-     *
-     * @return $this
-     */
-    public function setTotalPrice($total_price)
-    {
-        $this->container['total_price'] = $total_price;
+        $this->container['txid'] = $txid;
 
         return $this;
     }
@@ -398,121 +302,121 @@ class Order implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets seller
+     * Gets from_address
      *
      * @return string
      */
-    public function getSeller()
+    public function getFromAddress()
     {
-        return $this->container['seller'];
+        return $this->container['from_address'];
     }
 
     /**
-     * Sets seller
+     * Sets from_address
      *
-     * @param string $seller The seller's NewID
+     * @param string $from_address The from address
      *
      * @return $this
      */
-    public function setSeller($seller)
+    public function setFromAddress($from_address)
     {
-        $this->container['seller'] = $seller;
+        $this->container['from_address'] = $from_address;
 
         return $this;
     }
 
     /**
-     * Gets customer
+     * Gets to_address
      *
      * @return string
      */
-    public function getCustomer()
+    public function getToAddress()
     {
-        return $this->container['customer'];
+        return $this->container['to_address'];
     }
 
     /**
-     * Sets customer
+     * Sets to_address
      *
-     * @param string $customer The customer's NewID
+     * @param string $to_address The from address
      *
      * @return $this
      */
-    public function setCustomer($customer)
+    public function setToAddress($to_address)
     {
-        $this->container['customer'] = $customer;
+        $this->container['to_address'] = $to_address;
 
         return $this;
     }
 
     /**
-     * Gets broker
+     * Gets value
      *
      * @return string
      */
-    public function getBroker()
+    public function getValue()
     {
-        return $this->container['broker'];
+        return $this->container['value'];
     }
 
     /**
-     * Sets broker
+     * Sets value
      *
-     * @param string $broker The broker's NewID. optional.
+     * @param string $value The transfer amount
      *
      * @return $this
      */
-    public function setBroker($broker)
+    public function setValue($value)
     {
-        $this->container['broker'] = $broker;
+        $this->container['value'] = $value;
 
         return $this;
     }
 
     /**
-     * Gets order_items
+     * Gets block_height
      *
-     * @return \HepRestApi\Model\OrderItem[]
+     * @return int
      */
-    public function getOrderItems()
+    public function getBlockHeight()
     {
-        return $this->container['order_items'];
+        return $this->container['block_height'];
     }
 
     /**
-     * Sets order_items
+     * Sets block_height
      *
-     * @param \HepRestApi\Model\OrderItem[] $order_items order_items
+     * @param int $block_height The block height
      *
      * @return $this
      */
-    public function setOrderItems($order_items)
+    public function setBlockHeight($block_height)
     {
-        $this->container['order_items'] = $order_items;
+        $this->container['block_height'] = $block_height;
 
         return $this;
     }
 
     /**
-     * Gets chain_txid
+     * Gets status
      *
-     * @return string
+     * @return int
      */
-    public function getChainTxid()
+    public function getStatus()
     {
-        return $this->container['chain_txid'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets chain_txid
+     * Sets status
      *
-     * @param string $chain_txid The seller's NewID
+     * @param int $status The status of transaction
      *
      * @return $this
      */
-    public function setChainTxid($chain_txid)
+    public function setStatus($status)
     {
-        $this->container['chain_txid'] = $chain_txid;
+        $this->container['status'] = $status;
 
         return $this;
     }

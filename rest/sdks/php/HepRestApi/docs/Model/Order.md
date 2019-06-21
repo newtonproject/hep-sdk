@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **customer** | **string** | The customer&#x27;s NewID | 
 **broker** | **string** | The broker&#x27;s NewID. optional. | 
 **order_items** | [**\HepRestApi\Model\OrderItem[]**](OrderItem.md) |  | 
+**chain_txid** | **string** | The seller&#x27;s NewID | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

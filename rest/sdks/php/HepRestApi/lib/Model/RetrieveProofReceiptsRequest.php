@@ -1,6 +1,6 @@
 <?php
 /**
- * CancelProofRequest
+ * RetrieveProofReceiptsRequest
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \HepRestApi\ObjectSerializer;
 
 /**
- * CancelProofRequest Class Doc Comment
+ * RetrieveProofReceiptsRequest Class Doc Comment
  *
  * @category Class
  * @package  HepRestApi
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class CancelProofRequest implements ModelInterface, ArrayAccess
+class RetrieveProofReceiptsRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class CancelProofRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'CancelProofRequest';
+    protected static $swaggerModelName = 'RetrieveProofReceiptsRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -65,10 +65,7 @@ class CancelProofRequest implements ModelInterface, ArrayAccess
 'language' => 'string',
 'dapp_signature_method' => 'string',
 'dapp_signature' => 'string',
-'sign_type' => 'string',
-'signature' => 'string',
-'dapp_id' => 'string',
-'proof_subitem_id' => 'string'    ];
+'proof_hashes' => 'string[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -85,10 +82,7 @@ class CancelProofRequest implements ModelInterface, ArrayAccess
 'language' => null,
 'dapp_signature_method' => null,
 'dapp_signature' => null,
-'sign_type' => null,
-'signature' => null,
-'dapp_id' => null,
-'proof_subitem_id' => null    ];
+'proof_hashes' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -126,10 +120,7 @@ class CancelProofRequest implements ModelInterface, ArrayAccess
 'language' => 'language',
 'dapp_signature_method' => 'dapp_signature_method',
 'dapp_signature' => 'dapp_signature',
-'sign_type' => 'sign_type',
-'signature' => 'signature',
-'dapp_id' => 'dapp_id',
-'proof_subitem_id' => 'proof_subitem_id'    ];
+'proof_hashes' => 'proof_hashes'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -146,10 +137,7 @@ class CancelProofRequest implements ModelInterface, ArrayAccess
 'language' => 'setLanguage',
 'dapp_signature_method' => 'setDappSignatureMethod',
 'dapp_signature' => 'setDappSignature',
-'sign_type' => 'setSignType',
-'signature' => 'setSignature',
-'dapp_id' => 'setDappId',
-'proof_subitem_id' => 'setProofSubitemId'    ];
+'proof_hashes' => 'setProofHashes'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -166,10 +154,7 @@ class CancelProofRequest implements ModelInterface, ArrayAccess
 'language' => 'getLanguage',
 'dapp_signature_method' => 'getDappSignatureMethod',
 'dapp_signature' => 'getDappSignature',
-'sign_type' => 'getSignType',
-'signature' => 'getSignature',
-'dapp_id' => 'getDappId',
-'proof_subitem_id' => 'getProofSubitemId'    ];
+'proof_hashes' => 'getProofHashes'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -238,10 +223,7 @@ class CancelProofRequest implements ModelInterface, ArrayAccess
         $this->container['language'] = isset($data['language']) ? $data['language'] : null;
         $this->container['dapp_signature_method'] = isset($data['dapp_signature_method']) ? $data['dapp_signature_method'] : null;
         $this->container['dapp_signature'] = isset($data['dapp_signature']) ? $data['dapp_signature'] : null;
-        $this->container['sign_type'] = isset($data['sign_type']) ? $data['sign_type'] : null;
-        $this->container['signature'] = isset($data['signature']) ? $data['signature'] : null;
-        $this->container['dapp_id'] = isset($data['dapp_id']) ? $data['dapp_id'] : null;
-        $this->container['proof_subitem_id'] = isset($data['proof_subitem_id']) ? $data['proof_subitem_id'] : null;
+        $this->container['proof_hashes'] = isset($data['proof_hashes']) ? $data['proof_hashes'] : null;
     }
 
     /**
@@ -280,17 +262,8 @@ class CancelProofRequest implements ModelInterface, ArrayAccess
         if ($this->container['dapp_signature'] === null) {
             $invalidProperties[] = "'dapp_signature' can't be null";
         }
-        if ($this->container['sign_type'] === null) {
-            $invalidProperties[] = "'sign_type' can't be null";
-        }
-        if ($this->container['signature'] === null) {
-            $invalidProperties[] = "'signature' can't be null";
-        }
-        if ($this->container['dapp_id'] === null) {
-            $invalidProperties[] = "'dapp_id' can't be null";
-        }
-        if ($this->container['proof_subitem_id'] === null) {
-            $invalidProperties[] = "'proof_subitem_id' can't be null";
+        if ($this->container['proof_hashes'] === null) {
+            $invalidProperties[] = "'proof_hashes' can't be null";
         }
         return $invalidProperties;
     }
@@ -524,97 +497,25 @@ class CancelProofRequest implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets sign_type
+     * Gets proof_hashes
      *
-     * @return string
+     * @return string[]
      */
-    public function getSignType()
+    public function getProofHashes()
     {
-        return $this->container['sign_type'];
+        return $this->container['proof_hashes'];
     }
 
     /**
-     * Sets sign_type
+     * Sets proof_hashes
      *
-     * @param string $sign_type The signature Type,aka cryptographic algorithm.
+     * @param string[] $proof_hashes The proof hashes
      *
      * @return $this
      */
-    public function setSignType($sign_type)
+    public function setProofHashes($proof_hashes)
     {
-        $this->container['sign_type'] = $sign_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets signature
-     *
-     * @return string
-     */
-    public function getSignature()
-    {
-        return $this->container['signature'];
-    }
-
-    /**
-     * Sets signature
-     *
-     * @param string $signature The signature hex string by application owner. The exclude fields is [sign_type, signature, md5].
-     *
-     * @return $this
-     */
-    public function setSignature($signature)
-    {
-        $this->container['signature'] = $signature;
-
-        return $this;
-    }
-
-    /**
-     * Gets dapp_id
-     *
-     * @return string
-     */
-    public function getDappId()
-    {
-        return $this->container['dapp_id'];
-    }
-
-    /**
-     * Sets dapp_id
-     *
-     * @param string $dapp_id The decentralized application ID
-     *
-     * @return $this
-     */
-    public function setDappId($dapp_id)
-    {
-        $this->container['dapp_id'] = $dapp_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets proof_subitem_id
-     *
-     * @return string
-     */
-    public function getProofSubitemId()
-    {
-        return $this->container['proof_subitem_id'];
-    }
-
-    /**
-     * Sets proof_subitem_id
-     *
-     * @param string $proof_subitem_id The proof subitem ID
-     *
-     * @return $this
-     */
-    public function setProofSubitemId($proof_subitem_id)
-    {
-        $this->container['proof_subitem_id'] = $proof_subitem_id;
+        $this->container['proof_hashes'] = $proof_hashes;
 
         return $this;
     }

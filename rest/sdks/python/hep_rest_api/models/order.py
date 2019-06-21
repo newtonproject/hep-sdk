@@ -38,7 +38,8 @@ class Order(object):
         'seller': 'str',
         'customer': 'str',
         'broker': 'str',
-        'order_items': 'list[OrderItem]'
+        'order_items': 'list[OrderItem]',
+        'chain_txid': 'str'
     }
 
     attribute_map = {
@@ -50,10 +51,11 @@ class Order(object):
         'seller': 'seller',
         'customer': 'customer',
         'broker': 'broker',
-        'order_items': 'order_items'
+        'order_items': 'order_items',
+        'chain_txid': 'chain_txid'
     }
 
-    def __init__(self, proof_type=None, description=None, price_currency=None, total_price=None, order_number=None, seller=None, customer=None, broker=None, order_items=None):  # noqa: E501
+    def __init__(self, proof_type=None, description=None, price_currency=None, total_price=None, order_number=None, seller=None, customer=None, broker=None, order_items=None, chain_txid=None):  # noqa: E501
         """Order - a model defined in Swagger"""  # noqa: E501
         self._proof_type = None
         self._description = None
@@ -64,6 +66,7 @@ class Order(object):
         self._customer = None
         self._broker = None
         self._order_items = None
+        self._chain_txid = None
         self.discriminator = None
         self.proof_type = proof_type
         self.description = description
@@ -74,6 +77,8 @@ class Order(object):
         self.customer = customer
         self.broker = broker
         self.order_items = order_items
+        if chain_txid is not None:
+            self.chain_txid = chain_txid
 
     @property
     def proof_type(self):
@@ -297,6 +302,29 @@ class Order(object):
             raise ValueError("Invalid value for `order_items`, must not be `None`")  # noqa: E501
 
         self._order_items = order_items
+
+    @property
+    def chain_txid(self):
+        """Gets the chain_txid of this Order.  # noqa: E501
+
+        The seller's NewID  # noqa: E501
+
+        :return: The chain_txid of this Order.  # noqa: E501
+        :rtype: str
+        """
+        return self._chain_txid
+
+    @chain_txid.setter
+    def chain_txid(self, chain_txid):
+        """Sets the chain_txid of this Order.
+
+        The seller's NewID  # noqa: E501
+
+        :param chain_txid: The chain_txid of this Order.  # noqa: E501
+        :type: str
+        """
+
+        self._chain_txid = chain_txid
 
     def to_dict(self):
         """Returns the model properties as a dict"""
