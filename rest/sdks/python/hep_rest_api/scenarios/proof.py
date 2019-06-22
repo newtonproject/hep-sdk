@@ -98,6 +98,7 @@ class ProofHelper(BaseHelper):
             'action': self.action_auth_proof,
             'uuid': uuid,
             'content': content,
+            'dapp_id': self.dapp_id
         }
         sign_data = self.generate_sign_data(data)
         hmac_data = self.sign_hmac(sign_data)
@@ -115,9 +116,8 @@ class ProofHelper(BaseHelper):
         :return: The QRcode string
         """
         protocol = self.base_parameters.get('protocol')
-        dapp_id = self.base_parameters.get('dapp_id')
         action = self.action_auth_proof
-        qrcode_str = "%s://%s/?action=%s&proof_hash=%s" % (protocol.lower(), dapp_id, action, proof_hash)
+        qrcode_str = "%s://%s/?action=%s&proof_hash=%s" % (protocol.lower(), self.dapp_id, action, proof_hash)
         return qrcode_str
 
     def validate_proof_callback(self, data):
@@ -129,18 +129,17 @@ class ProofHelper(BaseHelper):
         """
         return self.validate_r1_data(data)
 
-    def validate_proof(self, proof_hashes):
-        """Validate proof by proof_hashes, get the proof_status
+    def get_status_of_proofs(self, proof_hashes):
+        """Get the status of given proof_hashes.eg: SUBMIT, CONFIRM, PROCESSING, PART_CANCELED, CANCELED
 
         :param proof_hashes: list
-        :rtype object
-        :return: RetrieveProofReceiptsResponse
+        :rtype: RetrieveProofReceiptsResponse
+        :return: The list of proofs status
         """
         params = {
             'proof_hashes': proof_hashes
         }
         sign_data = self.generate_sign_data(params)
-        del sign_data['dapp_id']
         hmac_data = self.sign_hmac(sign_data)
         proof_request = models.RetrieveProofReceiptsRequest(**hmac_data)
         response = self.api_client.rest_proofs_receipts_create(body=proof_request, api_version=self.api_version)

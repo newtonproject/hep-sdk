@@ -58,7 +58,8 @@ class PayHelper(BaseHelper):
             'seller': seller,
             'customer': customer,
             'broker': broker,
-            'uuid': uuid
+            'uuid': uuid,
+            'dapp_id': self.dapp_id
         }
         sign_data = self.generate_sign_data(data)
         hmac_data = self.sign_hmac(sign_data)
@@ -76,9 +77,8 @@ class PayHelper(BaseHelper):
         :return: The QRcode string
         """
         protocol = self.base_parameters.get('protocol')
-        dapp_id = self.base_parameters.get('dapp_id')
         action = self.action_auth_pay
-        qrcode_str = "%s://%s/?action=%s&pay_hash=%s" % (protocol.lower(), dapp_id, action, pay_hash)
+        qrcode_str = "%s://%s/?action=%s&pay_hash=%s" % (protocol.lower(), self.dapp_id, action, pay_hash)
         return qrcode_str
 
     def validate_pay_callback(self, data):
@@ -88,18 +88,17 @@ class PayHelper(BaseHelper):
         :rtype: bool
         :return: True if valid data, otherwise False
         """
-        self.validate_r1_data(data)
+        return self.validate_r1_data(data)
 
-    def validate_transaction(self, transaction_id):
+    def get_confirmed_transaction(self, transaction_id):
         """ Validate transaction by transaction id. and you can get the order_number, block height and etc.
 
         :param transaction_id: txid
-        :rtype dict
+        :rtype: dict
         :return: dict about transaction
         """
         params = {}
         sign_data = self.generate_sign_data(params)
-        del sign_data['dapp_id']
         hmac_data = self.sign_hmac(sign_data)
         hmac_data['txid'] = transaction_id
         hmac_data['api_version'] = self.api_version

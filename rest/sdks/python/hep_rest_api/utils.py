@@ -147,7 +147,7 @@ def newid_encode_by_public_key(public_key, chain_id):
 
     :param str public_key: The public key of newid
     :param int chain_id: The blockchain ID
-    :rtype str
+    :rtype: str
     :return: The encoded newid
     """
     if public_key.startswith('0x'):
@@ -174,7 +174,7 @@ def validate_newid(r, s, message, newid, chain_id):
     :param str message: The message which signed
     :param str newid: The user's newid
     :param int chain_id: The NewChain id. The dev environment is 1002, test is 1007, main is 1012
-    :rtype bool
+    :rtype: bool
     :return: True if it is valid signature, otherwise False
     """
     public_keys = extract_secp256r1_public_keys(r, s, message)
@@ -186,11 +186,11 @@ def validate_newid(r, s, message, newid, chain_id):
 
 
 def split_signature(signature):
-    """Split signature
+    """Split the given signature
 
     :param signature:
-    :rtype hex str, hex str
-    :return: r, s
+    :rtype: str, str
+    :return: The r part for signature, The s part for signature
     """
     if not signature:
         raise ValueError(

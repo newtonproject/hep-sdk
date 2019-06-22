@@ -16,16 +16,14 @@ logger = logging.getLogger(__name__)
 
 
 class BaseHelper(object):
-    def __init__(self, api_client, base_parameters, dapp_secret, key_path, api_version='1', chain_id=1002):
+    def __init__(self, api_client, base_parameters, dapp_id, dapp_secret, key_path, api_version='1', chain_id=1012):
         """Initialize the basic parameters
 
         :param hep_rest_api.RestApi api_client: The api client instance
         :param dict base_parameters: The base parameters for HMAC authentication
         :param str key_path: The private key path for dapp owner's signature
+        :param dapp_id: The dapp id for dapp owner's
         """
-        if ('dapp_id' not in base_parameters or
-                base_parameters['dapp_id'] is None):
-            raise ValueError("Missing the required parameter `dapp_id` when calling `BaseHelper`")  # noqa: E501
         # verify the required parameter 'dapp_key' is set
         if ('dapp_key' not in base_parameters or
                 base_parameters['dapp_key'] is None):
@@ -54,6 +52,7 @@ class BaseHelper(object):
         self.action_auth_pay = "hep.pay.order"
         self.action_auth_proof = "hep.proof.submit"
         self.chain_id = chain_id
+        self.dapp_id = dapp_id
 
     def get_default_trust_oracle(self):
         """Retrieve the public key of default trust oracle from hep node
@@ -63,7 +62,6 @@ class BaseHelper(object):
         """
         params = {}
         sign_data = self.generate_sign_data(params)
-        del sign_data['dapp_id']
         hmac_data = self.sign_hmac(sign_data)
         hmac_data['api_version'] = self.api_version
         hmac_data['oracle_id'] = 'default'

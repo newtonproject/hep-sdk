@@ -38,7 +38,8 @@ class AuthHelper(BaseHelper):
             'scope': scope,
             'expired': int(datetime.datetime.now().timestamp()) + expired,
             'memo': memo,
-            'uuid': uuid
+            'uuid': uuid,
+            'dapp_id': self.dapp_id
         }
         sign_data = self.generate_sign_data(data)
         hmac_data = self.sign_hmac(sign_data)
@@ -56,9 +57,8 @@ class AuthHelper(BaseHelper):
         :return: The QRcode string
         """
         protocol = self.base_parameters.get('protocol')
-        dapp_id = self.base_parameters.get('dapp_id')
         action = self.action_auth_login
-        qrcode_str = "%s://%s/?action=%s&auth_hash=%s" % (protocol.lower(), dapp_id, action, auth_hash)
+        qrcode_str = "%s://%s/?action=%s&auth_hash=%s" % (protocol.lower(), self.dapp_id, action, auth_hash)
         return qrcode_str
 
     def validate_auth_callback(self, data):
