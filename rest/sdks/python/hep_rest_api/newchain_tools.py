@@ -17,6 +17,7 @@ logger = logging.getLogger(__name__)
 
 PREFIX = 'NEW'
 
+
 def newid_encode_by_public_key(public_key, chainID):
     if public_key.startswith('0x'):
         public_key = public_key[2:]

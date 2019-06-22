@@ -6,12 +6,13 @@ __copyright__ = """ Copyright (c) 2019 Newton Foundation. All rights reserved.""
 __version__ = '1.0'
 __author__ = 'xiawu@zeuux.org'
 
-import datetime
 import logging
-from hep_rest_api.scenarios import BaseHelper
+
 from hep_rest_api import models
+from hep_rest_api.scenarios import BaseHelper
 
 logger = logging.getLogger(__name__)
+
 
 class OrderProof(object):
     def __init__(self,
@@ -127,4 +128,15 @@ class ProofHelper(BaseHelper):
         :return: True if valid data, otherwise False
         """
         return self.validate_r1_data(data)
+
+    def validate_proof(self, proof_hashes):
+        params = {
+            'proof_hashes': proof_hashes
+        }
+        sign_data = self.generate_sign_data(params)
+        del sign_data['dapp_id']
+        hmac_data = self.sign_hmac(sign_data)
+        proof_request = models.RetrieveProofReceiptsRequest(**hmac_data)
+        response = self.api_client.rest_proofs_receipts_create(body=proof_request, api_version=self.api_version)
+        return response
 

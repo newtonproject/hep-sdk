@@ -14,6 +14,7 @@ from hep_rest_api import utils
 
 logger = logging.getLogger(__name__)
 
+
 class BaseHelper(object):
     def __init__(self, api_client, base_parameters, dapp_secret, key_path, api_version='1', chain_id=1002):
         """Initialize the basic parameters
@@ -22,6 +23,28 @@ class BaseHelper(object):
         :param dict base_parameters: The base parameters for HMAC authentication
         :param str key_path: The private key path for dapp owner's signature
         """
+        if ('dapp_id' not in base_parameters or
+                base_parameters['dapp_id'] is None):
+            raise ValueError("Missing the required parameter `dapp_id` when calling `BaseHelper`")  # noqa: E501
+        # verify the required parameter 'dapp_key' is set
+        if ('dapp_key' not in base_parameters or
+                base_parameters['dapp_key'] is None):
+            raise ValueError("Missing the required parameter `dapp_key` when calling `BaseHelper`")  # noqa: E501
+        # verify the required parameter 'protocol' is set
+        if ('protocol' not in base_parameters or
+                base_parameters['protocol'] is None):
+            raise ValueError("Missing the required parameter `protocol` when calling `BaseHelper`")  # noqa: E501
+        # verify the required parameter 'version' is set
+        if ('version' not in base_parameters or
+                base_parameters['version'] is None):
+            raise ValueError("Missing the required parameter `version` when calling `BaseHelper`")  # noqa: E501
+        if ('os' not in base_parameters or
+                base_parameters['os'] is None):
+            raise ValueError("Missing the required parameter `os` when calling `BaseHelper`")  # noqa: E501
+        # verify the required parameter 'language' is set
+        if ('language' not in base_parameters or
+                base_parameters['language'] is None):
+            raise ValueError("Missing the required parameter `language` when calling `BaseHelper`")  # noqa: E501
         self.api_client = api_client
         self.base_parameters = base_parameters
         self.key_path = key_path
@@ -38,9 +61,14 @@ class BaseHelper(object):
         :rtype: str
         :return: The public key of default trust oracle
         """
-        valid_public_keys = [
-        ]
-        return valid_public_keys
+        params = {}
+        sign_data = self.generate_sign_data(params)
+        del sign_data['dapp_id']
+        hmac_data = self.sign_hmac(sign_data)
+        hmac_data['api_version'] = self.api_version
+        hmac_data['oracle_id'] = 'default'
+        res = self.api_client.rest_oracles_read(**hmac_data)
+        return [res.public_key]
 
     def generate_sign_data(self, data):
         sign_data = copy.deepcopy(data)

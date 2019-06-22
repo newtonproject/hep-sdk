@@ -13,6 +13,7 @@ from hep_rest_api import models
 
 logger = logging.getLogger(__name__)
 
+
 class PayHelper(BaseHelper):
     def generate_pay_request(self,
                              order_number,
@@ -87,7 +88,17 @@ class PayHelper(BaseHelper):
         :rtype: bool
         :return: True if valid data, otherwise False
         """
-        return self.validate_r1_data(data)
+        self.validate_r1_data(data)
+
+    def validate_transaction(self, transaction_id):
+        params = {}
+        sign_data = self.generate_sign_data(params)
+        del sign_data['dapp_id']
+        hmac_data = self.sign_hmac(sign_data)
+        hmac_data['txid'] = transaction_id
+        hmac_data['api_version'] = self.api_version
+        response = self.api_client.rest_newchain_tx_read(**hmac_data)
+        return response
 
 
 

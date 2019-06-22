@@ -41,7 +41,7 @@ def _get_api_client():
 
 def test_auth_login():
     api_client = _get_api_client()
-    auth_helper = AuthHelper(api_client, base_parameters, HEP_SECRET, key_path, chain_id)
+    auth_helper = AuthHelper(api_client, base_parameters, HEP_SECRET, key_path, chain_id=chain_id)
     # auth_resposne = auth_helper.generate_auth_request(uuid=uuid.uuid4().hex)
     # qr_str = auth_helper.generate_qrcode_string(auth_resposne.auth_hash)
     # print(qr_str)
@@ -51,12 +51,12 @@ def test_auth_login():
 
 def test_auth_pay():
     api_client = _get_api_client()
-    pay_helper = PayHelper(api_client, base_parameters, HEP_SECRET, key_path, chain_id)
+    pay_helper = PayHelper(api_client, base_parameters, HEP_SECRET, key_path, chain_id=chain_id)
     pay_response = pay_helper.generate_pay_request(uuid.uuid4().hex, "NEW", 12, "description", "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY", "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY", "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY", uuid=uuid.uuid4().hex)
     print(pay_response.pay_hash)
     pay_qr_str = pay_helper.generate_qrcode_string(pay_response.pay_hash)
     print(pay_qr_str)
-    is_valid = pay_helper.validate_pay_callback(pay_data)
+    is_valid = pay_helper.validate_pay_callback({'txid': pay_data.get('txid')})
     print(is_valid)
 
 
@@ -64,11 +64,35 @@ def test_auth_proof():
     api_client = _get_api_client()
     order_content = OrderProof(uuid.uuid4().hex, "NEW", "20", TEST_NEWID, TEST_NEWID,TEST_NEWID, description="haha", chain_txid="0x91a662d227a62d30746e67fdc2ce7903ff63b29b5f3861b8bb2b50f64561cfaa")
     order_content.add_order_item(2, 1, 10, "NEW", "testnet", uuid.uuid4().hex, "product")
-    proof_helper = ProofHelper(api_client, base_parameters, HEP_SECRET, key_path, chain_id)
+    proof_helper = ProofHelper(api_client, base_parameters, HEP_SECRET, key_path, chain_id=chain_id)
+    proof_helper.get_default_trust_oracle()
+
     proof_resposne = proof_helper.generate_proof_request(order_content.to_dict(), uuid=uuid.uuid4().hex)
     proof_str = proof_helper.generate_qrcode_string(proof_resposne.proof_hash)
-    print(proof_str)
+    proof_hashes = [
+        proof_resposne.proof_hash
+    ]
+    response = proof_helper.validate_proof(proof_hashes)
+    print(response)
+
+
+def query_txid():
+    # api_version, txid, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature
+    pay_data = {'api_version': '1', 'dapp_key': '71ffeae1a9a2402c944d84c54f8ffddc', 'protocol': 'HEP', 'version': '1.0', 'os': 'darwin', 'language': 'en', 'ts': 1561189219, 'nonce': '7fd6675608ba49d48c4e5c2f7e87bd8f', 'dapp_signature': 'beccf75e3f0aad44e25e8a50c37f7476', 'dapp_signature_method': 'HMAC-MD5', 'txid': '0xd7ab1ddcad52efd96298610030c985083cb6639b3f0f07c86f51ea7845a61237'}
+    api_client = _get_api_client()
+    api_response = api_client.rest_newchain_tx_read(api_version="1",
+                                                    txid=pay_data['txid'],
+                                                    dapp_key=pay_data['dapp_key'],
+                                                    protocol=pay_data['protocol'],
+                                                    version=pay_data['version'],
+                                                    ts=pay_data['ts'],
+                                                    nonce=pay_data['nonce'],
+                                                    os=pay_data['os'],
+                                                    language=pay_data['language'],
+                                                    dapp_signature_method=pay_data['dapp_signature_method'],
+                                                    dapp_signature=pay_data['dapp_signature'])
+    print(api_response)
 
 
 if __name__ == '__main__':
-    test_auth_login()
+    test_auth_proof()
