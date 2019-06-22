@@ -1,5 +1,10 @@
 import sys
 import uuid
+import os
+# set the path
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(BASE_DIR, ""))
+
 import hep_rest_api
 from hep_rest_api.scenarios.auth import AuthHelper
 from hep_rest_api.scenarios.pay import PayHelper
