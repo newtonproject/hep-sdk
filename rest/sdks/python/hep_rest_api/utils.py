@@ -12,6 +12,7 @@ import hashlib
 import collections
 from fastecdsa import curve, ecdsa, keys
 from sha3 import keccak_256
+from hep_rest_api import newchain_tools
 
 logger = logging.getLogger(__name__)
 SUPPORT_SIGNATURE_METHODS = ['HMAC-MD5', ]
@@ -133,6 +134,15 @@ def validate_secp256r1_signature(r, s, message, valid_public_keys):
     logger.debug("public_keys:%s, valid_public_keys:%s" % (public_keys, valid_public_keys))
     for public_key in public_keys:
         if public_key in valid_public_keys:
+            return True
+    return False
+
+
+def validate_newid(r, s, message, newid, chainID):
+    public_keys = extract_secp256r1_public_keys(r, s, message)
+    for public_key in public_keys:
+        temp = newchain_tools.newid_encode_by_public_key(public_key, chainID)
+        if temp == newid:
             return True
     return False
 

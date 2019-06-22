@@ -15,7 +15,7 @@ from hep_rest_api import utils
 logger = logging.getLogger(__name__)
 
 class BaseHelper(object):
-    def __init__(self, api_client, base_parameters, dapp_secret, key_path, api_version='1'):
+    def __init__(self, api_client, base_parameters, dapp_secret, key_path, api_version='1', chain_id=1002):
         """Initialize the basic parameters
 
         :param hep_rest_api.RestApi api_client: The api client instance
@@ -30,6 +30,7 @@ class BaseHelper(object):
         self.action_auth_login = 'hep.auth.login'
         self.action_auth_pay = "hep.pay.order"
         self.action_auth_proof = "hep.proof.submit"
+        self.chain_id = chain_id
 
     def get_default_trust_oracle(self):
         """Retrieve the public key of default trust oracle from hep node

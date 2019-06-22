@@ -5,3 +5,5 @@ setuptools >= 21.0.0
 urllib3 >= 1.15.1
 fastecdsa==1.7.3
 pysha3==1.0.2
+base58==1.0.3
+

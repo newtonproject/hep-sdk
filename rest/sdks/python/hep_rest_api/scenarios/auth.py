@@ -10,6 +10,7 @@ import logging
 import datetime
 from hep_rest_api.scenarios import BaseHelper
 from hep_rest_api import models
+from hep_rest_api import utils
 
 logger = logging.getLogger(__name__)
 
@@ -67,5 +68,9 @@ class AuthHelper(BaseHelper):
         :rtype: bool
         :return: True if valid data, otherwise False
         """
-        return self.validate_r1_data(data)
+        newid = data.get('newid')
+        signature = data.get('signature')
+        signed_string = utils.generate_signature_base_string(data, "&")
+        r, s = utils.split_signature_for_r_s(signature)
+        return utils.validate_newid(r, s, signed_string, newid, self.chain_id)
 
