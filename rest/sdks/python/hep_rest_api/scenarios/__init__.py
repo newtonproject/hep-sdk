@@ -105,6 +105,6 @@ class BaseHelper(object):
 
     def validate_r1_data(self, data):
         signed_message = utils.generate_signature_base_string(data, "&")
-        r, s = utils.split_signature_for_r_s(data.get('signature'))
+        r, s = utils.split_signature(data.get('signature'))
         valid_public_keys = self.get_default_trust_oracle()
         return utils.validate_secp256r1_signature(r, s, signed_message, valid_public_keys)

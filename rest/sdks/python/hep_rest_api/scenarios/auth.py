@@ -71,6 +71,6 @@ class AuthHelper(BaseHelper):
         newid = data.get('newid')
         signature = data.get('signature')
         signed_string = utils.generate_signature_base_string(data, "&")
-        r, s = utils.split_signature_for_r_s(signature)
+        r, s = utils.split_signature(signature)
         return utils.validate_newid(r, s, signed_string, newid, self.chain_id)
 

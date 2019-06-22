@@ -91,6 +91,12 @@ class PayHelper(BaseHelper):
         self.validate_r1_data(data)
 
     def validate_transaction(self, transaction_id):
+        """ Validate transaction by transaction id. and you can get the order_number, block height and etc.
+
+        :param transaction_id: txid
+        :rtype dict
+        :return: dict about transaction
+        """
         params = {}
         sign_data = self.generate_sign_data(params)
         del sign_data['dapp_id']

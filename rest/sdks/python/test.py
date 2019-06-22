@@ -56,7 +56,7 @@ def test_auth_pay():
     print(pay_response.pay_hash)
     pay_qr_str = pay_helper.generate_qrcode_string(pay_response.pay_hash)
     print(pay_qr_str)
-    is_valid = pay_helper.validate_pay_callback({'txid': pay_data.get('txid')})
+    is_valid = pay_helper.validate_pay_callback(pay_data)
     print(is_valid)
 
 
@@ -95,4 +95,6 @@ def query_txid():
 
 
 if __name__ == '__main__':
+    test_auth_login()
+    test_auth_pay()
     test_auth_proof()

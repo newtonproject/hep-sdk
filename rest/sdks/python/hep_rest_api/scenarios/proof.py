@@ -130,6 +130,12 @@ class ProofHelper(BaseHelper):
         return self.validate_r1_data(data)
 
     def validate_proof(self, proof_hashes):
+        """Validate proof by proof_hashes, get the proof_status
+
+        :param proof_hashes: list
+        :rtype object
+        :return: RetrieveProofReceiptsResponse
+        """
         params = {
             'proof_hashes': proof_hashes
         }

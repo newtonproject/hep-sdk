@@ -6,19 +6,23 @@ __copyright__ = """ Copyright (c) 2019 Newton Foundation. All rights reserved.""
 __version__ = '1.0'
 __author__ = 'xiawu@newtonproject.org'
 
-import logging
 import json
 import hashlib
 import collections
+import base58
+import binascii
+import logging
 from fastecdsa import curve, ecdsa, keys
 from sha3 import keccak_256
-from hep_rest_api import newchain_tools
 
 logger = logging.getLogger(__name__)
 SUPPORT_SIGNATURE_METHODS = ['HMAC-MD5', ]
+PREFIX = 'NEW'
+
 
 def generate_md5(data):
     return hashlib.md5(data.encode('utf-8')).hexdigest()
+
 
 def generate_signature_base_string(data, joint):
     """Generate the concatenated base string for signature
@@ -138,16 +142,60 @@ def validate_secp256r1_signature(r, s, message, valid_public_keys):
     return False
 
 
-def validate_newid(r, s, message, newid, chainID):
+def newid_encode_by_public_key(public_key, chain_id):
+    """ generate newid by public key
+
+    :param public_key:
+    :param chain_id:
+    :rtype str
+    :return: newid
+    """
+    if public_key.startswith('0x'):
+        public_key = public_key[2:]
+    if len(public_key) < 64:
+        public_key = '0' * (64 - len(public_key)) + public_key
+    k = keccak_256()
+    k.update(bytearray.fromhex(public_key))
+    data = k.hexdigest()
+    hex_chainID = hex(chain_id)[2:][-8:]
+    if (len(hex_chainID) % 2) == 1:
+        hex_chainID = '0' + hex_chainID
+    num_sum = hex_chainID + data
+    data = base58.b58encode_check(b'\0' + binascii.a2b_hex(num_sum))
+    newid = PREFIX + 'ID' + data.decode()
+    return newid
+
+
+def validate_newid(r, s, message, newid, chain_id):
+    """Validate the newid signature
+
+    :param r: r for signature
+    :param s: s for signature
+    :param message: the message which signed
+    :param newid: user's newid
+    :param chain_id: chain id, dev is 1002, test is 1007, main is 1012
+    :rtype bool
+    :return: True if it is valid signature, otherwise False
+    """
     public_keys = extract_secp256r1_public_keys(r, s, message)
     for public_key in public_keys:
-        temp = newchain_tools.newid_encode_by_public_key(public_key, chainID)
+        temp = newid_encode_by_public_key(public_key, chain_id)
         if temp == newid:
             return True
     return False
 
 
-def split_signature_for_r_s(signature):
+def split_signature(signature):
+    """Split signature
+
+    :param signature:
+    :rtype hex str, hex str
+    :return: r, s
+    """
+    if not signature:
+        raise ValueError(
+            "Missing the required parameter 'signature' when calling split_signature"
+        )
     if signature.startswith("0x"):
         signature = signature[2:]
     sig_half_len = int(len(signature) / 2)
