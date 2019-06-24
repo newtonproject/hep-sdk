@@ -4,9 +4,21 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitc430eeef329e43c2e1db510e76841c27
+class ComposerStaticInit484ffe546d50e5859d1e5508f0e36492
 {
+    public static $files = array (
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
+        'k' => 
+        array (
+            'kornrunner\\' => 11,
+        ),
+        'S' => 
+        array (
+            'Symfony\\Polyfill\\Mbstring\\' => 26,
+        ),
         'E' => 
         array (
             'Elliptic\\' => 9,
@@ -19,6 +31,14 @@ class ComposerStaticInitc430eeef329e43c2e1db510e76841c27
     );
 
     public static $prefixDirsPsr4 = array (
+        'kornrunner\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kornrunner/keccak/src',
+        ),
+        'Symfony\\Polyfill\\Mbstring\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
         'Elliptic\\' => 
         array (
             0 => __DIR__ . '/..' . '/simplito/elliptic-php/lib',
@@ -36,8 +56,8 @@ class ComposerStaticInitc430eeef329e43c2e1db510e76841c27
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitc430eeef329e43c2e1db510e76841c27::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitc430eeef329e43c2e1db510e76841c27::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit484ffe546d50e5859d1e5508f0e36492::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit484ffe546d50e5859d1e5508f0e36492::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

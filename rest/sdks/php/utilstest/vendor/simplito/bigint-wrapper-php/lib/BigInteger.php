@@ -50,7 +50,6 @@ class BigInteger {
     }
     
     public static function getGmp($value = 0, $base = 10) {
-			//var_dump($value);
         if ($value instanceof BigInteger) {
             return $value->value;
         }
@@ -76,7 +75,7 @@ class BigInteger {
             $level = error_reporting();
             error_reporting(0);
             $gmp = gmp_init($value, $base);
-            //error_reporting($level);
+            error_reporting($level);
             if ($gmp === false) {
                 throw new \Exception("Cannot initialize");
             }

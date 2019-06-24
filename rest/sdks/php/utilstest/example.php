@@ -4,6 +4,7 @@ error_reporting(E_ALL | E_STRICT);
 $SUPPORT_SIGNATURE_METHODS = array('HMAC-MD5');
 require_once "vendor/autoload.php";
 use Elliptic\EC;
+use kornrunner\Keccak;
 /**
 	签名前的相关数据的预处理
 **/
@@ -61,8 +62,8 @@ function getkeys(){
 	$privkey = $key->getPrivate();
 	$pubkey = $key->getPublic();
 	$arr[] = $privkey->jsonSerialize();
-	$x = substr($pubkey->getX()->jsonSerialize(),2);
-	$y = substr($pubkey->getY()->jsonSerialize(),2);
+	$x = $pubkey->getX()->jsonSerialize();
+	$y = $pubkey->getY()->jsonSerialize();
 	if(strlen($x)<64){
 		$prefix = "";
 		for($i=0;$i<(64-strlen($x));$i++){
@@ -84,6 +85,9 @@ function getkeys(){
 //加签名
 function sign($msg,$privkey){
 	$ec = new EC('p256');
+	if(is_string($msg)){
+		$msg = Keccak::hash($msg, 256);
+	}
 	$signature = $ec->sign($msg,$privkey);
 	$derSign = $signature->toDER('hex');
 	$darr[] = $signature->r->jsonSerialize();
@@ -101,8 +105,8 @@ function getpubkeyformsign($msg,$r,$s){
 	 for($l=0;$l<2;$l++){
 		$sign['recoveryParam'] = $l;
 		$pubkeyobj = $ec->recoverPubKey($msg,$sign,$l,false);
-		$x = substr($pubkeyobj->getX()->jsonSerialize(),2);
-		$y = substr($pubkeyobj->getY()->jsonSerialize(),2);
+		$x = $pubkeyobj->getX()->jsonSerialize();
+		$y = $pubkeyobj->getY()->jsonSerialize();
 			if(strlen($x)<64){
 			$prefix = "";
 			for($i=0;$i<(64-strlen($x));$i++){
@@ -123,7 +127,9 @@ function getpubkeyformsign($msg,$r,$s){
 }
 //验证签名
 function verify($msg,$r,$s,$public_key){
-
+	if(is_string($msg)){
+		$msg = Keccak::hash($msg, 256);
+	}
 	$pukarr = getpubkeyformsign($msg,$r,$s);
 	if(in_array($public_key,$pukarr)){
 		return true;
@@ -131,37 +137,17 @@ function verify($msg,$r,$s,$public_key){
 		return false;
 	}
 }
-$arr = getkeys();
-$privkey = $arr[0];
-$pubkey = $arr[1];
-echo "私钥：".$privkey."<br>";
-echo "公钥：".$pubkey."<br>";
-$msg = bin2hex(utf8_encode("message"));
-$signrs = sign($msg,$privkey);
-echo "R：".$signrs[0]."<br>";
-echo "S：".$signrs[1]."<br>";
-echo "处理签名：".$signrs[2]."<br>";
-echo "自定义处理签名：".$signrs[3]."<br>";
-
-$rs = verify($msg,$signrs[0],$signrs[1],$pubkey);
-echo "验签:".$rs;
-
-/* $privkeya = "fd216818cecbc78c0aeb274521b1501a01a2226a23a9a6922abb824b12dd86c4";
-$pubkey ="0xb5de35a23f3b21b4c5750d02875af165796e5be673c684e53cf0f022bfe94e5e7df1867816d2869674006e08446bbe6cf21e401545e6e2ee43acc2d20b3ff168";
-$s ="0xecc23a03cc6b809115f0653d36e81d84bed4dbdfca6008b2de9f6a8f4fd930e6755c303ee8e3d1d72975017db0aee49da2d1cc43849dcdf9c39177266d950ff9";
-//$msgs = bin2hex("message");
-$msgs = bin2hex(hash("sha256","message"));
-//$msgs['data'] = "message";
-$signrss = sign($msgs,$privkeya);
-echo $signrss[0]."<br>";
-echo $signrss[1]."<br>";
-echo $signrss[2]."<br>";
-echo $signrss[3]."<br>";
-//$rs = verify($msgs,$signrss[0],$signrss[1],$pubkey);
-//var_dump($signrss);
-$rs = verify($msgs, $signrss[0], $signrss[1],$pubkey);
-echo "验签:".$rs; */
-
-
-
-
+	$arr = getkeys();
+	$privkey = $arr[0];
+	$pubkey = $arr[1];
+	echo "私钥：".$privkey."<br>";
+	echo "公钥：".$pubkey."<br>";
+	$msg = "message";
+	$signrs = sign($msg,$privkey);
+	echo "R：".$signrs[0]."<br>";
+	echo "S：".$signrs[1]."<br>";
+	echo "处理签名：".$signrs[2]."<br>";
+	echo "自定义处理签名：".$signrs[3]."<br>";
+	$rs = verify($msg,$signrs[0],$signrs[1],$pubkey);
+	echo "验签:".$rs;
+?>

@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'kornrunner\\' => array($vendorDir . '/kornrunner/keccak/src'),
+    'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Elliptic\\' => array($vendorDir . '/simplito/elliptic-php/lib'),
     'BN\\' => array($vendorDir . '/simplito/bn-php/lib'),
     'BI\\' => array($vendorDir . '/simplito/bigint-wrapper-php/lib'),
