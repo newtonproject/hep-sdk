@@ -4,7 +4,6 @@
 namespace HepRestApi\Scenarios;
 
 use HepRestApi\Utils;
-use HepRestApi\ApiException;
 use HepRestApi\Api\RestApi;
 use Ramsey\Uuid\Uuid;
 
@@ -15,25 +14,32 @@ class BaseHelper
 
     protected $base_parameters, $dapp_id, $dapp_secret, $private_key, $api_version, $chain_id;
 
-    public function __construct(RestApi $api_client, $base_parameters, $dapp_id, $dapp_secret, $private_key, $api_version='1', $chain_id=1012)
+    public function __construct(RestApi $api_client, $base_parameters, $dapp_id, $dapp_secret, $key_path, $api_version='1', $chain_id=1012)
     {
         if (!isset($base_parameters['dapp_key']) || empty($base_parameters['dapp_key'])) {
-            throw new ApiException("Missing the required parameter `dapp_key` when calling `BaseHelper`");
+            throw new \InvalidArgumentException("Missing the required parameter `dapp_key` when calling `BaseHelper`");
         }
         # verify the required parameter 'protocol' is set
         if (!isset($base_parameters['protocol']) || empty($base_parameters['protocol'])) {
-            throw new ApiException("Missing the required parameter `protocol` when calling `BaseHelper`");
+            throw new \InvalidArgumentException("Missing the required parameter `protocol` when calling `BaseHelper`");
         }
         # verify the required parameter 'version' is set
         if (!isset($base_parameters['version']) || empty($base_parameters['version'])) {
-            throw new ApiException("Missing the required parameter `version` when calling `BaseHelper`");
+            throw new \InvalidArgumentException("Missing the required parameter `version` when calling `BaseHelper`");
         }# noqa: E501
         if (!isset($base_parameters['os']) || empty($base_parameters['os'])) {
-            throw new ApiException("Missing the required parameter `os` when calling `BaseHelper`");
+            throw new \InvalidArgumentException("Missing the required parameter `os` when calling `BaseHelper`");
         }  # noqa: E501
         # verify the required parameter 'language' is set
         if (!isset($base_parameters['language']) || empty($base_parameters['language'])) {
-            throw new ApiException("Missing the required parameter `language` when calling `BaseHelper`");
+            throw new \InvalidArgumentException("Missing the required parameter `language` when calling `BaseHelper`");
+        }
+        if (!file_exists($key_path) || !is_file($key_path)) {
+            throw new \InvalidArgumentException("The required parameter `key_path` is invalid");
+        }
+        $private_key = Utils::get_private_key_from_file($key_path);
+        if (!$private_key) {
+            throw new \InvalidArgumentException("Can not get private key from `key_path`");
         }
 
         $this->api_client = $api_client;
@@ -50,8 +56,7 @@ class BaseHelper
 
     /**
      * Retrieve the public key of default trust oracle from hep node
-     * @return array The public key of default trust oracle
-     * @throws ApiException
+     * @return string The public key of default trust oracle
      */
     public function get_default_trust_oracle()
     {
@@ -137,10 +142,10 @@ class BaseHelper
         return Utils::verify($signed_message, $r, $s, $valid_public_keys);
     }
 
-    private function split_signature($signature)
+    protected function split_signature($signature)
     {
         if (empty($signature)) {
-            throw new ApiException("Missing the required parameter 'signature' when calling split_signature");
+            throw new \InvalidArgumentException("Missing the required parameter 'signature' when calling split_signature");
         }
 
         if (strpos($signature, '0x') === 0) {

@@ -69,8 +69,8 @@ class RestApi
      * @param HeaderSelector  $selector
      */
     public function __construct(
-        ClientInterface $client = null,
         Configuration $config = null,
+        ClientInterface $client = null,
         HeaderSelector $selector = null
     ) {
         $this->client = $client ?: new Client();

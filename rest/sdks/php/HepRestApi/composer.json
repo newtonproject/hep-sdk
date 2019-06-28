@@ -1,26 +1,30 @@
 {
     "name": "newtonproject/hep-sdk",
-    "description": "",
+    "description": "Implement of HEP sdk for PHP",
     "keywords": [
         "php",
-        "sdk",
-        "api"
+        "hep",
+        "newtonproject"
     ],
-    "license": "proprietary",
+    "license": "MIT",
     "authors": [
         {
-            "name": "Swagger and contributors"
+            "name": "newton-app",
+            "email": "newton-app@newtonproject.org"
         }
     ],
     "require": {
-        "php": ">=5.5",
+        "php": ">=7.0",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
         "guzzlehttp/guzzle": "^6.2",
         "simplito/elliptic-php": "1.0.4",
         "kornrunner/keccak": "^1.0",
-        "ramsey/uuid": "^3.7"
+        "ramsey/uuid": "^3.8",
+        "sop/crypto-encoding": "^0.2.0",
+        "sop/crypto-types": "^0.2.1",
+        "stephenhill/base58": "~1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8",

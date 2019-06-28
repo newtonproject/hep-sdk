@@ -4,6 +4,9 @@ namespace HepRestApi;
 
 use Elliptic\EC;
 use kornrunner\Keccak;
+use Sop\CryptoEncoding\PEM;
+use Sop\CryptoTypes\Asymmetric\EC\ECPrivateKey;
+use StephenHill\Base58;
 
 class Utils
 {
@@ -80,19 +83,11 @@ class Utils
         $y       = $pubkey->getY()->jsonSerialize();
 
         if (strlen($x) < 64) {
-            $prefix = "";
-            for ($i = 0; $i < (64 - strlen($x)); $i++) {
-                $prefix = $prefix . "0";
-            }
-            $x = $prefix . $x;
+            $x = str_pad($x, 64, "0", STR_PAD_LEFT);
         }
 
         if (strlen($y) < 64) {
-            $prefix = "";
-            for ($i = 0; $i < (64 - strlen($x)); $i++) {
-                $prefix = $prefix . "0";
-            }
-            $y = $prefix . $y;
+            $y = str_pad($y, 64, "0", STR_PAD_LEFT);
         }
 
         $public_key = "0x" . $x . $y;
@@ -123,27 +118,24 @@ class Utils
         $sign['r'] = $r;
         $sign['s'] = $s;
         $ec        = new EC('p256');
+
         for ($l = 0; $l < 2; $l++) {
             $sign['recoveryParam'] = $l;
-            $pubkeyobj             = $ec->recoverPubKey($msg, $sign, $l, false);
-            $x                     = $pubkeyobj->getX()->jsonSerialize();
-            $y                     = $pubkeyobj->getY()->jsonSerialize();
+
+            $pubkeyobj = $ec->recoverPubKey($msg, $sign, $l, false);
+            $x         = $pubkeyobj->getX()->jsonSerialize();
+            $y         = $pubkeyobj->getY()->jsonSerialize();
+
             if (strlen($x) < 64) {
-                $prefix = "";
-                for ($i = 0; $i < (64 - strlen($x)); $i++) {
-                    $prefix = $prefix . "0";
-                }
-                $x = $prefix . $x;
+                $x = str_pad($x, 64, "0", STR_PAD_LEFT);
             }
             if (strlen($y) < 64) {
-                $prefix = "";
-                for ($i = 0; $i < (64 - strlen($x)); $i++) {
-                    $prefix = $prefix . "0";
-                }
-                $y = $prefix . $y;
+                $y = str_pad($y, 64, "0", STR_PAD_LEFT);
             }
+
             $arrs[] = "0x" . $x . $y;
         }
+
         return $arrs;
     }
 
@@ -153,12 +145,97 @@ class Utils
         if (is_string($msg)) {
             $msg = Keccak::hash($msg, 256);
         }
+
         $pukarr = self::getpubkeyformsign($msg, $r, $s);
+
         if (in_array($public_key, $pukarr)) {
             return true;
         } else {
             return false;
         }
+    }
+
+    /**
+     * Validate the newid signature
+     * @param string $r The r part hex string for signature
+     * @param string $s The s part hex string for signature
+     * @param string $message The message which signed
+     * @param string $newid The user's newid
+     * @param int $chain_id The NewChain id. The dev environment is 1002, test is 1007, main is 1012
+     * @return bool
+     */
+    static function validate_newid($r, $s, $message, $newid, $chain_id)
+    {
+        if (is_string($message)) {
+            $message = Keccak::hash($message, 256);
+        }
+
+        $public_keys = self::getpubkeyformsign($message, $r, $s);
+
+        foreach ($public_keys as $pub_key) {
+            $temp = self::newid_encode_by_public_key($pub_key, $chain_id);
+            if ($temp == $newid) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * generate newid by public key
+     * @param string $public_key The public key of newid
+     * @param string $chain_id The blockchain ID
+     * @return string The encoded newid
+     */
+    static function newid_encode_by_public_key($public_key, $chain_id)
+    {
+        if (strpos($public_key, '0x') === 0) {
+            $public_key = substr($public_key, 2);
+        }
+        if (strlen($public_key) < 64) {
+            $public_key = str_pad($public_key, 64, "0", STR_PAD_LEFT);
+        }
+
+        $data = Keccak::hash(hex2bin($public_key), 256);
+
+        $hex_chainID = substr(dechex($chain_id), -8);
+
+        if ((strlen($hex_chainID) % 2) == 1) {
+            $hex_chainID = '0' . $hex_chainID;
+        }
+        $num_sum = $hex_chainID . $data;
+
+        $version_byte = hex2bin("00");
+        $num_byte = hex2bin($num_sum);
+        $hash_data = $version_byte.$num_byte;
+        $first_hash_data = hash("sha256", $hash_data, true);
+        $second_hash_data = hash("sha256", $first_hash_data, true);
+        $check_sum = substr($second_hash_data, 0, 4);
+        $final_data = $hash_data.$check_sum;
+
+        $base58 = new Base58();
+        $encode = $base58->encode($final_data);
+        $newid = 'NEWID' . $encode;
+        return $newid;
+    }
+
+    static function getBytes($string)
+    {
+        $bytes = array();
+        for ($i = 0; $i < strlen($string); $i++) {
+            $bytes[] = ord($string[$i]);
+        }
+        return $bytes;
+    }
+
+    static function asc2bin($string)
+    {
+        $len = strlen($string);
+        $data = '';
+        for ($i = 0; $i < $len; $i++) {
+            $data .= sprintf('%08b', ord(substr($string, $i, 1)));
+        }
+        return $data;
     }
 
     /**
@@ -177,5 +254,23 @@ class Utils
             }
         }
         return $data;
+    }
+
+    /**
+     * 从私钥文件中获取
+     * @param $file_path
+     * @return string
+     */
+    static function get_private_key_from_file($file_path)
+    {
+        try {
+            $priv_pem = PEM::fromFile($file_path);
+            $ec_priv_key = ECPrivateKey::fromPEM($priv_pem);
+            $ec_priv_seq = $ec_priv_key->toASN1();
+            $priv_key_hex = bin2hex($ec_priv_seq->at(1)->asOctetString()->string());
+            return $priv_key_hex;
+        } catch (\Exception $e) {
+            return '';
+        }
     }
 }
