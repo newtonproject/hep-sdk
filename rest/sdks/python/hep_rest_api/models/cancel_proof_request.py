@@ -41,6 +41,7 @@ class CancelProofRequest(object):
         'sign_type': 'str',
         'signature': 'str',
         'dapp_id': 'str',
+        'proof_item_id': 'str',
         'proof_subitem_id': 'str'
     }
 
@@ -57,10 +58,11 @@ class CancelProofRequest(object):
         'sign_type': 'sign_type',
         'signature': 'signature',
         'dapp_id': 'dapp_id',
+        'proof_item_id': 'proof_item_id',
         'proof_subitem_id': 'proof_subitem_id'
     }
 
-    def __init__(self, dapp_key=None, protocol=None, version=None, ts=None, nonce=None, os=None, language=None, dapp_signature_method=None, dapp_signature=None, sign_type=None, signature=None, dapp_id=None, proof_subitem_id=None):  # noqa: E501
+    def __init__(self, dapp_key=None, protocol=None, version=None, ts=None, nonce=None, os=None, language=None, dapp_signature_method=None, dapp_signature=None, sign_type=None, signature=None, dapp_id=None, proof_item_id=None, proof_subitem_id=None):  # noqa: E501
         """CancelProofRequest - a model defined in Swagger"""  # noqa: E501
         self._dapp_key = None
         self._protocol = None
@@ -74,6 +76,7 @@ class CancelProofRequest(object):
         self._sign_type = None
         self._signature = None
         self._dapp_id = None
+        self._proof_item_id = None
         self._proof_subitem_id = None
         self.discriminator = None
         self.dapp_key = dapp_key
@@ -88,7 +91,9 @@ class CancelProofRequest(object):
         self.sign_type = sign_type
         self.signature = signature
         self.dapp_id = dapp_id
-        self.proof_subitem_id = proof_subitem_id
+        self.proof_item_id = proof_item_id
+        if proof_subitem_id is not None:
+            self.proof_subitem_id = proof_subitem_id
 
     @property
     def dapp_key(self):
@@ -391,6 +396,31 @@ class CancelProofRequest(object):
         self._dapp_id = dapp_id
 
     @property
+    def proof_item_id(self):
+        """Gets the proof_item_id of this CancelProofRequest.  # noqa: E501
+
+        The proof item ID  # noqa: E501
+
+        :return: The proof_item_id of this CancelProofRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._proof_item_id
+
+    @proof_item_id.setter
+    def proof_item_id(self, proof_item_id):
+        """Sets the proof_item_id of this CancelProofRequest.
+
+        The proof item ID  # noqa: E501
+
+        :param proof_item_id: The proof_item_id of this CancelProofRequest.  # noqa: E501
+        :type: str
+        """
+        if proof_item_id is None:
+            raise ValueError("Invalid value for `proof_item_id`, must not be `None`")  # noqa: E501
+
+        self._proof_item_id = proof_item_id
+
+    @property
     def proof_subitem_id(self):
         """Gets the proof_subitem_id of this CancelProofRequest.  # noqa: E501
 
@@ -410,8 +440,6 @@ class CancelProofRequest(object):
         :param proof_subitem_id: The proof_subitem_id of this CancelProofRequest.  # noqa: E501
         :type: str
         """
-        if proof_subitem_id is None:
-            raise ValueError("Invalid value for `proof_subitem_id`, must not be `None`")  # noqa: E501
 
         self._proof_subitem_id = proof_subitem_id
 

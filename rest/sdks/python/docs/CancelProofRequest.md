@@ -15,7 +15,8 @@ Name | Type | Description | Notes
 **sign_type** | **str** | The signature Type,aka cryptographic algorithm. | 
 **signature** | **str** | The signature hex string by application owner. The exclude fields is [sign_type, signature, md5]. | 
 **dapp_id** | **str** | The decentralized application ID | 
-**proof_subitem_id** | **str** | The proof subitem ID | 
+**proof_item_id** | **str** | The proof item ID | 
+**proof_subitem_id** | **str** | The proof subitem ID | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

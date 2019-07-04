@@ -2094,7 +2094,7 @@ definitions:
       - sign_type
       - signature
       - dapp_id
-      - proof_subitem_id
+      - proof_item_id
     type: object
     properties:
       dapp_key:
@@ -2168,12 +2168,18 @@ definitions:
         type: string
         maxLength: 64
         minLength: 1
+      proof_item_id:
+        title: Proof item id
+        description: The proof item ID
+        type: string
+        maxLength: 64
+        minLength: 1
       proof_subitem_id:
         title: Proof subitem id
         description: The proof subitem ID
         type: string
         maxLength: 64
-        minLength: 1
+        x-nullable: true
   CancelProofResponse:
     type: object
     properties: {}
