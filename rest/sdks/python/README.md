@@ -74,6 +74,15 @@ except ApiException as e:
 # create an instance of the API class
 api_instance = hep_rest_api.RestApi(hep_rest_api.ApiClient(configuration))
 api_version = 'api_version_example' # str | 
+
+try:
+    api_instance.rest_health_list(api_version)
+except ApiException as e:
+    print("Exception when calling RestApi->rest_health_list: %s\n" % e)
+
+# create an instance of the API class
+api_instance = hep_rest_api.RestApi(hep_rest_api.ApiClient(configuration))
+api_version = 'api_version_example' # str | 
 txid = 'txid_example' # str | 
 dapp_key = 'dapp_key_example' # str | The decentralized application access key
 protocol = 'protocol_example' # str | The protocol name. default is 'HEP'.
@@ -275,6 +284,7 @@ All URIs are relative to */*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *RestApi* | [**rest_dapps_read**](docs/RestApi.md#rest_dapps_read) | **GET** /rest/v{api_version}/dapps/{dapp_id}/ | 
+*RestApi* | [**rest_health_list**](docs/RestApi.md#rest_health_list) | **GET** /rest/v{api_version}/health/ | 
 *RestApi* | [**rest_newchain_tx_read**](docs/RestApi.md#rest_newchain_tx_read) | **GET** /rest/v{api_version}/newchain/tx/{txid}/ | 
 *RestApi* | [**rest_newforce_read**](docs/RestApi.md#rest_newforce_read) | **GET** /rest/v{api_version}/newforce/{date}/ | 
 *RestApi* | [**rest_newids_read**](docs/RestApi.md#rest_newids_read) | **GET** /rest/v{api_version}/newids/{newid}/ | 
@@ -306,6 +316,7 @@ Class | Method | HTTP request | Description
  - [OrderItem](docs/OrderItem.md)
  - [PayCacheRequest](docs/PayCacheRequest.md)
  - [PayCacheResponse](docs/PayCacheResponse.md)
+ - [Proof](docs/Proof.md)
  - [ProofResponse](docs/ProofResponse.md)
  - [ReceiptField](docs/ReceiptField.md)
  - [RetrieveOracleResponse](docs/RetrieveOracleResponse.md)

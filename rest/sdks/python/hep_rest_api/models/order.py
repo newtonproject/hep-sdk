@@ -30,7 +30,6 @@ class Order(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'proof_type': 'str',
         'description': 'str',
         'price_currency': 'str',
         'total_price': 'str',
@@ -43,7 +42,6 @@ class Order(object):
     }
 
     attribute_map = {
-        'proof_type': 'proof_type',
         'description': 'description',
         'price_currency': 'price_currency',
         'total_price': 'total_price',
@@ -55,9 +53,8 @@ class Order(object):
         'chain_txid': 'chain_txid'
     }
 
-    def __init__(self, proof_type=None, description=None, price_currency=None, total_price=None, order_number=None, seller=None, customer=None, broker=None, order_items=None, chain_txid=None):  # noqa: E501
+    def __init__(self, description=None, price_currency=None, total_price=None, order_number=None, seller=None, customer=None, broker=None, order_items=None, chain_txid=None):  # noqa: E501
         """Order - a model defined in Swagger"""  # noqa: E501
-        self._proof_type = None
         self._description = None
         self._price_currency = None
         self._total_price = None
@@ -68,7 +65,6 @@ class Order(object):
         self._order_items = None
         self._chain_txid = None
         self.discriminator = None
-        self.proof_type = proof_type
         self.description = description
         self.price_currency = price_currency
         self.total_price = total_price
@@ -79,31 +75,6 @@ class Order(object):
         self.order_items = order_items
         if chain_txid is not None:
             self.chain_txid = chain_txid
-
-    @property
-    def proof_type(self):
-        """Gets the proof_type of this Order.  # noqa: E501
-
-        The proof type which value is 'order'.  # noqa: E501
-
-        :return: The proof_type of this Order.  # noqa: E501
-        :rtype: str
-        """
-        return self._proof_type
-
-    @proof_type.setter
-    def proof_type(self, proof_type):
-        """Sets the proof_type of this Order.
-
-        The proof type which value is 'order'.  # noqa: E501
-
-        :param proof_type: The proof_type of this Order.  # noqa: E501
-        :type: str
-        """
-        if proof_type is None:
-            raise ValueError("Invalid value for `proof_type`, must not be `None`")  # noqa: E501
-
-        self._proof_type = proof_type
 
     @property
     def description(self):
@@ -307,7 +278,7 @@ class Order(object):
     def chain_txid(self):
         """Gets the chain_txid of this Order.  # noqa: E501
 
-        The seller's NewID  # noqa: E501
+        The chain txid  # noqa: E501
 
         :return: The chain_txid of this Order.  # noqa: E501
         :rtype: str
@@ -318,7 +289,7 @@ class Order(object):
     def chain_txid(self, chain_txid):
         """Sets the chain_txid of this Order.
 
-        The seller's NewID  # noqa: E501
+        The chain txid  # noqa: E501
 
         :param chain_txid: The chain_txid of this Order.  # noqa: E501
         :type: str

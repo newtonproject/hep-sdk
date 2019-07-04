@@ -14,7 +14,7 @@ import pprint
 import re  # noqa: F401
 
 import six
-from hep_rest_api.models.order import Order  # noqa: F401,E501
+from hep_rest_api.models.proof import Proof  # noqa: F401,E501
 
 
 class ProofResponse(object):
@@ -44,7 +44,7 @@ class ProofResponse(object):
         'action': 'str',
         'uuid': 'str',
         'dapp_id': 'str',
-        'content': 'Order'
+        'content': 'Proof'
     }
 
     attribute_map = {
@@ -455,7 +455,7 @@ class ProofResponse(object):
 
 
         :return: The content of this ProofResponse.  # noqa: E501
-        :rtype: Order
+        :rtype: Proof
         """
         return self._content
 
@@ -465,7 +465,7 @@ class ProofResponse(object):
 
 
         :param content: The content of this ProofResponse.  # noqa: E501
-        :type: Order
+        :type: Proof
         """
         if content is None:
             raise ValueError("Invalid value for `content`, must not be `None`")  # noqa: E501

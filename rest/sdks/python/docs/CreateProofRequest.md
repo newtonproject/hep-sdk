@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **action** | **str** | The action name which value is &#x27;hep.proof.submit&#x27;. | 
 **uuid** | **str** | The request uuid | 
 **dapp_id** | **str** | The decentralized application ID | 
-**content** | [**Order**](Order.md) |  | 
+**content** | [**Proof**](Proof.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

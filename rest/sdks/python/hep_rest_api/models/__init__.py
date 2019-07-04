@@ -30,6 +30,7 @@ from hep_rest_api.models.order import Order
 from hep_rest_api.models.order_item import OrderItem
 from hep_rest_api.models.pay_cache_request import PayCacheRequest
 from hep_rest_api.models.pay_cache_response import PayCacheResponse
+from hep_rest_api.models.proof import Proof
 from hep_rest_api.models.proof_response import ProofResponse
 from hep_rest_api.models.receipt_field import ReceiptField
 from hep_rest_api.models.retrieve_oracle_response import RetrieveOracleResponse
