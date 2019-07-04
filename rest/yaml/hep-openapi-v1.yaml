@@ -99,6 +99,21 @@ paths:
         in: path
         required: true
         type: string
+  /rest/v{api_version}/health/:
+    get:
+      operationId: rest_health_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - rest
+    parameters:
+      - name: api_version
+        in: path
+        required: true
+        type: string
   /rest/v{api_version}/newchain/tx/{txid}/:
     get:
       operationId: rest_newchain_tx_read
@@ -1644,9 +1659,7 @@ definitions:
         maxLength: 64
         minLength: 1
   Order:
-    title: Content
     required:
-      - proof_type
       - description
       - price_currency
       - total_price
@@ -1657,12 +1670,6 @@ definitions:
       - order_items
     type: object
     properties:
-      proof_type:
-        title: Proof type
-        description: The proof type which value is 'order'.
-        type: string
-        maxLength: 64
-        minLength: 1
       description:
         title: Description
         description: The order description
@@ -1712,10 +1719,49 @@ definitions:
           $ref: '#/definitions/OrderItem'
       chain_txid:
         title: Chain txid
-        description: The seller's NewID
+        description: The chain txid
         type: string
         maxLength: 256
+        x-nullable: true
+  Proof:
+    title: Content
+    required:
+      - proof_type
+      - price_currency
+      - total_price
+      - customer
+      - orders
+    type: object
+    properties:
+      proof_type:
+        title: Proof type
+        description: The proof type which value is 'order'.
+        type: string
+        maxLength: 64
         minLength: 1
+      price_currency:
+        title: Price currency
+        description: The symbol of fiat or digital token, such as USD, RMB, NEW,BTC,ETH.
+        type: string
+        maxLength: 64
+        minLength: 1
+      total_price:
+        title: Total price
+        description: The amount of fiat or digital token, unit is the minimum unit
+          of given fiat or digital token.
+        type: string
+        maxLength: 64
+        minLength: 1
+      customer:
+        title: Customer
+        description: The customer's NewID
+        type: string
+        maxLength: 64
+        minLength: 1
+      orders:
+        type: array
+        items:
+          $ref: '#/definitions/Order'
   CreateProofRequest:
     required:
       - dapp_key
@@ -1819,7 +1865,7 @@ definitions:
         maxLength: 64
         minLength: 1
       content:
-        $ref: '#/definitions/Order'
+        $ref: '#/definitions/Proof'
   CreateProofResponse:
     required:
       - proof_hash
@@ -2033,7 +2079,7 @@ definitions:
         maxLength: 64
         minLength: 1
       content:
-        $ref: '#/definitions/Order'
+        $ref: '#/definitions/Proof'
   CancelProofRequest:
     required:
       - dapp_key
