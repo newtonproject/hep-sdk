@@ -14,38 +14,39 @@ from hep_rest_api.scenarios import BaseHelper
 logger = logging.getLogger(__name__)
 
 
-class OrderProof(object):
+class Order(object):
+    """docstring for Order"""
+
     def __init__(self,
-                 order_number, # The order number
-                 price_currency, # The symbol of fiat or digital token, such as USD, RMB, NEW,BTC,ETH.
-                 total_price, # The amount of fiat or digital token, unit is the minimum unit of given fiat or digital token.
-                 seller, # The seller's NewID
-                 customer, # The customer's NewID
-                 broker='', # The broker's NewID. optional.
-                 proof_type='order', # The proof type which value is "order".
-                 description='', # The order description
-                 chain_txid='' # The txid of blockchain. optional.
-    ):
+                 order_number,  # The identifier of the order.
+                 description,  # The description of the order.
+                 total_price,  # The total price of the order.
+                 price_currency,  # The price currency  of the order.
+                 seller,  # The order seller's NEWID.
+                 customer,  # The order customer's NEWID.
+                 broker='',  # The order broker's NEWID.
+                 chain_txid='',  # The transaction id of the order.
+                 ):
         self.order_number = order_number
-        self.price_currency = price_currency
+        self.description = description
         self.total_price = total_price
+        self.price_currency = price_currency
         self.seller = seller
         self.customer = customer
         self.broker = broker
-        self.proof_type = proof_type
-        self.description = description
         self.chain_txid = chain_txid
         self.order_items = []
 
     def add_order_item(self,
-                       order_item_number, # The identifier of the order item.
-                       order_item_quantity, # The number of the item ordered. If the property is not set, assume the quantity is one.
-                       price, # The order item's price
-                       price_currency, # The symbol of fiat or digital token, such as USD, CNY, NEW,BTC,ETH.
-                       thing_name, # The thing name such as product or service name.
-                       thing_id, # The thing id such as sku, ISBN.
-                       thing_type='product' # The thing type such as product or service.
-    ):
+                       order_item_number,  # The identifier of the order item.
+                       order_item_quantity,
+                       # The number of the item ordered. If the property is not set, assume the quantity is one.
+                       price,  # The order item's price
+                       price_currency,  # The symbol of fiat or digital token, such as USD, CNY, NEW,BTC,ETH.
+                       thing_name,  # The thing name such as product or service name.
+                       thing_id,  # The thing id such as sku, ISBN.
+                       thing_type='product',  # The thing type such as product or service.
+                       ):
         self.order_items.append({
             'order_item_number': order_item_number,
             'order_item_quantity': order_item_quantity,
@@ -55,24 +56,52 @@ class OrderProof(object):
                 'name': thing_name,
                 'thing_id': thing_id,
                 'thing_type': thing_type,
-            }
+            },
         })
 
     def to_dict(self):
         return {
             'order_number': self.order_number,
-            'price_currency': self.price_currency,
+            'description': self.description,
             'total_price': self.total_price,
+            'price_currency': self.price_currency,
             'seller': self.seller,
             'customer': self.customer,
             'broker': self.broker,
-            'proof_type': self.proof_type,
-            'description': self.description,
             'chain_txid': self.chain_txid,
             'order_items': self.order_items
         }
 
-    
+
+class OrderProof(object):
+    def __init__(self,
+                 total_price,
+                 # The amount of fiat or digital token, unit is the minimum unit of given fiat or digital token.
+                 price_currency,  # The symbol of fiat or digital token, such as USD, RMB, NEW,BTC,ETH.
+                 submitter,  # The submitter's NewID
+                 proof_type='order',  # The proof type which value is "order".
+                 ):
+        self.price_currency = price_currency
+        self.total_price = total_price
+        self.submitter = submitter
+        self.proof_type = proof_type
+        self.orders = []
+
+    def add_order(self,
+                  order,  # The order item.
+                  ):
+        self.orders.append(order)
+
+    def to_dict(self):
+        return {
+            'price_currency': self.price_currency,
+            'total_price': self.total_price,
+            'submitter': self.submitter,
+            'proof_type': self.proof_type,
+            'orders': self.orders
+        }
+
+
 class ProofHelper(BaseHelper):
     def generate_proof_request(self,
                                content,
@@ -144,4 +173,3 @@ class ProofHelper(BaseHelper):
         proof_request = models.RetrieveProofReceiptsRequest(**hmac_data)
         response = self.api_client.rest_proofs_receipts_create(body=proof_request, api_version=self.api_version)
         return response
-

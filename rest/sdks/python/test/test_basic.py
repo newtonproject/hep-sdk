@@ -10,6 +10,7 @@ from hep_rest_api.scenarios.auth import AuthHelper
 from hep_rest_api.scenarios.pay import PayHelper
 from hep_rest_api.scenarios.proof import ProofHelper
 from hep_rest_api.scenarios.proof import OrderProof
+from hep_rest_api.scenarios.proof import Order
 
 
 PRIVATE_KEY_PATH = "/Users/erhu/pony/priv"
@@ -69,8 +70,12 @@ def test_auth_pay():
 
 def test_auth_proof():
     api_client = _get_api_client()
-    order_content = OrderProof(uuid.uuid4().hex, "NEW", "20", TEST_NEWID, TEST_NEWID,TEST_NEWID, description="haha", chain_txid="0x91a662d227a62d30746e67fdc2ce7903ff63b29b5f3861b8bb2b50f64561cfaa")
-    order_content.add_order_item(2, 1, 10, "NEW", "testnet", uuid.uuid4().hex, "product")
+    order = Order( uuid.uuid4().hex, "deacription", "30", "CNY", TEST_NEWID, TEST_NEWID)
+    order.add_order_item(uuid.uuid4().hex, 1, "10", "CNY", "pingguo", uuid.uuid4().hex)
+    order.add_order_item(uuid.uuid4().hex, 2, "20", "CNY", "xiangjiao", uuid.uuid4().hex)
+    order_content = OrderProof("30", "CNY", TEST_NEWID)
+    order_content.add_order(order.to_dict())
+    print(order_content.to_dict())
     proof_helper = ProofHelper(api_client, base_parameters, HEP_ID, HEP_SECRET, key_path, chain_id=chain_id)
     oracles = proof_helper.get_default_trust_oracle()
     print(oracles)
@@ -85,9 +90,9 @@ def test_auth_proof():
 
 
 if __name__ == '__main__':
-    print("test--login--")
-    test_auth_login()
-    print("test---pay---")
-    test_auth_pay()
+    # print("test--login--")
+    # test_auth_login()
+    # print("test---pay---")
+    # test_auth_pay()
     print("test---proof---")
     test_auth_proof()
