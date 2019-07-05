@@ -1,6 +1,6 @@
 <?php
 /**
- * OrderItem
+ * Proof
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \HepRestApi\ObjectSerializer;
 
 /**
- * OrderItem Class Doc Comment
+ * Proof Class Doc Comment
  *
  * @category Class
  * @package  HepRestApi
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class OrderItem implements ModelInterface, ArrayAccess
+class Proof implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class OrderItem implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'OrderItem';
+    protected static $swaggerModelName = 'Proof';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +57,11 @@ class OrderItem implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'order_item_number' => 'string',
-        'ordered_item' => '\HepRestApi\Model\Thing',
-        'order_item_quantity' => 'int',
+        'proof_type' => 'string',
         'price_currency' => 'string',
-        'price' => 'string'
+        'total_price' => 'string',
+        'submitter' => 'string',
+        'orders' => '\HepRestApi\Model\Order[]'
     ];
 
     /**
@@ -70,11 +70,11 @@ class OrderItem implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'order_item_number' => null,
-        'ordered_item' => null,
-        'order_item_quantity' => null,
+        'proof_type' => null,
         'price_currency' => null,
-        'price' => null
+        'total_price' => null,
+        'submitter' => null,
+        'orders' => null
     ];
 
     /**
@@ -104,11 +104,11 @@ class OrderItem implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'order_item_number' => 'order_item_number',
-        'ordered_item' => 'ordered_item',
-        'order_item_quantity' => 'order_item_quantity',
+        'proof_type' => 'proof_type',
         'price_currency' => 'price_currency',
-        'price' => 'price'
+        'total_price' => 'total_price',
+        'submitter' => 'submitter',
+        'orders' => 'orders'
     ];
 
     /**
@@ -117,11 +117,11 @@ class OrderItem implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'order_item_number' => 'setOrderItemNumber',
-        'ordered_item' => 'setOrderedItem',
-        'order_item_quantity' => 'setOrderItemQuantity',
+        'proof_type' => 'setProofType',
         'price_currency' => 'setPriceCurrency',
-        'price' => 'setPrice'
+        'total_price' => 'setTotalPrice',
+        'submitter' => 'setSubmitter',
+        'orders' => 'setOrders'
     ];
 
     /**
@@ -130,11 +130,11 @@ class OrderItem implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'order_item_number' => 'getOrderItemNumber',
-        'ordered_item' => 'getOrderedItem',
-        'order_item_quantity' => 'getOrderItemQuantity',
+        'proof_type' => 'getProofType',
         'price_currency' => 'getPriceCurrency',
-        'price' => 'getPrice'
+        'total_price' => 'getTotalPrice',
+        'submitter' => 'getSubmitter',
+        'orders' => 'getOrders'
     ];
 
     /**
@@ -197,11 +197,11 @@ class OrderItem implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['order_item_number'] = isset($data['order_item_number']) ? $data['order_item_number'] : null;
-        $this->container['ordered_item'] = isset($data['ordered_item']) ? $data['ordered_item'] : null;
-        $this->container['order_item_quantity'] = isset($data['order_item_quantity']) ? $data['order_item_quantity'] : null;
+        $this->container['proof_type'] = isset($data['proof_type']) ? $data['proof_type'] : null;
         $this->container['price_currency'] = isset($data['price_currency']) ? $data['price_currency'] : null;
-        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        $this->container['total_price'] = isset($data['total_price']) ? $data['total_price'] : null;
+        $this->container['submitter'] = isset($data['submitter']) ? $data['submitter'] : null;
+        $this->container['orders'] = isset($data['orders']) ? $data['orders'] : null;
     }
 
     /**
@@ -213,23 +213,17 @@ class OrderItem implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['order_item_number'] === null) {
-            $invalidProperties[] = "'order_item_number' can't be null";
+        if ($this->container['proof_type'] === null) {
+            $invalidProperties[] = "'proof_type' can't be null";
         }
-        if ((mb_strlen($this->container['order_item_number']) > 64)) {
-            $invalidProperties[] = "invalid value for 'order_item_number', the character length must be smaller than or equal to 64.";
-        }
-
-        if ((mb_strlen($this->container['order_item_number']) < 1)) {
-            $invalidProperties[] = "invalid value for 'order_item_number', the character length must be bigger than or equal to 1.";
+        if ((mb_strlen($this->container['proof_type']) > 64)) {
+            $invalidProperties[] = "invalid value for 'proof_type', the character length must be smaller than or equal to 64.";
         }
 
-        if ($this->container['ordered_item'] === null) {
-            $invalidProperties[] = "'ordered_item' can't be null";
+        if ((mb_strlen($this->container['proof_type']) < 1)) {
+            $invalidProperties[] = "invalid value for 'proof_type', the character length must be bigger than or equal to 1.";
         }
-        if ($this->container['order_item_quantity'] === null) {
-            $invalidProperties[] = "'order_item_quantity' can't be null";
-        }
+
         if ($this->container['price_currency'] === null) {
             $invalidProperties[] = "'price_currency' can't be null";
         }
@@ -241,17 +235,31 @@ class OrderItem implements ModelInterface, ArrayAccess
             $invalidProperties[] = "invalid value for 'price_currency', the character length must be bigger than or equal to 1.";
         }
 
-        if ($this->container['price'] === null) {
-            $invalidProperties[] = "'price' can't be null";
+        if ($this->container['total_price'] === null) {
+            $invalidProperties[] = "'total_price' can't be null";
         }
-        if ((mb_strlen($this->container['price']) > 64)) {
-            $invalidProperties[] = "invalid value for 'price', the character length must be smaller than or equal to 64.";
-        }
-
-        if ((mb_strlen($this->container['price']) < 1)) {
-            $invalidProperties[] = "invalid value for 'price', the character length must be bigger than or equal to 1.";
+        if ((mb_strlen($this->container['total_price']) > 64)) {
+            $invalidProperties[] = "invalid value for 'total_price', the character length must be smaller than or equal to 64.";
         }
 
+        if ((mb_strlen($this->container['total_price']) < 1)) {
+            $invalidProperties[] = "invalid value for 'total_price', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['submitter'] === null) {
+            $invalidProperties[] = "'submitter' can't be null";
+        }
+        if ((mb_strlen($this->container['submitter']) > 64)) {
+            $invalidProperties[] = "invalid value for 'submitter', the character length must be smaller than or equal to 64.";
+        }
+
+        if ((mb_strlen($this->container['submitter']) < 1)) {
+            $invalidProperties[] = "invalid value for 'submitter', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['orders'] === null) {
+            $invalidProperties[] = "'orders' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -268,80 +276,32 @@ class OrderItem implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets order_item_number
+     * Gets proof_type
      *
      * @return string
      */
-    public function getOrderItemNumber()
+    public function getProofType()
     {
-        return $this->container['order_item_number'];
+        return $this->container['proof_type'];
     }
 
     /**
-     * Sets order_item_number
+     * Sets proof_type
      *
-     * @param string $order_item_number The number of order item
+     * @param string $proof_type The proof type which value is 'order'.
      *
      * @return $this
      */
-    public function setOrderItemNumber($order_item_number)
+    public function setProofType($proof_type)
     {
-        if ((mb_strlen($order_item_number) > 64)) {
-            throw new \InvalidArgumentException('invalid length for $order_item_number when calling OrderItem., must be smaller than or equal to 64.');
+        if ((mb_strlen($proof_type) > 64)) {
+            throw new \InvalidArgumentException('invalid length for $proof_type when calling Proof., must be smaller than or equal to 64.');
         }
-        if ((mb_strlen($order_item_number) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $order_item_number when calling OrderItem., must be bigger than or equal to 1.');
+        if ((mb_strlen($proof_type) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $proof_type when calling Proof., must be bigger than or equal to 1.');
         }
 
-        $this->container['order_item_number'] = $order_item_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets ordered_item
-     *
-     * @return \HepRestApi\Model\Thing
-     */
-    public function getOrderedItem()
-    {
-        return $this->container['ordered_item'];
-    }
-
-    /**
-     * Sets ordered_item
-     *
-     * @param \HepRestApi\Model\Thing $ordered_item ordered_item
-     *
-     * @return $this
-     */
-    public function setOrderedItem($ordered_item)
-    {
-        $this->container['ordered_item'] = $ordered_item;
-
-        return $this;
-    }
-
-    /**
-     * Gets order_item_quantity
-     *
-     * @return int
-     */
-    public function getOrderItemQuantity()
-    {
-        return $this->container['order_item_quantity'];
-    }
-
-    /**
-     * Sets order_item_quantity
-     *
-     * @param int $order_item_quantity The quantity of order item
-     *
-     * @return $this
-     */
-    public function setOrderItemQuantity($order_item_quantity)
-    {
-        $this->container['order_item_quantity'] = $order_item_quantity;
+        $this->container['proof_type'] = $proof_type;
 
         return $this;
     }
@@ -366,10 +326,10 @@ class OrderItem implements ModelInterface, ArrayAccess
     public function setPriceCurrency($price_currency)
     {
         if ((mb_strlen($price_currency) > 64)) {
-            throw new \InvalidArgumentException('invalid length for $price_currency when calling OrderItem., must be smaller than or equal to 64.');
+            throw new \InvalidArgumentException('invalid length for $price_currency when calling Proof., must be smaller than or equal to 64.');
         }
         if ((mb_strlen($price_currency) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $price_currency when calling OrderItem., must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid length for $price_currency when calling Proof., must be bigger than or equal to 1.');
         }
 
         $this->container['price_currency'] = $price_currency;
@@ -378,32 +338,87 @@ class OrderItem implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets price
+     * Gets total_price
      *
      * @return string
      */
-    public function getPrice()
+    public function getTotalPrice()
     {
-        return $this->container['price'];
+        return $this->container['total_price'];
     }
 
     /**
-     * Sets price
+     * Sets total_price
      *
-     * @param string $price The amount of fiat or digital token, unit is the minimum unit of given fiat or digital token.
+     * @param string $total_price The amount of fiat or digital token, unit is the minimum unit of given fiat or digital token.
      *
      * @return $this
      */
-    public function setPrice($price)
+    public function setTotalPrice($total_price)
     {
-        if ((mb_strlen($price) > 64)) {
-            throw new \InvalidArgumentException('invalid length for $price when calling OrderItem., must be smaller than or equal to 64.');
+        if ((mb_strlen($total_price) > 64)) {
+            throw new \InvalidArgumentException('invalid length for $total_price when calling Proof., must be smaller than or equal to 64.');
         }
-        if ((mb_strlen($price) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $price when calling OrderItem., must be bigger than or equal to 1.');
+        if ((mb_strlen($total_price) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $total_price when calling Proof., must be bigger than or equal to 1.');
         }
 
-        $this->container['price'] = $price;
+        $this->container['total_price'] = $total_price;
+
+        return $this;
+    }
+
+    /**
+     * Gets submitter
+     *
+     * @return string
+     */
+    public function getSubmitter()
+    {
+        return $this->container['submitter'];
+    }
+
+    /**
+     * Sets submitter
+     *
+     * @param string $submitter The submitter's NewID
+     *
+     * @return $this
+     */
+    public function setSubmitter($submitter)
+    {
+        if ((mb_strlen($submitter) > 64)) {
+            throw new \InvalidArgumentException('invalid length for $submitter when calling Proof., must be smaller than or equal to 64.');
+        }
+        if ((mb_strlen($submitter) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $submitter when calling Proof., must be bigger than or equal to 1.');
+        }
+
+        $this->container['submitter'] = $submitter;
+
+        return $this;
+    }
+
+    /**
+     * Gets orders
+     *
+     * @return \HepRestApi\Model\Order[]
+     */
+    public function getOrders()
+    {
+        return $this->container['orders'];
+    }
+
+    /**
+     * Sets orders
+     *
+     * @param \HepRestApi\Model\Order[] $orders orders
+     *
+     * @return $this
+     */
+    public function setOrders($orders)
+    {
+        $this->container['orders'] = $orders;
 
         return $this;
     }

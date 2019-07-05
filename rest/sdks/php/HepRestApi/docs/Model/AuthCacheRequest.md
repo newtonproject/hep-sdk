@@ -4,8 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **dapp_key** | **string** | The decentralized application access key | 
-**protocol** | **string** | The protocol name. default is &#x27;HEP&#x27;. | 
-**version** | **string** | The protocol version such as &#x27;1.0&#x27; | 
+**protocol** | **string** | The protocol name. default is &#39;HEP&#39;. | 
+**version** | **string** | The protocol version such as &#39;1.0&#39; | 
 **ts** | **int** | The current timestamp | 
 **nonce** | **string** | The random string or auto-increment sequence | 
 **os** | **string** | The operating system of client such as ios, android, dweb,etc. | 
@@ -16,10 +16,11 @@ Name | Type | Description | Notes
 **signature** | **string** | The signature hex string by application owner. The exclude fields is [sign_type, signature, md5]. | 
 **dapp_id** | **string** | The decentralized application ID | 
 **uuid** | **string** | The request uuid | 
-**action** | **string** | The action name which value is &#x27;hep.auth.login&#x27;. | 
+**action** | **string** | The action name which value is &#39;hep.auth.login&#39;. | 
 **scope** | **int** | The request profile type. 1: base profile including name,head,newid; 2: advance profile including cellphone. | 
 **expired** | **int** | The expired timestamp | 
 **memo** | **string** | The login Memo,optional. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 
