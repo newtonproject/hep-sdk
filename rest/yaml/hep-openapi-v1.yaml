@@ -1729,7 +1729,7 @@ definitions:
       - proof_type
       - price_currency
       - total_price
-      - customer
+      - submitter
       - orders
     type: object
     properties:
@@ -1752,9 +1752,9 @@ definitions:
         type: string
         maxLength: 64
         minLength: 1
-      customer:
-        title: Customer
-        description: The customer's NewID
+      submitter:
+        title: Submitter
+        description: The submitter's NewID
         type: string
         maxLength: 64
         minLength: 1
