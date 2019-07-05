@@ -33,7 +33,7 @@ class Proof(object):
         'proof_type': 'str',
         'price_currency': 'str',
         'total_price': 'str',
-        'customer': 'str',
+        'submitter': 'str',
         'orders': 'list[Order]'
     }
 
@@ -41,22 +41,22 @@ class Proof(object):
         'proof_type': 'proof_type',
         'price_currency': 'price_currency',
         'total_price': 'total_price',
-        'customer': 'customer',
+        'submitter': 'submitter',
         'orders': 'orders'
     }
 
-    def __init__(self, proof_type=None, price_currency=None, total_price=None, customer=None, orders=None):  # noqa: E501
+    def __init__(self, proof_type=None, price_currency=None, total_price=None, submitter=None, orders=None):  # noqa: E501
         """Proof - a model defined in Swagger"""  # noqa: E501
         self._proof_type = None
         self._price_currency = None
         self._total_price = None
-        self._customer = None
+        self._submitter = None
         self._orders = None
         self.discriminator = None
         self.proof_type = proof_type
         self.price_currency = price_currency
         self.total_price = total_price
-        self.customer = customer
+        self.submitter = submitter
         self.orders = orders
 
     @property
@@ -135,29 +135,29 @@ class Proof(object):
         self._total_price = total_price
 
     @property
-    def customer(self):
-        """Gets the customer of this Proof.  # noqa: E501
+    def submitter(self):
+        """Gets the submitter of this Proof.  # noqa: E501
 
-        The customer's NewID  # noqa: E501
+        The submitter's NewID  # noqa: E501
 
-        :return: The customer of this Proof.  # noqa: E501
+        :return: The submitter of this Proof.  # noqa: E501
         :rtype: str
         """
-        return self._customer
+        return self._submitter
 
-    @customer.setter
-    def customer(self, customer):
-        """Sets the customer of this Proof.
+    @submitter.setter
+    def submitter(self, submitter):
+        """Sets the submitter of this Proof.
 
-        The customer's NewID  # noqa: E501
+        The submitter's NewID  # noqa: E501
 
-        :param customer: The customer of this Proof.  # noqa: E501
+        :param submitter: The submitter of this Proof.  # noqa: E501
         :type: str
         """
-        if customer is None:
-            raise ValueError("Invalid value for `customer`, must not be `None`")  # noqa: E501
+        if submitter is None:
+            raise ValueError("Invalid value for `submitter`, must not be `None`")  # noqa: E501
 
-        self._customer = customer
+        self._submitter = submitter
 
     @property
     def orders(self):
