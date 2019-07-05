@@ -1,5 +1,4 @@
-package org.newtonproject.hep.rest.api;
-
+package org.newtonproject.hep.rest.api; 
 import org.newtonproject.hep.rest.ApiClient;
 import org.newtonproject.hep.rest.models.AuthCacheRequest;
 import org.newtonproject.hep.rest.models.AuthCacheResponse;
