@@ -1,34 +1,31 @@
 {
-    "name": "newtonproject/hep-sdk",
-    "description": "Implement of HEP sdk for PHP",
+    "name": "GIT_USER_ID/GIT_REPO_ID",
+    "description": "",
     "keywords": [
+        "swagger",
         "php",
-        "hep",
-        "newtonproject"
+        "sdk",
+        "api"
     ],
-    "license": "MIT",
+    "homepage": "http://swagger.io",
+    "license": "proprietary",
     "authors": [
         {
-            "name": "newton-app",
-            "email": "newton-app@newtonproject.org"
+            "name": "Swagger and contributors",
+            "homepage": "https://github.com/swagger-api/swagger-codegen"
         }
     ],
     "require": {
-        "php": ">=7.0",
+        "php": ">=5.5",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "guzzlehttp/guzzle": "^6.2",
-        "simplito/elliptic-php": "1.0.4",
-        "kornrunner/keccak": "^1.0",
-        "ramsey/uuid": "^3.8",
-        "sop/crypto-encoding": "^0.2.0",
-        "sop/crypto-types": "^0.2.1",
-        "stephenhill/base58": "~1.0"
+        "guzzlehttp/guzzle": "^6.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8",
-        "squizlabs/php_codesniffer": "~2.6"
+        "squizlabs/php_codesniffer": "~2.6",
+        "friendsofphp/php-cs-fixer": "~2.12"
     },
     "autoload": {
         "psr-4": { "HepRestApi\\" : "lib/" }

@@ -1,10 +1,11 @@
 # HepRestApi\RestApi
 
-All URIs are relative to */*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**restDappsRead**](RestApi.md#restDappsRead) | **GET** /rest/v{api_version}/dapps/{dapp_id}/ | 
+[**restHealthList**](RestApi.md#restHealthList) | **GET** /rest/v{api_version}/health/ | 
 [**restNewchainTxRead**](RestApi.md#restNewchainTxRead) | **GET** /rest/v{api_version}/newchain/tx/{txid}/ | 
 [**restNewforceRead**](RestApi.md#restNewforceRead) | **GET** /rest/v{api_version}/newforce/{date}/ | 
 [**restNewidsRead**](RestApi.md#restNewidsRead) | **GET** /rest/v{api_version}/newids/{newid}/ | 
@@ -18,8 +19,11 @@ Method | HTTP request | Description
 [**restProofsRead**](RestApi.md#restProofsRead) | **GET** /rest/v{api_version}/proofs/{proof_hash}/ | 
 [**restProofsReceiptsCreate**](RestApi.md#restProofsReceiptsCreate) | **POST** /rest/v{api_version}/proofs/receipts/ | 
 
+
 # **restDappsRead**
 > \HepRestApi\Model\Dapp restDappsRead($api_version, $dapp_id, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $dapp_signature_method, $dapp_signature)
+
+
 
 
 
@@ -61,8 +65,8 @@ Name | Type | Description  | Notes
  **api_version** | **string**|  |
  **dapp_id** | **string**|  |
  **dapp_key** | **string**| The decentralized application access key |
- **protocol** | **string**| The protocol name. default is &#x27;HEP&#x27;. |
- **version** | **string**| The protocol version such as &#x27;1.0&#x27; |
+ **protocol** | **string**| The protocol name. default is &#39;HEP&#39;. |
+ **version** | **string**| The protocol version such as &#39;1.0&#39; |
  **ts** | **int**| The current timestamp |
  **nonce** | **string**| The random string or auto-increment sequence |
  **os** | **string**| The operating system of client such as ios, android, dweb,etc. |
@@ -80,7 +84,55 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **restHealthList**
+> restHealthList($api_version)
+
+
+
+
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new HepRestApi\Api\RestApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$api_version = "api_version_example"; // string | 
+
+try {
+    $apiInstance->restHealthList($api_version);
+} catch (Exception $e) {
+    echo 'Exception when calling RestApi->restHealthList: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **api_version** | **string**|  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
@@ -130,8 +182,8 @@ Name | Type | Description  | Notes
  **api_version** | **string**|  |
  **txid** | **string**|  |
  **dapp_key** | **string**| The decentralized application access key |
- **protocol** | **string**| The protocol name. default is &#x27;HEP&#x27;. |
- **version** | **string**| The protocol version such as &#x27;1.0&#x27; |
+ **protocol** | **string**| The protocol name. default is &#39;HEP&#39;. |
+ **version** | **string**| The protocol version such as &#39;1.0&#39; |
  **ts** | **int**| The current timestamp |
  **nonce** | **string**| The random string or auto-increment sequence |
  **os** | **string**| The operating system of client such as ios, android, dweb,etc. |
@@ -149,7 +201,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
@@ -199,8 +251,8 @@ Name | Type | Description  | Notes
  **api_version** | **string**|  |
  **date** | **string**|  |
  **dapp_key** | **string**| The decentralized application access key |
- **protocol** | **string**| The protocol name. default is &#x27;HEP&#x27;. |
- **version** | **string**| The protocol version such as &#x27;1.0&#x27; |
+ **protocol** | **string**| The protocol name. default is &#39;HEP&#39;. |
+ **version** | **string**| The protocol version such as &#39;1.0&#39; |
  **ts** | **int**| The current timestamp |
  **nonce** | **string**| The random string or auto-increment sequence |
  **os** | **string**| The operating system of client such as ios, android, dweb,etc. |
@@ -218,7 +270,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
@@ -268,8 +320,8 @@ Name | Type | Description  | Notes
  **api_version** | **string**|  |
  **newid** | **string**|  |
  **dapp_key** | **string**| The decentralized application access key |
- **protocol** | **string**| The protocol name. default is &#x27;HEP&#x27;. |
- **version** | **string**| The protocol version such as &#x27;1.0&#x27; |
+ **protocol** | **string**| The protocol name. default is &#39;HEP&#39;. |
+ **version** | **string**| The protocol version such as &#39;1.0&#39; |
  **ts** | **int**| The current timestamp |
  **nonce** | **string**| The random string or auto-increment sequence |
  **os** | **string**| The operating system of client such as ios, android, dweb,etc. |
@@ -287,13 +339,13 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **restNewnetCachesAuthCreate**
-> \HepRestApi\Model\CreateAuthCacheResponse restNewnetCachesAuthCreate($body, $api_version)
+> \HepRestApi\Model\CreateAuthCacheResponse restNewnetCachesAuthCreate($api_version, $data)
 
 
 
@@ -309,11 +361,11 @@ $apiInstance = new HepRestApi\Api\RestApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \HepRestApi\Model\AuthCacheRequest(); // \HepRestApi\Model\AuthCacheRequest | 
 $api_version = "api_version_example"; // string | 
+$data = new \HepRestApi\Model\AuthCacheRequest(); // \HepRestApi\Model\AuthCacheRequest | 
 
 try {
-    $result = $apiInstance->restNewnetCachesAuthCreate($body, $api_version);
+    $result = $apiInstance->restNewnetCachesAuthCreate($api_version, $data);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RestApi->restNewnetCachesAuthCreate: ', $e->getMessage(), PHP_EOL;
@@ -325,8 +377,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\HepRestApi\Model\AuthCacheRequest**](../Model/AuthCacheRequest.md)|  |
  **api_version** | **string**|  |
+ **data** | [**\HepRestApi\Model\AuthCacheRequest**](../Model/AuthCacheRequest.md)|  |
 
 ### Return type
 
@@ -388,8 +440,8 @@ Name | Type | Description  | Notes
  **api_version** | **string**|  |
  **auth_hash** | **string**|  |
  **dapp_key** | **string**| The decentralized application access key |
- **protocol** | **string**| The protocol name. default is &#x27;HEP&#x27;. |
- **version** | **string**| The protocol version such as &#x27;1.0&#x27; |
+ **protocol** | **string**| The protocol name. default is &#39;HEP&#39;. |
+ **version** | **string**| The protocol version such as &#39;1.0&#39; |
  **ts** | **int**| The current timestamp |
  **nonce** | **string**| The random string or auto-increment sequence |
  **os** | **string**| The operating system of client such as ios, android, dweb,etc. |
@@ -407,13 +459,13 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **restNewnetCachesPayCreate**
-> \HepRestApi\Model\CreatePayCacheResponse restNewnetCachesPayCreate($body, $api_version)
+> \HepRestApi\Model\CreatePayCacheResponse restNewnetCachesPayCreate($api_version, $data)
 
 
 
@@ -429,11 +481,11 @@ $apiInstance = new HepRestApi\Api\RestApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \HepRestApi\Model\PayCacheRequest(); // \HepRestApi\Model\PayCacheRequest | 
 $api_version = "api_version_example"; // string | 
+$data = new \HepRestApi\Model\PayCacheRequest(); // \HepRestApi\Model\PayCacheRequest | 
 
 try {
-    $result = $apiInstance->restNewnetCachesPayCreate($body, $api_version);
+    $result = $apiInstance->restNewnetCachesPayCreate($api_version, $data);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RestApi->restNewnetCachesPayCreate: ', $e->getMessage(), PHP_EOL;
@@ -445,8 +497,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\HepRestApi\Model\PayCacheRequest**](../Model/PayCacheRequest.md)|  |
  **api_version** | **string**|  |
+ **data** | [**\HepRestApi\Model\PayCacheRequest**](../Model/PayCacheRequest.md)|  |
 
 ### Return type
 
@@ -508,8 +560,8 @@ Name | Type | Description  | Notes
  **api_version** | **string**|  |
  **pay_hash** | **string**|  |
  **dapp_key** | **string**| The decentralized application access key |
- **protocol** | **string**| The protocol name. default is &#x27;HEP&#x27;. |
- **version** | **string**| The protocol version such as &#x27;1.0&#x27; |
+ **protocol** | **string**| The protocol name. default is &#39;HEP&#39;. |
+ **version** | **string**| The protocol version such as &#39;1.0&#39; |
  **ts** | **int**| The current timestamp |
  **nonce** | **string**| The random string or auto-increment sequence |
  **os** | **string**| The operating system of client such as ios, android, dweb,etc. |
@@ -527,7 +579,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
@@ -577,8 +629,8 @@ Name | Type | Description  | Notes
  **api_version** | **string**|  |
  **oracle_id** | **string**|  |
  **dapp_key** | **string**| The decentralized application access key |
- **protocol** | **string**| The protocol name. default is &#x27;HEP&#x27;. |
- **version** | **string**| The protocol version such as &#x27;1.0&#x27; |
+ **protocol** | **string**| The protocol name. default is &#39;HEP&#39;. |
+ **version** | **string**| The protocol version such as &#39;1.0&#39; |
  **ts** | **int**| The current timestamp |
  **nonce** | **string**| The random string or auto-increment sequence |
  **os** | **string**| The operating system of client such as ios, android, dweb,etc. |
@@ -596,13 +648,15 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **restProofsCreate**
-> \HepRestApi\Model\CreateProofResponse restProofsCreate($body, $api_version)
+> \HepRestApi\Model\CreateProofResponse restProofsCreate($api_version, $data)
+
+
 
 
 
@@ -616,11 +670,11 @@ $apiInstance = new HepRestApi\Api\RestApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \HepRestApi\Model\CreateProofRequest(); // \HepRestApi\Model\CreateProofRequest | 
 $api_version = "api_version_example"; // string | 
+$data = new \HepRestApi\Model\CreateProofRequest(); // \HepRestApi\Model\CreateProofRequest | 
 
 try {
-    $result = $apiInstance->restProofsCreate($body, $api_version);
+    $result = $apiInstance->restProofsCreate($api_version, $data);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RestApi->restProofsCreate: ', $e->getMessage(), PHP_EOL;
@@ -632,8 +686,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\HepRestApi\Model\CreateProofRequest**](../Model/CreateProofRequest.md)|  |
  **api_version** | **string**|  |
+ **data** | [**\HepRestApi\Model\CreateProofRequest**](../Model/CreateProofRequest.md)|  |
 
 ### Return type
 
@@ -651,7 +705,9 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **restProofsDelete**
-> \HepRestApi\Model\CancelProofResponse restProofsDelete($body, $api_version, $proof_hash)
+> \HepRestApi\Model\CancelProofResponse restProofsDelete($api_version, $proof_hash, $data)
+
+
 
 
 
@@ -665,12 +721,12 @@ $apiInstance = new HepRestApi\Api\RestApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \HepRestApi\Model\CancelProofRequest(); // \HepRestApi\Model\CancelProofRequest | 
 $api_version = "api_version_example"; // string | 
 $proof_hash = "proof_hash_example"; // string | 
+$data = new \HepRestApi\Model\CancelProofRequest(); // \HepRestApi\Model\CancelProofRequest | 
 
 try {
-    $result = $apiInstance->restProofsDelete($body, $api_version, $proof_hash);
+    $result = $apiInstance->restProofsDelete($api_version, $proof_hash, $data);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RestApi->restProofsDelete: ', $e->getMessage(), PHP_EOL;
@@ -682,9 +738,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\HepRestApi\Model\CancelProofRequest**](../Model/CancelProofRequest.md)|  |
  **api_version** | **string**|  |
  **proof_hash** | **string**|  |
+ **data** | [**\HepRestApi\Model\CancelProofRequest**](../Model/CancelProofRequest.md)|  |
 
 ### Return type
 
@@ -746,8 +802,8 @@ Name | Type | Description  | Notes
  **api_version** | **string**|  |
  **proof_hash** | **string**|  |
  **dapp_key** | **string**| The decentralized application access key |
- **protocol** | **string**| The protocol name. default is &#x27;HEP&#x27;. |
- **version** | **string**| The protocol version such as &#x27;1.0&#x27; |
+ **protocol** | **string**| The protocol name. default is &#39;HEP&#39;. |
+ **version** | **string**| The protocol version such as &#39;1.0&#39; |
  **ts** | **int**| The current timestamp |
  **nonce** | **string**| The random string or auto-increment sequence |
  **os** | **string**| The operating system of client such as ios, android, dweb,etc. |
@@ -765,13 +821,15 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **restProofsReceiptsCreate**
-> \HepRestApi\Model\RetrieveProofReceiptsResponse restProofsReceiptsCreate($body, $api_version)
+> \HepRestApi\Model\RetrieveProofReceiptsResponse restProofsReceiptsCreate($api_version, $data)
+
+
 
 
 
@@ -785,11 +843,11 @@ $apiInstance = new HepRestApi\Api\RestApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \HepRestApi\Model\RetrieveProofReceiptsRequest(); // \HepRestApi\Model\RetrieveProofReceiptsRequest | 
 $api_version = "api_version_example"; // string | 
+$data = new \HepRestApi\Model\RetrieveProofReceiptsRequest(); // \HepRestApi\Model\RetrieveProofReceiptsRequest | 
 
 try {
-    $result = $apiInstance->restProofsReceiptsCreate($body, $api_version);
+    $result = $apiInstance->restProofsReceiptsCreate($api_version, $data);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RestApi->restProofsReceiptsCreate: ', $e->getMessage(), PHP_EOL;
@@ -801,8 +859,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\HepRestApi\Model\RetrieveProofReceiptsRequest**](../Model/RetrieveProofReceiptsRequest.md)|  |
  **api_version** | **string**|  |
+ **data** | [**\HepRestApi\Model\RetrieveProofReceiptsRequest**](../Model/RetrieveProofReceiptsRequest.md)|  |
 
 ### Return type
 

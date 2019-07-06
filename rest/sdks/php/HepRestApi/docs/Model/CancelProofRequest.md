@@ -4,8 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **dapp_key** | **string** | The decentralized application access key | 
-**protocol** | **string** | The protocol name. default is &#x27;HEP&#x27;. | 
-**version** | **string** | The protocol version such as &#x27;1.0&#x27; | 
+**protocol** | **string** | The protocol name. default is &#39;HEP&#39;. | 
+**version** | **string** | The protocol version such as &#39;1.0&#39; | 
 **ts** | **int** | The current timestamp | 
 **nonce** | **string** | The random string or auto-increment sequence | 
 **os** | **string** | The operating system of client such as ios, android, dweb,etc. | 
@@ -15,7 +15,9 @@ Name | Type | Description | Notes
 **sign_type** | **string** | The signature Type,aka cryptographic algorithm. | 
 **signature** | **string** | The signature hex string by application owner. The exclude fields is [sign_type, signature, md5]. | 
 **dapp_id** | **string** | The decentralized application ID | 
-**proof_subitem_id** | **string** | The proof subitem ID | 
+**proof_item_id** | **string** | The proof item ID | 
+**proof_subitem_id** | **string** | The proof subitem ID | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 

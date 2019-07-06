@@ -4,8 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **dapp_key** | **string** | The decentralized application access key | 
-**protocol** | **string** | The protocol name. default is &#x27;HEP&#x27;. | 
-**version** | **string** | The protocol version such as &#x27;1.0&#x27; | 
+**protocol** | **string** | The protocol name. default is &#39;HEP&#39;. | 
+**version** | **string** | The protocol version such as &#39;1.0&#39; | 
 **ts** | **int** | The current timestamp | 
 **nonce** | **string** | The random string or auto-increment sequence | 
 **os** | **string** | The operating system of client such as ios, android, dweb,etc. | 
@@ -16,15 +16,16 @@ Name | Type | Description | Notes
 **signature** | **string** | The signature hex string by application owner. The exclude fields is [sign_type, signature, md5]. | 
 **uuid** | **string** | The request uuid | 
 **dapp_id** | **string** | The decentralized application ID | 
-**action** | **string** | The action name which value is &#x27;hep.pay.order&#x27; | 
+**action** | **string** | The action name which value is &#39;hep.pay.order&#39; | 
 **expired** | **int** | The expired timestamp | 
 **description** | **string** | The order description | 
 **price_currency** | **string** | The symbol of fiat or digital token, such as USD, CNY, NEW,BTC,ETH. | 
 **total_price** | **string** | The amount of fiat or digital token, unit is the minimum unit of given fiat or digital token. | 
 **order_number** | **string** | The order number | 
-**seller** | **string** | The seller&#x27;s NewID | 
-**customer** | **string** | The customer&#x27;s NewID | 
-**broker** | **string** | The broker&#x27;s NewID. optional. | [optional] 
+**seller** | **string** | The seller&#39;s NewID | 
+**customer** | **string** | The customer&#39;s NewID | 
+**broker** | **string** | The broker&#39;s NewID. optional. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 
