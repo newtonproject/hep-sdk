@@ -37,7 +37,6 @@ class Dapp(object):
         'bundle_id': 'str',
         'schema': 'str',
         'website': 'str',
-        'download_url': 'str',
         'deposit_contract_address': 'str',
         'dapp_type_ids': 'list[int]',
         'dapp_category_id': 'int',
@@ -55,7 +54,6 @@ class Dapp(object):
         'bundle_id': 'bundle_id',
         'schema': 'schema',
         'website': 'website',
-        'download_url': 'download_url',
         'deposit_contract_address': 'deposit_contract_address',
         'dapp_type_ids': 'dapp_type_ids',
         'dapp_category_id': 'dapp_category_id',
@@ -64,7 +62,7 @@ class Dapp(object):
         'proof_submit_callback': 'proof_submit_callback'
     }
 
-    def __init__(self, dapp_id=None, dapp_name=None, icon=None, dapp_public_key=None, package_name=None, bundle_id=None, schema=None, website=None, download_url=None, deposit_contract_address=None, dapp_type_ids=None, dapp_category_id=None, auth_login_callback=None, pay_order_callback=None, proof_submit_callback=None):  # noqa: E501
+    def __init__(self, dapp_id=None, dapp_name=None, icon=None, dapp_public_key=None, package_name=None, bundle_id=None, schema=None, website=None, deposit_contract_address=None, dapp_type_ids=None, dapp_category_id=None, auth_login_callback=None, pay_order_callback=None, proof_submit_callback=None):  # noqa: E501
         """Dapp - a model defined in Swagger"""  # noqa: E501
         self._dapp_id = None
         self._dapp_name = None
@@ -74,7 +72,6 @@ class Dapp(object):
         self._bundle_id = None
         self._schema = None
         self._website = None
-        self._download_url = None
         self._deposit_contract_address = None
         self._dapp_type_ids = None
         self._dapp_category_id = None
@@ -90,7 +87,6 @@ class Dapp(object):
         self.bundle_id = bundle_id
         self.schema = schema
         self.website = website
-        self.download_url = download_url
         self.deposit_contract_address = deposit_contract_address
         self.dapp_type_ids = dapp_type_ids
         self.dapp_category_id = dapp_category_id
@@ -297,31 +293,6 @@ class Dapp(object):
             raise ValueError("Invalid value for `website`, must not be `None`")  # noqa: E501
 
         self._website = website
-
-    @property
-    def download_url(self):
-        """Gets the download_url of this Dapp.  # noqa: E501
-
-        The dapp download link  # noqa: E501
-
-        :return: The download_url of this Dapp.  # noqa: E501
-        :rtype: str
-        """
-        return self._download_url
-
-    @download_url.setter
-    def download_url(self, download_url):
-        """Sets the download_url of this Dapp.
-
-        The dapp download link  # noqa: E501
-
-        :param download_url: The download_url of this Dapp.  # noqa: E501
-        :type: str
-        """
-        if download_url is None:
-            raise ValueError("Invalid value for `download_url`, must not be `None`")  # noqa: E501
-
-        self._download_url = download_url
 
     @property
     def deposit_contract_address(self):

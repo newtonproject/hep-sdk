@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **bundle_id** | **str** | The bundle id such as com.demo.dev.ios for iOS platform | 
 **schema** | **str** | The routing schema | 
 **website** | **str** | The dapp website link | 
-**download_url** | **str** | The dapp download link | 
 **deposit_contract_address** | **str** | The deposit contract Address, the example is NEW182.... | 
 **dapp_type_ids** | **list[int]** | The support dapp type list. | 
 **dapp_category_id** | **int** | The dapp category ID. | 

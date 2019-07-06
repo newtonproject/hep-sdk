@@ -803,7 +803,6 @@ definitions:
       - bundle_id
       - schema
       - website
-      - download_url
       - deposit_contract_address
       - dapp_type_ids
       - dapp_category_id
@@ -857,12 +856,6 @@ definitions:
       website:
         title: Website
         description: The dapp website link
-        type: string
-        maxLength: 64
-        minLength: 1
-      download_url:
-        title: Download url
-        description: The dapp download link
         type: string
         maxLength: 64
         minLength: 1
