@@ -805,7 +805,7 @@ definitions:
       - website
       - download_url
       - deposit_contract_address
-      - dapp_type_id
+      - dapp_type_ids
       - dapp_category_id
       - auth_login_callback
       - pay_order_callback
@@ -872,10 +872,11 @@ definitions:
         type: string
         maxLength: 64
         minLength: 1
-      dapp_type_id:
-        title: Dapp type id
-        description: The dapp type ID.
-        type: integer
+      dapp_type_ids:
+        description: The support dapp type list.
+        type: array
+        items:
+          type: integer
       dapp_category_id:
         title: Dapp category id
         description: The dapp category ID.
@@ -1666,7 +1667,6 @@ definitions:
       - order_number
       - seller
       - customer
-      - broker
       - order_items
     type: object
     properties:
@@ -1712,7 +1712,7 @@ definitions:
         description: The broker's NewID. optional.
         type: string
         maxLength: 64
-        minLength: 1
+        x-nullable: true
       order_items:
         type: array
         items:
