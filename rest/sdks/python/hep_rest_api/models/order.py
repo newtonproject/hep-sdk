@@ -71,7 +71,8 @@ class Order(object):
         self.order_number = order_number
         self.seller = seller
         self.customer = customer
-        self.broker = broker
+        if broker is not None:
+            self.broker = broker
         self.order_items = order_items
         if chain_txid is not None:
             self.chain_txid = chain_txid
@@ -246,8 +247,6 @@ class Order(object):
         :param broker: The broker of this Order.  # noqa: E501
         :type: str
         """
-        if broker is None:
-            raise ValueError("Invalid value for `broker`, must not be `None`")  # noqa: E501
 
         self._broker = broker
 

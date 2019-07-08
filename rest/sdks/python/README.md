@@ -275,6 +275,17 @@ try:
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RestApi->rest_proofs_receipts_create: %s\n" % e)
+
+# create an instance of the API class
+api_instance = hep_rest_api.RestApi(hep_rest_api.ApiClient(configuration))
+body = hep_rest_api.RetrieveProofRewardsRequest() # RetrieveProofRewardsRequest | 
+api_version = 'api_version_example' # str | 
+
+try:
+    api_response = api_instance.rest_proofs_rewards_create(body, api_version)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling RestApi->rest_proofs_rewards_create: %s\n" % e)
 ```
 
 ## Documentation for API Endpoints
@@ -297,6 +308,7 @@ Class | Method | HTTP request | Description
 *RestApi* | [**rest_proofs_delete**](docs/RestApi.md#rest_proofs_delete) | **DELETE** /rest/v{api_version}/proofs/{proof_hash}/ | 
 *RestApi* | [**rest_proofs_read**](docs/RestApi.md#rest_proofs_read) | **GET** /rest/v{api_version}/proofs/{proof_hash}/ | 
 *RestApi* | [**rest_proofs_receipts_create**](docs/RestApi.md#rest_proofs_receipts_create) | **POST** /rest/v{api_version}/proofs/receipts/ | 
+*RestApi* | [**rest_proofs_rewards_create**](docs/RestApi.md#rest_proofs_rewards_create) | **POST** /rest/v{api_version}/proofs/rewards/ | 
 
 ## Documentation For Models
 
@@ -317,11 +329,15 @@ Class | Method | HTTP request | Description
  - [PayCacheRequest](docs/PayCacheRequest.md)
  - [PayCacheResponse](docs/PayCacheResponse.md)
  - [Proof](docs/Proof.md)
+ - [ProofData](docs/ProofData.md)
  - [ProofResponse](docs/ProofResponse.md)
+ - [ProofReward](docs/ProofReward.md)
  - [ReceiptField](docs/ReceiptField.md)
  - [RetrieveOracleResponse](docs/RetrieveOracleResponse.md)
  - [RetrieveProofReceiptsRequest](docs/RetrieveProofReceiptsRequest.md)
  - [RetrieveProofReceiptsResponse](docs/RetrieveProofReceiptsResponse.md)
+ - [RetrieveProofRewardsRequest](docs/RetrieveProofRewardsRequest.md)
+ - [RetrieveProofRewardsResponse](docs/RetrieveProofRewardsResponse.md)
  - [Thing](docs/Thing.md)
 
 ## Documentation For Authorization

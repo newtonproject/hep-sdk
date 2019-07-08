@@ -18,6 +18,7 @@ Method | HTTP request | Description
 [**rest_proofs_delete**](RestApi.md#rest_proofs_delete) | **DELETE** /rest/v{api_version}/proofs/{proof_hash}/ | 
 [**rest_proofs_read**](RestApi.md#rest_proofs_read) | **GET** /rest/v{api_version}/proofs/{proof_hash}/ | 
 [**rest_proofs_receipts_create**](RestApi.md#rest_proofs_receipts_create) | **POST** /rest/v{api_version}/proofs/receipts/ | 
+[**rest_proofs_rewards_create**](RestApi.md#rest_proofs_rewards_create) | **POST** /rest/v{api_version}/proofs/rewards/ | 
 
 # **rest_dapps_read**
 > Dapp rest_dapps_read(api_version, dapp_id, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature)
@@ -826,6 +827,53 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RetrieveProofReceiptsResponse**](RetrieveProofReceiptsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **rest_proofs_rewards_create**
+> RetrieveProofRewardsResponse rest_proofs_rewards_create(body, api_version)
+
+
+
+### Example
+```python
+from __future__ import print_function
+import time
+import hep_rest_api
+from hep_rest_api.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = hep_rest_api.RestApi()
+body = hep_rest_api.RetrieveProofRewardsRequest() # RetrieveProofRewardsRequest | 
+api_version = 'api_version_example' # str | 
+
+try:
+    api_response = api_instance.rest_proofs_rewards_create(body, api_version)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling RestApi->rest_proofs_rewards_create: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RetrieveProofRewardsRequest**](RetrieveProofRewardsRequest.md)|  | 
+ **api_version** | **str**|  | 
+
+### Return type
+
+[**RetrieveProofRewardsResponse**](RetrieveProofRewardsResponse.md)
 
 ### Authorization
 

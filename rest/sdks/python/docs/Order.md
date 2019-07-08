@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **order_number** | **str** | The order number | 
 **seller** | **str** | The seller&#x27;s NewID | 
 **customer** | **str** | The customer&#x27;s NewID | 
-**broker** | **str** | The broker&#x27;s NewID. optional. | 
+**broker** | **str** | The broker&#x27;s NewID. optional. | [optional] 
 **order_items** | [**list[OrderItem]**](OrderItem.md) |  | 
 **chain_txid** | **str** | The chain txid | [optional] 
 
