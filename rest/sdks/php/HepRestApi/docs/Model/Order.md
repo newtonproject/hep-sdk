@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **order_number** | **string** | The order number | 
 **seller** | **string** | The seller&#39;s NewID | 
 **customer** | **string** | The customer&#39;s NewID | 
-**broker** | **string** | The broker&#39;s NewID. optional. | 
+**broker** | **string** | The broker&#39;s NewID. optional. | [optional] 
 **order_items** | [**\HepRestApi\Model\OrderItem[]**](OrderItem.md) |  | 
 **chain_txid** | **string** | The chain txid | [optional] 
 

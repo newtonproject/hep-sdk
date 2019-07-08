@@ -103,6 +103,7 @@ Class | Method | HTTP request | Description
 *RestApi* | [**restProofsDelete**](docs/Api/RestApi.md#restproofsdelete) | **DELETE** /rest/v{api_version}/proofs/{proof_hash}/ | 
 *RestApi* | [**restProofsRead**](docs/Api/RestApi.md#restproofsread) | **GET** /rest/v{api_version}/proofs/{proof_hash}/ | 
 *RestApi* | [**restProofsReceiptsCreate**](docs/Api/RestApi.md#restproofsreceiptscreate) | **POST** /rest/v{api_version}/proofs/receipts/ | 
+*RestApi* | [**restProofsRewardsCreate**](docs/Api/RestApi.md#restproofsrewardscreate) | **POST** /rest/v{api_version}/proofs/rewards/ | 
 
 
 ## Documentation For Models
@@ -124,11 +125,15 @@ Class | Method | HTTP request | Description
  - [PayCacheRequest](docs/Model/PayCacheRequest.md)
  - [PayCacheResponse](docs/Model/PayCacheResponse.md)
  - [Proof](docs/Model/Proof.md)
+ - [ProofData](docs/Model/ProofData.md)
  - [ProofResponse](docs/Model/ProofResponse.md)
+ - [ProofReward](docs/Model/ProofReward.md)
  - [ReceiptField](docs/Model/ReceiptField.md)
  - [RetrieveOracleResponse](docs/Model/RetrieveOracleResponse.md)
  - [RetrieveProofReceiptsRequest](docs/Model/RetrieveProofReceiptsRequest.md)
  - [RetrieveProofReceiptsResponse](docs/Model/RetrieveProofReceiptsResponse.md)
+ - [RetrieveProofRewardsRequest](docs/Model/RetrieveProofRewardsRequest.md)
+ - [RetrieveProofRewardsResponse](docs/Model/RetrieveProofRewardsResponse.md)
  - [Thing](docs/Model/Thing.md)
 
 
