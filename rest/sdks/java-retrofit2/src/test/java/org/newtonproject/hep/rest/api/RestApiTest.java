@@ -1,4 +1,5 @@
-package org.newtonproject.hep.rest.api; 
+package org.newtonproject.hep.rest.api;
+
 import org.newtonproject.hep.rest.ApiClient;
 import org.newtonproject.hep.rest.models.AuthCacheRequest;
 import org.newtonproject.hep.rest.models.AuthCacheResponse;
@@ -45,7 +46,7 @@ public class RestApiTest {
      */
     @Test
     public void restDappsReadTest() {
-        String apiVersion = "1";
+        String apiVersion = null;
         String dappId = null;
         String dappKey = null;
         String protocol = null;
@@ -57,6 +58,18 @@ public class RestApiTest {
         String dappSignatureMethod = null;
         String dappSignature = null;
         // Dapp response = api.restDappsRead(apiVersion, dappId, dappKey, protocol, version, ts, nonce, os, language, dappSignatureMethod, dappSignature);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * 
+     */
+    @Test
+    public void restHealthListTest() {
+        String apiVersion = null;
+        // api.restHealthList(apiVersion);
 
         // TODO: test validations
     }

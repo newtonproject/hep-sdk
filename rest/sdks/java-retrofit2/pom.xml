@@ -249,6 +249,8 @@
             <artifactId>core</artifactId>
             <version>${spongycastle-core-version}</version>
         </dependency>
+
+
         <!-- test dependencies -->
         <dependency>
             <groupId>junit</groupId>

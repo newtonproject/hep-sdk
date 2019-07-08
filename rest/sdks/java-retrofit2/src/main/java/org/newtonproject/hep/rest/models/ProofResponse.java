@@ -23,12 +23,12 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import org.newtonproject.hep.rest.models.Order;
+import org.newtonproject.hep.rest.models.Proof;
 
 /**
  * ProofResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-06-30T20:36:48.159+08:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-05T19:42:46.441+08:00")
 public class ProofResponse {
   @SerializedName("dapp_key")
   private String dappKey = null;
@@ -73,7 +73,7 @@ public class ProofResponse {
   private String dappId = null;
 
   @SerializedName("content")
-  private Order content = null;
+  private Proof content = null;
 
   public ProofResponse dappKey(String dappKey) {
     this.dappKey = dappKey;
@@ -327,7 +327,7 @@ public class ProofResponse {
     this.dappId = dappId;
   }
 
-  public ProofResponse content(Order content) {
+  public ProofResponse content(Proof content) {
     this.content = content;
     return this;
   }
@@ -337,11 +337,11 @@ public class ProofResponse {
    * @return content
   **/
   @ApiModelProperty(required = true, value = "")
-  public Order getContent() {
+  public Proof getContent() {
     return content;
   }
 
-  public void setContent(Order content) {
+  public void setContent(Proof content) {
     this.content = content;
   }
 

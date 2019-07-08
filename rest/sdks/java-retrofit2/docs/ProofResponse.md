@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **action** | **String** | The action name which value is &#39;hep.proof.submit&#39;. | 
 **uuid** | **String** | The request uuid | 
 **dappId** | **String** | The decentralized application ID | 
-**content** | [**Order**](Order.md) |  | 
+**content** | [**Proof**](Proof.md) |  | 
 
 
 

@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * CreatePayCacheResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-06-30T20:36:48.159+08:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-05T19:42:46.441+08:00")
 public class CreatePayCacheResponse {
   @SerializedName("pay_hash")
   private String payHash = null;
