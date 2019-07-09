@@ -30,7 +30,7 @@ import org.newtonproject.hep.rest.models.ReceiptField;
 /**
  * RetrieveProofReceiptsResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-06-30T20:36:48.159+08:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-05T19:42:46.441+08:00")
 public class RetrieveProofReceiptsResponse {
   @SerializedName("receipts")
   private List<ReceiptField> receipts = new ArrayList<ReceiptField>();

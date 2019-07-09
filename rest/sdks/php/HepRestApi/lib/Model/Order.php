@@ -303,15 +303,8 @@ class Order implements ModelInterface, ArrayAccess
             $invalidProperties[] = "invalid value for 'customer', the character length must be bigger than or equal to 1.";
         }
 
-        if ($this->container['broker'] === null) {
-            $invalidProperties[] = "'broker' can't be null";
-        }
-        if ((mb_strlen($this->container['broker']) > 64)) {
+        if (!is_null($this->container['broker']) && (mb_strlen($this->container['broker']) > 64)) {
             $invalidProperties[] = "invalid value for 'broker', the character length must be smaller than or equal to 64.";
-        }
-
-        if ((mb_strlen($this->container['broker']) < 1)) {
-            $invalidProperties[] = "invalid value for 'broker', the character length must be bigger than or equal to 1.";
         }
 
         if ($this->container['order_items'] === null) {
@@ -541,11 +534,8 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setBroker($broker)
     {
-        if ((mb_strlen($broker) > 64)) {
+        if (!is_null($broker) && (mb_strlen($broker) > 64)) {
             throw new \InvalidArgumentException('invalid length for $broker when calling Order., must be smaller than or equal to 64.');
-        }
-        if ((mb_strlen($broker) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $broker when calling Order., must be bigger than or equal to 1.');
         }
 
         $this->container['broker'] = $broker;

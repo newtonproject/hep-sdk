@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**restDappsRead**](RestApi.md#restDappsRead) | **GET** rest/v{api_version}/dapps/{dapp_id}/ | 
+[**restHealthList**](RestApi.md#restHealthList) | **GET** rest/v{api_version}/health/ | 
 [**restNewchainTxRead**](RestApi.md#restNewchainTxRead) | **GET** rest/v{api_version}/newchain/tx/{txid}/ | 
 [**restNewforceRead**](RestApi.md#restNewforceRead) | **GET** rest/v{api_version}/newforce/{date}/ | 
 [**restNewidsRead**](RestApi.md#restNewidsRead) | **GET** rest/v{api_version}/newids/{newid}/ | 
@@ -74,6 +75,50 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Dapp**](Dapp.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="restHealthList"></a>
+# **restHealthList**
+> restHealthList(apiVersion)
+
+
+
+
+
+### Example
+```java
+// Import classes:
+//import org.newtonproject.hep.rest.ApiException;
+//import org.newtonproject.hep.rest.api.RestApi;
+
+
+RestApi apiInstance = new RestApi();
+String apiVersion = "apiVersion_example"; // String | 
+try {
+    apiInstance.restHealthList(apiVersion);
+} catch (ApiException e) {
+    System.err.println("Exception when calling RestApi#restHealthList");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **apiVersion** | **String**|  |
+
+### Return type
+
+null (empty response body)
 
 ### Authorization
 

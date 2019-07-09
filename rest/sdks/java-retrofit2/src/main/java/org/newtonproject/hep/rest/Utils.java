@@ -2,10 +2,14 @@ package org.newtonproject.hep.rest;
 
 import com.google.gson.Gson;
 import org.newtonproject.hep.rest.utils.Base58;
-import org.web3j.crypto.ECDSASignature;
-import org.web3j.crypto.ECKeyPair;
-import org.web3j.crypto.Hash;
-import org.web3j.crypto.Sign;
+import org.spongycastle.crypto.params.ECPrivateKeyParameters;
+import org.spongycastle.jce.interfaces.ECKey;
+import org.spongycastle.jce.interfaces.ECPrivateKey;
+import org.spongycastle.jce.provider.BouncyCastleProvider;
+import org.spongycastle.jce.provider.PEMUtil;
+import org.spongycastle.util.encoders.Base64;
+import org.web3j.crypto.*;
+import org.web3j.utils.Convert;
 import org.web3j.utils.Numeric;
 import sun.security.util.Pem;
 
@@ -13,7 +17,11 @@ import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigInteger;
+import java.security.KeyFactory;
+import java.security.KeyPair;
 import java.security.MessageDigest;
+import java.security.Security;
+import java.security.spec.PKCS8EncodedKeySpec;
 import java.util.*;
 
 public class Utils {
@@ -88,10 +96,14 @@ public class Utils {
                 builder.append(line);
             }
         }
-        System.out.println(builder.toString());
+
         byte[] decode = Pem.decode(builder.toString());
         ECKeyPair keyPair = ECKeyPair.create(decode);
+
         System.out.println("pub:" + keyPair.getPublicKey().toString(16));
+        ECKeyPair keyPair1 = ECKeyPair.create(Numeric.toBigInt("0xab76d2984444142e58cc296b632959ec3695b1e886131eb26f387dfdfea60c1f"));
+        System.out.println("pub:" + keyPair1.getPublicKey().toString(16));
+
         return null;
     }
 
@@ -203,6 +215,23 @@ public class Utils {
             }
         }
         return list;
+    }
+
+    private static KeyPair keyPairFromPEM(String pem) throws IllegalArgumentException, IOException {
+
+        checkValidPEM(pem);
+        PEMUtil
+        Security.addProvider(new BouncyCastleProvider());
+        Convert converter = new JcaPEMKeyConverter().setProvider("EC");
+
+        StringReader strReader = new StringReader(pem);
+        PEMParser pemParser = new PEMParser(strReader);
+        Object keyObject = pemParser.readObject();
+        pemParser.close();
+
+        KeyPair keys = converter.getKeyPair((PEMKeyPair) keyObject);
+        return keys;
+
     }
 
     public static void main(String args[]) throws IOException {

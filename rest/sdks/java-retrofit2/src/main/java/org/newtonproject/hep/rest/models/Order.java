@@ -30,11 +30,8 @@ import org.newtonproject.hep.rest.models.OrderItem;
 /**
  * Order
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-06-30T20:36:48.159+08:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-05T19:42:46.441+08:00")
 public class Order {
-  @SerializedName("proof_type")
-  private String proofType = null;
-
   @SerializedName("description")
   private String description = null;
 
@@ -61,24 +58,6 @@ public class Order {
 
   @SerializedName("chain_txid")
   private String chainTxid = null;
-
-  public Order proofType(String proofType) {
-    this.proofType = proofType;
-    return this;
-  }
-
-   /**
-   * The proof type which value is &#39;order&#39;.
-   * @return proofType
-  **/
-  @ApiModelProperty(required = true, value = "The proof type which value is 'order'.")
-  public String getProofType() {
-    return proofType;
-  }
-
-  public void setProofType(String proofType) {
-    this.proofType = proofType;
-  }
 
   public Order description(String description) {
     this.description = description;
@@ -235,10 +214,10 @@ public class Order {
   }
 
    /**
-   * The seller&#39;s NewID
+   * The chain txid
    * @return chainTxid
   **/
-  @ApiModelProperty(value = "The seller's NewID")
+  @ApiModelProperty(value = "The chain txid")
   public String getChainTxid() {
     return chainTxid;
   }
@@ -257,8 +236,7 @@ public class Order {
       return false;
     }
     Order order = (Order) o;
-    return Objects.equals(this.proofType, order.proofType) &&
-        Objects.equals(this.description, order.description) &&
+    return Objects.equals(this.description, order.description) &&
         Objects.equals(this.priceCurrency, order.priceCurrency) &&
         Objects.equals(this.totalPrice, order.totalPrice) &&
         Objects.equals(this.orderNumber, order.orderNumber) &&
@@ -271,7 +249,7 @@ public class Order {
 
   @Override
   public int hashCode() {
-    return Objects.hash(proofType, description, priceCurrency, totalPrice, orderNumber, seller, customer, broker, orderItems, chainTxid);
+    return Objects.hash(description, priceCurrency, totalPrice, orderNumber, seller, customer, broker, orderItems, chainTxid);
   }
 
 
@@ -280,7 +258,6 @@ public class Order {
     StringBuilder sb = new StringBuilder();
     sb.append("class Order {\n");
     
-    sb.append("    proofType: ").append(toIndentedString(proofType)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    priceCurrency: ").append(toIndentedString(priceCurrency)).append("\n");
     sb.append("    totalPrice: ").append(toIndentedString(totalPrice)).append("\n");

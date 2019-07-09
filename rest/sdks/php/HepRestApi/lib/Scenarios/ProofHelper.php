@@ -39,7 +39,7 @@ class ProofHelper extends BaseHelper
 
         # start request
         $proofs = new CreateProofRequest($final_data);
-        $auth_response = $this->api_client->restProofsCreate($proofs, $this->api_version);
+        $auth_response = $this->api_client->restProofsCreate($this->api_version, $proofs);
         return $auth_response;
     }
 
@@ -82,7 +82,7 @@ class ProofHelper extends BaseHelper
         $hmac_data = $this->sign_hmac($sign_data);
 
         $proof_request = new RetrieveProofReceiptsRequest($hmac_data);
-        $response = $this->api_client->restProofsReceiptsCreate($proof_request, $this->api_version);
+        $response = $this->api_client->restProofsReceiptsCreate($this->api_version, $proof_request);
 
         return $response;
     }

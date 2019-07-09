@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * CancelProofRequest
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-06-30T20:36:48.159+08:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-05T19:42:46.441+08:00")
 public class CancelProofRequest {
   @SerializedName("dapp_key")
   private String dappKey = null;
@@ -64,6 +64,9 @@ public class CancelProofRequest {
 
   @SerializedName("dapp_id")
   private String dappId = null;
+
+  @SerializedName("proof_item_id")
+  private String proofItemId = null;
 
   @SerializedName("proof_subitem_id")
   private String proofSubitemId = null;
@@ -284,6 +287,24 @@ public class CancelProofRequest {
     this.dappId = dappId;
   }
 
+  public CancelProofRequest proofItemId(String proofItemId) {
+    this.proofItemId = proofItemId;
+    return this;
+  }
+
+   /**
+   * The proof item ID
+   * @return proofItemId
+  **/
+  @ApiModelProperty(required = true, value = "The proof item ID")
+  public String getProofItemId() {
+    return proofItemId;
+  }
+
+  public void setProofItemId(String proofItemId) {
+    this.proofItemId = proofItemId;
+  }
+
   public CancelProofRequest proofSubitemId(String proofSubitemId) {
     this.proofSubitemId = proofSubitemId;
     return this;
@@ -293,7 +314,7 @@ public class CancelProofRequest {
    * The proof subitem ID
    * @return proofSubitemId
   **/
-  @ApiModelProperty(required = true, value = "The proof subitem ID")
+  @ApiModelProperty(value = "The proof subitem ID")
   public String getProofSubitemId() {
     return proofSubitemId;
   }
@@ -324,12 +345,13 @@ public class CancelProofRequest {
         Objects.equals(this.signType, cancelProofRequest.signType) &&
         Objects.equals(this.signature, cancelProofRequest.signature) &&
         Objects.equals(this.dappId, cancelProofRequest.dappId) &&
+        Objects.equals(this.proofItemId, cancelProofRequest.proofItemId) &&
         Objects.equals(this.proofSubitemId, cancelProofRequest.proofSubitemId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dappKey, protocol, version, ts, nonce, os, language, dappSignatureMethod, dappSignature, signType, signature, dappId, proofSubitemId);
+    return Objects.hash(dappKey, protocol, version, ts, nonce, os, language, dappSignatureMethod, dappSignature, signType, signature, dappId, proofItemId, proofSubitemId);
   }
 
 
@@ -350,6 +372,7 @@ public class CancelProofRequest {
     sb.append("    signType: ").append(toIndentedString(signType)).append("\n");
     sb.append("    signature: ").append(toIndentedString(signature)).append("\n");
     sb.append("    dappId: ").append(toIndentedString(dappId)).append("\n");
+    sb.append("    proofItemId: ").append(toIndentedString(proofItemId)).append("\n");
     sb.append("    proofSubitemId: ").append(toIndentedString(proofSubitemId)).append("\n");
     sb.append("}");
     return sb.toString();

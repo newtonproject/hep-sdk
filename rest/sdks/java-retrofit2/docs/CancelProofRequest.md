@@ -16,7 +16,8 @@ Name | Type | Description | Notes
 **signType** | **String** | The signature Type,aka cryptographic algorithm. | 
 **signature** | **String** | The signature hex string by application owner. The exclude fields is [sign_type, signature, md5]. | 
 **dappId** | **String** | The decentralized application ID | 
-**proofSubitemId** | **String** | The proof subitem ID | 
+**proofItemId** | **String** | The proof item ID | 
+**proofSubitemId** | **String** | The proof subitem ID |  [optional]
 
 
 

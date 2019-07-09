@@ -61,6 +61,20 @@ public interface RestApi {
 
   /**
    * 
+   * 
+   * @param apiVersion  (required)
+   * @return Completable
+   */
+  @Headers({
+    "Content-Type:application/json"
+  })
+  @GET("rest/v{api_version}/health/")
+  Completable restHealthList(
+    @retrofit2.http.Path("api_version") String apiVersion
+  );
+
+  /**
+   * 
    * Retrieve the transaction information by given txid
    * @param apiVersion  (required)
    * @param txid  (required)
