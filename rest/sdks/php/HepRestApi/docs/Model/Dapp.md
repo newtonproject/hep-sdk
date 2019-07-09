@@ -11,9 +11,8 @@ Name | Type | Description | Notes
 **bundle_id** | **string** | The bundle id such as com.demo.dev.ios for iOS platform | 
 **schema** | **string** | The routing schema | 
 **website** | **string** | The dapp website link | 
-**download_url** | **string** | The dapp download link | 
 **deposit_contract_address** | **string** | The deposit contract Address, the example is NEW182.... | 
-**dapp_type_id** | **int** | The dapp type ID. | 
+**dapp_type_ids** | **int[]** | The support dapp type list. | 
 **dapp_category_id** | **int** | The dapp category ID. | 
 **auth_login_callback** | **string** | For Mobile Native DApp, it is redirect schema; For website DApp, it is callback url; For  NewDApp, it is HEP-based url. | 
 **pay_order_callback** | **string** | For Mobile Native DApp, it is redirect schema; For website DApp, it is callback url; For  NewDApp, it is HEP-based url. | 

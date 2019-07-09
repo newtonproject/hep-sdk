@@ -65,9 +65,8 @@ class Dapp implements ModelInterface, ArrayAccess
         'bundle_id' => 'string',
         'schema' => 'string',
         'website' => 'string',
-        'download_url' => 'string',
         'deposit_contract_address' => 'string',
-        'dapp_type_id' => 'int',
+        'dapp_type_ids' => 'int[]',
         'dapp_category_id' => 'int',
         'auth_login_callback' => 'string',
         'pay_order_callback' => 'string',
@@ -88,9 +87,8 @@ class Dapp implements ModelInterface, ArrayAccess
         'bundle_id' => null,
         'schema' => null,
         'website' => null,
-        'download_url' => null,
         'deposit_contract_address' => null,
-        'dapp_type_id' => null,
+        'dapp_type_ids' => null,
         'dapp_category_id' => null,
         'auth_login_callback' => null,
         'pay_order_callback' => null,
@@ -132,9 +130,8 @@ class Dapp implements ModelInterface, ArrayAccess
         'bundle_id' => 'bundle_id',
         'schema' => 'schema',
         'website' => 'website',
-        'download_url' => 'download_url',
         'deposit_contract_address' => 'deposit_contract_address',
-        'dapp_type_id' => 'dapp_type_id',
+        'dapp_type_ids' => 'dapp_type_ids',
         'dapp_category_id' => 'dapp_category_id',
         'auth_login_callback' => 'auth_login_callback',
         'pay_order_callback' => 'pay_order_callback',
@@ -155,9 +152,8 @@ class Dapp implements ModelInterface, ArrayAccess
         'bundle_id' => 'setBundleId',
         'schema' => 'setSchema',
         'website' => 'setWebsite',
-        'download_url' => 'setDownloadUrl',
         'deposit_contract_address' => 'setDepositContractAddress',
-        'dapp_type_id' => 'setDappTypeId',
+        'dapp_type_ids' => 'setDappTypeIds',
         'dapp_category_id' => 'setDappCategoryId',
         'auth_login_callback' => 'setAuthLoginCallback',
         'pay_order_callback' => 'setPayOrderCallback',
@@ -178,9 +174,8 @@ class Dapp implements ModelInterface, ArrayAccess
         'bundle_id' => 'getBundleId',
         'schema' => 'getSchema',
         'website' => 'getWebsite',
-        'download_url' => 'getDownloadUrl',
         'deposit_contract_address' => 'getDepositContractAddress',
-        'dapp_type_id' => 'getDappTypeId',
+        'dapp_type_ids' => 'getDappTypeIds',
         'dapp_category_id' => 'getDappCategoryId',
         'auth_login_callback' => 'getAuthLoginCallback',
         'pay_order_callback' => 'getPayOrderCallback',
@@ -255,9 +250,8 @@ class Dapp implements ModelInterface, ArrayAccess
         $this->container['bundle_id'] = isset($data['bundle_id']) ? $data['bundle_id'] : null;
         $this->container['schema'] = isset($data['schema']) ? $data['schema'] : null;
         $this->container['website'] = isset($data['website']) ? $data['website'] : null;
-        $this->container['download_url'] = isset($data['download_url']) ? $data['download_url'] : null;
         $this->container['deposit_contract_address'] = isset($data['deposit_contract_address']) ? $data['deposit_contract_address'] : null;
-        $this->container['dapp_type_id'] = isset($data['dapp_type_id']) ? $data['dapp_type_id'] : null;
+        $this->container['dapp_type_ids'] = isset($data['dapp_type_ids']) ? $data['dapp_type_ids'] : null;
         $this->container['dapp_category_id'] = isset($data['dapp_category_id']) ? $data['dapp_category_id'] : null;
         $this->container['auth_login_callback'] = isset($data['auth_login_callback']) ? $data['auth_login_callback'] : null;
         $this->container['pay_order_callback'] = isset($data['pay_order_callback']) ? $data['pay_order_callback'] : null;
@@ -361,17 +355,6 @@ class Dapp implements ModelInterface, ArrayAccess
             $invalidProperties[] = "invalid value for 'website', the character length must be bigger than or equal to 1.";
         }
 
-        if ($this->container['download_url'] === null) {
-            $invalidProperties[] = "'download_url' can't be null";
-        }
-        if ((mb_strlen($this->container['download_url']) > 64)) {
-            $invalidProperties[] = "invalid value for 'download_url', the character length must be smaller than or equal to 64.";
-        }
-
-        if ((mb_strlen($this->container['download_url']) < 1)) {
-            $invalidProperties[] = "invalid value for 'download_url', the character length must be bigger than or equal to 1.";
-        }
-
         if ($this->container['deposit_contract_address'] === null) {
             $invalidProperties[] = "'deposit_contract_address' can't be null";
         }
@@ -383,8 +366,8 @@ class Dapp implements ModelInterface, ArrayAccess
             $invalidProperties[] = "invalid value for 'deposit_contract_address', the character length must be bigger than or equal to 1.";
         }
 
-        if ($this->container['dapp_type_id'] === null) {
-            $invalidProperties[] = "'dapp_type_id' can't be null";
+        if ($this->container['dapp_type_ids'] === null) {
+            $invalidProperties[] = "'dapp_type_ids' can't be null";
         }
         if ($this->container['dapp_category_id'] === null) {
             $invalidProperties[] = "'dapp_category_id' can't be null";
@@ -686,37 +669,6 @@ class Dapp implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets download_url
-     *
-     * @return string
-     */
-    public function getDownloadUrl()
-    {
-        return $this->container['download_url'];
-    }
-
-    /**
-     * Sets download_url
-     *
-     * @param string $download_url The dapp download link
-     *
-     * @return $this
-     */
-    public function setDownloadUrl($download_url)
-    {
-        if ((mb_strlen($download_url) > 64)) {
-            throw new \InvalidArgumentException('invalid length for $download_url when calling Dapp., must be smaller than or equal to 64.');
-        }
-        if ((mb_strlen($download_url) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $download_url when calling Dapp., must be bigger than or equal to 1.');
-        }
-
-        $this->container['download_url'] = $download_url;
-
-        return $this;
-    }
-
-    /**
      * Gets deposit_contract_address
      *
      * @return string
@@ -748,25 +700,25 @@ class Dapp implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets dapp_type_id
+     * Gets dapp_type_ids
      *
-     * @return int
+     * @return int[]
      */
-    public function getDappTypeId()
+    public function getDappTypeIds()
     {
-        return $this->container['dapp_type_id'];
+        return $this->container['dapp_type_ids'];
     }
 
     /**
-     * Sets dapp_type_id
+     * Sets dapp_type_ids
      *
-     * @param int $dapp_type_id The dapp type ID.
+     * @param int[] $dapp_type_ids The support dapp type list.
      *
      * @return $this
      */
-    public function setDappTypeId($dapp_type_id)
+    public function setDappTypeIds($dapp_type_ids)
     {
-        $this->container['dapp_type_id'] = $dapp_type_id;
+        $this->container['dapp_type_ids'] = $dapp_type_ids;
 
         return $this;
     }
