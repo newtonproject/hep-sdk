@@ -32,27 +32,35 @@ class ProofReward(object):
         'proof_hash': 'str',
         'proof_item_id': 'str',
         'proof_subitem_id': 'str',
-        'earn_tokens': 'str'
+        'earn_tokens': 'str',
+        'newid': 'str',
+        'newforce': 'str'
     }
 
     attribute_map = {
         'proof_hash': 'proof_hash',
         'proof_item_id': 'proof_item_id',
         'proof_subitem_id': 'proof_subitem_id',
-        'earn_tokens': 'earn_tokens'
+        'earn_tokens': 'earn_tokens',
+        'newid': 'newid',
+        'newforce': 'newforce'
     }
 
-    def __init__(self, proof_hash=None, proof_item_id=None, proof_subitem_id=None, earn_tokens=None):  # noqa: E501
+    def __init__(self, proof_hash=None, proof_item_id=None, proof_subitem_id=None, earn_tokens=None, newid=None, newforce=None):  # noqa: E501
         """ProofReward - a model defined in Swagger"""  # noqa: E501
         self._proof_hash = None
         self._proof_item_id = None
         self._proof_subitem_id = None
         self._earn_tokens = None
+        self._newid = None
+        self._newforce = None
         self.discriminator = None
         self.proof_hash = proof_hash
         self.proof_item_id = proof_item_id
         self.proof_subitem_id = proof_subitem_id
         self.earn_tokens = earn_tokens
+        self.newid = newid
+        self.newforce = newforce
 
     @property
     def proof_hash(self):
@@ -145,6 +153,52 @@ class ProofReward(object):
             raise ValueError("Invalid value for `earn_tokens`, must not be `None`")  # noqa: E501
 
         self._earn_tokens = earn_tokens
+
+    @property
+    def newid(self):
+        """Gets the newid of this ProofReward.  # noqa: E501
+
+
+        :return: The newid of this ProofReward.  # noqa: E501
+        :rtype: str
+        """
+        return self._newid
+
+    @newid.setter
+    def newid(self, newid):
+        """Sets the newid of this ProofReward.
+
+
+        :param newid: The newid of this ProofReward.  # noqa: E501
+        :type: str
+        """
+        if newid is None:
+            raise ValueError("Invalid value for `newid`, must not be `None`")  # noqa: E501
+
+        self._newid = newid
+
+    @property
+    def newforce(self):
+        """Gets the newforce of this ProofReward.  # noqa: E501
+
+
+        :return: The newforce of this ProofReward.  # noqa: E501
+        :rtype: str
+        """
+        return self._newforce
+
+    @newforce.setter
+    def newforce(self, newforce):
+        """Sets the newforce of this ProofReward.
+
+
+        :param newforce: The newforce of this ProofReward.  # noqa: E501
+        :type: str
+        """
+        if newforce is None:
+            raise ValueError("Invalid value for `newforce`, must not be `None`")  # noqa: E501
+
+        self._newforce = newforce
 
     def to_dict(self):
         """Returns the model properties as a dict"""

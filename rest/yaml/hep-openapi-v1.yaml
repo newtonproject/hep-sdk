@@ -1627,7 +1627,7 @@ definitions:
         title: Name
         description: The name of thing
         type: string
-        maxLength: 64
+        maxLength: 1024
         minLength: 1
       thing_type:
         title: Thing type
@@ -2091,6 +2091,8 @@ definitions:
       - proof_item_id
       - proof_subitem_id
       - earn_tokens
+      - newid
+      - newforce
     type: object
     properties:
       proof_hash:
@@ -2110,6 +2112,16 @@ definitions:
         minLength: 1
       earn_tokens:
         title: Earn tokens
+        type: string
+        maxLength: 64
+        minLength: 1
+      newid:
+        title: Newid
+        type: string
+        maxLength: 64
+        minLength: 1
+      newforce:
+        title: Newforce
         type: string
         maxLength: 64
         minLength: 1
