@@ -2090,9 +2090,10 @@ definitions:
       - proof_hash
       - proof_item_id
       - proof_subitem_id
-      - earn_tokens
+      - reward_tokens
       - newid
       - newforce
+      - action
     type: object
     properties:
       proof_hash:
@@ -2110,8 +2111,8 @@ definitions:
         type: string
         maxLength: 64
         minLength: 1
-      earn_tokens:
-        title: Earn tokens
+      reward_tokens:
+        title: Reward tokens
         type: string
         maxLength: 64
         minLength: 1
@@ -2122,6 +2123,11 @@ definitions:
         minLength: 1
       newforce:
         title: Newforce
+        type: string
+        maxLength: 64
+        minLength: 1
+      action:
+        title: Action
         type: string
         maxLength: 64
         minLength: 1
