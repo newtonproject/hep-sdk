@@ -60,7 +60,10 @@ class ProofReward implements ModelInterface, ArrayAccess
         'proof_hash' => 'string',
         'proof_item_id' => 'string',
         'proof_subitem_id' => 'string',
-        'earn_tokens' => 'string'
+        'reward_tokens' => 'string',
+        'newid' => 'string',
+        'newforce' => 'string',
+        'action' => 'string'
     ];
 
     /**
@@ -72,7 +75,10 @@ class ProofReward implements ModelInterface, ArrayAccess
         'proof_hash' => null,
         'proof_item_id' => null,
         'proof_subitem_id' => null,
-        'earn_tokens' => null
+        'reward_tokens' => null,
+        'newid' => null,
+        'newforce' => null,
+        'action' => null
     ];
 
     /**
@@ -105,7 +111,10 @@ class ProofReward implements ModelInterface, ArrayAccess
         'proof_hash' => 'proof_hash',
         'proof_item_id' => 'proof_item_id',
         'proof_subitem_id' => 'proof_subitem_id',
-        'earn_tokens' => 'earn_tokens'
+        'reward_tokens' => 'reward_tokens',
+        'newid' => 'newid',
+        'newforce' => 'newforce',
+        'action' => 'action'
     ];
 
     /**
@@ -117,7 +126,10 @@ class ProofReward implements ModelInterface, ArrayAccess
         'proof_hash' => 'setProofHash',
         'proof_item_id' => 'setProofItemId',
         'proof_subitem_id' => 'setProofSubitemId',
-        'earn_tokens' => 'setEarnTokens'
+        'reward_tokens' => 'setRewardTokens',
+        'newid' => 'setNewid',
+        'newforce' => 'setNewforce',
+        'action' => 'setAction'
     ];
 
     /**
@@ -129,7 +141,10 @@ class ProofReward implements ModelInterface, ArrayAccess
         'proof_hash' => 'getProofHash',
         'proof_item_id' => 'getProofItemId',
         'proof_subitem_id' => 'getProofSubitemId',
-        'earn_tokens' => 'getEarnTokens'
+        'reward_tokens' => 'getRewardTokens',
+        'newid' => 'getNewid',
+        'newforce' => 'getNewforce',
+        'action' => 'getAction'
     ];
 
     /**
@@ -195,7 +210,10 @@ class ProofReward implements ModelInterface, ArrayAccess
         $this->container['proof_hash'] = isset($data['proof_hash']) ? $data['proof_hash'] : null;
         $this->container['proof_item_id'] = isset($data['proof_item_id']) ? $data['proof_item_id'] : null;
         $this->container['proof_subitem_id'] = isset($data['proof_subitem_id']) ? $data['proof_subitem_id'] : null;
-        $this->container['earn_tokens'] = isset($data['earn_tokens']) ? $data['earn_tokens'] : null;
+        $this->container['reward_tokens'] = isset($data['reward_tokens']) ? $data['reward_tokens'] : null;
+        $this->container['newid'] = isset($data['newid']) ? $data['newid'] : null;
+        $this->container['newforce'] = isset($data['newforce']) ? $data['newforce'] : null;
+        $this->container['action'] = isset($data['action']) ? $data['action'] : null;
     }
 
     /**
@@ -240,15 +258,48 @@ class ProofReward implements ModelInterface, ArrayAccess
             $invalidProperties[] = "invalid value for 'proof_subitem_id', the character length must be bigger than or equal to 1.";
         }
 
-        if ($this->container['earn_tokens'] === null) {
-            $invalidProperties[] = "'earn_tokens' can't be null";
+        if ($this->container['reward_tokens'] === null) {
+            $invalidProperties[] = "'reward_tokens' can't be null";
         }
-        if ((mb_strlen($this->container['earn_tokens']) > 64)) {
-            $invalidProperties[] = "invalid value for 'earn_tokens', the character length must be smaller than or equal to 64.";
+        if ((mb_strlen($this->container['reward_tokens']) > 64)) {
+            $invalidProperties[] = "invalid value for 'reward_tokens', the character length must be smaller than or equal to 64.";
         }
 
-        if ((mb_strlen($this->container['earn_tokens']) < 1)) {
-            $invalidProperties[] = "invalid value for 'earn_tokens', the character length must be bigger than or equal to 1.";
+        if ((mb_strlen($this->container['reward_tokens']) < 1)) {
+            $invalidProperties[] = "invalid value for 'reward_tokens', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['newid'] === null) {
+            $invalidProperties[] = "'newid' can't be null";
+        }
+        if ((mb_strlen($this->container['newid']) > 64)) {
+            $invalidProperties[] = "invalid value for 'newid', the character length must be smaller than or equal to 64.";
+        }
+
+        if ((mb_strlen($this->container['newid']) < 1)) {
+            $invalidProperties[] = "invalid value for 'newid', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['newforce'] === null) {
+            $invalidProperties[] = "'newforce' can't be null";
+        }
+        if ((mb_strlen($this->container['newforce']) > 64)) {
+            $invalidProperties[] = "invalid value for 'newforce', the character length must be smaller than or equal to 64.";
+        }
+
+        if ((mb_strlen($this->container['newforce']) < 1)) {
+            $invalidProperties[] = "invalid value for 'newforce', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['action'] === null) {
+            $invalidProperties[] = "'action' can't be null";
+        }
+        if ((mb_strlen($this->container['action']) > 64)) {
+            $invalidProperties[] = "invalid value for 'action', the character length must be smaller than or equal to 64.";
+        }
+
+        if ((mb_strlen($this->container['action']) < 1)) {
+            $invalidProperties[] = "invalid value for 'action', the character length must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -360,32 +411,125 @@ class ProofReward implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets earn_tokens
+     * Gets reward_tokens
      *
      * @return string
      */
-    public function getEarnTokens()
+    public function getRewardTokens()
     {
-        return $this->container['earn_tokens'];
+        return $this->container['reward_tokens'];
     }
 
     /**
-     * Sets earn_tokens
+     * Sets reward_tokens
      *
-     * @param string $earn_tokens earn_tokens
+     * @param string $reward_tokens reward_tokens
      *
      * @return $this
      */
-    public function setEarnTokens($earn_tokens)
+    public function setRewardTokens($reward_tokens)
     {
-        if ((mb_strlen($earn_tokens) > 64)) {
-            throw new \InvalidArgumentException('invalid length for $earn_tokens when calling ProofReward., must be smaller than or equal to 64.');
+        if ((mb_strlen($reward_tokens) > 64)) {
+            throw new \InvalidArgumentException('invalid length for $reward_tokens when calling ProofReward., must be smaller than or equal to 64.');
         }
-        if ((mb_strlen($earn_tokens) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $earn_tokens when calling ProofReward., must be bigger than or equal to 1.');
+        if ((mb_strlen($reward_tokens) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $reward_tokens when calling ProofReward., must be bigger than or equal to 1.');
         }
 
-        $this->container['earn_tokens'] = $earn_tokens;
+        $this->container['reward_tokens'] = $reward_tokens;
+
+        return $this;
+    }
+
+    /**
+     * Gets newid
+     *
+     * @return string
+     */
+    public function getNewid()
+    {
+        return $this->container['newid'];
+    }
+
+    /**
+     * Sets newid
+     *
+     * @param string $newid newid
+     *
+     * @return $this
+     */
+    public function setNewid($newid)
+    {
+        if ((mb_strlen($newid) > 64)) {
+            throw new \InvalidArgumentException('invalid length for $newid when calling ProofReward., must be smaller than or equal to 64.');
+        }
+        if ((mb_strlen($newid) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $newid when calling ProofReward., must be bigger than or equal to 1.');
+        }
+
+        $this->container['newid'] = $newid;
+
+        return $this;
+    }
+
+    /**
+     * Gets newforce
+     *
+     * @return string
+     */
+    public function getNewforce()
+    {
+        return $this->container['newforce'];
+    }
+
+    /**
+     * Sets newforce
+     *
+     * @param string $newforce newforce
+     *
+     * @return $this
+     */
+    public function setNewforce($newforce)
+    {
+        if ((mb_strlen($newforce) > 64)) {
+            throw new \InvalidArgumentException('invalid length for $newforce when calling ProofReward., must be smaller than or equal to 64.');
+        }
+        if ((mb_strlen($newforce) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $newforce when calling ProofReward., must be bigger than or equal to 1.');
+        }
+
+        $this->container['newforce'] = $newforce;
+
+        return $this;
+    }
+
+    /**
+     * Gets action
+     *
+     * @return string
+     */
+    public function getAction()
+    {
+        return $this->container['action'];
+    }
+
+    /**
+     * Sets action
+     *
+     * @param string $action action
+     *
+     * @return $this
+     */
+    public function setAction($action)
+    {
+        if ((mb_strlen($action) > 64)) {
+            throw new \InvalidArgumentException('invalid length for $action when calling ProofReward., must be smaller than or equal to 64.');
+        }
+        if ((mb_strlen($action) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $action when calling ProofReward., must be bigger than or equal to 1.');
+        }
+
+        $this->container['action'] = $action;
 
         return $this;
     }

@@ -204,8 +204,8 @@ class Thing implements ModelInterface, ArrayAccess
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ((mb_strlen($this->container['name']) > 64)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 64.";
+        if ((mb_strlen($this->container['name']) > 1024)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 1024.";
         }
 
         if ((mb_strlen($this->container['name']) < 1)) {
@@ -268,8 +268,8 @@ class Thing implements ModelInterface, ArrayAccess
      */
     public function setName($name)
     {
-        if ((mb_strlen($name) > 64)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling Thing., must be smaller than or equal to 64.');
+        if ((mb_strlen($name) > 1024)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling Thing., must be smaller than or equal to 1024.');
         }
         if ((mb_strlen($name) < 1)) {
             throw new \InvalidArgumentException('invalid length for $name when calling Thing., must be bigger than or equal to 1.');
