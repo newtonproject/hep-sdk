@@ -2094,6 +2094,8 @@ definitions:
       - newid
       - newforce
       - action
+      - issue_timestamp
+      - issue_status
     type: object
     properties:
       proof_hash:
@@ -2128,6 +2130,14 @@ definitions:
         minLength: 1
       action:
         title: Action
+        type: string
+        maxLength: 64
+        minLength: 1
+      issue_timestamp:
+        title: Issue timestamp
+        type: integer
+      issue_status:
+        title: Issue status
         type: string
         maxLength: 64
         minLength: 1
