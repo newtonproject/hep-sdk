@@ -37,7 +37,9 @@ class ProofReward(object):
         'reward_tokens': 'str',
         'newid': 'str',
         'newforce': 'str',
-        'action': 'str'
+        'action': 'str',
+        'issue_timestamp': 'int',
+        'issue_status': 'str'
     }
 
     attribute_map = {
@@ -47,10 +49,12 @@ class ProofReward(object):
         'reward_tokens': 'reward_tokens',
         'newid': 'newid',
         'newforce': 'newforce',
-        'action': 'action'
+        'action': 'action',
+        'issue_timestamp': 'issue_timestamp',
+        'issue_status': 'issue_status'
     }
 
-    def __init__(self, proof_hash=None, proof_item_id=None, proof_subitem_id=None, reward_tokens=None, newid=None, newforce=None, action=None):  # noqa: E501
+    def __init__(self, proof_hash=None, proof_item_id=None, proof_subitem_id=None, reward_tokens=None, newid=None, newforce=None, action=None, issue_timestamp=None, issue_status=None):  # noqa: E501
         """ProofReward - a model defined in Swagger"""  # noqa: E501
 
         self._proof_hash = None
@@ -60,6 +64,8 @@ class ProofReward(object):
         self._newid = None
         self._newforce = None
         self._action = None
+        self._issue_timestamp = None
+        self._issue_status = None
         self.discriminator = None
 
         self.proof_hash = proof_hash
@@ -69,6 +75,8 @@ class ProofReward(object):
         self.newid = newid
         self.newforce = newforce
         self.action = action
+        self.issue_timestamp = issue_timestamp
+        self.issue_status = issue_status
 
     @property
     def proof_hash(self):
@@ -258,6 +266,56 @@ class ProofReward(object):
             raise ValueError("Invalid value for `action`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._action = action
+
+    @property
+    def issue_timestamp(self):
+        """Gets the issue_timestamp of this ProofReward.  # noqa: E501
+
+
+        :return: The issue_timestamp of this ProofReward.  # noqa: E501
+        :rtype: int
+        """
+        return self._issue_timestamp
+
+    @issue_timestamp.setter
+    def issue_timestamp(self, issue_timestamp):
+        """Sets the issue_timestamp of this ProofReward.
+
+
+        :param issue_timestamp: The issue_timestamp of this ProofReward.  # noqa: E501
+        :type: int
+        """
+        if issue_timestamp is None:
+            raise ValueError("Invalid value for `issue_timestamp`, must not be `None`")  # noqa: E501
+
+        self._issue_timestamp = issue_timestamp
+
+    @property
+    def issue_status(self):
+        """Gets the issue_status of this ProofReward.  # noqa: E501
+
+
+        :return: The issue_status of this ProofReward.  # noqa: E501
+        :rtype: str
+        """
+        return self._issue_status
+
+    @issue_status.setter
+    def issue_status(self, issue_status):
+        """Sets the issue_status of this ProofReward.
+
+
+        :param issue_status: The issue_status of this ProofReward.  # noqa: E501
+        :type: str
+        """
+        if issue_status is None:
+            raise ValueError("Invalid value for `issue_status`, must not be `None`")  # noqa: E501
+        if issue_status is not None and len(issue_status) > 64:
+            raise ValueError("Invalid value for `issue_status`, length must be less than or equal to `64`")  # noqa: E501
+        if issue_status is not None and len(issue_status) < 1:
+            raise ValueError("Invalid value for `issue_status`, length must be greater than or equal to `1`")  # noqa: E501
+
+        self._issue_status = issue_status
 
     def to_dict(self):
         """Returns the model properties as a dict"""
