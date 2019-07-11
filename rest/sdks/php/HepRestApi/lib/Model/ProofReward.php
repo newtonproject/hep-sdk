@@ -63,7 +63,9 @@ class ProofReward implements ModelInterface, ArrayAccess
         'reward_tokens' => 'string',
         'newid' => 'string',
         'newforce' => 'string',
-        'action' => 'string'
+        'action' => 'string',
+        'issue_timestamp' => 'int',
+        'issue_status' => 'string'
     ];
 
     /**
@@ -78,7 +80,9 @@ class ProofReward implements ModelInterface, ArrayAccess
         'reward_tokens' => null,
         'newid' => null,
         'newforce' => null,
-        'action' => null
+        'action' => null,
+        'issue_timestamp' => null,
+        'issue_status' => null
     ];
 
     /**
@@ -114,7 +118,9 @@ class ProofReward implements ModelInterface, ArrayAccess
         'reward_tokens' => 'reward_tokens',
         'newid' => 'newid',
         'newforce' => 'newforce',
-        'action' => 'action'
+        'action' => 'action',
+        'issue_timestamp' => 'issue_timestamp',
+        'issue_status' => 'issue_status'
     ];
 
     /**
@@ -129,7 +135,9 @@ class ProofReward implements ModelInterface, ArrayAccess
         'reward_tokens' => 'setRewardTokens',
         'newid' => 'setNewid',
         'newforce' => 'setNewforce',
-        'action' => 'setAction'
+        'action' => 'setAction',
+        'issue_timestamp' => 'setIssueTimestamp',
+        'issue_status' => 'setIssueStatus'
     ];
 
     /**
@@ -144,7 +152,9 @@ class ProofReward implements ModelInterface, ArrayAccess
         'reward_tokens' => 'getRewardTokens',
         'newid' => 'getNewid',
         'newforce' => 'getNewforce',
-        'action' => 'getAction'
+        'action' => 'getAction',
+        'issue_timestamp' => 'getIssueTimestamp',
+        'issue_status' => 'getIssueStatus'
     ];
 
     /**
@@ -214,6 +224,8 @@ class ProofReward implements ModelInterface, ArrayAccess
         $this->container['newid'] = isset($data['newid']) ? $data['newid'] : null;
         $this->container['newforce'] = isset($data['newforce']) ? $data['newforce'] : null;
         $this->container['action'] = isset($data['action']) ? $data['action'] : null;
+        $this->container['issue_timestamp'] = isset($data['issue_timestamp']) ? $data['issue_timestamp'] : null;
+        $this->container['issue_status'] = isset($data['issue_status']) ? $data['issue_status'] : null;
     }
 
     /**
@@ -300,6 +312,20 @@ class ProofReward implements ModelInterface, ArrayAccess
 
         if ((mb_strlen($this->container['action']) < 1)) {
             $invalidProperties[] = "invalid value for 'action', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['issue_timestamp'] === null) {
+            $invalidProperties[] = "'issue_timestamp' can't be null";
+        }
+        if ($this->container['issue_status'] === null) {
+            $invalidProperties[] = "'issue_status' can't be null";
+        }
+        if ((mb_strlen($this->container['issue_status']) > 64)) {
+            $invalidProperties[] = "invalid value for 'issue_status', the character length must be smaller than or equal to 64.";
+        }
+
+        if ((mb_strlen($this->container['issue_status']) < 1)) {
+            $invalidProperties[] = "invalid value for 'issue_status', the character length must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -530,6 +556,61 @@ class ProofReward implements ModelInterface, ArrayAccess
         }
 
         $this->container['action'] = $action;
+
+        return $this;
+    }
+
+    /**
+     * Gets issue_timestamp
+     *
+     * @return int
+     */
+    public function getIssueTimestamp()
+    {
+        return $this->container['issue_timestamp'];
+    }
+
+    /**
+     * Sets issue_timestamp
+     *
+     * @param int $issue_timestamp issue_timestamp
+     *
+     * @return $this
+     */
+    public function setIssueTimestamp($issue_timestamp)
+    {
+        $this->container['issue_timestamp'] = $issue_timestamp;
+
+        return $this;
+    }
+
+    /**
+     * Gets issue_status
+     *
+     * @return string
+     */
+    public function getIssueStatus()
+    {
+        return $this->container['issue_status'];
+    }
+
+    /**
+     * Sets issue_status
+     *
+     * @param string $issue_status issue_status
+     *
+     * @return $this
+     */
+    public function setIssueStatus($issue_status)
+    {
+        if ((mb_strlen($issue_status) > 64)) {
+            throw new \InvalidArgumentException('invalid length for $issue_status when calling ProofReward., must be smaller than or equal to 64.');
+        }
+        if ((mb_strlen($issue_status) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $issue_status when calling ProofReward., must be bigger than or equal to 1.');
+        }
+
+        $this->container['issue_status'] = $issue_status;
 
         return $this;
     }
