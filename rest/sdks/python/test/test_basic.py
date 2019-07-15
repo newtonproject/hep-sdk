@@ -12,34 +12,46 @@ from hep_rest_api.scenarios.proof import ProofHelper
 from hep_rest_api.scenarios.proof import OrderProof
 from hep_rest_api.scenarios.proof import Order
 
+config_test = {
+    'app_id' : '3c7339a19b474e929683728d94be470d',
+    'app_key': '8b3bbe0fc66e4dab97672fa339f61ee8',
+    'app_secret': 'cfb5c49487d24b0cabc8d679896c2082',
+    'private_path' : '/Users/erhu/pony/temp/test.priv',
+    'hep_host': 'https://node.hep.testnet.newtonproject.org',
+    'protocol': 'HEP',
+    'protocol_version': '1.0',
+    'chain_id': 1007
+}
+config_dev = {
+    'app_id' : '75098291f88343b9836118546f375a9f',
+    'app_key': '71ffeae1a9a2402c944d84c54f8ffddc',
+    'app_secret': '2d66e7f3dd4445dbb6791b56fadcd2dc',
+    'private_path' : '/Users/erhu/pony/priv',
+    'hep_host': 'http://hep.newtonproject.dev.diynova.com',
+    'protocol': 'HEP',
+    'protocol_version': '1.0',
+    'chain_id': 1002
+}
+config = config_test
 
-PRIVATE_KEY_PATH = "/Users/erhu/pony/priv"
-HEP_KEY = "71ffeae1a9a2402c944d84c54f8ffddc"
-HEP_SECRET = "2d66e7f3dd4445dbb6791b56fadcd2dc"
-HEP_PROTOCOL = "HEP"
-HEP_PROTOCOL_VERSION = "1.0"
-HEP_HOST = "http://hep.newtonproject.dev.diynova.com"
-HEP_ID = "75098291f88343b9836118546f375a9f"
 TEST_NEWID = "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY"
+
 base_parameters = {
-    'dapp_key': HEP_KEY,
-    'protocol': HEP_PROTOCOL,
-    'version': HEP_PROTOCOL_VERSION,
+    'dapp_key': config['app_key'],
+    'protocol': config['protocol'],
+    'version': config['protocol_version'],
     'os': sys.platform,
     'language': 'en'
 }
-chain_id = 1002
-key_path = PRIVATE_KEY_PATH
-configuration = hep_rest_api.api_client.Configuration()
-configuration.host = HEP_HOST
-api_client = hep_rest_api.RestApi(hep_rest_api.ApiClient(configuration))
+chain_id = config['chain_id']
+key_path = config['private_path']
 payment_data = {"dapp_id": "75098291f88343b9836118546f375a9f", "nonce": "92ac0a98ba1742c48eb8e91100077817", "sign_type": "secp256r1", "signature": "0xee47bd99d1807b7a14bb36c9e9fe641753f13e3c5d77610121edd3e125ddf78d22a56c98de8012d185b6de0da27aaef4101d3fe4beb5cf3038bc134d73012f48", "ts": "1561121020", "txid": "0xd7ab1ddcad52efd96298610030c985083cb6639b3f0f07c86f51ea7845a61237", "uuid": "b8e89a114b104a8d83e0266bbc5a55a1"}
 login_data = {"action": "hep.auth.login", "scope": 1, "expired": 1561129670, "memo": "default", "uuid": "682749f075b74702b8c41c9a75862b0a", "dapp_id": "75098291f88343b9836118546f375a9f", "dapp_key": "71ffeae1a9a2402c944d84c54f8ffddc", "protocol":"HEP", "version": "1.0", "os": "darwin", "language": "en", "ts": 1561129370, "nonce": "ae892ffdf7ee430a992f29b5760d4e69", "dapp_signature": "046fbe22f261c5e5b62b37679b8f5a99", "dapp_signature_method": "HMAC-MD5", "signature": "0xf33c0e088f1cb64a8d0845a62333500d73b227c242e36dcf902da4243e515472dd2de175443b2918c52fbd6abbcbbace98a8e75540a93e3d29628096437f09e7", "sign_type": "secp256r1"}
 login_profile = {"address": "NEW17xYWcvn5cp7rgYubVeenHZLGDJ5JtJapUPm", "avatar": "", "cellphone": "18888888881", "country_code": "86", "invite_code": "XLFFKD", "name":"不上班", "newid": "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY", "sign_type": "secp256r1", "signature": "0x8132dc49de81e4a1b85aaaa142fce6502f1093d495004240c2fee7bbf39e7ddb5c4565537ebb9b50312b6c34d267724f6567aa473dc85c9b268efc8f46f2235d", "uuid": "c11494156640416393a8d7c9926ffa87"}
 
 def _get_api_client():
     configuration = hep_rest_api.api_client.Configuration()
-    configuration.host = HEP_HOST
+    configuration.host = config['hep_host']
     api_instance = hep_rest_api.RestApi(hep_rest_api.ApiClient(configuration))
     return api_instance
 
@@ -89,10 +101,13 @@ def test_auth_proof():
     print(response)
 
 
+def test_proof_callback():
+    data = {"sign_type":"secp256r1","ts":"1562901022","signature":"0x796cb9876246bda055770d45d125e73350386fa20b81255d53ce44328a9dbc59e08a9e2605cc69281acfcda45b0586fb9db691acdb507af9f0b81b5a8f1ce714","uuid":"10096d6c-dffe-482c-91c1-8284dec83255","dapp_id":"565dcbe6d16d41b7ac4c7beebff44027","proof_hash":"2462d64549144208a73a1975c0d14391","nonce":"3557d6ae73524634b9ef70b4818f04b7"}
+    api_client = _get_api_client()
+    proof_helper = ProofHelper(api_client, base_parameters, config['app_id'], config['app_secret'], key_path, chain_id=chain_id)
+    res = proof_helper.validate_proof_callback(data)
+    print(res)
+
+
 if __name__ == '__main__':
-    # print("test--login--")
-    # test_auth_login()
-    # print("test---pay---")
-    # test_auth_pay()
-    print("test---proof---")
-    test_auth_proof()
+    test_proof_callback()
