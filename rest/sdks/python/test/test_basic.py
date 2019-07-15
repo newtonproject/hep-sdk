@@ -1,6 +1,7 @@
 import sys
 import uuid
 import os
+import datetime
 # set the path
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE_DIR, ""))
@@ -23,16 +24,17 @@ config_test = {
     'chain_id': 1007
 }
 config_dev = {
-    'app_id' : '75098291f88343b9836118546f375a9f',
+    'app_id' : '4a5557f3d7d9485591237f85f6c9a0f6',
     'app_key': '71ffeae1a9a2402c944d84c54f8ffddc',
     'app_secret': '2d66e7f3dd4445dbb6791b56fadcd2dc',
     'private_path' : '/Users/erhu/pony/priv',
-    'hep_host': 'http://hep.newtonproject.dev.diynova.com',
+    #'hep_host': 'http://hep.newtonproject.dev.diynova.com',
+    'hep_host': 'http://127.0.0.1:8000',
     'protocol': 'HEP',
     'protocol_version': '1.0',
     'chain_id': 1002
 }
-config = config_test
+config = config_dev
 
 TEST_NEWID = "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY"
 
@@ -108,6 +110,15 @@ def test_proof_callback():
     res = proof_helper.validate_proof_callback(data)
     print(res)
 
+def test_dapp_daily_stats():
+    dapp_id = ""
+    time = ""
+    api_client = _get_api_client()
+    #    def rest_dapps_read_0(self, api_version, dapp_id, _date, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature, **kwargs):  # noqa: E501
+
+    res = api_client.rest_dapps_read_0("1", config['app_id'], "20190708", config['app_key'], 'HEP', '1.0', int(datetime.datetime.now().timestamp()), "nonce", 
+                        "web", "en", "HMAC-MD5", "signature")
+    print(res)
 
 if __name__ == '__main__':
-    test_proof_callback()
+    test_dapp_daily_stats()

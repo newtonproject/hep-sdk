@@ -36,6 +36,7 @@ from hep_rest_api.models.proof_data import ProofData
 from hep_rest_api.models.proof_response import ProofResponse
 from hep_rest_api.models.proof_reward import ProofReward
 from hep_rest_api.models.receipt_field import ReceiptField
+from hep_rest_api.models.retrieve_dapp_daily_stats_response import RetrieveDappDailyStatsResponse
 from hep_rest_api.models.retrieve_oracle_response import RetrieveOracleResponse
 from hep_rest_api.models.retrieve_proof_receipts_request import RetrieveProofReceiptsRequest
 from hep_rest_api.models.retrieve_proof_receipts_response import RetrieveProofReceiptsResponse
