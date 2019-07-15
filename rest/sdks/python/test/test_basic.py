@@ -28,13 +28,13 @@ config_dev = {
     'app_key': '71ffeae1a9a2402c944d84c54f8ffddc',
     'app_secret': '2d66e7f3dd4445dbb6791b56fadcd2dc',
     'private_path' : '/Users/erhu/pony/priv',
-    #'hep_host': 'http://hep.newtonproject.dev.diynova.com',
-    'hep_host': 'http://127.0.0.1:8000',
+    'hep_host': 'http://hep.newtonproject.dev.diynova.com',
+    #'hep_host': 'http://127.0.0.1:8000',
     'protocol': 'HEP',
     'protocol_version': '1.0',
     'chain_id': 1002
 }
-config = config_dev
+config = config_test
 
 TEST_NEWID = "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY"
 
@@ -116,7 +116,7 @@ def test_dapp_daily_stats():
     api_client = _get_api_client()
     #    def rest_dapps_read_0(self, api_version, dapp_id, _date, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature, **kwargs):  # noqa: E501
 
-    res = api_client.rest_dapps_read_0("1", config['app_id'], "20190708", config['app_key'], 'HEP', '1.0', int(datetime.datetime.now().timestamp()), "nonce", 
+    res = api_client.rest_dapps_read_0("1", "b8774f668c144aa78db2cd1b925284b2", "20190711", config['app_key'], 'HEP', '1.0', int(datetime.datetime.now().timestamp()), "nonce", 
                         "web", "en", "HMAC-MD5", "signature")
     print(res)
 
