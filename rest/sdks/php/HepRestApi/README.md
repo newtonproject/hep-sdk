@@ -90,6 +90,7 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *RestApi* | [**restDappsRead**](docs/Api/RestApi.md#restdappsread) | **GET** /rest/v{api_version}/dapps/{dapp_id}/ | 
+*RestApi* | [**restDappsRead_0**](docs/Api/RestApi.md#restdappsread_0) | **GET** /rest/v{api_version}/dapps/{dapp_id}/{date}/ | 
 *RestApi* | [**restHealthList**](docs/Api/RestApi.md#resthealthlist) | **GET** /rest/v{api_version}/health/ | 
 *RestApi* | [**restNewchainTxRead**](docs/Api/RestApi.md#restnewchaintxread) | **GET** /rest/v{api_version}/newchain/tx/{txid}/ | 
 *RestApi* | [**restNewforceRead**](docs/Api/RestApi.md#restnewforceread) | **GET** /rest/v{api_version}/newforce/{date}/ | 
@@ -129,6 +130,7 @@ Class | Method | HTTP request | Description
  - [ProofResponse](docs/Model/ProofResponse.md)
  - [ProofReward](docs/Model/ProofReward.md)
  - [ReceiptField](docs/Model/ReceiptField.md)
+ - [RetrieveDappDailyStatsResponse](docs/Model/RetrieveDappDailyStatsResponse.md)
  - [RetrieveOracleResponse](docs/Model/RetrieveOracleResponse.md)
  - [RetrieveProofReceiptsRequest](docs/Model/RetrieveProofReceiptsRequest.md)
  - [RetrieveProofReceiptsResponse](docs/Model/RetrieveProofReceiptsResponse.md)
