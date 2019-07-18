@@ -73,4 +73,26 @@ class AuthHelper(BaseHelper):
         signed_string = utils.generate_signature_base_string(data, "&")
         r, s = utils.split_signature(signature)
         return utils.validate_newid(r, s, signed_string, newid, self.chain_id)
+    
+    def get_client_login_params(self, uuid, memo=None, scope=2):
+        """Get the client params for login
+        params uuid: session id,random string
+        params memo: request information,optional
+        params scope: profile scope, 1 is for summary, 2 for detail.
+        :rtype: dict
+        :return: The data for client to login.
+        """
+        if not uuid:
+            raise AttributeError(
+                "uuid can not be None"
+            )
+        if not memo:
+            memo = "default"
+        login_params = {
+            'action': self.action_auth_login,
+            'scope': 2,
+            'memo': memo,
+            'uuid': uuid,
+        }
+        return self._get_client_base_params(login_params)
 

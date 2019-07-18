@@ -106,3 +106,18 @@ class BaseHelper(object):
         r, s = utils.split_signature(data.get('signature'))
         valid_public_keys = self.get_default_trust_oracle()
         return utils.validate_secp256r1_signature(r, s, signed_message, valid_public_keys)
+
+    def _get_client_base_params(self, data):
+        params = {
+            'dapp_id': self.dapp_id,
+            'protocol': self.base_parameters['protocol'],
+            'version': self.base_parameters['version'],
+            'ts': int(datetime.datetime.now().timestamp()),
+            'nonce': uuid.uuid4().hex,
+            'sign_type': 'secp256r1',
+        }
+        data.update(params)
+        message = utils.generate_signature_base_string(data, "&")
+        r, s = utils.sign_secp256r1(message, self.key_path)
+        data['signature'] = self.concat_signature(r, s)
+        return data

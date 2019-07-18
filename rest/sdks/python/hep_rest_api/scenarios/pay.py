@@ -36,7 +36,7 @@ class PayHelper(BaseHelper):
         :param str customer: The customer's NewID
         :param str broker: The broker's NewID. optional.
         :param int expired: The expired time of request
-        :param str uuid: The request uuid for desktop-browser. optional.
+        :param str uuid: The request uuid for desktop-browser.
         :rtype: dict
         :return: The request information including signature
         """
@@ -104,6 +104,45 @@ class PayHelper(BaseHelper):
         hmac_data['api_version'] = self.api_version
         response = self.api_client.rest_newchain_tx_read(**hmac_data)
         return response
+
+    def get_client_pay_params(self,
+                             order_number,
+                             price_currency,
+                             total_price,
+                             description,
+                             seller,
+                             customer,
+                             broker='',
+                             uuid=None):
+        """Generate the payment request
+        
+        :param str order_number: The order number
+        :param str price_currency: The symbol of fiat or digital token, such as USD, CNY, NEW,BTC,ETH.
+        :param str total_price: The amount of fiat or digital token, unit is the minimum unit of given fiat or digital token.
+        :param str description: The order description
+        :param str seller: The seller's NewID
+        :param str customer: The customer's NewID
+        :param str broker: The broker's NewID. optional.
+        :param str uuid: The request uuid for desktop-browser. optional.
+        :rtype: dict
+        :return: The request information including signature
+        """       
+        if not order_number:
+            raise AttributeError(
+                "order number can not be None"
+            )
+        pay_params = {
+            'uuid': uuid,
+            'action': self.action_auth_pay,
+            'description': description,
+            'price_currency': price_currency,
+            'total_price': total_price,
+            'order_number': order_number,
+            'seller': seller,
+            'customer': customer,
+            'broker': broker,
+        }
+        return self._get_client_base_params(pay_params)
 
 
 

@@ -173,3 +173,17 @@ class ProofHelper(BaseHelper):
         proof_request = models.RetrieveProofReceiptsRequest(**hmac_data)
         response = self.api_client.rest_proofs_receipts_create(body=proof_request, api_version=self.api_version)
         return response
+
+    def get_client_proof_params(self, uuid, proof_hash):
+        """Get the client params for proof
+        params uuid: session id,random string
+        params proof_hash: proof hash from hep node
+        :rtype: dict
+        :return: The data for client to submit proof.
+        """
+        proof_params = {
+            'uuid': uuid,
+            'action': self.action_auth_proof,
+            'proof_hash': proof_hash
+        }
+        return self._get_client_base_params(proof_params)
