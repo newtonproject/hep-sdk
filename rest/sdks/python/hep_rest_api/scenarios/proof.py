@@ -134,7 +134,6 @@ class ProofHelper(BaseHelper):
         final_data = self.sign_secp256r1(hmac_data)
         # start request
         proofs = models.CreateProofRequest(**final_data)
-        print(proofs)
         auth_response = self.api_client.rest_proofs_create(self.api_version, proofs)
         return auth_response
 
