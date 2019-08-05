@@ -134,7 +134,8 @@ class ProofHelper(BaseHelper):
         final_data = self.sign_secp256r1(hmac_data)
         # start request
         proofs = models.CreateProofRequest(**final_data)
-        auth_response = self.api_client.rest_proofs_create(proofs, self.api_version)
+        print(proofs)
+        auth_response = self.api_client.rest_proofs_create(self.api_version, proofs)
         return auth_response
 
     def generate_qrcode_string(self, proof_hash):
@@ -187,3 +188,22 @@ class ProofHelper(BaseHelper):
             'proof_hash': proof_hash
         }
         return self._get_client_base_params(proof_params)
+
+    def get_proof_information_by_hash(self, proof_hash):
+        #(self, api_version, proof_hash, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature, 
+        params = {
+        }
+        sign_data = self.generate_sign_data(params)
+        hmac_data = self.sign_hmac(sign_data)
+        hmac_data['api_version'] = self.api_version
+        hmac_data['proof_hash'] = proof_hash
+        return self.api_client.rest_proofs_read_with_http_info(**hmac_data)
+
+    def get_rate_nf(self, date):
+        params = {
+        }
+        sign_data = self.generate_sign_data(params)
+        hmac_data = self.sign_hmac(sign_data)
+        hmac_data['api_version'] = self.api_version
+        hmac_data['_date'] = date
+        return self.api_client.rest_newforce_read(**hmac_data)

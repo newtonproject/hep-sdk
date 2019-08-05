@@ -34,7 +34,7 @@ config_dev = {
     'protocol_version': '1.0',
     'chain_id': 1002
 }
-config = config_test
+config = config_dev
 
 TEST_NEWID = "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY"
 
@@ -92,24 +92,21 @@ def test_auth_pay_client():
     print(res)
 
 def test_auth_proof():
-    api_client = _get_api_client()
     order = Order( uuid.uuid4().hex, "deacription", "30", "CNY", TEST_NEWID, TEST_NEWID)
     order.add_order_item(uuid.uuid4().hex, 1, "10", "CNY", "pingguo", uuid.uuid4().hex)
     order.add_order_item(uuid.uuid4().hex, 2, "20", "CNY", "xiangjiao", uuid.uuid4().hex)
     order_content = OrderProof("30", "CNY", TEST_NEWID)
     order_content.add_order(order.to_dict())
-    print(order_content.to_dict())
-    proof_helper = ProofHelper(api_client, base_parameters, HEP_ID, HEP_SECRET, key_path, chain_id=chain_id)
-    oracles = proof_helper.get_default_trust_oracle()
-    print(oracles)
+    # proof_helper.validate_proof_callback({})
+    print("start proof")
     proof_resposne = proof_helper.generate_proof_request(order_content.to_dict(), uuid=uuid.uuid4().hex)
-    proof_str = proof_helper.generate_qrcode_string(proof_resposne.proof_hash)
-    print(proof_str)
-    proof_hashes = [
-        proof_resposne.proof_hash
-    ]
-    response = proof_helper.get_status_of_proofs(proof_hashes)
-    print(response)
+    # proof_str = proof_helper.generate_qrcode_string(proof_resposne.proof_hash)
+    print(proof_resposne)
+    # proof_hashes = [
+    #     proof_resposne.proof_hash
+    # ]
+    # response = proof_helper.get_status_of_proofs(proof_hashes)
+    # print(response)
 
 def test_auth_proof_client():
     res = proof_helper.get_client_proof_params(uuid.uuid4().hex, "proofhash")
@@ -133,6 +130,4 @@ def test_dapp_daily_stats():
     print(res)
 
 if __name__ == '__main__':
-    test_auth_login_client()
-    test_auth_pay_client()
-    test_auth_proof_client()
+    test_auth_proof()
