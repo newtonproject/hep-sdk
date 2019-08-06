@@ -13,13 +13,12 @@ from hep_rest_api.scenarios.pay import PayHelper
 from hep_rest_api.scenarios.proof import ProofHelper
 from hep_rest_api.scenarios.proof import OrderProof
 from hep_rest_api.scenarios.proof import Order
-print(BASE_DIR)
 config_dev = {
     'app_id' : 'd32db928a0034598a69bdf375551f822',
     'app_key': '02c3119710714730b000db31d73052ce',
     'app_secret': 'eae92dbda0454049b8016a43c2d7025e',
     'private_path' : BASE_DIR + "/test/priv/priv",
-    'hep_host': 'https://node.hep.testnet.newtonproject.org',
+    'hep_host': 'http://hep.newtonproject.dev.diynova.com',
     'protocol': 'HEP',
     'protocol_version': '1.0',
     'chain_id': 1002
@@ -29,7 +28,7 @@ config_test = {
     'app_key': 'e3e3b730955d4f7ca405645f17c6dd1d',
     'app_secret': '70dc942a981e469686c5b94108393eb9',
     'private_path': BASE_DIR + "/test/priv/priv",
-    'hep_host': 'http://hep.newtonproject.dev.diynova.com',
+    'hep_host': 'https://node.hep.testnet.newtonproject.org',
     #'hep_host': 'http://127.0.0.1:8000',
     'protocol': 'HEP',
     'protocol_version': '1.0',
@@ -133,11 +132,12 @@ def test_dapp_daily_stats():
 
 
 if __name__ == '__main__':
-    message = "你好"
-    r, s = utils.sign_secp256r1(message, key_path)
-    print("r : %s   s: %s" %(r, s))
-    pubs = ['0xc710c38f6042934940967f644943029229fb5180c42bda613c9f3edad120fc7f5dadf3d175733685f1c36de733c2ec2d01571d52a57e1eca121ec60f26e4dc8e']
-    #r = "0xb5957b043805942e05fdbdb878cf10215408a318204f2e27a8671979602ae5ed"
-    #s = "0x7e8ee6ca762ae1785f894ee5263304c934c2c889a2808cbd96636c4d4d2d3f6b"
-    res = utils.validate_secp256r1_signature(r, s, message, pubs)
-    print(res)
+    # message = "你好"
+    # r, s = utils.sign_secp256r1(message, key_path)
+    # print("r : %s   s: %s" %(r, s))
+    # pubs = ['0xc710c38f6042934940967f644943029229fb5180c42bda613c9f3edad120fc7f5dadf3d175733685f1c36de733c2ec2d01571d52a57e1eca121ec60f26e4dc8e']
+    # #r = "0xb5957b043805942e05fdbdb878cf10215408a318204f2e27a8671979602ae5ed"
+    # #s = "0x7e8ee6ca762ae1785f894ee5263304c934c2c889a2808cbd96636c4d4d2d3f6b"
+    # res = utils.validate_secp256r1_signature(r, s, message, pubs)
+    # print(res)
+    test_auth_login()
