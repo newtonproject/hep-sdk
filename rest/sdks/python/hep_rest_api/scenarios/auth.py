@@ -46,7 +46,7 @@ class AuthHelper(BaseHelper):
         final_data = self.sign_secp256r1(hmac_data)
         # start request
         auth_cache = models.AuthCacheRequest(**final_data)
-        auth_response = self.api_client.rest_newnet_caches_auth_create(auth_cache, self.api_version)
+        auth_response = self.api_client.rest_newnet_caches_auth_create(self.api_version, auth_cache)
         return auth_response
 
     def generate_qrcode_string(self, auth_hash):

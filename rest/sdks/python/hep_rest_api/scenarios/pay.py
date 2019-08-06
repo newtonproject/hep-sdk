@@ -66,7 +66,7 @@ class PayHelper(BaseHelper):
         final_data = self.sign_secp256r1(hmac_data)
         # start request
         auth_cache = models.PayCacheRequest(**final_data)
-        auth_response = self.api_client.rest_newnet_caches_pay_create(auth_cache, self.api_version)
+        auth_response = self.api_client.rest_newnet_caches_pay_create(self.api_version, auth_cache)
         return auth_response
 
     def generate_qrcode_string(self, pay_hash):
@@ -107,7 +107,7 @@ class PayHelper(BaseHelper):
 
     def get_client_pay_params(self,
                              order_number,
-                             price_currency,
+                             priqce_currency,
                              total_price,
                              description,
                              seller,

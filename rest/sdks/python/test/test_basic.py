@@ -5,34 +5,35 @@ import datetime
 # set the path
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE_DIR, ""))
-
+from sha3 import keccak_256
 import hep_rest_api
+from hep_rest_api import utils
 from hep_rest_api.scenarios.auth import AuthHelper
 from hep_rest_api.scenarios.pay import PayHelper
 from hep_rest_api.scenarios.proof import ProofHelper
 from hep_rest_api.scenarios.proof import OrderProof
 from hep_rest_api.scenarios.proof import Order
-
-config_test = {
-    'app_id' : '3c7339a19b474e929683728d94be470d',
-    'app_key': '8b3bbe0fc66e4dab97672fa339f61ee8',
-    'app_secret': 'cfb5c49487d24b0cabc8d679896c2082',
-    'private_path' : '/Users/erhu/pony/temp/test.priv',
+print(BASE_DIR)
+config_dev = {
+    'app_id' : 'd32db928a0034598a69bdf375551f822',
+    'app_key': '02c3119710714730b000db31d73052ce',
+    'app_secret': 'eae92dbda0454049b8016a43c2d7025e',
+    'private_path' : BASE_DIR + "/test/priv/priv",
     'hep_host': 'https://node.hep.testnet.newtonproject.org',
     'protocol': 'HEP',
     'protocol_version': '1.0',
-    'chain_id': 1007
+    'chain_id': 1002
 }
-config_dev = {
-    'app_id' : '4a5557f3d7d9485591237f85f6c9a0f6',
-    'app_key': '71ffeae1a9a2402c944d84c54f8ffddc',
-    'app_secret': '2d66e7f3dd4445dbb6791b56fadcd2dc',
-    'private_path' : '/Users/erhu/pony/priv',
+config_test = {
+    'app_id' : 'ad153ffe8cff4677ae2edd5d5670d408',
+    'app_key': 'e3e3b730955d4f7ca405645f17c6dd1d',
+    'app_secret': '70dc942a981e469686c5b94108393eb9',
+    'private_path': BASE_DIR + "/test/priv/priv",
     'hep_host': 'http://hep.newtonproject.dev.diynova.com',
     #'hep_host': 'http://127.0.0.1:8000',
     'protocol': 'HEP',
     'protocol_version': '1.0',
-    'chain_id': 1002
+    'chain_id': 1007
 }
 config = config_dev
 
@@ -77,7 +78,7 @@ def test_auth_login_client():
 
 
 def test_auth_pay():
-    pay_response = pay_helper.generate_pay_request(uuid.uuid4().hex, "NEW", 12, "description", "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY", "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY", "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY", uuid=uuid.uuid4().hex)
+    pay_response = pay_helper.generate_pay_request(uuid.uuid4().hex, "NEW", "12", "description", "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY", "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY", "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY", uuid=uuid.uuid4().hex)
     print(pay_response.pay_hash)
     pay_qr_str = pay_helper.generate_qrcode_string(pay_response.pay_hash)
     print(pay_qr_str)
@@ -93,8 +94,8 @@ def test_auth_pay_client():
 
 def test_auth_proof():
     order = Order( uuid.uuid4().hex, "deacription", "30", "CNY", TEST_NEWID, TEST_NEWID)
-    order.add_order_item(uuid.uuid4().hex, 1, "10", "CNY", "pingguo", uuid.uuid4().hex)
-    order.add_order_item(uuid.uuid4().hex, 2, "20", "CNY", "xiangjiao", uuid.uuid4().hex)
+    order.add_order_item(uuid.uuid4().hex, "1", "10", "CNY", "pingguo", uuid.uuid4().hex)
+    order.add_order_item(uuid.uuid4().hex, "2", "20", "CNY", "xiangjiao", uuid.uuid4().hex)
     order_content = OrderProof("30", "CNY", TEST_NEWID)
     order_content.add_order(order.to_dict())
     # proof_helper.validate_proof_callback({})
@@ -119,6 +120,7 @@ def test_proof_callback():
     res = proof_helper.validate_proof_callback(data)
     print(res)
 
+
 def test_dapp_daily_stats():
     dapp_id = ""
     time = ""
@@ -129,5 +131,13 @@ def test_dapp_daily_stats():
                         "web", "en", "HMAC-MD5", "signature")
     print(res)
 
+
 if __name__ == '__main__':
-    test_auth_proof()
+    message = "你好"
+    r, s = utils.sign_secp256r1(message, key_path)
+    print("r : %s   s: %s" %(r, s))
+    pubs = ['0xc710c38f6042934940967f644943029229fb5180c42bda613c9f3edad120fc7f5dadf3d175733685f1c36de733c2ec2d01571d52a57e1eca121ec60f26e4dc8e']
+    #r = "0xb5957b043805942e05fdbdb878cf10215408a318204f2e27a8671979602ae5ed"
+    #s = "0x7e8ee6ca762ae1785f894ee5263304c934c2c889a2808cbd96636c4d4d2d3f6b"
+    res = utils.validate_secp256r1_signature(r, s, message, pubs)
+    print(res)
