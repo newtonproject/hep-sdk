@@ -936,13 +936,13 @@ definitions:
         title: Icon
         description: The icon of application
         type: string
-        maxLength: 64
+        maxLength: 256
         minLength: 1
       dapp_public_key:
         title: Dapp public key
         description: The public key of DApp
         type: string
-        maxLength: 64
+        maxLength: 130
         minLength: 1
       package_name:
         title: Package name
@@ -966,7 +966,7 @@ definitions:
         title: Website
         description: The dapp website link
         type: string
-        maxLength: 64
+        maxLength: 256
         minLength: 1
       deposit_contract_address:
         title: Deposit contract address
@@ -988,21 +988,21 @@ definitions:
         description: For Mobile Native DApp, it is redirect schema; For website DApp,
           it is callback url; For  NewDApp, it is HEP-based url.
         type: string
-        maxLength: 64
+        maxLength: 256
         minLength: 1
       pay_order_callback:
         title: Pay order callback
         description: For Mobile Native DApp, it is redirect schema; For website DApp,
           it is callback url; For  NewDApp, it is HEP-based url.
         type: string
-        maxLength: 64
+        maxLength: 256
         minLength: 1
       proof_submit_callback:
         title: Proof submit callback
         description: For Mobile Native DApp, it is redirect schema; For website DApp,
           it is callback url; For  NewDApp, it is HEP-based url.
         type: string
-        maxLength: 64
+        maxLength: 256
         minLength: 1
   RetrieveDappDailyStatsResponse:
     required:
