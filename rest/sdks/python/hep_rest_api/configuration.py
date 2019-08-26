@@ -40,7 +40,7 @@ class Configuration(object):
             return
 
         # Default Base url
-        self.host = "http://localhost"
+        self.host = "http://127.0.0.1:8000"
         # Temp file folder for downloading files
         self.temp_folder_path = None
 
@@ -221,6 +221,13 @@ class Configuration(object):
         :return: The Auth Settings information dict.
         """
         return {
+            'Basic':
+                {
+                    'type': 'basic',
+                    'in': 'header',
+                    'key': 'Authorization',
+                    'value': self.get_basic_auth_token()
+                },
 
         }
 

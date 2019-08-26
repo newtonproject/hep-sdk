@@ -130,6 +130,11 @@ def test_dapp_daily_stats():
                         "web", "en", "HMAC-MD5", "signature")
     print(res)
 
+def test_get_reward_amount():
+    newid = "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY"
+    api_client = _get_api_client()
+
+
 
 if __name__ == '__main__':
     # message = "你好"

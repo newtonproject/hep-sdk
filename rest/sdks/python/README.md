@@ -51,6 +51,11 @@ import hep_rest_api
 from hep_rest_api.rest import ApiException
 from pprint import pprint
 
+# Configure HTTP basic authorization: Basic
+configuration = hep_rest_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+
 # create an instance of the API class
 api_instance = hep_rest_api.RestApi(hep_rest_api.ApiClient(configuration))
 api_version = 'api_version_example' # str | 
@@ -75,7 +80,7 @@ except ApiException as e:
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://127.0.0.1:8000*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -84,6 +89,7 @@ Class | Method | HTTP request | Description
 *RestApi* | [**rest_health_list**](docs/RestApi.md#rest_health_list) | **GET** /rest/v{api_version}/health/ | 
 *RestApi* | [**rest_newchain_tx_read**](docs/RestApi.md#rest_newchain_tx_read) | **GET** /rest/v{api_version}/newchain/tx/{txid}/ | 
 *RestApi* | [**rest_newforce_read**](docs/RestApi.md#rest_newforce_read) | **GET** /rest/v{api_version}/newforce/{date}/ | 
+*RestApi* | [**rest_newforce_tokens_list**](docs/RestApi.md#rest_newforce_tokens_list) | **GET** /rest/v{api_version}/newforce/{newid}/tokens/ | 
 *RestApi* | [**rest_newids_read**](docs/RestApi.md#rest_newids_read) | **GET** /rest/v{api_version}/newids/{newid}/ | 
 *RestApi* | [**rest_newnet_caches_auth_create**](docs/RestApi.md#rest_newnet_caches_auth_create) | **POST** /rest/v{api_version}/newnet/caches/auth/ | 
 *RestApi* | [**rest_newnet_caches_auth_read**](docs/RestApi.md#rest_newnet_caches_auth_read) | **GET** /rest/v{api_version}/newnet/caches/auth/{auth_hash}/ | 
@@ -110,6 +116,7 @@ Class | Method | HTTP request | Description
  - [Dapp](docs/Dapp.md)
  - [NewchainTransactionResponse](docs/NewchainTransactionResponse.md)
  - [NewforceDailyStatsResponse](docs/NewforceDailyStatsResponse.md)
+ - [NewforceRewardAmountResponse](docs/NewforceRewardAmountResponse.md)
  - [NewidResponse](docs/NewidResponse.md)
  - [Order](docs/Order.md)
  - [OrderItem](docs/OrderItem.md)
@@ -131,7 +138,10 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Authorization
 
- All endpoints do not require authorization.
+
+## Basic
+
+- **Type**: HTTP basic authentication
 
 
 ## Author
