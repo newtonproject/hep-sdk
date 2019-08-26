@@ -132,7 +132,7 @@ def test_dapp_daily_stats():
 
 def test_get_reward_amount():
     newid = "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY"
-    api_client = _get_api_client()
+    api_client = auth_helper.get_reward_tokens(newid)
 
 
 
@@ -145,4 +145,4 @@ if __name__ == '__main__':
     # #s = "0x7e8ee6ca762ae1785f894ee5263304c934c2c889a2808cbd96636c4d4d2d3f6b"
     # res = utils.validate_secp256r1_signature(r, s, message, pubs)
     # print(res)
-    test_auth_login()
+    test_get_reward_amount()
