@@ -242,7 +242,7 @@ class RestApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['Basic']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/rest/v{api_version}/dapps/{dapp_id}/', 'GET',
@@ -270,7 +270,6 @@ class RestApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str api_version: (required)
         :param str api_version: (required)
         :param str dapp_id: (required)
         :param str _date: (required)
@@ -478,7 +477,7 @@ class RestApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['Basic']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/rest/v{api_version}/dapps/{dapp_id}/{date}/', 'GET',
@@ -577,7 +576,7 @@ class RestApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['Basic']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/rest/v{api_version}/health/', 'GET',
@@ -804,7 +803,7 @@ class RestApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['Basic']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/rest/v{api_version}/newchain/tx/{txid}/', 'GET',
@@ -1031,7 +1030,7 @@ class RestApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['Basic']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/rest/v{api_version}/newforce/{date}/', 'GET',
@@ -1258,7 +1257,7 @@ class RestApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['Basic']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/rest/v{api_version}/newforce/{newid}/tokens/', 'GET',
@@ -1485,7 +1484,7 @@ class RestApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['Basic']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/rest/v{api_version}/newids/{newid}/', 'GET',
@@ -1592,7 +1591,7 @@ class RestApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['Basic']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/rest/v{api_version}/newnet/caches/auth/', 'POST',
@@ -1819,7 +1818,7 @@ class RestApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['Basic']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/rest/v{api_version}/newnet/caches/auth/{auth_hash}/', 'GET',
@@ -1926,7 +1925,7 @@ class RestApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['Basic']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/rest/v{api_version}/newnet/caches/pay/', 'POST',
@@ -2153,7 +2152,7 @@ class RestApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['Basic']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/rest/v{api_version}/newnet/caches/pay/{pay_hash}/', 'GET',
@@ -2380,7 +2379,7 @@ class RestApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['Basic']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/rest/v{api_version}/oracles/{oracle_id}/', 'GET',
@@ -2487,7 +2486,7 @@ class RestApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['Basic']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/rest/v{api_version}/proofs/', 'POST',
@@ -2602,7 +2601,7 @@ class RestApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['Basic']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/rest/v{api_version}/proofs/{proof_hash}/', 'DELETE',
@@ -2829,7 +2828,7 @@ class RestApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['Basic']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/rest/v{api_version}/proofs/{proof_hash}/', 'GET',
@@ -2936,7 +2935,7 @@ class RestApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['Basic']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/rest/v{api_version}/proofs/receipts/', 'POST',
@@ -3043,7 +3042,7 @@ class RestApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['Basic']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/rest/v{api_version}/proofs/rewards/', 'POST',

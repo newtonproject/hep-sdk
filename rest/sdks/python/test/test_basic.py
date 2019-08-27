@@ -132,8 +132,8 @@ def test_dapp_daily_stats():
 
 def test_get_reward_amount():
     newid = "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY"
-    api_client = auth_helper.get_reward_tokens(newid)
-
+    result = auth_helper.get_reward_tokens(newid)
+    print(result)
 
 
 if __name__ == '__main__':

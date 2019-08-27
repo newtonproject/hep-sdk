@@ -8,15 +8,19 @@ info:
   license:
     name: GPLv3 License
   version: v1
-host: [HEP NODE API]
+host: localhost:8000
 schemes:
   - http
-  - https
 basePath: /
 consumes:
   - application/json
 produces:
   - application/json
+securityDefinitions:
+  Basic:
+    type: basic
+security:
+  - Basic: []
 paths:
   /rest/v{api_version}/dapps/{dapp_id}/:
     get:

@@ -56,10 +56,16 @@ Please follow the [installation procedure](#installation--usage) and then run th
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure HTTP basic authorization: Basic
+$config = HepRestApi\Configuration::getDefaultConfiguration()
+    ->setUsername('YOUR_USERNAME')
+    ->setPassword('YOUR_PASSWORD');
+
 $apiInstance = new HepRestApi\Api\RestApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $api_version = "api_version_example"; // string | 
 $dapp_id = "dapp_id_example"; // string | 
@@ -85,7 +91,7 @@ try {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://localhost:8000*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -94,6 +100,7 @@ Class | Method | HTTP request | Description
 *RestApi* | [**restHealthList**](docs/Api/RestApi.md#resthealthlist) | **GET** /rest/v{api_version}/health/ | 
 *RestApi* | [**restNewchainTxRead**](docs/Api/RestApi.md#restnewchaintxread) | **GET** /rest/v{api_version}/newchain/tx/{txid}/ | 
 *RestApi* | [**restNewforceRead**](docs/Api/RestApi.md#restnewforceread) | **GET** /rest/v{api_version}/newforce/{date}/ | 
+*RestApi* | [**restNewforceTokensList**](docs/Api/RestApi.md#restnewforcetokenslist) | **GET** /rest/v{api_version}/newforce/{newid}/tokens/ | 
 *RestApi* | [**restNewidsRead**](docs/Api/RestApi.md#restnewidsread) | **GET** /rest/v{api_version}/newids/{newid}/ | 
 *RestApi* | [**restNewnetCachesAuthCreate**](docs/Api/RestApi.md#restnewnetcachesauthcreate) | **POST** /rest/v{api_version}/newnet/caches/auth/ | 
 *RestApi* | [**restNewnetCachesAuthRead**](docs/Api/RestApi.md#restnewnetcachesauthread) | **GET** /rest/v{api_version}/newnet/caches/auth/{auth_hash}/ | 
@@ -120,6 +127,7 @@ Class | Method | HTTP request | Description
  - [Dapp](docs/Model/Dapp.md)
  - [NewchainTransactionResponse](docs/Model/NewchainTransactionResponse.md)
  - [NewforceDailyStatsResponse](docs/Model/NewforceDailyStatsResponse.md)
+ - [NewforceRewardAmountResponse](docs/Model/NewforceRewardAmountResponse.md)
  - [NewidResponse](docs/Model/NewidResponse.md)
  - [Order](docs/Model/Order.md)
  - [OrderItem](docs/Model/OrderItem.md)
@@ -141,7 +149,10 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Authorization
 
- All endpoints do not require authorization.
+
+## Basic
+
+- **Type**: HTTP basic authentication
 
 
 ## Author
