@@ -271,6 +271,7 @@ class RestApi(object):
 
         :param async_req bool
         :param str api_version: (required)
+        :param str api_version: (required)
         :param str dapp_id: (required)
         :param str _date: (required)
         :param str dapp_key: The decentralized application access key (required)

@@ -130,6 +130,11 @@ def test_dapp_daily_stats():
                         "web", "en", "HMAC-MD5", "signature")
     print(res)
 
+def test_get_reward_amount():
+    newid = "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY"
+    api_client = auth_helper.get_reward_tokens(newid)
+
+
 
 def test_get_reward_amount():
     newid = "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY"
