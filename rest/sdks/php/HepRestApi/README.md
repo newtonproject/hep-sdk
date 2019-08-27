@@ -94,6 +94,7 @@ Class | Method | HTTP request | Description
 *RestApi* | [**restHealthList**](docs/Api/RestApi.md#resthealthlist) | **GET** /rest/v{api_version}/health/ | 
 *RestApi* | [**restNewchainTxRead**](docs/Api/RestApi.md#restnewchaintxread) | **GET** /rest/v{api_version}/newchain/tx/{txid}/ | 
 *RestApi* | [**restNewforceRead**](docs/Api/RestApi.md#restnewforceread) | **GET** /rest/v{api_version}/newforce/{date}/ | 
+*RestApi* | [**restNewforceTokensList**](docs/Api/RestApi.md#restnewforcetokenslist) | **GET** /rest/v{api_version}/newforce/{newid}/tokens/ | 
 *RestApi* | [**restNewidsRead**](docs/Api/RestApi.md#restnewidsread) | **GET** /rest/v{api_version}/newids/{newid}/ | 
 *RestApi* | [**restNewnetCachesAuthCreate**](docs/Api/RestApi.md#restnewnetcachesauthcreate) | **POST** /rest/v{api_version}/newnet/caches/auth/ | 
 *RestApi* | [**restNewnetCachesAuthRead**](docs/Api/RestApi.md#restnewnetcachesauthread) | **GET** /rest/v{api_version}/newnet/caches/auth/{auth_hash}/ | 
@@ -120,6 +121,7 @@ Class | Method | HTTP request | Description
  - [Dapp](docs/Model/Dapp.md)
  - [NewchainTransactionResponse](docs/Model/NewchainTransactionResponse.md)
  - [NewforceDailyStatsResponse](docs/Model/NewforceDailyStatsResponse.md)
+ - [NewforceRewardAmountResponse](docs/Model/NewforceRewardAmountResponse.md)
  - [NewidResponse](docs/Model/NewidResponse.md)
  - [Order](docs/Model/Order.md)
  - [OrderItem](docs/Model/OrderItem.md)

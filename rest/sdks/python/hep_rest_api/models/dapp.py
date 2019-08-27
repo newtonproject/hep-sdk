@@ -178,8 +178,8 @@ class Dapp(object):
         """
         if icon is None:
             raise ValueError("Invalid value for `icon`, must not be `None`")  # noqa: E501
-        if icon is not None and len(icon) > 64:
-            raise ValueError("Invalid value for `icon`, length must be less than or equal to `64`")  # noqa: E501
+        if icon is not None and len(icon) > 256:
+            raise ValueError("Invalid value for `icon`, length must be less than or equal to `256`")  # noqa: E501
         if icon is not None and len(icon) < 1:
             raise ValueError("Invalid value for `icon`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -207,8 +207,8 @@ class Dapp(object):
         """
         if dapp_public_key is None:
             raise ValueError("Invalid value for `dapp_public_key`, must not be `None`")  # noqa: E501
-        if dapp_public_key is not None and len(dapp_public_key) > 64:
-            raise ValueError("Invalid value for `dapp_public_key`, length must be less than or equal to `64`")  # noqa: E501
+        if dapp_public_key is not None and len(dapp_public_key) > 130:
+            raise ValueError("Invalid value for `dapp_public_key`, length must be less than or equal to `130`")  # noqa: E501
         if dapp_public_key is not None and len(dapp_public_key) < 1:
             raise ValueError("Invalid value for `dapp_public_key`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -323,8 +323,8 @@ class Dapp(object):
         """
         if website is None:
             raise ValueError("Invalid value for `website`, must not be `None`")  # noqa: E501
-        if website is not None and len(website) > 64:
-            raise ValueError("Invalid value for `website`, length must be less than or equal to `64`")  # noqa: E501
+        if website is not None and len(website) > 256:
+            raise ValueError("Invalid value for `website`, length must be less than or equal to `256`")  # noqa: E501
         if website is not None and len(website) < 1:
             raise ValueError("Invalid value for `website`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -431,8 +431,8 @@ class Dapp(object):
         """
         if auth_login_callback is None:
             raise ValueError("Invalid value for `auth_login_callback`, must not be `None`")  # noqa: E501
-        if auth_login_callback is not None and len(auth_login_callback) > 64:
-            raise ValueError("Invalid value for `auth_login_callback`, length must be less than or equal to `64`")  # noqa: E501
+        if auth_login_callback is not None and len(auth_login_callback) > 256:
+            raise ValueError("Invalid value for `auth_login_callback`, length must be less than or equal to `256`")  # noqa: E501
         if auth_login_callback is not None and len(auth_login_callback) < 1:
             raise ValueError("Invalid value for `auth_login_callback`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -460,8 +460,8 @@ class Dapp(object):
         """
         if pay_order_callback is None:
             raise ValueError("Invalid value for `pay_order_callback`, must not be `None`")  # noqa: E501
-        if pay_order_callback is not None and len(pay_order_callback) > 64:
-            raise ValueError("Invalid value for `pay_order_callback`, length must be less than or equal to `64`")  # noqa: E501
+        if pay_order_callback is not None and len(pay_order_callback) > 256:
+            raise ValueError("Invalid value for `pay_order_callback`, length must be less than or equal to `256`")  # noqa: E501
         if pay_order_callback is not None and len(pay_order_callback) < 1:
             raise ValueError("Invalid value for `pay_order_callback`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -489,8 +489,8 @@ class Dapp(object):
         """
         if proof_submit_callback is None:
             raise ValueError("Invalid value for `proof_submit_callback`, must not be `None`")  # noqa: E501
-        if proof_submit_callback is not None and len(proof_submit_callback) > 64:
-            raise ValueError("Invalid value for `proof_submit_callback`, length must be less than or equal to `64`")  # noqa: E501
+        if proof_submit_callback is not None and len(proof_submit_callback) > 256:
+            raise ValueError("Invalid value for `proof_submit_callback`, length must be less than or equal to `256`")  # noqa: E501
         if proof_submit_callback is not None and len(proof_submit_callback) < 1:
             raise ValueError("Invalid value for `proof_submit_callback`, length must be greater than or equal to `1`")  # noqa: E501
 

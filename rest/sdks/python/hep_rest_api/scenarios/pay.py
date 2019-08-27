@@ -143,6 +143,3 @@ class PayHelper(BaseHelper):
             'broker': broker,
         }
         return self._get_client_base_params(pay_params)
-
-
-

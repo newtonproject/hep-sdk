@@ -1,6 +1,6 @@
 # hep_rest_api.RestApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://localhost:8000*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**rest_health_list**](RestApi.md#rest_health_list) | **GET** /rest/v{api_version}/health/ | 
 [**rest_newchain_tx_read**](RestApi.md#rest_newchain_tx_read) | **GET** /rest/v{api_version}/newchain/tx/{txid}/ | 
 [**rest_newforce_read**](RestApi.md#rest_newforce_read) | **GET** /rest/v{api_version}/newforce/{date}/ | 
+[**rest_newforce_tokens_list**](RestApi.md#rest_newforce_tokens_list) | **GET** /rest/v{api_version}/newforce/{newid}/tokens/ | 
 [**rest_newids_read**](RestApi.md#rest_newids_read) | **GET** /rest/v{api_version}/newids/{newid}/ | 
 [**rest_newnet_caches_auth_create**](RestApi.md#rest_newnet_caches_auth_create) | **POST** /rest/v{api_version}/newnet/caches/auth/ | 
 [**rest_newnet_caches_auth_read**](RestApi.md#rest_newnet_caches_auth_read) | **GET** /rest/v{api_version}/newnet/caches/auth/{auth_hash}/ | 
@@ -37,8 +38,13 @@ import hep_rest_api
 from hep_rest_api.rest import ApiException
 from pprint import pprint
 
+# Configure HTTP basic authorization: Basic
+configuration = hep_rest_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+
 # create an instance of the API class
-api_instance = hep_rest_api.RestApi()
+api_instance = hep_rest_api.RestApi(hep_rest_api.ApiClient(configuration))
 api_version = 'api_version_example' # str | 
 dapp_id = 'dapp_id_example' # str | 
 dapp_key = 'dapp_key_example' # str | The decentralized application access key
@@ -80,7 +86,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
@@ -104,8 +110,13 @@ import hep_rest_api
 from hep_rest_api.rest import ApiException
 from pprint import pprint
 
+# Configure HTTP basic authorization: Basic
+configuration = hep_rest_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+
 # create an instance of the API class
-api_instance = hep_rest_api.RestApi()
+api_instance = hep_rest_api.RestApi(hep_rest_api.ApiClient(configuration))
 api_version = 'api_version_example' # str | 
 dapp_id = 'dapp_id_example' # str | 
 _date = '_date_example' # str | 
@@ -149,7 +160,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
@@ -173,8 +184,13 @@ import hep_rest_api
 from hep_rest_api.rest import ApiException
 from pprint import pprint
 
+# Configure HTTP basic authorization: Basic
+configuration = hep_rest_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+
 # create an instance of the API class
-api_instance = hep_rest_api.RestApi()
+api_instance = hep_rest_api.RestApi(hep_rest_api.ApiClient(configuration))
 api_version = 'api_version_example' # str | 
 
 try:
@@ -195,7 +211,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
@@ -219,8 +235,13 @@ import hep_rest_api
 from hep_rest_api.rest import ApiException
 from pprint import pprint
 
+# Configure HTTP basic authorization: Basic
+configuration = hep_rest_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+
 # create an instance of the API class
-api_instance = hep_rest_api.RestApi()
+api_instance = hep_rest_api.RestApi(hep_rest_api.ApiClient(configuration))
 api_version = 'api_version_example' # str | 
 txid = 'txid_example' # str | 
 dapp_key = 'dapp_key_example' # str | The decentralized application access key
@@ -262,7 +283,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
@@ -286,8 +307,13 @@ import hep_rest_api
 from hep_rest_api.rest import ApiException
 from pprint import pprint
 
+# Configure HTTP basic authorization: Basic
+configuration = hep_rest_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+
 # create an instance of the API class
-api_instance = hep_rest_api.RestApi()
+api_instance = hep_rest_api.RestApi(hep_rest_api.ApiClient(configuration))
 api_version = 'api_version_example' # str | 
 _date = '_date_example' # str | 
 dapp_key = 'dapp_key_example' # str | The decentralized application access key
@@ -329,7 +355,79 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **rest_newforce_tokens_list**
+> NewforceRewardAmountResponse rest_newforce_tokens_list(api_version, newid, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature)
+
+
+
+Get the reward tokens amount by newid
+
+### Example
+```python
+from __future__ import print_function
+import time
+import hep_rest_api
+from hep_rest_api.rest import ApiException
+from pprint import pprint
+
+# Configure HTTP basic authorization: Basic
+configuration = hep_rest_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+
+# create an instance of the API class
+api_instance = hep_rest_api.RestApi(hep_rest_api.ApiClient(configuration))
+api_version = 'api_version_example' # str | 
+newid = 'newid_example' # str | 
+dapp_key = 'dapp_key_example' # str | The decentralized application access key
+protocol = 'protocol_example' # str | The protocol name. default is 'HEP'.
+version = 'version_example' # str | The protocol version such as '1.0'
+ts = 56 # int | The current timestamp
+nonce = 'nonce_example' # str | The random string or auto-increment sequence
+os = 'os_example' # str | The operating system of client such as ios, android, dweb,etc.
+language = 'language_example' # str | The i18n language code such as zh, en, etc.
+dapp_signature_method = 'dapp_signature_method_example' # str | The signature method used by dapp.
+dapp_signature = 'dapp_signature_example' # str | The signature generated by dapp.
+
+try:
+    api_response = api_instance.rest_newforce_tokens_list(api_version, newid, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling RestApi->rest_newforce_tokens_list: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **api_version** | **str**|  | 
+ **newid** | **str**|  | 
+ **dapp_key** | **str**| The decentralized application access key | 
+ **protocol** | **str**| The protocol name. default is &#39;HEP&#39;. | 
+ **version** | **str**| The protocol version such as &#39;1.0&#39; | 
+ **ts** | **int**| The current timestamp | 
+ **nonce** | **str**| The random string or auto-increment sequence | 
+ **os** | **str**| The operating system of client such as ios, android, dweb,etc. | 
+ **language** | **str**| The i18n language code such as zh, en, etc. | 
+ **dapp_signature_method** | **str**| The signature method used by dapp. | 
+ **dapp_signature** | **str**| The signature generated by dapp. | 
+
+### Return type
+
+[**NewforceRewardAmountResponse**](NewforceRewardAmountResponse.md)
+
+### Authorization
+
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
@@ -353,8 +451,13 @@ import hep_rest_api
 from hep_rest_api.rest import ApiException
 from pprint import pprint
 
+# Configure HTTP basic authorization: Basic
+configuration = hep_rest_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+
 # create an instance of the API class
-api_instance = hep_rest_api.RestApi()
+api_instance = hep_rest_api.RestApi(hep_rest_api.ApiClient(configuration))
 api_version = 'api_version_example' # str | 
 newid = 'newid_example' # str | 
 dapp_key = 'dapp_key_example' # str | The decentralized application access key
@@ -396,7 +499,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
@@ -420,8 +523,13 @@ import hep_rest_api
 from hep_rest_api.rest import ApiException
 from pprint import pprint
 
+# Configure HTTP basic authorization: Basic
+configuration = hep_rest_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+
 # create an instance of the API class
-api_instance = hep_rest_api.RestApi()
+api_instance = hep_rest_api.RestApi(hep_rest_api.ApiClient(configuration))
 api_version = 'api_version_example' # str | 
 data = hep_rest_api.AuthCacheRequest() # AuthCacheRequest | 
 
@@ -445,7 +553,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
@@ -469,8 +577,13 @@ import hep_rest_api
 from hep_rest_api.rest import ApiException
 from pprint import pprint
 
+# Configure HTTP basic authorization: Basic
+configuration = hep_rest_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+
 # create an instance of the API class
-api_instance = hep_rest_api.RestApi()
+api_instance = hep_rest_api.RestApi(hep_rest_api.ApiClient(configuration))
 api_version = 'api_version_example' # str | 
 auth_hash = 'auth_hash_example' # str | 
 dapp_key = 'dapp_key_example' # str | The decentralized application access key
@@ -512,7 +625,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
@@ -536,8 +649,13 @@ import hep_rest_api
 from hep_rest_api.rest import ApiException
 from pprint import pprint
 
+# Configure HTTP basic authorization: Basic
+configuration = hep_rest_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+
 # create an instance of the API class
-api_instance = hep_rest_api.RestApi()
+api_instance = hep_rest_api.RestApi(hep_rest_api.ApiClient(configuration))
 api_version = 'api_version_example' # str | 
 data = hep_rest_api.PayCacheRequest() # PayCacheRequest | 
 
@@ -561,7 +679,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
@@ -585,8 +703,13 @@ import hep_rest_api
 from hep_rest_api.rest import ApiException
 from pprint import pprint
 
+# Configure HTTP basic authorization: Basic
+configuration = hep_rest_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+
 # create an instance of the API class
-api_instance = hep_rest_api.RestApi()
+api_instance = hep_rest_api.RestApi(hep_rest_api.ApiClient(configuration))
 api_version = 'api_version_example' # str | 
 pay_hash = 'pay_hash_example' # str | 
 dapp_key = 'dapp_key_example' # str | The decentralized application access key
@@ -628,7 +751,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
@@ -652,8 +775,13 @@ import hep_rest_api
 from hep_rest_api.rest import ApiException
 from pprint import pprint
 
+# Configure HTTP basic authorization: Basic
+configuration = hep_rest_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+
 # create an instance of the API class
-api_instance = hep_rest_api.RestApi()
+api_instance = hep_rest_api.RestApi(hep_rest_api.ApiClient(configuration))
 api_version = 'api_version_example' # str | 
 oracle_id = 'oracle_id_example' # str | 
 dapp_key = 'dapp_key_example' # str | The decentralized application access key
@@ -695,7 +823,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
@@ -719,8 +847,13 @@ import hep_rest_api
 from hep_rest_api.rest import ApiException
 from pprint import pprint
 
+# Configure HTTP basic authorization: Basic
+configuration = hep_rest_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+
 # create an instance of the API class
-api_instance = hep_rest_api.RestApi()
+api_instance = hep_rest_api.RestApi(hep_rest_api.ApiClient(configuration))
 api_version = 'api_version_example' # str | 
 data = hep_rest_api.CreateProofRequest() # CreateProofRequest | 
 
@@ -744,7 +877,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
@@ -768,8 +901,13 @@ import hep_rest_api
 from hep_rest_api.rest import ApiException
 from pprint import pprint
 
+# Configure HTTP basic authorization: Basic
+configuration = hep_rest_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+
 # create an instance of the API class
-api_instance = hep_rest_api.RestApi()
+api_instance = hep_rest_api.RestApi(hep_rest_api.ApiClient(configuration))
 api_version = 'api_version_example' # str | 
 proof_hash = 'proof_hash_example' # str | 
 data = hep_rest_api.CancelProofRequest() # CancelProofRequest | 
@@ -795,7 +933,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
@@ -819,8 +957,13 @@ import hep_rest_api
 from hep_rest_api.rest import ApiException
 from pprint import pprint
 
+# Configure HTTP basic authorization: Basic
+configuration = hep_rest_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+
 # create an instance of the API class
-api_instance = hep_rest_api.RestApi()
+api_instance = hep_rest_api.RestApi(hep_rest_api.ApiClient(configuration))
 api_version = 'api_version_example' # str | 
 proof_hash = 'proof_hash_example' # str | 
 dapp_key = 'dapp_key_example' # str | The decentralized application access key
@@ -862,7 +1005,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
@@ -886,8 +1029,13 @@ import hep_rest_api
 from hep_rest_api.rest import ApiException
 from pprint import pprint
 
+# Configure HTTP basic authorization: Basic
+configuration = hep_rest_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+
 # create an instance of the API class
-api_instance = hep_rest_api.RestApi()
+api_instance = hep_rest_api.RestApi(hep_rest_api.ApiClient(configuration))
 api_version = 'api_version_example' # str | 
 data = hep_rest_api.RetrieveProofReceiptsRequest() # RetrieveProofReceiptsRequest | 
 
@@ -911,7 +1059,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
@@ -935,8 +1083,13 @@ import hep_rest_api
 from hep_rest_api.rest import ApiException
 from pprint import pprint
 
+# Configure HTTP basic authorization: Basic
+configuration = hep_rest_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+
 # create an instance of the API class
-api_instance = hep_rest_api.RestApi()
+api_instance = hep_rest_api.RestApi(hep_rest_api.ApiClient(configuration))
 api_version = 'api_version_example' # str | 
 data = hep_rest_api.RetrieveProofRewardsRequest() # RetrieveProofRewardsRequest | 
 
@@ -960,7 +1113,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 

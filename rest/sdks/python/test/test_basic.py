@@ -131,6 +131,12 @@ def test_dapp_daily_stats():
     print(res)
 
 
+def test_get_reward_amount():
+    newid = "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY"
+    res = auth_helper.get_reward_tokens(newid)
+    print(res)
+
+
 if __name__ == '__main__':
     # message = "你好"
     # r, s = utils.sign_secp256r1(message, key_path)
@@ -140,4 +146,5 @@ if __name__ == '__main__':
     # #s = "0x7e8ee6ca762ae1785f894ee5263304c934c2c889a2808cbd96636c4d4d2d3f6b"
     # res = utils.validate_secp256r1_signature(r, s, message, pubs)
     # print(res)
-    test_auth_login()
+    # test_auth_login()
+    test_get_reward_amount()

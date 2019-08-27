@@ -33,6 +33,7 @@ from hep_rest_api.models.create_proof_response import CreateProofResponse
 from hep_rest_api.models.dapp import Dapp
 from hep_rest_api.models.newchain_transaction_response import NewchainTransactionResponse
 from hep_rest_api.models.newforce_daily_stats_response import NewforceDailyStatsResponse
+from hep_rest_api.models.newforce_reward_amount_response import NewforceRewardAmountResponse
 from hep_rest_api.models.newid_response import NewidResponse
 from hep_rest_api.models.order import Order
 from hep_rest_api.models.order_item import OrderItem

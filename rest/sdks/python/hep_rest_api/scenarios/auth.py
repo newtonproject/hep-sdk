@@ -96,3 +96,17 @@ class AuthHelper(BaseHelper):
         }
         return self._get_client_base_params(login_params)
 
+    def get_reward_tokens(self, newid):
+        if not newid:
+            raise AttributeError(
+                "newid can not be None"
+            )
+        #    def rest_newforce_tokens_list(self, api_version, newid, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature, **kwargs):  # noqa: E501
+        data = {
+        }
+        sign_data = self.generate_sign_data(data)
+        hmac_data = self.sign_hmac(sign_data)
+        hmac_data['api_version'] = self.api_version
+        hmac_data['newid'] = newid
+        print("hep sdk hmac data: %s" % str(hmac_data))
+        return self.api_client.rest_newforce_tokens_list(**hmac_data)
