@@ -108,4 +108,4 @@ class AuthHelper(BaseHelper):
         hmac_data = self.sign_hmac(sign_data)
         hmac_data['api_version'] = self.api_version
         hmac_data['newid'] = newid
-        return self.api_client.rest_newforce_tokens_list(**hmac_data)
+        return self.api_client.rest_newids_newforce_reward_list(**hmac_data)

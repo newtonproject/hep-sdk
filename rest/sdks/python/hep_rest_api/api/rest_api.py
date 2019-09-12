@@ -271,7 +271,6 @@ class RestApi(object):
 
         :param async_req bool
         :param str api_version: (required)
-        :param str api_version: (required)
         :param str dapp_id: (required)
         :param str _date: (required)
         :param str dapp_key: The decentralized application access key (required)
@@ -1049,13 +1048,13 @@ class RestApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def rest_newforce_tokens_list(self, api_version, newid, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature, **kwargs):  # noqa: E501
-        """rest_newforce_tokens_list  # noqa: E501
+    def rest_newids_newforce_reward_list(self, api_version, newid, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature, **kwargs):  # noqa: E501
+        """rest_newids_newforce_reward_list  # noqa: E501
 
         Get the reward tokens amount by newid  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.rest_newforce_tokens_list(api_version, newid, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature, async_req=True)
+        >>> thread = api.rest_newids_newforce_reward_list(api_version, newid, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
@@ -1076,18 +1075,18 @@ class RestApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.rest_newforce_tokens_list_with_http_info(api_version, newid, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature, **kwargs)  # noqa: E501
+            return self.rest_newids_newforce_reward_list_with_http_info(api_version, newid, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature, **kwargs)  # noqa: E501
         else:
-            (data) = self.rest_newforce_tokens_list_with_http_info(api_version, newid, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature, **kwargs)  # noqa: E501
+            (data) = self.rest_newids_newforce_reward_list_with_http_info(api_version, newid, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature, **kwargs)  # noqa: E501
             return data
 
-    def rest_newforce_tokens_list_with_http_info(self, api_version, newid, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature, **kwargs):  # noqa: E501
-        """rest_newforce_tokens_list  # noqa: E501
+    def rest_newids_newforce_reward_list_with_http_info(self, api_version, newid, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature, **kwargs):  # noqa: E501
+        """rest_newids_newforce_reward_list  # noqa: E501
 
         Get the reward tokens amount by newid  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.rest_newforce_tokens_list_with_http_info(api_version, newid, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature, async_req=True)
+        >>> thread = api.rest_newids_newforce_reward_list_with_http_info(api_version, newid, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
@@ -1118,103 +1117,103 @@ class RestApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method rest_newforce_tokens_list" % key
+                    " to method rest_newids_newforce_reward_list" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'api_version' is set
         if ('api_version' not in params or
                 params['api_version'] is None):
-            raise ValueError("Missing the required parameter `api_version` when calling `rest_newforce_tokens_list`")  # noqa: E501
+            raise ValueError("Missing the required parameter `api_version` when calling `rest_newids_newforce_reward_list`")  # noqa: E501
         # verify the required parameter 'newid' is set
         if ('newid' not in params or
                 params['newid'] is None):
-            raise ValueError("Missing the required parameter `newid` when calling `rest_newforce_tokens_list`")  # noqa: E501
+            raise ValueError("Missing the required parameter `newid` when calling `rest_newids_newforce_reward_list`")  # noqa: E501
         # verify the required parameter 'dapp_key' is set
         if ('dapp_key' not in params or
                 params['dapp_key'] is None):
-            raise ValueError("Missing the required parameter `dapp_key` when calling `rest_newforce_tokens_list`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dapp_key` when calling `rest_newids_newforce_reward_list`")  # noqa: E501
         # verify the required parameter 'protocol' is set
         if ('protocol' not in params or
                 params['protocol'] is None):
-            raise ValueError("Missing the required parameter `protocol` when calling `rest_newforce_tokens_list`")  # noqa: E501
+            raise ValueError("Missing the required parameter `protocol` when calling `rest_newids_newforce_reward_list`")  # noqa: E501
         # verify the required parameter 'version' is set
         if ('version' not in params or
                 params['version'] is None):
-            raise ValueError("Missing the required parameter `version` when calling `rest_newforce_tokens_list`")  # noqa: E501
+            raise ValueError("Missing the required parameter `version` when calling `rest_newids_newforce_reward_list`")  # noqa: E501
         # verify the required parameter 'ts' is set
         if ('ts' not in params or
                 params['ts'] is None):
-            raise ValueError("Missing the required parameter `ts` when calling `rest_newforce_tokens_list`")  # noqa: E501
+            raise ValueError("Missing the required parameter `ts` when calling `rest_newids_newforce_reward_list`")  # noqa: E501
         # verify the required parameter 'nonce' is set
         if ('nonce' not in params or
                 params['nonce'] is None):
-            raise ValueError("Missing the required parameter `nonce` when calling `rest_newforce_tokens_list`")  # noqa: E501
+            raise ValueError("Missing the required parameter `nonce` when calling `rest_newids_newforce_reward_list`")  # noqa: E501
         # verify the required parameter 'os' is set
         if ('os' not in params or
                 params['os'] is None):
-            raise ValueError("Missing the required parameter `os` when calling `rest_newforce_tokens_list`")  # noqa: E501
+            raise ValueError("Missing the required parameter `os` when calling `rest_newids_newforce_reward_list`")  # noqa: E501
         # verify the required parameter 'language' is set
         if ('language' not in params or
                 params['language'] is None):
-            raise ValueError("Missing the required parameter `language` when calling `rest_newforce_tokens_list`")  # noqa: E501
+            raise ValueError("Missing the required parameter `language` when calling `rest_newids_newforce_reward_list`")  # noqa: E501
         # verify the required parameter 'dapp_signature_method' is set
         if ('dapp_signature_method' not in params or
                 params['dapp_signature_method'] is None):
-            raise ValueError("Missing the required parameter `dapp_signature_method` when calling `rest_newforce_tokens_list`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dapp_signature_method` when calling `rest_newids_newforce_reward_list`")  # noqa: E501
         # verify the required parameter 'dapp_signature' is set
         if ('dapp_signature' not in params or
                 params['dapp_signature'] is None):
-            raise ValueError("Missing the required parameter `dapp_signature` when calling `rest_newforce_tokens_list`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dapp_signature` when calling `rest_newids_newforce_reward_list`")  # noqa: E501
 
         if ('dapp_key' in params and
                 len(params['dapp_key']) > 64):
-            raise ValueError("Invalid value for parameter `dapp_key` when calling `rest_newforce_tokens_list`, length must be less than or equal to `64`")  # noqa: E501
+            raise ValueError("Invalid value for parameter `dapp_key` when calling `rest_newids_newforce_reward_list`, length must be less than or equal to `64`")  # noqa: E501
         if ('dapp_key' in params and
                 len(params['dapp_key']) < 1):
-            raise ValueError("Invalid value for parameter `dapp_key` when calling `rest_newforce_tokens_list`, length must be greater than or equal to `1`")  # noqa: E501
+            raise ValueError("Invalid value for parameter `dapp_key` when calling `rest_newids_newforce_reward_list`, length must be greater than or equal to `1`")  # noqa: E501
         if ('protocol' in params and
                 len(params['protocol']) > 10):
-            raise ValueError("Invalid value for parameter `protocol` when calling `rest_newforce_tokens_list`, length must be less than or equal to `10`")  # noqa: E501
+            raise ValueError("Invalid value for parameter `protocol` when calling `rest_newids_newforce_reward_list`, length must be less than or equal to `10`")  # noqa: E501
         if ('protocol' in params and
                 len(params['protocol']) < 1):
-            raise ValueError("Invalid value for parameter `protocol` when calling `rest_newforce_tokens_list`, length must be greater than or equal to `1`")  # noqa: E501
+            raise ValueError("Invalid value for parameter `protocol` when calling `rest_newids_newforce_reward_list`, length must be greater than or equal to `1`")  # noqa: E501
         if ('version' in params and
                 len(params['version']) > 10):
-            raise ValueError("Invalid value for parameter `version` when calling `rest_newforce_tokens_list`, length must be less than or equal to `10`")  # noqa: E501
+            raise ValueError("Invalid value for parameter `version` when calling `rest_newids_newforce_reward_list`, length must be less than or equal to `10`")  # noqa: E501
         if ('version' in params and
                 len(params['version']) < 1):
-            raise ValueError("Invalid value for parameter `version` when calling `rest_newforce_tokens_list`, length must be greater than or equal to `1`")  # noqa: E501
+            raise ValueError("Invalid value for parameter `version` when calling `rest_newids_newforce_reward_list`, length must be greater than or equal to `1`")  # noqa: E501
         if ('nonce' in params and
                 len(params['nonce']) > 64):
-            raise ValueError("Invalid value for parameter `nonce` when calling `rest_newforce_tokens_list`, length must be less than or equal to `64`")  # noqa: E501
+            raise ValueError("Invalid value for parameter `nonce` when calling `rest_newids_newforce_reward_list`, length must be less than or equal to `64`")  # noqa: E501
         if ('nonce' in params and
                 len(params['nonce']) < 1):
-            raise ValueError("Invalid value for parameter `nonce` when calling `rest_newforce_tokens_list`, length must be greater than or equal to `1`")  # noqa: E501
+            raise ValueError("Invalid value for parameter `nonce` when calling `rest_newids_newforce_reward_list`, length must be greater than or equal to `1`")  # noqa: E501
         if ('os' in params and
                 len(params['os']) > 10):
-            raise ValueError("Invalid value for parameter `os` when calling `rest_newforce_tokens_list`, length must be less than or equal to `10`")  # noqa: E501
+            raise ValueError("Invalid value for parameter `os` when calling `rest_newids_newforce_reward_list`, length must be less than or equal to `10`")  # noqa: E501
         if ('os' in params and
                 len(params['os']) < 1):
-            raise ValueError("Invalid value for parameter `os` when calling `rest_newforce_tokens_list`, length must be greater than or equal to `1`")  # noqa: E501
+            raise ValueError("Invalid value for parameter `os` when calling `rest_newids_newforce_reward_list`, length must be greater than or equal to `1`")  # noqa: E501
         if ('language' in params and
                 len(params['language']) > 10):
-            raise ValueError("Invalid value for parameter `language` when calling `rest_newforce_tokens_list`, length must be less than or equal to `10`")  # noqa: E501
+            raise ValueError("Invalid value for parameter `language` when calling `rest_newids_newforce_reward_list`, length must be less than or equal to `10`")  # noqa: E501
         if ('language' in params and
                 len(params['language']) < 1):
-            raise ValueError("Invalid value for parameter `language` when calling `rest_newforce_tokens_list`, length must be greater than or equal to `1`")  # noqa: E501
+            raise ValueError("Invalid value for parameter `language` when calling `rest_newids_newforce_reward_list`, length must be greater than or equal to `1`")  # noqa: E501
         if ('dapp_signature_method' in params and
                 len(params['dapp_signature_method']) > 64):
-            raise ValueError("Invalid value for parameter `dapp_signature_method` when calling `rest_newforce_tokens_list`, length must be less than or equal to `64`")  # noqa: E501
+            raise ValueError("Invalid value for parameter `dapp_signature_method` when calling `rest_newids_newforce_reward_list`, length must be less than or equal to `64`")  # noqa: E501
         if ('dapp_signature_method' in params and
                 len(params['dapp_signature_method']) < 1):
-            raise ValueError("Invalid value for parameter `dapp_signature_method` when calling `rest_newforce_tokens_list`, length must be greater than or equal to `1`")  # noqa: E501
+            raise ValueError("Invalid value for parameter `dapp_signature_method` when calling `rest_newids_newforce_reward_list`, length must be greater than or equal to `1`")  # noqa: E501
         if ('dapp_signature' in params and
                 len(params['dapp_signature']) > 64):
-            raise ValueError("Invalid value for parameter `dapp_signature` when calling `rest_newforce_tokens_list`, length must be less than or equal to `64`")  # noqa: E501
+            raise ValueError("Invalid value for parameter `dapp_signature` when calling `rest_newids_newforce_reward_list`, length must be less than or equal to `64`")  # noqa: E501
         if ('dapp_signature' in params and
                 len(params['dapp_signature']) < 1):
-            raise ValueError("Invalid value for parameter `dapp_signature` when calling `rest_newforce_tokens_list`, length must be greater than or equal to `1`")  # noqa: E501
+            raise ValueError("Invalid value for parameter `dapp_signature` when calling `rest_newids_newforce_reward_list`, length must be greater than or equal to `1`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -1261,7 +1260,7 @@ class RestApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/rest/v{api_version}/newforce/{newid}/tokens/', 'GET',
+            '/rest/v{api_version}/newids/{newid}/newforce/reward/', 'GET',
             path_params,
             query_params,
             header_params,
