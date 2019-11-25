@@ -2,28 +2,26 @@ package org.newtonproject.hep.rest;
 
 import com.google.gson.Gson;
 import org.newtonproject.hep.rest.utils.Base58;
-import org.spongycastle.util.io.pem.PemWriter;
-import org.bouncycastle.jcajce.spec.*;
-import org.web3j.crypto.ECDSASignature;
-import org.web3j.crypto.ECKeyPair;
-import org.web3j.crypto.Hash;
-import org.web3j.crypto.Sign;
+import org.newtonproject.hep.rest.utils.SecureRandomUtils;
+import org.web3j.crypto.*;
 import org.web3j.utils.Numeric;
-import sun.security.util.Pem;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigInteger;
+import java.security.InvalidAlgorithmParameterException;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 import java.util.*;
 
 public class Utils {
 
     static JSON json = new JSON();
+    static String privateKey = null;
+
     public static String generateMd5(String data) {
         MessageDigest messageDigest;
         try {
@@ -83,35 +81,69 @@ public class Utils {
         return generateMd5(signString);
     }
 
-    public static String generateSecp256r1KeyPairs(String savePath) throws IOException {
-        File file = new File(savePath);
-        BufferedReader reader = new BufferedReader(new FileReader(file));
-        String line = null;
-        StringBuilder builder = new StringBuilder();
-        while ((line = reader.readLine()) != null) {
-            if(!line.contains("-----")){
-                builder.append(line);
-            }
-        }
-
-        byte[] decode = Pem.decode(builder.toString());
-        ECKeyPair keyPair = ECKeyPair.create(decode);
-
-        System.out.println("pub:" + keyPair.getPublicKey().toString(16));
-        ECKeyPair keyPair1 = ECKeyPair.create(Numeric.toBigInt("0xab76d2984444142e58cc296b632959ec3695b1e886131eb26f387dfdfea60c1f"));
-        System.out.println("pub:" + keyPair1.getPublicKey().toString(16));
-
-        return null;
+    /**
+     * generate wallet file.
+     * @param destinationDirectory
+     * @param password
+     * @return
+     * @throws IOException
+     * @throws CipherException
+     * @throws InvalidAlgorithmParameterException
+     * @throws NoSuchAlgorithmException
+     * @throws NoSuchProviderException
+     */
+    public static String generateECKeyPair(String destinationDirectory, String password) throws IOException, CipherException, InvalidAlgorithmParameterException, NoSuchAlgorithmException, NoSuchProviderException {
+        byte[] bytes = new byte[16];
+        SecureRandomUtils.SECURE_RANDOM.nextBytes(bytes);
+        return WalletUtils.generateFullNewWalletFile(password, new File(destinationDirectory));
     }
 
-    public static String signSecp256r1(String message, String privateKeyPath) {
-        String priv = privateKeyPath;
-        Sign.SignatureData sig = Sign.signMessage(message.getBytes(), ECKeyPair.create(Numeric.toBigInt(priv)));
+    /**
+     * sign message by private key.
+     * @param message the string you need to sign with secp256r1
+     * @param privateKey private key string with 0x.
+     * @return
+     */
+    public static String signSecp256r1(String message, String privateKey) {
+        Sign.SignatureData sig = Sign.signMessage(message.getBytes(), ECKeyPair.create(Numeric.toBigInt(privateKey)));
         String r = Numeric.toHexString(sig.getR());
         String s = Numeric.toHexStringNoPrefix(sig.getS());
         return r + s;
     }
 
+    /**
+     * get private key with prefix.
+     * @param keystorePath
+     * @param password
+     * @return private key string.
+     * @throws IOException
+     * @throws CipherException
+     */
+    public static String getPrivateKey(String keystorePath, String password) throws IOException, CipherException {
+        Credentials credentials = WalletUtils.loadCredentials(password, new File(keystorePath));
+        return Numeric.toHexStringWithPrefix(credentials.getEcKeyPair().getPrivateKey());
+    }
+
+    /**
+     * get public key
+     * @param keystorePath
+     * @param password
+     * @return
+     * @throws IOException
+     * @throws CipherException
+     */
+    public static String getPublicKey(String keystorePath, String password) throws IOException, CipherException {
+        Credentials credentials = WalletUtils.loadCredentials(password, new File(keystorePath));
+        return Numeric.toHexStringWithPrefix(credentials.getEcKeyPair().getPublicKey());
+    }
+
+    /**
+     *
+     * @param r
+     * @param s
+     * @param message
+     * @return
+     */
     public static ArrayList<String> extractSecp256r1PublicKeys(String r, String s, String message) {
         ArrayList<String> publicKeys = new ArrayList<>();
         Class clazz = null;
@@ -215,7 +247,6 @@ public class Utils {
     }
 
     public static void main(String args[]) throws IOException {
-        Utils.generateSecp256r1KeyPairs("/Users/erhu/pony/priv");
     }
 
 }
