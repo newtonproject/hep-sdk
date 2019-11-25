@@ -246,7 +246,11 @@ public class Utils {
         return list;
     }
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String args[]) throws IOException, NoSuchAlgorithmException, NoSuchProviderException, InvalidAlgorithmParameterException, CipherException {
+        String filePath = Utils.generateECKeyPair("/Users/erhu/temp", "123");
+        String publicKey = Utils.getPublicKey("/Users/erhu/temp/" + filePath, "123");
+        System.out.println(publicKey);
+
     }
 
 }
