@@ -9,6 +9,7 @@ Building the API client library requires [Maven](https://maven.apache.org/) to b
 To install the API client library to your local Maven repository, simply execute:
 
 ```shell
+make
 mvn install
 ```
 
