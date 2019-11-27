@@ -98,7 +98,7 @@ public class ApiClient {
     json = new JSON();
     okBuilder = new OkHttpClient.Builder();
 
-    String baseUrl = "http://localhost";
+    String baseUrl = "http://hep.newtonproject.dev.diynova.com";
     if (!baseUrl.endsWith("/"))
       baseUrl = baseUrl + "/";
 
