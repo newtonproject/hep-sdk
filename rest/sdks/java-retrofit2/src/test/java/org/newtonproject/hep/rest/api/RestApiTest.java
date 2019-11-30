@@ -94,4 +94,9 @@ public class RestApiTest {
         boolean isValid = authHelper.validateAuthCallback(map);
     }
 
+    @Test
+    public void getOracleId() {
+        System.out.println(authHelper.getDefaultTrustOracle().get(0));
+    }
+
 }

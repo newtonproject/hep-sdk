@@ -1,8 +1,10 @@
 package org.newtonproject.hep.rest.scenarios;
 
+import io.reactivex.Observable;
 import org.newtonproject.hep.rest.ApiClient;
 import org.newtonproject.hep.rest.Utils;
 import org.newtonproject.hep.rest.api.RestApi;
+import org.newtonproject.hep.rest.models.RetrieveOracleResponse;
 import org.web3j.utils.Numeric;
 
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ public class BaseHelper {
     protected String actionAuthLogin = "hep.auth.login";
     protected String actionAuthPay = "hep.pay.order";
     protected String actionAuthProof = "hep.proof.submit";
+    private String oracle = "default";
 
     public BaseHelper(RestApi restApi, HashMap<String, String> baseParameters, String dappId, String dappSecret, String privateKey, String apiVersion, int chainId) {
         this.mApiClient = restApi;
@@ -58,11 +61,13 @@ public class BaseHelper {
     public ArrayList<String> getDefaultTrustOracle() {
         HashMap<String, String> map = new HashMap<>();
         HashMap<String, String> signData = generateSignData(map);
-        HashMap<String, String> signHmac = signHmac(signData);
-        signHmac.put("api_version", apiVersion);
-        signHmac.put("oracle_id", "default");
-        //Observable<RetrieveOracleResponse> retrieveOracleResponseObservable = mApiClient.restOraclesRead();
-        return null;
+        HashMap<String, String> res = signHmac(signData);
+        RetrieveOracleResponse retrieveOracleResponseObservable = mApiClient.restOraclesRead(apiVersion, oracle,
+                res.get("dapp_key"), res.get("protocol"), res.get("version"), Integer.valueOf(res.get("ts")),
+                res.get("nonce"), res.get("os"), res.get("language"), res.get("dapp_signature_method"), res.get("dapp_signature")).firstElement().blockingGet();
+        ArrayList<String> objects = new ArrayList<>();
+        objects.add(retrieveOracleResponseObservable.getPublicKey());
+        return objects;
     }
 
     public HashMap<String, String> generateSignData(HashMap<String, String> data) {

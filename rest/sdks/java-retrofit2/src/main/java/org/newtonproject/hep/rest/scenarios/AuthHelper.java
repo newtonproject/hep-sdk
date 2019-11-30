@@ -1,7 +1,6 @@
 package org.newtonproject.hep.rest.scenarios;
 
 import io.reactivex.Observable;
-import org.newtonproject.hep.rest.ApiClient;
 import org.newtonproject.hep.rest.JSON;
 import org.newtonproject.hep.rest.Utils;
 import org.newtonproject.hep.rest.api.RestApi;
