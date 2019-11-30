@@ -13,33 +13,25 @@
 
 package org.newtonproject.hep.rest;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
+import com.google.gson.*;
 import com.google.gson.internal.bind.util.ISO8601Utils;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.google.gson.JsonElement;
 import io.gsonfire.GsonFireBuilder;
-import io.gsonfire.TypeSelector;
+import org.omg.CORBA.PUBLIC_MEMBER;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
 import org.threeten.bp.format.DateTimeFormatter;
 
-import org.newtonproject.hep.rest.models.*;
-
 import java.io.IOException;
-import java.io.StringReader;
-import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.ParsePosition;
 import java.util.Date;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
-public class JSON {
+public class JSON<T> {
     private Gson gson;
     private DateTypeAdapter dateTypeAdapter = new DateTypeAdapter();
     private SqlDateTypeAdapter sqlDateTypeAdapter = new SqlDateTypeAdapter();
@@ -95,6 +87,12 @@ public class JSON {
     public JSON setGson(Gson gson) {
         this.gson = gson;
         return this;
+    }
+
+    private static Gson STATIC_GSON = new Gson();
+
+    public static <T> T convertMapToObject(HashMap map, Class<T> clz) {
+        return STATIC_GSON.fromJson(STATIC_GSON.toJson(map), clz);
     }
 
     /**
@@ -314,5 +312,6 @@ public class JSON {
         sqlDateTypeAdapter.setFormat(dateFormat);
         return this;
     }
+
 
 }

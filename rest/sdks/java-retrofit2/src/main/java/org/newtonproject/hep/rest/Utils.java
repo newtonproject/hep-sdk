@@ -250,7 +250,6 @@ public class Utils {
         String filePath = Utils.generateECKeyPair("/Users/erhu/temp", "123");
         String publicKey = Utils.getPublicKey("/Users/erhu/temp/" + filePath, "123");
         System.out.println(publicKey);
-
     }
 
 }

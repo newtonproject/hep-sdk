@@ -2,6 +2,7 @@ package org.newtonproject.hep.rest.scenarios;
 
 import io.reactivex.Observable;
 import org.newtonproject.hep.rest.ApiClient;
+import org.newtonproject.hep.rest.JSON;
 import org.newtonproject.hep.rest.Utils;
 import org.newtonproject.hep.rest.models.AuthCacheRequest;
 import org.newtonproject.hep.rest.models.CreateAuthCacheResponse;
@@ -13,28 +14,18 @@ public class AuthHelper extends BaseHelper{
         super(mApiClient, baseParameters, dappId, dappSecret, privateKey, apiVersion, chainId);
     }
 
-    public AuthHelper(ApiClient mApiClient, HashMap<String, String> baseParameters, String dappId, String dappSecret, String keyPath) {
-        super(mApiClient, baseParameters, dappId, dappSecret, keyPath);
-    }
-
-    public AuthHelper(ApiClient mApiClient, HashMap<String, String> baseParameters, String dappId, String dappSecret, String keyPath, int chainId) {
-        super(mApiClient, baseParameters, dappId, dappSecret, keyPath, chainId);
-    }
-
     public Observable<CreateAuthCacheResponse> generateAuthRequest(String uuid) {
         HashMap<String, String> map = new HashMap<>();
         map.put("action", actionAuthLogin);
         map.put("scope", "2");
-        map.put("expired", "600");
+        map.put("expired", String.valueOf(System.currentTimeMillis() / 1000 + 600));
         map.put("memo", "default");
         map.put("uuid", uuid);
         map.put("dapp_id", dappId);
         HashMap<String, String> signData = generateSignData(map);
         HashMap<String, String> signHmac = signHmac(signData);
         HashMap<String, String> signR1Data = signSecp256r1(signHmac);
-        AuthCacheRequest request = new AuthCacheRequest();
-        //todo: generate authrequest
-        //request.setAction();
+        AuthCacheRequest request = JSON.convertMapToObject(signR1Data, AuthCacheRequest.class);
         return mApiClient.restNewnetCachesAuthCreate(apiVersion, request);
     }
 

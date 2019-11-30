@@ -61,15 +61,15 @@ public class BaseHelper {
         HashMap<String, String> signHmac = signHmac(signData);
         signHmac.put("api_version", apiVersion);
         signHmac.put("oracle_id", "default");
-        //todo: get parameter from map.
         //Observable<RetrieveOracleResponse> retrieveOracleResponseObservable = mApiClient.restOraclesRead();
         return null;
     }
 
     public HashMap<String, String> generateSignData(HashMap<String, String> data) {
         HashMap<String, String> signData = data;
-        signData.put("ts", System.currentTimeMillis() + "");
+        signData.put("ts", System.currentTimeMillis() / 1000 + "");
         signData.put("nonce", UUID.randomUUID().toString());
+        signData.putAll(baseParameters);
         return signData;
     }
 
