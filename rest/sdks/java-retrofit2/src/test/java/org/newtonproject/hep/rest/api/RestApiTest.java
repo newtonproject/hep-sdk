@@ -82,4 +82,16 @@ public class RestApiTest {
                 );
     }
 
+    @Test
+    public void getAuthClientParams() {
+        String s = authHelper.getClientLoginParams(UUID.randomUUID().toString()).toString();
+        System.out.println(s);
+    }
+
+    @Test
+    public void validateAuthLoginParams() {
+        HashMap<String, String> map = new HashMap<>();
+        boolean isValid = authHelper.validateAuthCallback(map);
+    }
+
 }
