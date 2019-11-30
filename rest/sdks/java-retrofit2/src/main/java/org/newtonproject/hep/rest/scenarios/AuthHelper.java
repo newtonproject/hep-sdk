@@ -4,13 +4,15 @@ import io.reactivex.Observable;
 import org.newtonproject.hep.rest.ApiClient;
 import org.newtonproject.hep.rest.JSON;
 import org.newtonproject.hep.rest.Utils;
+import org.newtonproject.hep.rest.api.RestApi;
 import org.newtonproject.hep.rest.models.AuthCacheRequest;
 import org.newtonproject.hep.rest.models.CreateAuthCacheResponse;
 
 import java.util.HashMap;
 
 public class AuthHelper extends BaseHelper{
-    public AuthHelper(ApiClient mApiClient, HashMap<String, String> baseParameters, String dappId, String dappSecret, String privateKey, String apiVersion, int chainId) {
+
+    public AuthHelper(RestApi mApiClient, HashMap<String, String> baseParameters, String dappId, String dappSecret, String privateKey, String apiVersion, int chainId) {
         super(mApiClient, baseParameters, dappId, dappSecret, privateKey, apiVersion, chainId);
     }
 

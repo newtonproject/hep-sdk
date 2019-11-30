@@ -21,8 +21,8 @@ public class BaseHelper {
     protected String actionAuthPay = "hep.pay.order";
     protected String actionAuthProof = "hep.proof.submit";
 
-    public BaseHelper(ApiClient mApiClient, HashMap<String, String> baseParameters, String dappId, String dappSecret, String privateKey, String apiVersion, int chainId) {
-        this.mApiClient = mApiClient.createService(RestApi.class);
+    public BaseHelper(RestApi restApi, HashMap<String, String> baseParameters, String dappId, String dappSecret, String privateKey, String apiVersion, int chainId) {
+        this.mApiClient = restApi;
         this.baseParameters = baseParameters;
         this.dappId = dappId;
         this.dappSecret = dappSecret;
@@ -47,11 +47,11 @@ public class BaseHelper {
 
     }
 
-    public BaseHelper(ApiClient mApiClient, HashMap<String, String> baseParameters, String dappId, String dappSecret, String keyPath) {
+    public BaseHelper(RestApi mApiClient, HashMap<String, String> baseParameters, String dappId, String dappSecret, String keyPath) {
         this(mApiClient,baseParameters, dappId, dappSecret, keyPath, "1", 1012);
     }
 
-    public BaseHelper(ApiClient mApiClient, HashMap<String, String> baseParameters, String dappId, String dappSecret, String keyPath, int chainId) {
+    public BaseHelper(RestApi mApiClient, HashMap<String, String> baseParameters, String dappId, String dappSecret, String keyPath, int chainId) {
         this(mApiClient,baseParameters, dappId, dappSecret, keyPath, "1", chainId);
     }
 

@@ -2,24 +2,22 @@ package org.newtonproject.hep.rest;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
-import com.google.gson.JsonElement;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import org.apache.oltu.oauth2.client.request.OAuthClientRequest.AuthenticationRequestBuilder;
 import org.apache.oltu.oauth2.client.request.OAuthClientRequest.TokenRequestBuilder;
+import org.newtonproject.hep.rest.auth.ApiKeyAuth;
+import org.newtonproject.hep.rest.auth.HttpBasicAuth;
+import org.newtonproject.hep.rest.auth.OAuth;
+import org.newtonproject.hep.rest.auth.OAuth.AccessTokenListener;
 import org.threeten.bp.format.DateTimeFormatter;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
-import org.newtonproject.hep.rest.auth.HttpBasicAuth;
-import org.newtonproject.hep.rest.auth.ApiKeyAuth;
-import org.newtonproject.hep.rest.auth.OAuth;
-import org.newtonproject.hep.rest.auth.OAuth.AccessTokenListener;
-import org.newtonproject.hep.rest.auth.OAuthFlow;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
@@ -27,7 +25,6 @@ import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.HashMap;
 
 public class ApiClient {
 
@@ -35,14 +32,14 @@ public class ApiClient {
   private OkHttpClient.Builder okBuilder;
   private Retrofit.Builder adapterBuilder;
   private JSON json;
-
-  public ApiClient() {
+  private String baseUrl;
+  public ApiClient(String baseUrl) {
     apiAuthorizations = new LinkedHashMap<String, Interceptor>();
-    createDefaultAdapter();
+    createDefaultAdapter(baseUrl);
   }
 
-  public ApiClient(String[] authNames) {
-    this();
+  public ApiClient(String[] authNames, String baseUrl) {
+    this(baseUrl);
     for(String authName : authNames) {
       throw new RuntimeException("auth name \"" + authName + "\" not found in available auth names");
     }
@@ -52,8 +49,8 @@ public class ApiClient {
    * Basic constructor for single auth name
    * @param authName Authentication name
    */
-  public ApiClient(String authName) {
-    this(new String[]{authName});
+  public ApiClient(String authName, String baseUrl) {
+    this(new String[]{authName}, baseUrl);
   }
 
   /**
@@ -61,8 +58,8 @@ public class ApiClient {
    * @param authName Authentication name
    * @param apiKey API key
    */
-  public ApiClient(String authName, String apiKey) {
-    this(authName);
+  public ApiClient(String authName, String apiKey, String baseUrl) {
+    this(authName, baseUrl);
     this.setApiKey(apiKey);
   }
 
@@ -72,8 +69,8 @@ public class ApiClient {
    * @param username Username
    * @param password Password
    */
-  public ApiClient(String authName, String username, String password) {
-    this(authName);
+  public ApiClient(String authName, String username, String password, String baseUrl) {
+    this(authName, baseUrl);
     this.setCredentials(username,  password);
   }
 
@@ -94,11 +91,10 @@ public class ApiClient {
       .setPassword(password);
   }
 
-  public void createDefaultAdapter() {
+  public void createDefaultAdapter(String baseUrl) {
     json = new JSON();
     okBuilder = new OkHttpClient.Builder();
 
-    String baseUrl = "http://hep.newtonproject.dev.diynova.com";
     if (!baseUrl.endsWith("/"))
       baseUrl = baseUrl + "/";
 
