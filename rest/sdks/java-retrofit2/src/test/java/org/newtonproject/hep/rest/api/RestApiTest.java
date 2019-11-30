@@ -32,20 +32,29 @@ import java.util.*;
 public class RestApiTest {
 
     private RestApi api;
+    private String dappId = "d32db928a0034598a69bdf375551f822";
+    private String dappSecret = "eae92dbda0454049b8016a43c2d7025e";
     private String dappKey = "02c3119710714730b000db31d73052ce";
-
     private String protocol = "HEP";
     private String version = "1.0";
+
+    /**
+     * dev http://hep.newtonproject.dev.diynova.com/
+     * test https://node.hep.testnet.newtonproject.org/
+     * release https://node.hep.newtonproject.org/
+     */
+    private String baseUrl = "http://hep.newtonproject.dev.diynova.com/";
+
+    // maybe from client.
     private String os = "android";
     private String language = "en";
 
     private HashMap<String, String> baseParameters = new HashMap<>();
-    private String baseUrl = "http://hep.newtonproject.dev.diynova.com/";
 
-    private String dappId = "d32db928a0034598a69bdf375551f822";
-    private String dappSecret = "eae92dbda0454049b8016a43c2d7025e";
     private String apiVersion = "1";
-    private int chainid = 1007;
+    private int chainid = 1007; // dev 1007, test 1002, main 1012.
+
+    // maybe a keystore or pem file.
     private String privateKey = "0xed3be0b0c9862339dbec1cef295ada174c26d2812e81ba0f0f51b73cd42fc99b";
 
     private AuthHelper authHelper;
