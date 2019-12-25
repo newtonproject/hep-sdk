@@ -108,9 +108,11 @@ def test_auth_proof():
     # response = proof_helper.get_status_of_proofs(proof_hashes)
     # print(response)
 
+
 def test_auth_proof_client():
     res = proof_helper.get_client_proof_params(uuid.uuid4().hex, "proofhash")
     print(res)
+
 
 def test_proof_callback():
     data = {"sign_type":"secp256r1","ts":"1562901022","signature":"0x796cb9876246bda055770d45d125e73350386fa20b81255d53ce44328a9dbc59e08a9e2605cc69281acfcda45b0586fb9db691acdb507af9f0b81b5a8f1ce714","uuid":"10096d6c-dffe-482c-91c1-8284dec83255","dapp_id":"565dcbe6d16d41b7ac4c7beebff44027","proof_hash":"2462d64549144208a73a1975c0d14391","nonce":"3557d6ae73524634b9ef70b4818f04b7"}
