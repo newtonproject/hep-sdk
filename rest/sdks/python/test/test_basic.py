@@ -2,6 +2,7 @@ import sys
 import uuid
 import os
 import datetime
+
 # set the path
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE_DIR, ""))
@@ -13,23 +14,25 @@ from hep_rest_api.scenarios.pay import PayHelper
 from hep_rest_api.scenarios.proof import ProofHelper
 from hep_rest_api.scenarios.proof import OrderProof
 from hep_rest_api.scenarios.proof import Order
+from hep_rest_api.scenarios.newchain import NewChainHelper
+
 config_dev = {
-    'app_id' : 'd32db928a0034598a69bdf375551f822',
+    'app_id': 'd32db928a0034598a69bdf375551f822',
     'app_key': '02c3119710714730b000db31d73052ce',
     'app_secret': 'eae92dbda0454049b8016a43c2d7025e',
-    'private_path' : BASE_DIR + "/test/priv/priv",
+    'private_path': BASE_DIR + "/test/priv/priv",
     'hep_host': 'http://hep.newtonproject.dev.diynova.com',
     'protocol': 'HEP',
     'protocol_version': '1.0',
     'chain_id': 1002
 }
 config_test = {
-    'app_id' : 'ad153ffe8cff4677ae2edd5d5670d408',
+    'app_id': 'ad153ffe8cff4677ae2edd5d5670d408',
     'app_key': 'e3e3b730955d4f7ca405645f17c6dd1d',
     'app_secret': '70dc942a981e469686c5b94108393eb9',
     'private_path': BASE_DIR + "/test/priv/priv",
     'hep_host': 'https://node.hep.testnet.newtonproject.org',
-    #'hep_host': 'http://127.0.0.1:8000',
+    # 'hep_host': 'http://127.0.0.1:8000',
     'protocol': 'HEP',
     'protocol_version': '1.0',
     'chain_id': 1007
@@ -49,9 +52,24 @@ chain_id = config['chain_id']
 key_path = config['private_path']
 HEP_ID = config['app_id']
 HEP_SECRET = config['app_secret']
-payment_data = {"dapp_id": "75098291f88343b9836118546f375a9f", "nonce": "92ac0a98ba1742c48eb8e91100077817", "sign_type": "secp256r1", "signature": "0xee47bd99d1807b7a14bb36c9e9fe641753f13e3c5d77610121edd3e125ddf78d22a56c98de8012d185b6de0da27aaef4101d3fe4beb5cf3038bc134d73012f48", "ts": "1561121020", "txid": "0xd7ab1ddcad52efd96298610030c985083cb6639b3f0f07c86f51ea7845a61237", "uuid": "b8e89a114b104a8d83e0266bbc5a55a1"}
-login_data = {"action": "hep.auth.login", "scope": 1, "expired": 1561129670, "memo": "default", "uuid": "682749f075b74702b8c41c9a75862b0a", "dapp_id": "75098291f88343b9836118546f375a9f", "dapp_key": "71ffeae1a9a2402c944d84c54f8ffddc", "protocol":"HEP", "version": "1.0", "os": "darwin", "language": "en", "ts": 1561129370, "nonce": "ae892ffdf7ee430a992f29b5760d4e69", "dapp_signature": "046fbe22f261c5e5b62b37679b8f5a99", "dapp_signature_method": "HMAC-MD5", "signature": "0xf33c0e088f1cb64a8d0845a62333500d73b227c242e36dcf902da4243e515472dd2de175443b2918c52fbd6abbcbbace98a8e75540a93e3d29628096437f09e7", "sign_type": "secp256r1"}
-login_profile = {"address": "NEW17xYWcvn5cp7rgYubVeenHZLGDJ5JtJapUPm", "avatar": "", "cellphone": "18888888881", "country_code": "86", "invite_code": "XLFFKD", "name":"不上班", "newid": "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY", "sign_type": "secp256r1", "signature": "0x8132dc49de81e4a1b85aaaa142fce6502f1093d495004240c2fee7bbf39e7ddb5c4565537ebb9b50312b6c34d267724f6567aa473dc85c9b268efc8f46f2235d", "uuid": "c11494156640416393a8d7c9926ffa87"}
+payment_data = {"dapp_id": "75098291f88343b9836118546f375a9f", "nonce": "92ac0a98ba1742c48eb8e91100077817",
+                "sign_type": "secp256r1",
+                "signature": "0xee47bd99d1807b7a14bb36c9e9fe641753f13e3c5d77610121edd3e125ddf78d22a56c98de8012d185b6de0da27aaef4101d3fe4beb5cf3038bc134d73012f48",
+                "ts": "1561121020", "txid": "0xd7ab1ddcad52efd96298610030c985083cb6639b3f0f07c86f51ea7845a61237",
+                "uuid": "b8e89a114b104a8d83e0266bbc5a55a1"}
+login_data = {"action": "hep.auth.login", "scope": 1, "expired": 1561129670, "memo": "default",
+              "uuid": "682749f075b74702b8c41c9a75862b0a", "dapp_id": "75098291f88343b9836118546f375a9f",
+              "dapp_key": "71ffeae1a9a2402c944d84c54f8ffddc", "protocol": "HEP", "version": "1.0", "os": "darwin",
+              "language": "en", "ts": 1561129370, "nonce": "ae892ffdf7ee430a992f29b5760d4e69",
+              "dapp_signature": "046fbe22f261c5e5b62b37679b8f5a99", "dapp_signature_method": "HMAC-MD5",
+              "signature": "0xf33c0e088f1cb64a8d0845a62333500d73b227c242e36dcf902da4243e515472dd2de175443b2918c52fbd6abbcbbace98a8e75540a93e3d29628096437f09e7",
+              "sign_type": "secp256r1"}
+login_profile = {"address": "NEW17xYWcvn5cp7rgYubVeenHZLGDJ5JtJapUPm", "avatar": "", "cellphone": "18888888881",
+                 "country_code": "86", "invite_code": "XLFFKD", "name": "不上班",
+                 "newid": "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY", "sign_type": "secp256r1",
+                 "signature": "0x8132dc49de81e4a1b85aaaa142fce6502f1093d495004240c2fee7bbf39e7ddb5c4565537ebb9b50312b6c34d267724f6567aa473dc85c9b268efc8f46f2235d",
+                 "uuid": "c11494156640416393a8d7c9926ffa87"}
+
 
 def _get_api_client():
     configuration = hep_rest_api.api_client.Configuration()
@@ -59,10 +77,13 @@ def _get_api_client():
     api_instance = hep_rest_api.RestApi(hep_rest_api.ApiClient(configuration))
     return api_instance
 
+
 api_client = _get_api_client()
 auth_helper = AuthHelper(api_client, base_parameters, HEP_ID, HEP_SECRET, key_path, chain_id=chain_id)
 pay_helper = PayHelper(api_client, base_parameters, HEP_ID, HEP_SECRET, key_path, chain_id=chain_id)
 proof_helper = ProofHelper(api_client, base_parameters, HEP_ID, HEP_SECRET, key_path, chain_id=chain_id)
+newchain_helper = NewChainHelper(api_client, base_parameters, HEP_ID, HEP_SECRET, key_path, chain_id=chain_id)
+
 
 def test_auth_login():
     auth_resposne = auth_helper.generate_auth_request(uuid=uuid.uuid4().hex)
@@ -70,29 +91,43 @@ def test_auth_login():
     print(qr_str)
     is_valid = auth_helper.validate_auth_callback(login_profile)
     print(is_valid)
-    
+
+
 def test_auth_login_client():
     login_params = auth_helper.get_client_login_params(uuid.uuid4().hex, "haha", 2)
     print(login_params)
 
 
 def test_auth_pay():
-    pay_response = pay_helper.generate_pay_request(uuid.uuid4().hex, "NEW", "12", "description", "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY", "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY", "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY", uuid=uuid.uuid4().hex)
+    pay_response = pay_helper.generate_pay_request(uuid.uuid4().hex, "NEW", "12", "description",
+                                                   "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY",
+                                                   "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY",
+                                                   "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY",
+                                                   uuid=uuid.uuid4().hex)
     print(pay_response.pay_hash)
     pay_qr_str = pay_helper.generate_qrcode_string(pay_response.pay_hash)
     print(pay_qr_str)
     is_valid = pay_helper.validate_pay_callback(payment_data)
     print(is_valid)
-    pay_data = {'api_version': '1', 'dapp_key': '71ffeae1a9a2402c944d84c54f8ffddc', 'protocol': 'HEP', 'version': '1.0', 'os': 'darwin', 'language': 'en', 'ts': 1561189219, 'nonce': '7fd6675608ba49d48c4e5c2f7e87bd8f', 'dapp_signature': 'beccf75e3f0aad44e25e8a50c37f7476', 'dapp_signature_method': 'HMAC-MD5', 'txid': '0xd7ab1ddcad52efd96298610030c985083cb6639b3f0f07c86f51ea7845a61237'}
+    pay_data = {'api_version': '1', 'dapp_key': '71ffeae1a9a2402c944d84c54f8ffddc', 'protocol': 'HEP', 'version': '1.0',
+                'os': 'darwin', 'language': 'en', 'ts': 1561189219, 'nonce': '7fd6675608ba49d48c4e5c2f7e87bd8f',
+                'dapp_signature': 'beccf75e3f0aad44e25e8a50c37f7476', 'dapp_signature_method': 'HMAC-MD5',
+                'txid': '0xd7ab1ddcad52efd96298610030c985083cb6639b3f0f07c86f51ea7845a61237'}
     response = pay_helper.get_confirmed_transaction(pay_data['txid'])
     print(response)
 
+
 def test_auth_pay_client():
-    res = pay_helper.get_client_pay_params(uuid.uuid4().hex, "NEW", 12, "description", "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY", "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY", "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY", uuid=uuid.uuid4().hex)
+    res = pay_helper.get_client_pay_params(uuid.uuid4().hex, "NEW", 12, "description",
+                                           "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY",
+                                           "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY",
+                                           "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY",
+                                           uuid=uuid.uuid4().hex)
     print(res)
 
+
 def test_auth_proof():
-    order = Order( uuid.uuid4().hex, "deacription", "30", "CNY", TEST_NEWID, TEST_NEWID)
+    order = Order(uuid.uuid4().hex, "deacription", "30", "CNY", TEST_NEWID, TEST_NEWID)
     order.add_order_item(uuid.uuid4().hex, "1", "10", "CNY", "pingguo", uuid.uuid4().hex)
     order.add_order_item(uuid.uuid4().hex, "2", "20", "CNY", "xiangjiao", uuid.uuid4().hex)
     order_content = OrderProof("30", "CNY", TEST_NEWID)
@@ -115,9 +150,13 @@ def test_auth_proof_client():
 
 
 def test_proof_callback():
-    data = {"sign_type":"secp256r1","ts":"1562901022","signature":"0x796cb9876246bda055770d45d125e73350386fa20b81255d53ce44328a9dbc59e08a9e2605cc69281acfcda45b0586fb9db691acdb507af9f0b81b5a8f1ce714","uuid":"10096d6c-dffe-482c-91c1-8284dec83255","dapp_id":"565dcbe6d16d41b7ac4c7beebff44027","proof_hash":"2462d64549144208a73a1975c0d14391","nonce":"3557d6ae73524634b9ef70b4818f04b7"}
+    data = {"sign_type": "secp256r1", "ts": "1562901022",
+            "signature": "0x796cb9876246bda055770d45d125e73350386fa20b81255d53ce44328a9dbc59e08a9e2605cc69281acfcda45b0586fb9db691acdb507af9f0b81b5a8f1ce714",
+            "uuid": "10096d6c-dffe-482c-91c1-8284dec83255", "dapp_id": "565dcbe6d16d41b7ac4c7beebff44027",
+            "proof_hash": "2462d64549144208a73a1975c0d14391", "nonce": "3557d6ae73524634b9ef70b4818f04b7"}
     api_client = _get_api_client()
-    proof_helper = ProofHelper(api_client, base_parameters, config['app_id'], config['app_secret'], key_path, chain_id=chain_id)
+    proof_helper = ProofHelper(api_client, base_parameters, config['app_id'], config['app_secret'], key_path,
+                               chain_id=chain_id)
     res = proof_helper.validate_proof_callback(data)
     print(res)
 
@@ -128,14 +167,55 @@ def test_dapp_daily_stats():
     api_client = _get_api_client()
     #    def rest_dapps_read_0(self, api_version, dapp_id, _date, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature, **kwargs):  # noqa: E501
 
-    res = api_client.rest_dapps_read_0("1", "b8774f668c144aa78db2cd1b925284b2", "20190711", config['app_key'], 'HEP', '1.0', int(datetime.datetime.now().timestamp()), "nonce", 
-                        "web", "en", "HMAC-MD5", "signature")
+    res = api_client.rest_dapps_read_0("1", "b8774f668c144aa78db2cd1b925284b2", "20190711", config['app_key'], 'HEP',
+                                       '1.0', int(datetime.datetime.now().timestamp()), "nonce",
+                                       "web", "en", "HMAC-MD5", "signature")
     print(res)
 
 
 def test_get_reward_amount():
     newid = "NEWID1acGJchbdZy74f3dTQxfZd6kkztfxzUgLtUyTvUtU21U4RaS72XY"
     res = auth_helper.get_reward_tokens(newid)
+    print(res)
+
+
+def test_get_gravity_account(newid):
+    res = newchain_helper.get_gravity_account(newid)
+    print(res)
+
+
+def test_get_mint_condition(newid):
+    res = newchain_helper.get_gravity_mint_condition(newid)
+    print(res)
+
+
+def test_get_current_mint_data(newid):
+    res = newchain_helper.get_current_mint_data(newid)
+    print(res)
+
+
+def test_get_history_mint_data(newid, page_id=0, page_size=20):
+    res = newchain_helper.get_history_mint_data(newid, page_id, page_size)
+    print(res)
+
+
+def test_submit_mint(newid, tx_tokens, tx_gravity):
+    res = newchain_helper.mint_submit(newid, tx_tokens, tx_gravity)
+    print(res)
+
+
+def test_mint_collect(newid):
+    res = newchain_helper.mint_collect(newid)
+    print(res)
+
+
+def test_get_subscribe_condition(newid):
+    res = newchain_helper.get_gravity_subscribe_condition(newid)
+    print(res)
+
+
+def test_subscribe_submit(newid, tx):
+    res = newchain_helper.subscribe_submit(newid, tx)
     print(res)
 
 
@@ -149,4 +229,17 @@ if __name__ == '__main__':
     # res = utils.validate_secp256r1_signature(r, s, message, pubs)
     # print(res)
     # test_auth_login()
-    test_get_reward_amount()
+
+    newid = "NEWID1abKMibsaSrE7Eb8GhVmZkubWiP5UGBKWi1AfCoQ48yszfYPcfJv"
+    # tx_tokens = "0xf86a286482520894412e3388b9c05cecc29068755cc7c97db27decd7893635c9adc5dea00000808207f7a0ba339594165c96e0488a6b47379dc7520a8986e409c03e1e9b9d8aeabbd0bfb5a041ffc3271528654f1a3bd26510c8495b509a65831f852967701f14f39132832a"
+    # tx_gravity = "0xf86a030a82520894412e3388b9c05cecc29068755cc7c97db27decd789056bc75e2d6310000080820fc7a0a01a138c670b32c6392b9b566c6dfd7dcddf4a0efa47948ad5071eac0336b3e4a03ecd2fbe367e65cc5397e77e67734ea248266fa02cd6d16e0248b7703307cb62"
+    # test_submit_mint(newid, tx_tokens, tx_gravity)
+
+    # test_mint_collect(newid)
+    test_get_gravity_account(newid)
+    # test_get_current_mint_data(newid)
+    # test_get_history_mint_data(newid)
+    # test_get_subscribe_condition(newid)
+
+    tx = "0xf86a316482520894412e3388b9c05cecc29068755cc7c97db27decd7893635c9adc5dea00000808207f8a0844dfa3e60c7880804b94c3bca52e3e6c94232f7e781ff940355293aef138ba8a0237199cd28e85aa645a2bc734115a8165bd1c4e740ca18a3713ff1929107339c"
+    # test_subscribe_submit(newid, tx)

@@ -82,6 +82,14 @@ Class | Method | HTTP request | Description
 *RestApi* | [**rest_dapps_read**](docs/RestApi.md#rest_dapps_read) | **GET** /rest/v{api_version}/dapps/{dapp_id}/ | 
 *RestApi* | [**rest_dapps_read_0**](docs/RestApi.md#rest_dapps_read_0) | **GET** /rest/v{api_version}/dapps/{dapp_id}/{date}/ | 
 *RestApi* | [**rest_health_list**](docs/RestApi.md#rest_health_list) | **GET** /rest/v{api_version}/health/ | 
+*RestApi* | [**rest_newchain_coin_gravity_account_read**](docs/RestApi.md#rest_newchain_coin_gravity_account_read) | **GET** /rest/v{api_version}/newchain/coin/gravity/account/{newid}/ | 
+*RestApi* | [**rest_newchain_coin_gravity_mint_collect_create**](docs/RestApi.md#rest_newchain_coin_gravity_mint_collect_create) | **POST** /rest/v{api_version}/newchain/coin/gravity/mint/collect/ | 
+*RestApi* | [**rest_newchain_coin_gravity_mint_condition_read**](docs/RestApi.md#rest_newchain_coin_gravity_mint_condition_read) | **GET** /rest/v{api_version}/newchain/coin/gravity/mint/condition/{newid}/ | 
+*RestApi* | [**rest_newchain_coin_gravity_mint_data_current_read**](docs/RestApi.md#rest_newchain_coin_gravity_mint_data_current_read) | **GET** /rest/v{api_version}/newchain/coin/gravity/mint/data/current/{newid}/ | 
+*RestApi* | [**rest_newchain_coin_gravity_mint_data_history_create**](docs/RestApi.md#rest_newchain_coin_gravity_mint_data_history_create) | **POST** /rest/v{api_version}/newchain/coin/gravity/mint/data/history/ | 
+*RestApi* | [**rest_newchain_coin_gravity_mint_submit_create**](docs/RestApi.md#rest_newchain_coin_gravity_mint_submit_create) | **POST** /rest/v{api_version}/newchain/coin/gravity/mint/submit/ | 
+*RestApi* | [**rest_newchain_coin_gravity_subscription_condition_read**](docs/RestApi.md#rest_newchain_coin_gravity_subscription_condition_read) | **GET** /rest/v{api_version}/newchain/coin/gravity/subscription/condition/{newid}/ | 
+*RestApi* | [**rest_newchain_coin_gravity_subscription_submit_create**](docs/RestApi.md#rest_newchain_coin_gravity_subscription_submit_create) | **POST** /rest/v{api_version}/newchain/coin/gravity/subscription/submit/ | 
 *RestApi* | [**rest_newchain_tx_read**](docs/RestApi.md#rest_newchain_tx_read) | **GET** /rest/v{api_version}/newchain/tx/{txid}/ | 
 *RestApi* | [**rest_newforce_read**](docs/RestApi.md#rest_newforce_read) | **GET** /rest/v{api_version}/newforce/{date}/ | 
 *RestApi* | [**rest_newids_newforce_reward_list**](docs/RestApi.md#rest_newids_newforce_reward_list) | **GET** /rest/v{api_version}/newids/{newid}/newforce/reward/ | 
@@ -100,15 +108,23 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [AccountResponse](docs/AccountResponse.md)
  - [AuthCacheRequest](docs/AuthCacheRequest.md)
  - [AuthCacheResponse](docs/AuthCacheResponse.md)
  - [CancelProofRequest](docs/CancelProofRequest.md)
  - [CancelProofResponse](docs/CancelProofResponse.md)
+ - [CollectMintRequest](docs/CollectMintRequest.md)
+ - [CollectMintResponse](docs/CollectMintResponse.md)
  - [CreateAuthCacheResponse](docs/CreateAuthCacheResponse.md)
  - [CreatePayCacheResponse](docs/CreatePayCacheResponse.md)
  - [CreateProofRequest](docs/CreateProofRequest.md)
  - [CreateProofResponse](docs/CreateProofResponse.md)
+ - [CurrentDataResponse](docs/CurrentDataResponse.md)
  - [Dapp](docs/Dapp.md)
+ - [HistoryData](docs/HistoryData.md)
+ - [HistoryDataRequest](docs/HistoryDataRequest.md)
+ - [HistoryDataResponse](docs/HistoryDataResponse.md)
+ - [MintConditionResponse](docs/MintConditionResponse.md)
  - [NewchainTransactionResponse](docs/NewchainTransactionResponse.md)
  - [NewforceDailyStatsResponse](docs/NewforceDailyStatsResponse.md)
  - [NewforceRewardAmountResponse](docs/NewforceRewardAmountResponse.md)
@@ -128,6 +144,11 @@ Class | Method | HTTP request | Description
  - [RetrieveProofReceiptsResponse](docs/RetrieveProofReceiptsResponse.md)
  - [RetrieveProofRewardsRequest](docs/RetrieveProofRewardsRequest.md)
  - [RetrieveProofRewardsResponse](docs/RetrieveProofRewardsResponse.md)
+ - [SubmitMintRequest](docs/SubmitMintRequest.md)
+ - [SubmitMintResponse](docs/SubmitMintResponse.md)
+ - [SubmitSubscribeRequest](docs/SubmitSubscribeRequest.md)
+ - [SubmitSubscribeResponse](docs/SubmitSubscribeResponse.md)
+ - [SubscribeConditionResponse](docs/SubscribeConditionResponse.md)
  - [Thing](docs/Thing.md)
 
 

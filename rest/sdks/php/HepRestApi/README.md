@@ -92,9 +92,17 @@ Class | Method | HTTP request | Description
 *RestApi* | [**restDappsRead**](docs/Api/RestApi.md#restdappsread) | **GET** /rest/v{api_version}/dapps/{dapp_id}/ | 
 *RestApi* | [**restDappsRead_0**](docs/Api/RestApi.md#restdappsread_0) | **GET** /rest/v{api_version}/dapps/{dapp_id}/{date}/ | 
 *RestApi* | [**restHealthList**](docs/Api/RestApi.md#resthealthlist) | **GET** /rest/v{api_version}/health/ | 
+*RestApi* | [**restNewchainCoinGravityAccountRead**](docs/Api/RestApi.md#restnewchaincoingravityaccountread) | **GET** /rest/v{api_version}/newchain/coin/gravity/account/{newid}/ | 
+*RestApi* | [**restNewchainCoinGravityMintCollectCreate**](docs/Api/RestApi.md#restnewchaincoingravitymintcollectcreate) | **POST** /rest/v{api_version}/newchain/coin/gravity/mint/collect/ | 
+*RestApi* | [**restNewchainCoinGravityMintConditionRead**](docs/Api/RestApi.md#restnewchaincoingravitymintconditionread) | **GET** /rest/v{api_version}/newchain/coin/gravity/mint/condition/{newid}/ | 
+*RestApi* | [**restNewchainCoinGravityMintDataCurrentRead**](docs/Api/RestApi.md#restnewchaincoingravitymintdatacurrentread) | **GET** /rest/v{api_version}/newchain/coin/gravity/mint/data/current/{newid}/ | 
+*RestApi* | [**restNewchainCoinGravityMintDataHistoryCreate**](docs/Api/RestApi.md#restnewchaincoingravitymintdatahistorycreate) | **POST** /rest/v{api_version}/newchain/coin/gravity/mint/data/history/ | 
+*RestApi* | [**restNewchainCoinGravityMintSubmitCreate**](docs/Api/RestApi.md#restnewchaincoingravitymintsubmitcreate) | **POST** /rest/v{api_version}/newchain/coin/gravity/mint/submit/ | 
+*RestApi* | [**restNewchainCoinGravitySubscriptionConditionRead**](docs/Api/RestApi.md#restnewchaincoingravitysubscriptionconditionread) | **GET** /rest/v{api_version}/newchain/coin/gravity/subscription/condition/{newid}/ | 
+*RestApi* | [**restNewchainCoinGravitySubscriptionSubmitCreate**](docs/Api/RestApi.md#restnewchaincoingravitysubscriptionsubmitcreate) | **POST** /rest/v{api_version}/newchain/coin/gravity/subscription/submit/ | 
 *RestApi* | [**restNewchainTxRead**](docs/Api/RestApi.md#restnewchaintxread) | **GET** /rest/v{api_version}/newchain/tx/{txid}/ | 
 *RestApi* | [**restNewforceRead**](docs/Api/RestApi.md#restnewforceread) | **GET** /rest/v{api_version}/newforce/{date}/ | 
-*RestApi* | [**restNewforceTokensList**](docs/Api/RestApi.md#restnewforcetokenslist) | **GET** /rest/v{api_version}/newforce/{newid}/tokens/ | 
+*RestApi* | [**restNewidsNewforceRewardList**](docs/Api/RestApi.md#restnewidsnewforcerewardlist) | **GET** /rest/v{api_version}/newids/{newid}/newforce/reward/ | 
 *RestApi* | [**restNewidsRead**](docs/Api/RestApi.md#restnewidsread) | **GET** /rest/v{api_version}/newids/{newid}/ | 
 *RestApi* | [**restNewnetCachesAuthCreate**](docs/Api/RestApi.md#restnewnetcachesauthcreate) | **POST** /rest/v{api_version}/newnet/caches/auth/ | 
 *RestApi* | [**restNewnetCachesAuthRead**](docs/Api/RestApi.md#restnewnetcachesauthread) | **GET** /rest/v{api_version}/newnet/caches/auth/{auth_hash}/ | 
@@ -110,15 +118,23 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [AccountResponse](docs/Model/AccountResponse.md)
  - [AuthCacheRequest](docs/Model/AuthCacheRequest.md)
  - [AuthCacheResponse](docs/Model/AuthCacheResponse.md)
  - [CancelProofRequest](docs/Model/CancelProofRequest.md)
  - [CancelProofResponse](docs/Model/CancelProofResponse.md)
+ - [CollectMintRequest](docs/Model/CollectMintRequest.md)
+ - [CollectMintResponse](docs/Model/CollectMintResponse.md)
  - [CreateAuthCacheResponse](docs/Model/CreateAuthCacheResponse.md)
  - [CreatePayCacheResponse](docs/Model/CreatePayCacheResponse.md)
  - [CreateProofRequest](docs/Model/CreateProofRequest.md)
  - [CreateProofResponse](docs/Model/CreateProofResponse.md)
+ - [CurrentDataResponse](docs/Model/CurrentDataResponse.md)
  - [Dapp](docs/Model/Dapp.md)
+ - [HistoryData](docs/Model/HistoryData.md)
+ - [HistoryDataRequest](docs/Model/HistoryDataRequest.md)
+ - [HistoryDataResponse](docs/Model/HistoryDataResponse.md)
+ - [MintConditionResponse](docs/Model/MintConditionResponse.md)
  - [NewchainTransactionResponse](docs/Model/NewchainTransactionResponse.md)
  - [NewforceDailyStatsResponse](docs/Model/NewforceDailyStatsResponse.md)
  - [NewforceRewardAmountResponse](docs/Model/NewforceRewardAmountResponse.md)
@@ -138,6 +154,11 @@ Class | Method | HTTP request | Description
  - [RetrieveProofReceiptsResponse](docs/Model/RetrieveProofReceiptsResponse.md)
  - [RetrieveProofRewardsRequest](docs/Model/RetrieveProofRewardsRequest.md)
  - [RetrieveProofRewardsResponse](docs/Model/RetrieveProofRewardsResponse.md)
+ - [SubmitMintRequest](docs/Model/SubmitMintRequest.md)
+ - [SubmitMintResponse](docs/Model/SubmitMintResponse.md)
+ - [SubmitSubscribeRequest](docs/Model/SubmitSubscribeRequest.md)
+ - [SubmitSubscribeResponse](docs/Model/SubmitSubscribeResponse.md)
+ - [SubscribeConditionResponse](docs/Model/SubscribeConditionResponse.md)
  - [Thing](docs/Model/Thing.md)
 
 
