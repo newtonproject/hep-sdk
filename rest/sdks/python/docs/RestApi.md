@@ -1,6 +1,6 @@
 # hep_rest_api.RestApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**rest_newchain_coin_gravity_subscription_condition_read**](RestApi.md#rest_newchain_coin_gravity_subscription_condition_read) | **GET** /rest/v{api_version}/newchain/coin/gravity/subscription/condition/{newid}/ | 
 [**rest_newchain_coin_gravity_subscription_submit_create**](RestApi.md#rest_newchain_coin_gravity_subscription_submit_create) | **POST** /rest/v{api_version}/newchain/coin/gravity/subscription/submit/ | 
 [**rest_newchain_tx_read**](RestApi.md#rest_newchain_tx_read) | **GET** /rest/v{api_version}/newchain/tx/{txid}/ | 
+[**rest_newforce_node_round_read**](RestApi.md#rest_newforce_node_round_read) | **GET** /rest/v{api_version}/newforce/node/round/{node_wallet_address}/ | 
 [**rest_newforce_read**](RestApi.md#rest_newforce_read) | **GET** /rest/v{api_version}/newforce/{date}/ | 
 [**rest_newids_newforce_reward_list**](RestApi.md#rest_newids_newforce_reward_list) | **GET** /rest/v{api_version}/newids/{newid}/newforce/reward/ | 
 [**rest_newids_read**](RestApi.md#rest_newids_read) | **GET** /rest/v{api_version}/newids/{newid}/ | 
@@ -30,11 +31,8 @@ Method | HTTP request | Description
 [**rest_proofs_receipts_create**](RestApi.md#rest_proofs_receipts_create) | **POST** /rest/v{api_version}/proofs/receipts/ | 
 [**rest_proofs_rewards_create**](RestApi.md#rest_proofs_rewards_create) | **POST** /rest/v{api_version}/proofs/rewards/ | 
 
-
 # **rest_dapps_read**
 > Dapp rest_dapps_read(api_version, dapp_id, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature)
-
-
 
 
 
@@ -74,8 +72,8 @@ Name | Type | Description  | Notes
  **api_version** | **str**|  | 
  **dapp_id** | **str**|  | 
  **dapp_key** | **str**| The decentralized application access key | 
- **protocol** | **str**| The protocol name. default is &#39;HEP&#39;. | 
- **version** | **str**| The protocol version such as &#39;1.0&#39; | 
+ **protocol** | **str**| The protocol name. default is &#x27;HEP&#x27;. | 
+ **version** | **str**| The protocol version such as &#x27;1.0&#x27; | 
  **ts** | **int**| The current timestamp | 
  **nonce** | **str**| The random string or auto-increment sequence | 
  **os** | **str**| The operating system of client such as ios, android, dweb,etc. | 
@@ -93,15 +91,13 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **rest_dapps_read_0**
 > RetrieveDappDailyStatsResponse rest_dapps_read_0(api_version, dapp_id, _date, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature)
-
-
 
 
 
@@ -143,8 +139,8 @@ Name | Type | Description  | Notes
  **dapp_id** | **str**|  | 
  **_date** | **str**|  | 
  **dapp_key** | **str**| The decentralized application access key | 
- **protocol** | **str**| The protocol name. default is &#39;HEP&#39;. | 
- **version** | **str**| The protocol version such as &#39;1.0&#39; | 
+ **protocol** | **str**| The protocol name. default is &#x27;HEP&#x27;. | 
+ **version** | **str**| The protocol version such as &#x27;1.0&#x27; | 
  **ts** | **int**| The current timestamp | 
  **nonce** | **str**| The random string or auto-increment sequence | 
  **os** | **str**| The operating system of client such as ios, android, dweb,etc. | 
@@ -162,15 +158,13 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **rest_health_list**
 > rest_health_list(api_version)
-
-
 
 
 
@@ -208,15 +202,13 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **rest_newchain_coin_gravity_account_read**
 > AccountResponse rest_newchain_coin_gravity_account_read(api_version, newid, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature)
-
-
 
 
 
@@ -256,8 +248,8 @@ Name | Type | Description  | Notes
  **api_version** | **str**|  | 
  **newid** | **str**|  | 
  **dapp_key** | **str**| The decentralized application access key | 
- **protocol** | **str**| The protocol name. default is &#39;HEP&#39;. | 
- **version** | **str**| The protocol version such as &#39;1.0&#39; | 
+ **protocol** | **str**| The protocol name. default is &#x27;HEP&#x27;. | 
+ **version** | **str**| The protocol version such as &#x27;1.0&#x27; | 
  **ts** | **int**| The current timestamp | 
  **nonce** | **str**| The random string or auto-increment sequence | 
  **os** | **str**| The operating system of client such as ios, android, dweb,etc. | 
@@ -275,15 +267,13 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **rest_newchain_coin_gravity_mint_collect_create**
-> CollectMintResponse rest_newchain_coin_gravity_mint_collect_create(api_version, data)
-
-
+> CollectMintResponse rest_newchain_coin_gravity_mint_collect_create(body, api_version)
 
 
 
@@ -297,11 +287,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = hep_rest_api.RestApi()
+body = hep_rest_api.CollectMintRequest() # CollectMintRequest | 
 api_version = 'api_version_example' # str | 
-data = hep_rest_api.CollectMintRequest() # CollectMintRequest | 
 
 try:
-    api_response = api_instance.rest_newchain_coin_gravity_mint_collect_create(api_version, data)
+    api_response = api_instance.rest_newchain_coin_gravity_mint_collect_create(body, api_version)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RestApi->rest_newchain_coin_gravity_mint_collect_create: %s\n" % e)
@@ -311,8 +301,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**CollectMintRequest**](CollectMintRequest.md)|  | 
  **api_version** | **str**|  | 
- **data** | [**CollectMintRequest**](CollectMintRequest.md)|  | 
 
 ### Return type
 
@@ -331,8 +321,6 @@ No authorization required
 
 # **rest_newchain_coin_gravity_mint_condition_read**
 > MintConditionResponse rest_newchain_coin_gravity_mint_condition_read(api_version, newid, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature)
-
-
 
 
 
@@ -372,8 +360,8 @@ Name | Type | Description  | Notes
  **api_version** | **str**|  | 
  **newid** | **str**|  | 
  **dapp_key** | **str**| The decentralized application access key | 
- **protocol** | **str**| The protocol name. default is &#39;HEP&#39;. | 
- **version** | **str**| The protocol version such as &#39;1.0&#39; | 
+ **protocol** | **str**| The protocol name. default is &#x27;HEP&#x27;. | 
+ **version** | **str**| The protocol version such as &#x27;1.0&#x27; | 
  **ts** | **int**| The current timestamp | 
  **nonce** | **str**| The random string or auto-increment sequence | 
  **os** | **str**| The operating system of client such as ios, android, dweb,etc. | 
@@ -391,15 +379,13 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **rest_newchain_coin_gravity_mint_data_current_read**
 > CurrentDataResponse rest_newchain_coin_gravity_mint_data_current_read(api_version, newid, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature)
-
-
 
 
 
@@ -439,8 +425,8 @@ Name | Type | Description  | Notes
  **api_version** | **str**|  | 
  **newid** | **str**|  | 
  **dapp_key** | **str**| The decentralized application access key | 
- **protocol** | **str**| The protocol name. default is &#39;HEP&#39;. | 
- **version** | **str**| The protocol version such as &#39;1.0&#39; | 
+ **protocol** | **str**| The protocol name. default is &#x27;HEP&#x27;. | 
+ **version** | **str**| The protocol version such as &#x27;1.0&#x27; | 
  **ts** | **int**| The current timestamp | 
  **nonce** | **str**| The random string or auto-increment sequence | 
  **os** | **str**| The operating system of client such as ios, android, dweb,etc. | 
@@ -458,15 +444,13 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **rest_newchain_coin_gravity_mint_data_history_create**
-> HistoryDataResponse rest_newchain_coin_gravity_mint_data_history_create(api_version, data)
-
-
+> HistoryDataResponse rest_newchain_coin_gravity_mint_data_history_create(body, api_version)
 
 
 
@@ -480,11 +464,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = hep_rest_api.RestApi()
+body = hep_rest_api.HistoryDataRequest() # HistoryDataRequest | 
 api_version = 'api_version_example' # str | 
-data = hep_rest_api.HistoryDataRequest() # HistoryDataRequest | 
 
 try:
-    api_response = api_instance.rest_newchain_coin_gravity_mint_data_history_create(api_version, data)
+    api_response = api_instance.rest_newchain_coin_gravity_mint_data_history_create(body, api_version)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RestApi->rest_newchain_coin_gravity_mint_data_history_create: %s\n" % e)
@@ -494,8 +478,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**HistoryDataRequest**](HistoryDataRequest.md)|  | 
  **api_version** | **str**|  | 
- **data** | [**HistoryDataRequest**](HistoryDataRequest.md)|  | 
 
 ### Return type
 
@@ -513,9 +497,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **rest_newchain_coin_gravity_mint_submit_create**
-> SubmitMintResponse rest_newchain_coin_gravity_mint_submit_create(api_version, data)
-
-
+> SubmitMintResponse rest_newchain_coin_gravity_mint_submit_create(body, api_version)
 
 
 
@@ -529,11 +511,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = hep_rest_api.RestApi()
+body = hep_rest_api.SubmitMintRequest() # SubmitMintRequest | 
 api_version = 'api_version_example' # str | 
-data = hep_rest_api.SubmitMintRequest() # SubmitMintRequest | 
 
 try:
-    api_response = api_instance.rest_newchain_coin_gravity_mint_submit_create(api_version, data)
+    api_response = api_instance.rest_newchain_coin_gravity_mint_submit_create(body, api_version)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RestApi->rest_newchain_coin_gravity_mint_submit_create: %s\n" % e)
@@ -543,8 +525,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**SubmitMintRequest**](SubmitMintRequest.md)|  | 
  **api_version** | **str**|  | 
- **data** | [**SubmitMintRequest**](SubmitMintRequest.md)|  | 
 
 ### Return type
 
@@ -563,8 +545,6 @@ No authorization required
 
 # **rest_newchain_coin_gravity_subscription_condition_read**
 > SubscribeConditionResponse rest_newchain_coin_gravity_subscription_condition_read(api_version, newid, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature)
-
-
 
 
 
@@ -604,8 +584,8 @@ Name | Type | Description  | Notes
  **api_version** | **str**|  | 
  **newid** | **str**|  | 
  **dapp_key** | **str**| The decentralized application access key | 
- **protocol** | **str**| The protocol name. default is &#39;HEP&#39;. | 
- **version** | **str**| The protocol version such as &#39;1.0&#39; | 
+ **protocol** | **str**| The protocol name. default is &#x27;HEP&#x27;. | 
+ **version** | **str**| The protocol version such as &#x27;1.0&#x27; | 
  **ts** | **int**| The current timestamp | 
  **nonce** | **str**| The random string or auto-increment sequence | 
  **os** | **str**| The operating system of client such as ios, android, dweb,etc. | 
@@ -623,15 +603,13 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **rest_newchain_coin_gravity_subscription_submit_create**
-> SubmitSubscribeResponse rest_newchain_coin_gravity_subscription_submit_create(api_version, data)
-
-
+> SubmitSubscribeResponse rest_newchain_coin_gravity_subscription_submit_create(body, api_version)
 
 
 
@@ -645,11 +623,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = hep_rest_api.RestApi()
+body = hep_rest_api.SubmitSubscribeRequest() # SubmitSubscribeRequest | 
 api_version = 'api_version_example' # str | 
-data = hep_rest_api.SubmitSubscribeRequest() # SubmitSubscribeRequest | 
 
 try:
-    api_response = api_instance.rest_newchain_coin_gravity_subscription_submit_create(api_version, data)
+    api_response = api_instance.rest_newchain_coin_gravity_subscription_submit_create(body, api_version)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RestApi->rest_newchain_coin_gravity_subscription_submit_create: %s\n" % e)
@@ -659,8 +637,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**SubmitSubscribeRequest**](SubmitSubscribeRequest.md)|  | 
  **api_version** | **str**|  | 
- **data** | [**SubmitSubscribeRequest**](SubmitSubscribeRequest.md)|  | 
 
 ### Return type
 
@@ -720,8 +698,8 @@ Name | Type | Description  | Notes
  **api_version** | **str**|  | 
  **txid** | **str**|  | 
  **dapp_key** | **str**| The decentralized application access key | 
- **protocol** | **str**| The protocol name. default is &#39;HEP&#39;. | 
- **version** | **str**| The protocol version such as &#39;1.0&#39; | 
+ **protocol** | **str**| The protocol name. default is &#x27;HEP&#x27;. | 
+ **version** | **str**| The protocol version such as &#x27;1.0&#x27; | 
  **ts** | **int**| The current timestamp | 
  **nonce** | **str**| The random string or auto-increment sequence | 
  **os** | **str**| The operating system of client such as ios, android, dweb,etc. | 
@@ -739,7 +717,80 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **rest_newforce_node_round_read**
+> NewforceOfPartnerAndVoterResponse rest_newforce_node_round_read(api_version, node_wallet_address, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature, page_id=page_id, page_size=page_size, direction=direction)
+
+
+
+Retrieve the daily newforce statistics
+
+### Example
+```python
+from __future__ import print_function
+import time
+import hep_rest_api
+from hep_rest_api.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = hep_rest_api.RestApi()
+api_version = 'api_version_example' # str | 
+node_wallet_address = 'node_wallet_address_example' # str | 
+dapp_key = 'dapp_key_example' # str | The decentralized application access key
+protocol = 'protocol_example' # str | The protocol name. default is 'HEP'.
+version = 'version_example' # str | The protocol version such as '1.0'
+ts = 56 # int | The current timestamp
+nonce = 'nonce_example' # str | The random string or auto-increment sequence
+os = 'os_example' # str | The operating system of client such as ios, android, dweb,etc.
+language = 'language_example' # str | The i18n language code such as zh, en, etc.
+dapp_signature_method = 'dapp_signature_method_example' # str | The signature method used by dapp.
+dapp_signature = 'dapp_signature_example' # str | The signature generated by dapp.
+page_id = 56 # int |  (optional)
+page_size = 56 # int |  (optional)
+direction = 56 # int |  (optional)
+
+try:
+    api_response = api_instance.rest_newforce_node_round_read(api_version, node_wallet_address, dapp_key, protocol, version, ts, nonce, os, language, dapp_signature_method, dapp_signature, page_id=page_id, page_size=page_size, direction=direction)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling RestApi->rest_newforce_node_round_read: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **api_version** | **str**|  | 
+ **node_wallet_address** | **str**|  | 
+ **dapp_key** | **str**| The decentralized application access key | 
+ **protocol** | **str**| The protocol name. default is &#x27;HEP&#x27;. | 
+ **version** | **str**| The protocol version such as &#x27;1.0&#x27; | 
+ **ts** | **int**| The current timestamp | 
+ **nonce** | **str**| The random string or auto-increment sequence | 
+ **os** | **str**| The operating system of client such as ios, android, dweb,etc. | 
+ **language** | **str**| The i18n language code such as zh, en, etc. | 
+ **dapp_signature_method** | **str**| The signature method used by dapp. | 
+ **dapp_signature** | **str**| The signature generated by dapp. | 
+ **page_id** | **int**|  | [optional] 
+ **page_size** | **int**|  | [optional] 
+ **direction** | **int**|  | [optional] 
+
+### Return type
+
+[**NewforceOfPartnerAndVoterResponse**](NewforceOfPartnerAndVoterResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -787,8 +838,8 @@ Name | Type | Description  | Notes
  **api_version** | **str**|  | 
  **_date** | **str**|  | 
  **dapp_key** | **str**| The decentralized application access key | 
- **protocol** | **str**| The protocol name. default is &#39;HEP&#39;. | 
- **version** | **str**| The protocol version such as &#39;1.0&#39; | 
+ **protocol** | **str**| The protocol name. default is &#x27;HEP&#x27;. | 
+ **version** | **str**| The protocol version such as &#x27;1.0&#x27; | 
  **ts** | **int**| The current timestamp | 
  **nonce** | **str**| The random string or auto-increment sequence | 
  **os** | **str**| The operating system of client such as ios, android, dweb,etc. | 
@@ -806,7 +857,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -854,8 +905,8 @@ Name | Type | Description  | Notes
  **api_version** | **str**|  | 
  **newid** | **str**|  | 
  **dapp_key** | **str**| The decentralized application access key | 
- **protocol** | **str**| The protocol name. default is &#39;HEP&#39;. | 
- **version** | **str**| The protocol version such as &#39;1.0&#39; | 
+ **protocol** | **str**| The protocol name. default is &#x27;HEP&#x27;. | 
+ **version** | **str**| The protocol version such as &#x27;1.0&#x27; | 
  **ts** | **int**| The current timestamp | 
  **nonce** | **str**| The random string or auto-increment sequence | 
  **os** | **str**| The operating system of client such as ios, android, dweb,etc. | 
@@ -873,7 +924,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -921,8 +972,8 @@ Name | Type | Description  | Notes
  **api_version** | **str**|  | 
  **newid** | **str**|  | 
  **dapp_key** | **str**| The decentralized application access key | 
- **protocol** | **str**| The protocol name. default is &#39;HEP&#39;. | 
- **version** | **str**| The protocol version such as &#39;1.0&#39; | 
+ **protocol** | **str**| The protocol name. default is &#x27;HEP&#x27;. | 
+ **version** | **str**| The protocol version such as &#x27;1.0&#x27; | 
  **ts** | **int**| The current timestamp | 
  **nonce** | **str**| The random string or auto-increment sequence | 
  **os** | **str**| The operating system of client such as ios, android, dweb,etc. | 
@@ -940,13 +991,13 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **rest_newnet_caches_auth_create**
-> CreateAuthCacheResponse rest_newnet_caches_auth_create(api_version, data)
+> CreateAuthCacheResponse rest_newnet_caches_auth_create(body, api_version)
 
 
 
@@ -962,11 +1013,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = hep_rest_api.RestApi()
+body = hep_rest_api.AuthCacheRequest() # AuthCacheRequest | 
 api_version = 'api_version_example' # str | 
-data = hep_rest_api.AuthCacheRequest() # AuthCacheRequest | 
 
 try:
-    api_response = api_instance.rest_newnet_caches_auth_create(api_version, data)
+    api_response = api_instance.rest_newnet_caches_auth_create(body, api_version)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RestApi->rest_newnet_caches_auth_create: %s\n" % e)
@@ -976,8 +1027,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**AuthCacheRequest**](AuthCacheRequest.md)|  | 
  **api_version** | **str**|  | 
- **data** | [**AuthCacheRequest**](AuthCacheRequest.md)|  | 
 
 ### Return type
 
@@ -1037,8 +1088,8 @@ Name | Type | Description  | Notes
  **api_version** | **str**|  | 
  **auth_hash** | **str**|  | 
  **dapp_key** | **str**| The decentralized application access key | 
- **protocol** | **str**| The protocol name. default is &#39;HEP&#39;. | 
- **version** | **str**| The protocol version such as &#39;1.0&#39; | 
+ **protocol** | **str**| The protocol name. default is &#x27;HEP&#x27;. | 
+ **version** | **str**| The protocol version such as &#x27;1.0&#x27; | 
  **ts** | **int**| The current timestamp | 
  **nonce** | **str**| The random string or auto-increment sequence | 
  **os** | **str**| The operating system of client such as ios, android, dweb,etc. | 
@@ -1056,13 +1107,13 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **rest_newnet_caches_pay_create**
-> CreatePayCacheResponse rest_newnet_caches_pay_create(api_version, data)
+> CreatePayCacheResponse rest_newnet_caches_pay_create(body, api_version)
 
 
 
@@ -1078,11 +1129,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = hep_rest_api.RestApi()
+body = hep_rest_api.PayCacheRequest() # PayCacheRequest | 
 api_version = 'api_version_example' # str | 
-data = hep_rest_api.PayCacheRequest() # PayCacheRequest | 
 
 try:
-    api_response = api_instance.rest_newnet_caches_pay_create(api_version, data)
+    api_response = api_instance.rest_newnet_caches_pay_create(body, api_version)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RestApi->rest_newnet_caches_pay_create: %s\n" % e)
@@ -1092,8 +1143,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**PayCacheRequest**](PayCacheRequest.md)|  | 
  **api_version** | **str**|  | 
- **data** | [**PayCacheRequest**](PayCacheRequest.md)|  | 
 
 ### Return type
 
@@ -1153,8 +1204,8 @@ Name | Type | Description  | Notes
  **api_version** | **str**|  | 
  **pay_hash** | **str**|  | 
  **dapp_key** | **str**| The decentralized application access key | 
- **protocol** | **str**| The protocol name. default is &#39;HEP&#39;. | 
- **version** | **str**| The protocol version such as &#39;1.0&#39; | 
+ **protocol** | **str**| The protocol name. default is &#x27;HEP&#x27;. | 
+ **version** | **str**| The protocol version such as &#x27;1.0&#x27; | 
  **ts** | **int**| The current timestamp | 
  **nonce** | **str**| The random string or auto-increment sequence | 
  **os** | **str**| The operating system of client such as ios, android, dweb,etc. | 
@@ -1172,7 +1223,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1220,8 +1271,8 @@ Name | Type | Description  | Notes
  **api_version** | **str**|  | 
  **oracle_id** | **str**|  | 
  **dapp_key** | **str**| The decentralized application access key | 
- **protocol** | **str**| The protocol name. default is &#39;HEP&#39;. | 
- **version** | **str**| The protocol version such as &#39;1.0&#39; | 
+ **protocol** | **str**| The protocol name. default is &#x27;HEP&#x27;. | 
+ **version** | **str**| The protocol version such as &#x27;1.0&#x27; | 
  **ts** | **int**| The current timestamp | 
  **nonce** | **str**| The random string or auto-increment sequence | 
  **os** | **str**| The operating system of client such as ios, android, dweb,etc. | 
@@ -1239,15 +1290,13 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **rest_proofs_create**
-> CreateProofResponse rest_proofs_create(api_version, data)
-
-
+> CreateProofResponse rest_proofs_create(body, api_version)
 
 
 
@@ -1261,11 +1310,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = hep_rest_api.RestApi()
+body = hep_rest_api.CreateProofRequest() # CreateProofRequest | 
 api_version = 'api_version_example' # str | 
-data = hep_rest_api.CreateProofRequest() # CreateProofRequest | 
 
 try:
-    api_response = api_instance.rest_proofs_create(api_version, data)
+    api_response = api_instance.rest_proofs_create(body, api_version)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RestApi->rest_proofs_create: %s\n" % e)
@@ -1275,8 +1324,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**CreateProofRequest**](CreateProofRequest.md)|  | 
  **api_version** | **str**|  | 
- **data** | [**CreateProofRequest**](CreateProofRequest.md)|  | 
 
 ### Return type
 
@@ -1294,9 +1343,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **rest_proofs_delete**
-> CancelProofResponse rest_proofs_delete(api_version, proof_hash, data)
-
-
+> CancelProofResponse rest_proofs_delete(body, api_version, proof_hash)
 
 
 
@@ -1310,12 +1357,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = hep_rest_api.RestApi()
+body = hep_rest_api.CancelProofRequest() # CancelProofRequest | 
 api_version = 'api_version_example' # str | 
 proof_hash = 'proof_hash_example' # str | 
-data = hep_rest_api.CancelProofRequest() # CancelProofRequest | 
 
 try:
-    api_response = api_instance.rest_proofs_delete(api_version, proof_hash, data)
+    api_response = api_instance.rest_proofs_delete(body, api_version, proof_hash)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RestApi->rest_proofs_delete: %s\n" % e)
@@ -1325,9 +1372,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**CancelProofRequest**](CancelProofRequest.md)|  | 
  **api_version** | **str**|  | 
  **proof_hash** | **str**|  | 
- **data** | [**CancelProofRequest**](CancelProofRequest.md)|  | 
 
 ### Return type
 
@@ -1387,8 +1434,8 @@ Name | Type | Description  | Notes
  **api_version** | **str**|  | 
  **proof_hash** | **str**|  | 
  **dapp_key** | **str**| The decentralized application access key | 
- **protocol** | **str**| The protocol name. default is &#39;HEP&#39;. | 
- **version** | **str**| The protocol version such as &#39;1.0&#39; | 
+ **protocol** | **str**| The protocol name. default is &#x27;HEP&#x27;. | 
+ **version** | **str**| The protocol version such as &#x27;1.0&#x27; | 
  **ts** | **int**| The current timestamp | 
  **nonce** | **str**| The random string or auto-increment sequence | 
  **os** | **str**| The operating system of client such as ios, android, dweb,etc. | 
@@ -1406,15 +1453,13 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **rest_proofs_receipts_create**
-> RetrieveProofReceiptsResponse rest_proofs_receipts_create(api_version, data)
-
-
+> RetrieveProofReceiptsResponse rest_proofs_receipts_create(body, api_version)
 
 
 
@@ -1428,11 +1473,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = hep_rest_api.RestApi()
+body = hep_rest_api.RetrieveProofReceiptsRequest() # RetrieveProofReceiptsRequest | 
 api_version = 'api_version_example' # str | 
-data = hep_rest_api.RetrieveProofReceiptsRequest() # RetrieveProofReceiptsRequest | 
 
 try:
-    api_response = api_instance.rest_proofs_receipts_create(api_version, data)
+    api_response = api_instance.rest_proofs_receipts_create(body, api_version)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RestApi->rest_proofs_receipts_create: %s\n" % e)
@@ -1442,8 +1487,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**RetrieveProofReceiptsRequest**](RetrieveProofReceiptsRequest.md)|  | 
  **api_version** | **str**|  | 
- **data** | [**RetrieveProofReceiptsRequest**](RetrieveProofReceiptsRequest.md)|  | 
 
 ### Return type
 
@@ -1461,9 +1506,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **rest_proofs_rewards_create**
-> RetrieveProofRewardsResponse rest_proofs_rewards_create(api_version, data)
-
-
+> RetrieveProofRewardsResponse rest_proofs_rewards_create(body, api_version)
 
 
 
@@ -1477,11 +1520,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = hep_rest_api.RestApi()
+body = hep_rest_api.RetrieveProofRewardsRequest() # RetrieveProofRewardsRequest | 
 api_version = 'api_version_example' # str | 
-data = hep_rest_api.RetrieveProofRewardsRequest() # RetrieveProofRewardsRequest | 
 
 try:
-    api_response = api_instance.rest_proofs_rewards_create(api_version, data)
+    api_response = api_instance.rest_proofs_rewards_create(body, api_version)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RestApi->rest_proofs_rewards_create: %s\n" % e)
@@ -1491,8 +1534,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**RetrieveProofRewardsRequest**](RetrieveProofRewardsRequest.md)|  | 
  **api_version** | **str**|  | 
- **data** | [**RetrieveProofRewardsRequest**](RetrieveProofRewardsRequest.md)|  | 
 
 ### Return type
 

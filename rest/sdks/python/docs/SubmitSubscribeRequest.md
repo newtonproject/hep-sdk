@@ -4,8 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **dapp_key** | **str** | The decentralized application access key | 
-**protocol** | **str** | The protocol name. default is &#39;HEP&#39;. | 
-**version** | **str** | The protocol version such as &#39;1.0&#39; | 
+**protocol** | **str** | The protocol name. default is &#x27;HEP&#x27;. | 
+**version** | **str** | The protocol version such as &#x27;1.0&#x27; | 
 **ts** | **int** | The current timestamp | 
 **nonce** | **str** | The random string or auto-increment sequence | 
 **os** | **str** | The operating system of client such as ios, android, dweb,etc. | 
@@ -16,10 +16,9 @@ Name | Type | Description | Notes
 **signature** | **str** | The signature hex string by application owner. The exclude fields is [sign_type, signature, md5]. | 
 **newid** | **str** |  | 
 **tx** | **str** |  | 
-**action** | **str** | The action name which value is &#39;hep.gravity.subscribe&#39;. | 
+**action** | **str** | The action name which value is &#x27;hep.gravity.subscribe&#x27;. | 
 **uuid** | **str** | The request uuid | 
 **dapp_id** | **str** | The decentralized application ID | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
 

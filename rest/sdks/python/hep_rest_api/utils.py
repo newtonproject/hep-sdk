@@ -68,7 +68,6 @@ def sign_hmac(data, secret, prefix='', use_urlencode=False, joint='&', signature
     sign_string += secret
     if use_urlencode:
         sign_string = urllib.quote_plus(sign_string)
-    print("ordered sign string: %s" % str(sign_string))
     signed_string = generate_md5(sign_string)
     return signed_string
 

@@ -77,8 +77,6 @@ class BaseHelper(object):
         return sign_data
 
     def sign_hmac(self, data, dapp_signature_method='HMAC-MD5'):
-        print("hep sdk sign data: %s" % str(data))
-        print("hep sdk dapp secret: %s" % str(self.dapp_secret))
         dapp_signature = utils.sign_hmac(data, self.dapp_secret, signature_method=dapp_signature_method)
         data['dapp_signature'] = dapp_signature
         data['dapp_signature_method'] = dapp_signature_method
