@@ -108,3 +108,19 @@ class AuthHelper(BaseHelper):
         hmac_data['api_version'] = self.api_version
         hmac_data['newid'] = newid
         return self.api_client.rest_newids_newforce_reward_list(**hmac_data)
+
+    def get_newforce_of_partner_and_voter(self, node_wallet_address, page_id=1, page_size=50, direction=0):
+        if not node_wallet_address:
+            raise AttributeError(
+                "node wallet address can not be None"
+            )
+        data = {
+            'page_id': page_id,
+            'page_size': page_size,
+            'direction': direction,
+        }
+        sign_data = self.generate_sign_data(data)
+        hmac_data = self.sign_hmac(sign_data)
+        hmac_data["node_wallet_address"] = node_wallet_address
+        hmac_data['api_version'] = self.api_version
+        return self.api_client.rest_newforce_node_round_read(**hmac_data)

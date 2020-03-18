@@ -1,6 +1,6 @@
 # HepRestApi\RestApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://localhost:8000*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -43,10 +43,17 @@ Method | HTTP request | Description
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure HTTP basic authorization: Basic
+$config = HepRestApi\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
 $apiInstance = new HepRestApi\Api\RestApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $api_version = "api_version_example"; // string | 
 $dapp_id = "dapp_id_example"; // string | 
@@ -91,7 +98,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -112,10 +119,17 @@ No authorization required
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure HTTP basic authorization: Basic
+$config = HepRestApi\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
 $apiInstance = new HepRestApi\Api\RestApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $api_version = "api_version_example"; // string | 
 $dapp_id = "dapp_id_example"; // string | 
@@ -162,7 +176,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -183,10 +197,17 @@ No authorization required
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure HTTP basic authorization: Basic
+$config = HepRestApi\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
 $apiInstance = new HepRestApi\Api\RestApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $api_version = "api_version_example"; // string | 
 
@@ -210,7 +231,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -711,10 +732,17 @@ Retrieve the transaction information by given txid
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure HTTP basic authorization: Basic
+$config = HepRestApi\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
 $apiInstance = new HepRestApi\Api\RestApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $api_version = "api_version_example"; // string | 
 $txid = "txid_example"; // string | 
@@ -759,7 +787,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -780,10 +808,17 @@ Retrieve the daily newforce statistics
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure HTTP basic authorization: Basic
+$config = HepRestApi\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
 $apiInstance = new HepRestApi\Api\RestApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $api_version = "api_version_example"; // string | 
 $date = "date_example"; // string | 
@@ -828,7 +863,83 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **restNewforceTokensList**
+> \HepRestApi\Model\NewforceRewardAmountResponse restNewforceTokensList($api_version, $newid, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $dapp_signature_method, $dapp_signature)
+
+
+
+Get the reward tokens amount by newid
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure HTTP basic authorization: Basic
+$config = HepRestApi\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+$apiInstance = new HepRestApi\Api\RestApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$api_version = "api_version_example"; // string | 
+$newid = "newid_example"; // string | 
+$dapp_key = "dapp_key_example"; // string | The decentralized application access key
+$protocol = "protocol_example"; // string | The protocol name. default is 'HEP'.
+$version = "version_example"; // string | The protocol version such as '1.0'
+$ts = 56; // int | The current timestamp
+$nonce = "nonce_example"; // string | The random string or auto-increment sequence
+$os = "os_example"; // string | The operating system of client such as ios, android, dweb,etc.
+$language = "language_example"; // string | The i18n language code such as zh, en, etc.
+$dapp_signature_method = "dapp_signature_method_example"; // string | The signature method used by dapp.
+$dapp_signature = "dapp_signature_example"; // string | The signature generated by dapp.
+
+try {
+    $result = $apiInstance->restNewforceTokensList($api_version, $newid, $dapp_key, $protocol, $version, $ts, $nonce, $os, $language, $dapp_signature_method, $dapp_signature);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling RestApi->restNewforceTokensList: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **api_version** | **string**|  |
+ **newid** | **string**|  |
+ **dapp_key** | **string**| The decentralized application access key |
+ **protocol** | **string**| The protocol name. default is &#39;HEP&#39;. |
+ **version** | **string**| The protocol version such as &#39;1.0&#39; |
+ **ts** | **int**| The current timestamp |
+ **nonce** | **string**| The random string or auto-increment sequence |
+ **os** | **string**| The operating system of client such as ios, android, dweb,etc. |
+ **language** | **string**| The i18n language code such as zh, en, etc. |
+ **dapp_signature_method** | **string**| The signature method used by dapp. |
+ **dapp_signature** | **string**| The signature generated by dapp. |
+
+### Return type
+
+[**\HepRestApi\Model\NewforceRewardAmountResponse**](../Model/NewforceRewardAmountResponse.md)
+
+### Authorization
+
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -918,10 +1029,17 @@ Retrieve the information by given NewID
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure HTTP basic authorization: Basic
+$config = HepRestApi\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
 $apiInstance = new HepRestApi\Api\RestApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $api_version = "api_version_example"; // string | 
 $newid = "newid_example"; // string | 
@@ -966,7 +1084,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -987,10 +1105,17 @@ Caches the authentication request
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure HTTP basic authorization: Basic
+$config = HepRestApi\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
 $apiInstance = new HepRestApi\Api\RestApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $api_version = "api_version_example"; // string | 
 $data = new \HepRestApi\Model\AuthCacheRequest(); // \HepRestApi\Model\AuthCacheRequest | 
@@ -1017,7 +1142,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -1038,10 +1163,17 @@ Get the authentication information by given request hash.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure HTTP basic authorization: Basic
+$config = HepRestApi\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
 $apiInstance = new HepRestApi\Api\RestApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $api_version = "api_version_example"; // string | 
 $auth_hash = "auth_hash_example"; // string | 
@@ -1086,7 +1218,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -1107,10 +1239,17 @@ Cache the pay request
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure HTTP basic authorization: Basic
+$config = HepRestApi\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
 $apiInstance = new HepRestApi\Api\RestApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $api_version = "api_version_example"; // string | 
 $data = new \HepRestApi\Model\PayCacheRequest(); // \HepRestApi\Model\PayCacheRequest | 
@@ -1137,7 +1276,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -1158,10 +1297,17 @@ Retrieve the pay information by given pay hash.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure HTTP basic authorization: Basic
+$config = HepRestApi\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
 $apiInstance = new HepRestApi\Api\RestApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $api_version = "api_version_example"; // string | 
 $pay_hash = "pay_hash_example"; // string | 
@@ -1206,7 +1352,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -1227,10 +1373,17 @@ Get the oracle information by given id.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure HTTP basic authorization: Basic
+$config = HepRestApi\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
 $apiInstance = new HepRestApi\Api\RestApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $api_version = "api_version_example"; // string | 
 $oracle_id = "oracle_id_example"; // string | 
@@ -1275,7 +1428,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -1296,10 +1449,17 @@ No authorization required
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure HTTP basic authorization: Basic
+$config = HepRestApi\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
 $apiInstance = new HepRestApi\Api\RestApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $api_version = "api_version_example"; // string | 
 $data = new \HepRestApi\Model\CreateProofRequest(); // \HepRestApi\Model\CreateProofRequest | 
@@ -1326,7 +1486,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -1347,10 +1507,17 @@ No authorization required
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure HTTP basic authorization: Basic
+$config = HepRestApi\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
 $apiInstance = new HepRestApi\Api\RestApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $api_version = "api_version_example"; // string | 
 $proof_hash = "proof_hash_example"; // string | 
@@ -1379,7 +1546,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -1400,10 +1567,17 @@ Get the proof by given proof hash.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure HTTP basic authorization: Basic
+$config = HepRestApi\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
 $apiInstance = new HepRestApi\Api\RestApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $api_version = "api_version_example"; // string | 
 $proof_hash = "proof_hash_example"; // string | 
@@ -1448,7 +1622,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -1469,10 +1643,17 @@ No authorization required
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure HTTP basic authorization: Basic
+$config = HepRestApi\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
 $apiInstance = new HepRestApi\Api\RestApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $api_version = "api_version_example"; // string | 
 $data = new \HepRestApi\Model\RetrieveProofReceiptsRequest(); // \HepRestApi\Model\RetrieveProofReceiptsRequest | 
@@ -1499,7 +1680,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -1520,10 +1701,17 @@ No authorization required
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure HTTP basic authorization: Basic
+$config = HepRestApi\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
 $apiInstance = new HepRestApi\Api\RestApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $api_version = "api_version_example"; // string | 
 $data = new \HepRestApi\Model\RetrieveProofRewardsRequest(); // \HepRestApi\Model\RetrieveProofRewardsRequest | 
@@ -1550,7 +1738,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 

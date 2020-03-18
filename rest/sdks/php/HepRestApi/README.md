@@ -56,10 +56,16 @@ Please follow the [installation procedure](#installation--usage) and then run th
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure HTTP basic authorization: Basic
+$config = HepRestApi\Configuration::getDefaultConfiguration()
+    ->setUsername('YOUR_USERNAME')
+    ->setPassword('YOUR_PASSWORD');
+
 $apiInstance = new HepRestApi\Api\RestApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $api_version = "api_version_example"; // string | 
 $dapp_id = "dapp_id_example"; // string | 
@@ -85,7 +91,7 @@ try {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://localhost:8000*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -164,7 +170,10 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Authorization
 
- All endpoints do not require authorization.
+
+## Basic
+
+- **Type**: HTTP basic authentication
 
 
 ## Author

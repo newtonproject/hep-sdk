@@ -183,7 +183,6 @@ def test_get_gravity_account(newid):
     res = newchain_helper.get_gravity_account(newid)
     print(res)
 
-
 def test_get_mint_condition(newid):
     res = newchain_helper.get_gravity_mint_condition(newid)
     print(res)
@@ -219,6 +218,11 @@ def test_subscribe_submit(newid, tx):
     print(res)
 
 
+def test_get_newforce_of_partner_and_voter(node_wallet_address, page_id, page_size, direction):
+    res = auth_helper.get_newforce_of_partner_and_voter(
+        node_wallet_address, page_id, page_size, direction)
+    print(res)
+
 if __name__ == '__main__':
     # message = "你好"
     # r, s = utils.sign_secp256r1(message, key_path)
@@ -236,10 +240,16 @@ if __name__ == '__main__':
     # test_submit_mint(newid, tx_tokens, tx_gravity)
 
     # test_mint_collect(newid)
-    test_get_gravity_account(newid)
+    # test_get_gravity_account(newid)
     # test_get_current_mint_data(newid)
     # test_get_history_mint_data(newid)
     # test_get_subscribe_condition(newid)
 
-    tx = "0xf86a316482520894412e3388b9c05cecc29068755cc7c97db27decd7893635c9adc5dea00000808207f8a0844dfa3e60c7880804b94c3bca52e3e6c94232f7e781ff940355293aef138ba8a0237199cd28e85aa645a2bc734115a8165bd1c4e740ca18a3713ff1929107339c"
+    # tx = "0xf86a316482520894412e3388b9c05cecc29068755cc7c97db27decd7893635c9adc5dea00000808207f8a0844dfa3e60c7880804b94c3bca52e3e6c94232f7e781ff940355293aef138ba8a0237199cd28e85aa645a2bc734115a8165bd1c4e740ca18a3713ff1929107339c"
     # test_subscribe_submit(newid, tx)
+
+    address = "NEW17xQBMnNYm9tefbjQRZuB32X1PMi9LGyQPVH"
+    page_id = 1
+    page_size = 20
+    direction = 0
+    test_get_newforce_of_partner_and_voter(address, page_id, page_size, direction)
