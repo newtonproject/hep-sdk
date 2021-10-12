@@ -3,7 +3,7 @@ six >= 1.10
 python_dateutil >= 2.5.3
 setuptools >= 21.0.0
 urllib3 >= 1.15.1
-fastecdsa==1.7.3
+fastecdsa==2.1.2
 pysha3==1.0.2
 base58==1.0.3
 
